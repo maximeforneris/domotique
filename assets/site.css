@@ -1,0 +1,633 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   SITE — l'enveloppe de navigation autour des pages du kit.
+   Elle vient APRES kit.css et n'en redefinit aucune variable : les couleurs,
+   les polices et le mode sombre sont ceux du kit. Ne pas la dupliquer dans
+   un sous-projet. Voir GUIDE-SITE.md.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─────────────────────────────────────────────── barre de site
+   Elle defile avec la page : le sommaire de seance, lui, est colle en haut
+   (kit.css). Deux barres collantes se marchent dessus.
+
+   Elle s'appelait « barre » tout court, et kit.css nomme deja ainsi les
+   barres de ses graphiques : site.css etant chargee ensuite, elle ecrasait
+   leur grille a trois colonnes. Un nom de classe partage entre deux feuilles
+   ne pardonne pas — d'ou le suffixe. */
+.barre-site{
+  display:flex;align-items:center;gap:14px;flex-wrap:wrap;
+  padding:14px 0 0;font-family:"Bricolage Grotesque",sans-serif;font-size:13px;
+}
+.barre-site .accueil{
+  font-weight:700;color:var(--encre);text-decoration:none;
+  border-bottom:2px solid var(--froid);padding-bottom:1px;
+}
+.barre-site .accueil:hover{color:var(--froid)}
+/* .pas-pas : remplace par .fleches, plus bas */
+.barre-site .lu{
+  font-family:inherit;font-size:12px;font-weight:600;cursor:pointer;
+  color:var(--encre2);background:none;border:1px solid var(--trait);
+  border-radius:99px;padding:5px 12px;
+}
+.barre-site .lu:hover{border-color:var(--vert);color:var(--vert)}
+.barre-site .lu[aria-pressed="true"]{
+  border-color:var(--vert);color:var(--vert);background:color-mix(in srgb,var(--vert) 10%,transparent);
+}
+.barre-site .lu[aria-pressed="true"]::before{content:"✓ "}
+
+/* ─────────────────────────────────────────────── accueil : recherche */
+.chercher{margin:28px 0 0;max-width:660px}
+.page > .chercher{max-width:none}
+.chercher input{
+  width:100%;font-family:"Bricolage Grotesque",sans-serif;font-size:16px;
+  color:var(--encre);background:var(--carte);border:1px solid var(--trait);
+  border-radius:var(--r);padding:12px 14px;
+}
+.chercher input:focus{outline:2px solid var(--froid);outline-offset:1px;border-color:var(--froid)}
+.chercher input::placeholder{color:var(--encre2)}
+.resultats{margin:10px 0 0;padding:0;list-style:none}
+.resultats li{border-bottom:1px solid var(--trait2);padding:11px 0}
+.resultats a{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;
+  font-size:15px;text-decoration:none;color:var(--encre)}
+.resultats a:hover{color:var(--froid)}
+.resultats .ou{font-family:"IBM Plex Mono",monospace;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--encre2);display:block;margin-bottom:3px}
+.resultats .extrait{font-size:14.5px;color:var(--encre2);margin:4px 0 0}
+.resultats mark{background:color-mix(in srgb,var(--tiede) 32%,transparent);color:inherit;
+  border-radius:2px;padding:0 2px}
+.rien{color:var(--encre2);font-size:15px;margin:12px 0 0}
+/* pendant une recherche, les resultats occupent la page seuls */
+body.en-recherche .espace,
+body.en-recherche .echeances,
+body.en-recherche .chiffres,
+body.en-recherche .portes,
+body.en-recherche .reprendre,
+body.en-recherche .mot,
+body.en-recherche .compteur{display:none}
+
+.compteur{font-size:13.5px;color:var(--encre2);margin:16px 0 0}
+.compteur .raz{font:inherit;color:var(--froid);background:none;border:0;
+  padding:0;cursor:pointer;text-decoration:underline}
+
+/* ─────────────────────────────────────────────── accueil : raccourcis */
+.raccourcis{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 0}
+.raccourcis a{
+  font-family:"Bricolage Grotesque",sans-serif;font-size:14px;font-weight:600;
+  text-decoration:none;color:var(--encre);background:var(--carte);
+  border:1px solid var(--trait);border-radius:var(--r);padding:10px 15px;
+}
+.raccourcis a:hover{border-color:var(--froid);color:var(--froid)}
+.raccourcis a span{display:block;font-weight:400;font-size:12.5px;color:var(--encre2)}
+
+/* ─────────────────────────────────────────────── la frise */
+.espace{margin:46px 0 0}
+.espace>h2{margin-bottom:4px}
+.espace>.compte{font-family:"IBM Plex Mono",monospace;font-size:11.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--encre2);margin:0 0 18px}
+.sequence{margin:26px 0 0;border-top:1px solid var(--trait2);padding-top:16px}
+.sequence>h3{margin:0 0 3px;font-size:18px}
+.sequence>.quoi{font-size:14.5px;color:var(--encre2);margin:0 0 14px;max-width:60ch}
+
+.frise{list-style:none;padding:0;margin:0;display:grid;gap:9px;
+  grid-template-columns:repeat(auto-fill,minmax(215px,1fr))}
+.frise li{position:relative}
+.frise a,.frise .vide{
+  display:block;height:100%;padding:12px 13px;border-radius:var(--r);
+  border:1px solid var(--trait);background:var(--carte);text-decoration:none;
+  color:var(--encre);box-shadow:var(--ombre);
+}
+.frise a:hover{border-color:var(--froid);transform:translateY(-1px)}
+.frise a{transition:border-color .12s,transform .12s}
+.frise .n{font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--encre2);display:block;margin-bottom:5px}
+.frise .t{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:15px;
+  line-height:1.25;display:block;text-wrap:balance}
+.frise .meta{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--encre2);
+  display:block;margin-top:7px}
+/* une seance dont la page reste a produire : elle est annoncee, pas cachee */
+.frise .vide{background:transparent;border-style:dashed;color:var(--encre2);box-shadow:none}
+.frise .vide .t{font-weight:500}
+.frise .vide .meta{color:var(--tiede)}
+/* marque « lu » posee par site.js depuis le navigateur de l'eleve */
+.frise li.lu a{border-color:var(--vert)}
+.frise li.lu .n::after{content:" ✓";color:var(--vert);font-weight:700}
+
+.recap{
+  display:inline-block;margin:11px 0 0;font-family:"Bricolage Grotesque",sans-serif;
+  font-size:13.5px;font-weight:600;text-decoration:none;color:var(--froid);
+  border:1px solid var(--froid);border-radius:99px;padding:6px 14px;
+}
+.recap:hover{background:var(--froid);color:var(--fond)}
+
+/* ─────────────────────────────────────────────── echeances */
+.echeances{margin:46px 0 0}
+.echeances table{width:100%;max-width:660px}
+
+/* ─────────────────────────────────────────────── catalogue des outils */
+.outils-grille{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:11px;
+  grid-template-columns:repeat(auto-fill,minmax(275px,1fr))}
+.outils-grille a{
+  display:block;height:100%;padding:15px 16px;border-radius:var(--r);
+  border:1px solid var(--trait);background:var(--carte);text-decoration:none;
+  color:var(--encre);box-shadow:var(--ombre);transition:border-color .12s,transform .12s;
+}
+.outils-grille a:hover{border-color:var(--vert);transform:translateY(-1px)}
+.outils-grille .t{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;
+  font-size:16px;display:block;line-height:1.25;text-wrap:balance}
+.outils-grille .i{font-size:14.5px;color:var(--encre2);margin:6px 0 0;display:block}
+.outils-grille .ou{font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--vert);display:block;margin-top:9px}
+
+/* ─────────────────────────────────────────────── pied de site */
+.pied-site{margin:60px 0 0;padding-top:18px;border-top:1px solid var(--trait);
+  font-size:13.5px;color:var(--encre2);max-width:660px}
+
+/* ─────────────────────────────────────────────── tablette et telephone */
+@media (max-width:560px){
+  .barre-site{gap:9px}
+  .frise{grid-template-columns:1fr}
+}
+
+/* ─────────────────────────────────────────────── banque d'exercices
+   Un repertoire, pas une copie : chaque ligne renvoie a la seance qui porte
+   l'exercice. */
+.filtres{display:flex;flex-wrap:wrap;gap:14px 20px;align-items:center;margin:26px 0 0;
+  font-family:"Bricolage Grotesque",sans-serif;font-size:13.5px;color:var(--encre2)}
+.filtres label{display:flex;align-items:center;gap:7px}
+.filtres select{font-family:inherit;font-size:13.5px;color:var(--encre);
+  background:var(--carte);border:1px solid var(--trait);border-radius:var(--r);
+  padding:7px 10px}
+.filtres select:focus{outline:2px solid var(--froid);outline-offset:1px}
+.filtres .coche input{width:16px;height:16px;accent-color:var(--vert)}
+
+.exos-liste{list-style:none;padding:0;margin:14px 0 0}
+.exo-ligne{display:flex;align-items:baseline;gap:12px;padding:12px 0;
+  border-bottom:1px solid var(--trait2)}
+/* un display explicite bat la regle [hidden] du navigateur : sans cette ligne
+   le filtre pose bien l'attribut, et la ligne reste a l'ecran. */
+.exo-ligne[hidden]{display:none}
+.exo-ligne a{flex:1;text-decoration:none;color:var(--encre);
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:15px}
+.exo-ligne a:hover{color:var(--froid)}
+.exo-ligne .ou{display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--encre2);
+  font-weight:400;margin-bottom:3px}
+.exo-ligne .etat{font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.08em;text-transform:uppercase;white-space:nowrap;
+  padding:3px 9px;border-radius:99px;border:1px solid transparent}
+.exo-ligne .etat.juste{color:var(--vert);border-color:var(--vert)}
+.exo-ligne .etat.faux{color:var(--chaud);border-color:var(--chaud)}
+.exo-ligne .etat.vu{color:var(--encre2);border-color:var(--trait)}
+
+@media (max-width:560px){
+  .filtres{gap:11px 14px}
+  .filtres label{width:100%}
+  .filtres select{flex:1}
+}
+
+/* ─────────────────────────────────────────────── annales
+   Un index, pas une republication : les sujets restent des documents de classe. */
+.session{margin:34px 0 0;border-top:1px solid var(--trait2);padding-top:16px}
+.session>h3{margin:0 0 3px;font-size:18px}
+.session>.quoi{font-size:14px;color:var(--encre2);margin:0 0 12px;max-width:62ch}
+.parties{list-style:none;padding:0;margin:0}
+.partie{padding:12px 0;border-bottom:1px solid var(--trait2);
+  display:grid;grid-template-columns:88px 1fr;gap:3px 14px;align-items:baseline}
+.partie[hidden]{display:none}
+.partie .n{grid-row:1/3;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--encre2)}
+.partie .t{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:15.5px;
+  line-height:1.3;text-wrap:balance}
+.partie .meta{font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--encre2);
+  grid-column:2}
+.partie .sv{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  color:var(--froid);border:1px solid var(--froid);border-radius:99px;
+  padding:2px 8px;margin:6px 5px 0 0;grid-column:2}
+.partie .rep{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--vert);
+  border:1px solid var(--vert);border-radius:99px;padding:2px 8px;margin:6px 0 0}
+.session:has(.partie:not([hidden]))~.session{}
+.session.vide{display:none}
+@media (max-width:560px){
+  .partie{grid-template-columns:1fr}
+  .partie .n{grid-row:auto}
+  .partie .meta,.partie .sv{grid-column:auto}
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   ACCUEIL — la page d'entrée
+   Elle portait trois raccourcis empilés sur une colonne de 660 px et rien
+   d'autre : aucun relief, aucune couleur, et vingt et une cartes grises à la
+   suite. Ce qui suit lui donne une hiérarchie — un bandeau de chiffres, trois
+   portes, et une frise rythmée par séquence.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* l'accueil respire plus large que le texte courant du kit */
+.page > .chiffres,
+.page > .portes,
+.page > .espace { max-width: none }
+
+/* ─────────────────────────────────────────────── bandeau de chiffres */
+.chiffres{
+  display:flex;flex-wrap:wrap;gap:0;list-style:none;padding:0;
+  margin:26px 0 0;border-top:1px solid var(--trait);
+}
+.chiffres li{
+  flex:1 1 120px;padding:16px 20px 14px;border-right:1px solid var(--trait2);
+}
+.chiffres li:last-child{border-right:0}
+.chiffres li:first-child{padding-left:0}
+.chiffres b{
+  display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+  font-size:clamp(26px,4vw,38px);line-height:1;letter-spacing:-.03em;color:var(--encre);
+}
+.chiffres span{
+  display:block;margin-top:5px;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--encre2);
+}
+
+/* ─────────────────────────────────────────────── les trois portes */
+.portes{
+  display:grid;gap:12px;margin:14px 0 0;
+  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+}
+.porte{
+  --teinte:var(--froid);
+  position:relative;display:flex;flex-direction:column;gap:0;
+  padding:20px 20px 22px;text-decoration:none;color:var(--encre);
+  background:var(--carte);border:1px solid var(--trait);border-radius:var(--r);
+  box-shadow:var(--ombre);overflow:hidden;
+  transition:transform .14s,border-color .14s,box-shadow .14s;
+}
+.porte::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--teinte);
+}
+.porte:hover{
+  transform:translateY(-2px);border-color:var(--teinte);
+  box-shadow:0 2px 4px rgba(25,26,28,.06),0 14px 34px rgba(25,26,28,.10);
+}
+.porte:focus-visible{outline:2px solid var(--teinte);outline-offset:3px}
+.porte.outils{--teinte:var(--vert)}
+.porte.exos{--teinte:var(--tiede)}
+.porte.annales{--teinte:var(--froid)}
+.porte.cours{--teinte:var(--bleu,var(--froid))}
+.porte.bilan{--teinte:var(--vert)}
+
+.porte .ico{
+  width:28px;height:28px;fill:none;stroke:var(--teinte);stroke-width:1.6;
+  stroke-linecap:round;stroke-linejoin:round;margin-bottom:14px;
+}
+.porte .n{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--teinte);font-weight:600;
+}
+.porte .t{
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:19px;
+  line-height:1.15;letter-spacing:-.02em;margin-top:4px;text-wrap:balance;
+}
+.porte .d{font-size:14.5px;line-height:1.45;color:var(--encre2);margin-top:8px}
+
+/* ─────────────────────────────────────────────── reprendre la lecture */
+.reprendre{
+  margin:22px 0 0;font-family:"Bricolage Grotesque",sans-serif;font-size:14px;
+  color:var(--encre2);
+}
+.reprendre a{
+  color:var(--encre);font-weight:600;text-decoration:none;
+  border-bottom:2px solid var(--froid);padding-bottom:1px;
+}
+.reprendre a:hover{color:var(--froid)}
+
+/* ─────────────────────────────────────────────── la frise, rythmée */
+.sequence{--teinte:var(--froid);position:relative;padding-left:20px;border-top:0}
+.sequence::before{
+  content:"";position:absolute;left:0;top:6px;bottom:14px;width:3px;
+  border-radius:2px;background:var(--teinte);opacity:.55;
+}
+.sequence[data-rang="1"]{--teinte:var(--froid)}
+.sequence[data-rang="2"]{--teinte:var(--vert)}
+.sequence[data-rang="3"]{--teinte:var(--chaud)}
+.sequence[data-rang="4"]{--teinte:var(--tiede)}
+.sequence[data-rang="5"]{--teinte:var(--encre2)}
+
+.sequence .rang{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--teinte);font-weight:600;margin:0 0 4px;
+}
+.sequence .rang span{color:var(--encre2);font-weight:400}
+.sequence .rang span::before{content:" · "}
+.sequence > h3{font-size:21px;letter-spacing:-.02em;margin:0 0 5px}
+
+/* l'avancement de lecture, posé par site.js */
+.sequence .jauge{
+  display:flex;align-items:center;gap:9px;margin:0 0 13px;
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--encre2);
+}
+.sequence .jauge i{
+  flex:0 0 84px;height:4px;border-radius:2px;background:var(--trait2);overflow:hidden;
+}
+.sequence .jauge i b{display:block;height:100%;background:var(--teinte);border-radius:2px}
+
+.frise a:hover{border-color:var(--teinte)}
+.frise li.lu a{border-color:var(--teinte)}
+.frise li.lu .n::after{color:var(--teinte)}
+.recap{color:var(--teinte);border-color:var(--teinte)}
+.recap:hover{background:var(--teinte);color:var(--fond)}
+
+@media (max-width:560px){
+  .chiffres li{flex:1 1 50%;border-right:0;padding:12px 0}
+  .chiffres li:nth-child(odd){padding-left:0}
+  .porte{padding:17px 17px 19px}
+  .sequence{padding-left:14px}
+}
+
+/* ─────────────────────────────────────────────── fiches transversales
+   Ce qui ne tient dans aucune séance parce qu'il sert à toutes. */
+.fiches{margin:34px 0 0}
+.page > .fiches{max-width:none}
+.chapeau-f{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--encre2);margin:0 0 11px;
+}
+.grille-f{
+  display:grid;gap:11px;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+}
+.grille-f a{
+  display:block;padding:15px 17px;text-decoration:none;color:var(--encre);
+  background:var(--carte);border:1px solid var(--trait);border-left:3px solid var(--tiede);
+  border-radius:var(--r);box-shadow:var(--ombre);
+  transition:transform .12s,border-color .12s;
+}
+.grille-f a:hover{transform:translateY(-1px);border-color:var(--tiede)}
+.grille-f .k{
+  display:block;font-family:"IBM Plex Mono",monospace;font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--tiede);font-weight:600;
+}
+.grille-f .t{
+  display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;
+  font-size:16.5px;line-height:1.2;margin-top:5px;text-wrap:balance;
+}
+.grille-f .d{
+  display:block;font-size:14px;line-height:1.45;color:var(--encre2);margin-top:7px;
+  display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
+}
+body.en-recherche .fiches{display:none}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   PAGE DE SÉANCE — le contexte autour du cours
+   Elle n'annonçait ni sa séquence ni sa couleur, ses boutons de navigation
+   disaient « J8 » et « J10 », et après six mille pixels de lecture elle
+   s'arrêtait sur sa mention de bas de page.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* la teinte de la séquence descend sur la page entière */
+.page[data-rang]{--teinte:var(--froid)}
+.page[data-rang="1"]{--teinte:var(--froid)}
+.page[data-rang="2"]{--teinte:var(--vert)}
+.page[data-rang="3"]{--teinte:var(--chaud)}
+.page[data-rang="4"]{--teinte:var(--tiede)}
+.page[data-rang="5"]{--teinte:var(--encre2)}
+.page[data-rang] h1 span{color:var(--teinte)}
+.page[data-rang] .barre-site .accueil{border-bottom-color:var(--teinte)}
+.page[data-rang] .barre-site .accueil:hover{color:var(--teinte)}
+.page[data-rang] nav.somm a.on{background:var(--teinte);color:var(--fond)}
+
+/* ─────────────────────────────────────────────── jauge de lecture
+   Un trait de trois pixels, tout en haut : sur une page de six mille pixels,
+   savoir où l'on en est vaut mieux qu'une barre de défilement. */
+.jauge-lecture[hidden]{display:none}
+.jauge-lecture{
+  position:fixed;top:0;left:0;right:0;height:3px;z-index:60;
+  background:transparent;pointer-events:none;
+}
+.jauge-lecture i{
+  display:block;height:100%;width:0;background:var(--teinte,var(--froid));
+  transition:width .1s linear;
+}
+
+/* ─────────────────────────────────────────────── le fil de séquence */
+.barre-site .fil{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--teinte,var(--encre2));font-weight:600;
+  padding-left:14px;border-left:1px solid var(--trait);
+}
+
+/* le sommaire glisse sans montrer sa barre de défilement */
+nav.somm .in{scrollbar-width:none;-ms-overflow-style:none}
+nav.somm .in::-webkit-scrollbar{display:none}
+nav.somm{position:relative}
+nav.somm::after{
+  content:"";position:absolute;top:0;right:0;bottom:1px;width:34px;
+  pointer-events:none;
+  background:linear-gradient(to right,transparent,var(--fond));
+}
+
+/* ─────────────────────────────────────────────── la suite, en fin de page */
+.suite{margin:56px 0 0;padding-top:20px;border-top:1px solid var(--trait)}
+.page > .suite{max-width:none}
+.chapeau-s{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--encre2);margin:0 0 12px;
+}
+.pas-a-pas{display:grid;gap:11px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.pas-a-pas a{
+  display:block;padding:15px 17px;text-decoration:none;color:var(--encre);
+  background:var(--carte);border:1px solid var(--trait);border-radius:var(--r);
+  box-shadow:var(--ombre);transition:transform .12s,border-color .12s;
+}
+.pas-a-pas a:hover{transform:translateY(-1px);border-color:var(--teinte,var(--froid))}
+.pas-a-pas .ap{text-align:right}
+.pas-a-pas .k{
+  display:block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--teinte,var(--froid));
+  font-weight:600;
+}
+.pas-a-pas .t{
+  display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;
+  font-size:16px;line-height:1.2;margin-top:5px;text-wrap:balance;
+}
+.vers-recap{
+  display:inline-block;margin:13px 0 0;font-family:"Bricolage Grotesque",sans-serif;
+  font-size:13.5px;font-weight:600;text-decoration:none;
+  color:var(--teinte,var(--froid));border:1px solid var(--teinte,var(--froid));
+  border-radius:99px;padding:7px 15px;
+}
+.vers-recap:hover{background:var(--teinte,var(--froid));color:var(--fond)}
+
+@media (max-width:560px){
+  .barre-site .fil{padding-left:0;border-left:0;width:100%;order:4}
+  .pas-a-pas .ap{text-align:left}
+}
+
+/* les deux flèches compactes de la barre : le nom complet est en infobulle
+   et en pied de page, la barre ne porte que le geste */
+.barre-site .fleches{display:flex;gap:5px;margin-left:auto}
+.barre-site .fleche{
+  display:flex;align-items:center;justify-content:center;
+  width:30px;height:30px;font-size:17px;line-height:1;text-decoration:none;
+  color:var(--encre2);border:1px solid var(--trait);border-radius:var(--r);
+}
+.barre-site .fleche:hover{
+  border-color:var(--teinte,var(--froid));color:var(--teinte,var(--froid));
+}
+.barre-site .fleche:focus-visible{outline:2px solid var(--froid);outline-offset:2px}
+.barre-site .lu{margin-left:10px}
+
+/* le grand numéro prend la teinte de sa séquence */
+.page[data-rang] header.tete .num{color:var(--teinte)}
+.page[data-rang] header.tete{border-bottom-color:var(--teinte)}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   BOÎTE À OUTILS et BANQUE D'EXERCICES
+   Deux catalogues, deux longues listes uniformes. Ils reçoivent le même
+   traitement que l'accueil : un bandeau de chiffres, un filtre, et des
+   sections teintées par thème.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+.page > .chercher{max-width:none}
+.rien-du-tout{margin:26px 0 0;font-size:15.5px;color:var(--encre2)}
+
+/* ─────────────────────────────────────────────── outils, par thème */
+.theme-outils{--teinte:var(--froid);margin:38px 0 0;position:relative;padding-left:20px}
+.theme-outils::before{
+  content:"";position:absolute;left:0;top:4px;bottom:6px;width:3px;
+  border-radius:2px;background:var(--teinte);opacity:.55;
+}
+.theme-outils[data-rang="1"]{--teinte:var(--froid)}
+.theme-outils[data-rang="2"]{--teinte:var(--vert)}
+.theme-outils[data-rang="3"]{--teinte:var(--chaud)}
+.theme-outils[data-rang="4"]{--teinte:var(--tiede)}
+.theme-outils[data-rang="5"]{--teinte:var(--encre2)}
+.theme-outils .rang{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--teinte);font-weight:600;margin:0 0 3px;
+}
+.theme-outils > h2{margin:0 0 3px;font-size:21px;letter-spacing:-.02em}
+.theme-outils > .compte{margin:0 0 14px}
+.theme-outils .outils-grille a:hover{border-color:var(--teinte)}
+.theme-outils .outils-grille .ou{color:var(--teinte)}
+.carte-outil[hidden]{display:none}
+.theme-outils[hidden]{display:none}
+
+/* ─────────────────────────────────────────────── exercices, par savoir */
+.avancee{display:flex;align-items:center;gap:12px;margin:22px 0 0;
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;color:var(--encre2)}
+.avancee[hidden]{display:none}
+.avancee i{flex:0 0 140px;height:6px;border-radius:3px;background:var(--trait2);
+  overflow:hidden}
+.avancee i b{display:block;height:100%;background:var(--vert);border-radius:3px;
+  transition:width .2s}
+
+.filtres{gap:12px 18px}
+.filtres .f-sel select{max-width:min(46vw,420px)}
+.segments{display:flex;gap:0;border:1px solid var(--trait);border-radius:var(--r);
+  overflow:hidden;background:var(--carte)}
+.seg{
+  font-family:"Bricolage Grotesque",sans-serif;font-size:12.5px;font-weight:600;
+  cursor:pointer;padding:7px 13px;border:0;background:none;color:var(--encre2);
+  border-right:1px solid var(--trait);
+}
+.seg:last-child{border-right:0}
+.seg:hover{color:var(--encre)}
+.seg.on{background:var(--encre);color:var(--fond)}
+.seg.calcul.on{background:var(--froid)}
+.seg.lecture.on{background:var(--vert)}
+.seg.justification.on{background:var(--tiede)}
+
+.bloc-savoir{margin:34px 0 0}
+.bloc-savoir[hidden]{display:none}
+.titre-savoir{
+  display:flex;align-items:baseline;gap:11px;flex-wrap:wrap;
+  font-size:17px;letter-spacing:-.01em;margin:0 0 4px;
+}
+.titre-savoir .code{
+  font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.08em;
+  color:var(--froid);border:1px solid var(--froid);border-radius:99px;
+  padding:2px 9px;font-weight:600;flex:none;
+}
+.exos-liste{list-style:none;padding:0;margin:0}
+
+.exo-ligne{
+  display:grid;grid-template-columns:auto 1fr auto;gap:12px;align-items:baseline;
+  padding:11px 0;border-bottom:1px solid var(--trait2);
+}
+.exo-ligne .genre{
+  font-family:"IBM Plex Mono",monospace;font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;padding:3px 8px;border-radius:99px;white-space:nowrap;
+  border:1px solid var(--trait);color:var(--encre2);
+}
+.exo-ligne .genre.calcul{color:var(--froid);border-color:var(--froid)}
+.exo-ligne .genre.lecture{color:var(--vert);border-color:var(--vert)}
+.exo-ligne .genre.justification{color:var(--tiede);border-color:var(--tiede)}
+.exo-ligne a{
+  text-decoration:none;color:var(--encre);
+  font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:15.5px;
+}
+.exo-ligne a:hover{color:var(--froid)}
+
+@media (max-width:560px){
+  .exo-ligne{grid-template-columns:1fr auto;gap:4px 10px}
+  .exo-ligne .genre{grid-column:1;justify-self:start}
+  .exo-ligne a{grid-column:1/-1}
+  .theme-outils{padding-left:14px}
+  .avancee i{flex:0 0 90px}
+}
+
+/* ── suggestions de la barre de recherche ── */
+.a-suggestions{position:relative}
+.suggestions{position:absolute;z-index:40;left:0;right:0;top:calc(100% + 4px);
+  margin:0;padding:4px;list-style:none;max-height:min(56vh,420px);overflow:auto;
+  background:var(--carte);border:1px solid var(--trait);border-radius:var(--r);
+  box-shadow:var(--ombre)}
+.suggestions li{margin:0}
+.suggestions a{display:flex;align-items:baseline;gap:10px;justify-content:space-between;
+  padding:7px 10px;border-radius:var(--r);color:var(--encre);text-decoration:none;
+  font-size:15px;line-height:1.3}
+.suggestions li.on a,.suggestions a:hover{background:var(--carte2)}
+.suggestions b{font-weight:600}
+.suggestions mark{background:transparent;color:var(--froid);font-weight:600}
+.suggestions .lib{flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.suggestions .ou{flex:none;font-family:"IBM Plex Mono",monospace;font-size:11px;
+  color:var(--encre2);text-transform:uppercase;letter-spacing:.06em}
+
+/* ─────────────────────────────────────────────── séances tenues
+   « à venir » et « page à produire » se ressemblent à l'écran et ne disent
+   pas la même chose : l'un est un calendrier, l'autre un manque. */
+.frise .vide.a-venir{
+  border-style:solid;border-color:var(--trait2);
+  background:color-mix(in srgb,var(--encre) 3%,transparent);
+}
+.frise .vide.a-venir .meta{color:var(--encre2)}
+.frise .vide.a-venir .n::after{content:" ○";opacity:.5}
+.recap.tenu{
+  display:inline-block;margin:11px 0 0;font-family:"Bricolage Grotesque",sans-serif;
+  font-size:13.5px;font-weight:600;color:var(--encre2);
+  border:1px dashed var(--trait);border-radius:99px;padding:6px 14px;
+}
+.suggestions i{font-style:normal;color:var(--encre2)}
+
+
+/* ═══════════════════════════════════════════════════════════════════════
+   LARGEUR — les pages de catalogue prennent l'écran, les pages de cours non
+   Sur un écran de 1900 px, la page en utilisait 1060 : 845 px de marge
+   perdue. Les grilles — frise, portes, outils, exercices, annales — n'ont
+   aucune raison de rester dans une colonne.
+
+   Les pages de SÉANCE, elles, gardent leur largeur : leur texte est borné à
+   660 px pour rester lisible, leurs figures à 760. Les élargir n'ajouterait
+   que du vide à droite du texte. On les reconnaît à data-page, que seule une
+   page de cours porte.
+   ═══════════════════════════════════════════════════════════════════════ */
+.page[data-site]:not([data-page]){max-width:min(1500px,94vw)}
+
+/* La prose garde sa mesure de lecture, où qu'elle se trouve.
+   kit.css ne borne que les enfants DIRECTS de .page : le mot de l'accueil,
+   lui, vit dans une section, et ses paragraphes passaient au travers — 1460 px
+   de longueur de ligne sur un grand écran, soit trois fois la mesure lisible. */
+.mot > p,
+.mot > h2, .mot > h3, .mot > ul, .mot > ol, .mot > blockquote{max-width:660px}
+.mot > .enveloppe-tbl, .mot table{max-width:760px}
+
+/* ─── les mentions légales (11 septembre 2026) : une page de texte suivi,
+   ramenée à la mesure — sur toute la largeur, la ligne fait 180 caractères. */
+.espace.mentions p{max-width:72ch}
+.espace.mentions code{font-size:.92em;overflow-wrap:anywhere}

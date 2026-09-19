@@ -1,0 +1,173 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>A10 · protocoles et passerelles</title>
+<link rel="stylesheet" href="../assets/kit.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/site.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/domotique.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/vivant.css?v=fc1a8623">
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/DOMA10" data-rang="2">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 2 · Communiquer</span><span class="fleches"><a class="fleche" href="DOMA9.html" rel="prev" title="A9 : téléphonie IP et multimédia" aria-label="A9 : téléphonie IP et multimédia">&lsaquo;</a><a class="fleche" href="DOMA11.html" rel="next" title="A11 · adresses de groupe" aria-label="A11 · adresses de groupe">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA10">Marquer comme lu</button></div>
+<header class="tete">
+  <span class="num" aria-hidden="true">A10</span>
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>Le même protocole<span>ne suffit pas</span></h1>
+  </div>
+  <p class="accroche">Deux compteurs conformes à Modbus, et une supervision qui affiche une puissance fausse sans signaler la moindre erreur. Ce qui fait que deux appareils se comprennent tient au sens des données, et non au nom du protocole.</p>
+  <p class="contenu">6 questions · 4 exercices · 2 replis · 5 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag n3">D1-2 Standards et protocoles des métiers · niveau 3</span><span class="tag n3">B8-1 Protocoles et interopérabilité · niveau 3</span><span class="tag n3">D1-1 Médias de communication · niveau 3</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">Les cinq médias</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">un protocole circule sur un média ; il faut distinguer la paire torsadée, la radio et l'Ethernet avant de distinguer les langues qu'ils transportent.</span></li><li><b>Le bit et l'octet</b><span class="car">un registre Modbus contient seize bits ; savoir qu'un octet en compte huit suffit pour lire une table de registres.</span></li><li><b>La puissance électrique, P = U × I</b><span class="car">la séance vérifie une valeur lue sur le bus en la recalculant à partir de la tension et du courant.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#trois-couches">Trois couches</a><a href="#six-protocoles-six-metiers">Six protocoles, six métiers</a><a href="#deux-appareils-conformes-un-nombre-sans-sens">Deux appareils conformes, un nombre sans sens</a><a href="#la-passerelle-et-sa-table">La passerelle, et sa table</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+<p>Un bâtiment de bureaux réunit six systèmes, reliés à la supervision par le réseau IP. Chacun parle sa propre langue : il a fallu les identifier à partir des notices des appareils.</p>
+<p>Puis un cas réel : un compteur remplacé par un autre, conforme lui aussi, et une supervision qui affiche une puissance fausse sans aucune alarme. Ce cas explique ce qu’est l’interopérabilité, et ce qu’une passerelle peut ou ne peut pas faire.</p>
+<h2 id="trois-couches">Trois couches</h2>
+<p>Un protocole fixe trois choses : <strong>sur quel support</strong> les données circulent, <strong>qui prend la parole</strong> et quand, <strong>sous quelle forme</strong> les données sont écrites.</p>
+<figure class="schema"><div class="dessin" data-schema="couches-protocole"></div><figcaption>Deux systèmes se comprennent lorsque les trois couches concordent. La couche du haut, celle du sens des données, est celle qui décide.</figcaption></figure>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Prise de parole</th>
+<th>Principe</th>
+<th>Exemples</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>maître unique</strong></td>
+<td>un appareil interroge les autres à tour de rôle</td>
+<td>Modbus RTU, M-Bus, DALI</td>
+</tr>
+<tr>
+<td><strong>chacun émet</strong></td>
+<td>tout appareil émet quand il en a besoin ; le bus arbitre</td>
+<td>KNX TP1</td>
+</tr>
+<tr>
+<td><strong>client et serveur</strong></td>
+<td>un client interroge un serveur sur un réseau IP</td>
+<td>BACnet/IP, Modbus TCP</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="six-protocoles-six-metiers">Six protocoles, six métiers</h2>
+<figure>
+<img src="img/DOMA10/fig1-batiment.png" alt="Six liaisons, six protocoles, reliés au réseau IP par des passerelles." />
+<figcaption aria-hidden="true">Six liaisons, six protocoles, reliés au réseau IP par des passerelles.</figcaption>
+</figure>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Protocole</th>
+<th>Métier</th>
+<th>Ce qui le désigne dans une notice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>KNX TP1</strong></td>
+<td>le bâtiment</td>
+<td>paire torsadée TBTS, programmation par bouton</td>
+</tr>
+<tr>
+<td><strong>DALI</strong></td>
+<td>l’éclairage</td>
+<td>deux fils sans polarité, 64 adresses, 16 groupes</td>
+</tr>
+<tr>
+<td><strong>Modbus RTU</strong></td>
+<td>l’équipement technique</td>
+<td>RS-485, esclaves de 1 à 247, table de registres</td>
+</tr>
+<tr>
+<td><strong>M-Bus</strong></td>
+<td>la relève des compteurs</td>
+<td>deux fils alimentés par le maître, index et unités</td>
+</tr>
+<tr>
+<td><strong>BACnet/IP</strong></td>
+<td>la supervision</td>
+<td>objets typés, découverte automatique</td>
+</tr>
+<tr>
+<td><strong>EnOcean</strong></td>
+<td>la radio sans pile</td>
+<td>868 MHz, énergie produite par l’appui</td>
+</tr>
+</tbody>
+</table></div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi un index vaut mieux qu&#39;une impulsion</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Un compteur M-Bus transmet son <strong>index</strong>, un nombre qui ne redescend jamais, accompagné de son unité. Si la relève s’interrompt, rien n’est perdu : à la reprise, le concentrateur lit la valeur courante.</p>
+<p>Un compteur à impulsions ne transmet que des incréments, comptés par le récepteur. Une panne du récepteur fait perdre les impulsions émises pendant ce temps, et l’écart avec le compteur réel ne se corrige que par un recalage manuel.</p></div></details>
+</div><h2 id="deux-appareils-conformes-un-nombre-sans-sens">Deux appareils conformes, un nombre sans sens</h2>
+<figure>
+<img src="img/DOMA10/fig2-registre.png" alt="Le même mot de seize bits se lit de trois façons selon la table du fabricant." />
+<figcaption aria-hidden="true">Le même mot de seize bits se lit de trois façons selon la table du fabricant.</figcaption>
+</figure>
+<p>Modbus transporte des registres de seize bits <strong>sans type ni unité</strong>. Le contrôle d’erreur vérifie que le nombre arrive intact, jamais ce qu’il signifie. Le sens n’est écrit que dans la table de registres du fabricant.</p>
+<div class="piege">
+<p>« Les deux appareils sont en Modbus, ils vont se comprendre. » C’est faux dès que les tables de registres diffèrent : un courant en centièmes d’ampère peut être affiché comme une puissance en watts, <strong>sans aucune alarme</strong>.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Vérifier une table de registres sur site</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La méthode consiste à <strong>lire une valeur connue</strong>. La tension du réseau, voisine de 230 V, doit apparaître quelque part sous la forme 2 300 si elle est écrite en dixièmes de volt. Le courant lu doit concorder avec une mesure à la pince, et la puissance avec le produit de la tension et du courant.</p>
+<p>Si la valeur connue apparaît dans le registre voisin de celui qui était attendu, la configuration présente un décalage d’une unité : les documentations ne numérotent pas toujours les registres comme le protocole.</p></div></details>
+</div><h2 id="la-passerelle-et-sa-table">La passerelle, et sa table</h2>
+<figure>
+<img src="img/DOMA10/fig3-passerelle.png" alt="Une passerelle traduit, point par point, ce que sa table de correspondance lui indique." />
+<figcaption aria-hidden="true">Une passerelle traduit, point par point, ce que sa table de correspondance lui indique.</figcaption>
+</figure>
+<div class="cle">
+<p>L’<strong>interopérabilité</strong> tient au typage des données : KNX la garantit par ses types de points de données, BACnet par ses objets normalisés. Une <strong>passerelle</strong> ne devine rien : <strong>un point absent de sa table n’existe pas pour l’autre système.</strong></p>
+</div>
+<p>Chaque ligne de la table porte une adresse, un type, un sens de circulation et sa correspondance de l’autre côté. La passerelle convertit aussi les échelles : de 0 à 100 % côté KNX, de 0 à 254 côté DALI.</p>
+<figure class="memo"><img src="img/DOMA10/memo-protocoles.png" alt="" /></figure>
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+<div class="quiz">
+<ul>
+<li>Une liaison RS-485 avec des esclaves numérotés de 1 à 247 porte : <strong>Modbus RTU</strong> | KNX TP1 | BACnet/IP</li>
+<li>Un registre Modbus contient : <strong>seize bits sans type</strong> | une valeur et son unité | un objet nommé</li>
+<li>Le protocole conçu pour la supervision est : <strong>BACnet</strong> | DALI | M-Bus</li>
+<li>Une ligne DALI accepte au plus : <strong>64 adresses</strong> | 247 adresses | 1 000 adresses</li>
+<li>Une passerelle traduit : <strong>les points inscrits dans sa table</strong> | tous les points des deux bus | les seuls états</li>
+<li>Sur un bus KNX TP1, la parole est prise : <strong>par chaque appareil, le bus arbitrant</strong> | par un maître unique | par le serveur</li>
+</ul>
+</div>
+<h2 id="s-entrainer">S’entraîner</h2>
+<section class="exo" id="DOMA10-e1" data-exo="DOMA10-e1" data-type="lecture" data-savoir="D1-2" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4N3c4Lyl4dng3OC8peHZ4N3o4Lyl4dng3Py4/KHc4Lyl4dng3Py4/KHo4Lyl4Byc="><p class="k">Exercice · D1-2</p><h4>Lire une notice</h4><div class="enonce">
+
+<p>La notice d’un compteur de calories indique : « interface de télérelève à deux fils non polarisés, alimentée par le maître ; transmission de l’index et de son unité ; adresse primaire réglable ».</p>
+<p>De quel protocole s’agit-il ?</p>
+</div><div class="indice" hidden>deux indices désignent un protocole de comptage : l’alimentation par le maître et la transmission d’un index.</div></section>
+<section class="exo" id="DOMA10-e2" data-exo="DOMA10-e2" data-type="calcul" data-savoir="D1-2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGNobXRqdnguNTZ4YGh0anZ4L3hgeA14Jw=="><p class="k">Exercice · D1-2</p><h4>Lire deux registres</h4><div class="enonce">
+
+<p>La table d’un compteur Modbus indique : registre 0, tension en dixièmes de volt ; registre 1, courant en centièmes d’ampère. La supervision lit <strong>2 296</strong> dans le registre 0 et <strong>1 275</strong> dans le registre 1.</p>
+<p>Estimer la puissance appelée par ce départ monophasé, avec un facteur de puissance voisin de 1.</p>
+</div><div class="indice" hidden>convertir d’abord chaque registre dans son unité, en volts puis en ampères, puis multiplier.</div></section>
+<section class="exo" id="DOMA10-e3" data-exo="DOMA10-e3" data-type="calcul" data-savoir="D1-2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGlvdGp2eC41NnhganRqdngveGB4Pyk5NjssPyl4Jw=="><p class="k">Exercice · D1-2</p><h4>Adresser un bus Modbus</h4><div class="enonce">
+
+<p>Une liaison Modbus RTU dessert déjà 12 variateurs. Combien d’esclaves reste-t-il possible d’y adresser, au plus ?</p>
+</div><div class="indice" hidden>le nombre d’adresses d’esclave utilisables est fixé par le protocole, de 1 à une valeur donnée dans la fiche repères.</div></section>
+<section class="exo" id="DOMA10-e4" data-exo="DOMA10-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>La passerelle et le défaut de lampe</h4><div class="enonce">
+
+<p>Un luminaire DALI signale un défaut de lampe, mais la GTB, reliée par une passerelle KNX / DALI, n’en reçoit rien. Expliquer pourquoi en trois ou quatre lignes, et indiquer la correction.</p>
+</div><div class="indice" hidden>se demander si la table de correspondance contient une ligne pour ce défaut.</div><ul class="verifier" hidden><li>J’ai dit que la passerelle ne traduit que les points inscrits dans sa table</li><li>J’ai dit que le défaut existe bien du côté DALI</li><li>J’ai proposé d’ajouter une ligne dans le sens DALI vers KNX</li><li>J’ai indiqué que la GTB doit ensuite s’associer à l’adresse créée</li></ul></section>
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+<p>La séance suivante ouvre les adresses de groupe : ce que KNX met dans sa couche du haut, les objets typés que Modbus n’a pas. En atelier, deux protocoles seront mis en dialogue par une passerelle, à partir d’une table de correspondance.</p>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA9.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A9 : téléphonie IP et multimédia</span></a><a class="ap" href="DOMA11.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">A11 · adresses de groupe</span></a></div><a class="vers-recap" href="SEQ2.html">Préparation au contrôle</a></nav>
+<p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=fc1a8623"></script>
+<script src="../assets/site.js?v=fc1a8623"></script>
+<script src="../assets/vivant.js?v=fc1a8623"></script>

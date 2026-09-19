@@ -1,0 +1,398 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>Les mots du référentiel</title>
+<link rel="stylesheet" href="../assets/kit.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/site.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/domotique.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/vivant.css?v=fc1a8623">
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/FICHE-VOCABULAIRE">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fleches"><a class="fleche" href="FICHE-REFERENTIEL.html" rel="prev" title="Le référentiel" aria-label="Le référentiel">&lsaquo;</a><a class="fleche" href="POSITIONNEMENT.html" rel="next" title="Bilan de départ" aria-label="Bilan de départ">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/FICHE-VOCABULAIRE">Marquer comme lu</button></div>
+<header class="tete">
+  
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>Les mots<span>du référentiel</span></h1>
+  </div>
+  <p class="accroche">Le catalogue dit « actionneur KNX », le référentiel dit pré-actionneur. Le devis dit « câble catégorie 6 », la recette dit classe E. Une trentaine de mots que le diplôme emploie, ce qu'ils désignent, et la confusion que chacun invite à faire.</p>
+  <p class="contenu">8 questions · 3 exercices · 6 items d'entraînement · 4 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag n3">B8-1 Architecture des systèmes centralisés, constituants · niveau 3</span><span class="tag">D1-1 Médias de communication · niveau 3</span><span class="tag">D2-1 Réseaux informatiques · niveau 3</span><span class="tag">D2-2 VDI, voix-données-images · niveau 3</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">Les deux chaînes et les trois façons de câbler</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">la séance 1 a posé les mots de la chaîne fonctionnelle, du poussoir à l'actionneur ; la fiche les range et les oppose à ceux des catalogues.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#pourquoi-le-mot-compte">Pourquoi le mot compte</a><a href="#la-chaine-fonctionnelle">La chaîne fonctionnelle</a><a href="#les-tensions">Les tensions</a><a href="#communiquer">Communiquer</a><a href="#adresser">Adresser</a><a href="#le-cablage-vdi">Le câblage VDI</a><a href="#le-reseau-ip">Le réseau IP</a><a href="#surete-et-securite">Sûreté et sécurité</a><a href="#compter-et-reguler">Compter et réguler</a><a href="#je-m-entraine">Je m’entraîne</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#a-retenir">À retenir</a></div></nav>
+<h2 id="pourquoi-le-mot-compte">Pourquoi le mot compte</h2>
+<p>Le référentiel a son vocabulaire, et les catalogues ont le leur. Un fabricant vend un « actionneur KNX » ; pour le référentiel, ce module est un pré-actionneur. Un devis parle de câble « catégorie 6 » ; la recette parle de « classe E ». À l’épreuve comme dans un dossier lu par un autre technicien, c’est le mot du référentiel qui est attendu.</p>
+<div class="cle">
+<p>Le savoir B8-1 nomme six familles de constituants : capteurs, pré-actionneurs, actionneurs, centrale, réseaux, supervision. Toute description d’un système commence par ranger chaque organe dans l’une d’elles.</p>
+</div>
+<h2 id="la-chaine-fonctionnelle">La chaîne fonctionnelle</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Le mot</th>
+<th>Ce qu’il désigne</th>
+<th>La confusion à éviter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Capteur</strong></td>
+<td>L’organe qui mesure une grandeur physique et la transmet sans intervention humaine : présence, luminosité, température, vent.</td>
+<td>Un poussoir n’est pas un capteur : il ne mesure rien, il traduit une volonté. Le vocabulaire KNX, lui, appelle « capteur » tout ce qui émet un télégramme, poussoir compris.</td>
+</tr>
+<tr>
+<td><strong>Organe de commande</strong></td>
+<td>L’organe par lequel un occupant exprime ce qu’il veut : poussoir, interrupteur, écran tactile, télécommande.</td>
+<td>Le détecteur de présence et le poussoir aboutissent au même endroit ; ce qui les sépare est l’origine de l’information, une grandeur physique ou une volonté.</td>
+</tr>
+<tr>
+<td><strong>Pré-actionneur</strong></td>
+<td>L’organe qui reçoit un ordre en petite puissance et établit ou coupe la puissance de l’actionneur, sans produire lui-même d’effet : relais, contacteur, télérupteur, variateur, module de sortie KNX.</td>
+<td>Le catalogue dit « actionneur KNX 4 sorties » ; le référentiel dit pré-actionneur. L’actionneur, c’est le luminaire ou le moteur qu’il alimente.</td>
+</tr>
+<tr>
+<td><strong>Actionneur</strong></td>
+<td>L’organe qui transforme l’énergie en effet dans le bâtiment : luminaire, moteur de volet, gâche, ventouse, sirène.</td>
+<td>Un actionneur ne comprend aucun ordre : il ne reçoit que de la puissance.</td>
+</tr>
+<tr>
+<td><strong>Centrale</strong></td>
+<td>L’organe qui traite : il reçoit les informations, applique le programme et émet les ordres.</td>
+<td>Dans un système KNX, il n’y a pas de centrale : chaque participant décide seul, le traitement est réparti. La passerelle IP n’en est pas une, l’alimentation du bus non plus.</td>
+</tr>
+<tr>
+<td><strong>Réseau</strong></td>
+<td>Ce qui relie les constituants et transporte leurs échanges : un média et un protocole.</td>
+<td>Le réseau n’est pas le câble : le câble est le média, le réseau est l’ensemble, avec ses règles.</td>
+</tr>
+<tr>
+<td><strong>Supervision</strong></td>
+<td>Le poste qui affiche l’état de toute l’installation, archive les valeurs et signale les alarmes. L’hypervision réunit plusieurs supervisions.</td>
+<td>L’écran tactile d’une salle n’est pas la supervision : il commande un local, il ne voit pas l’installation.</td>
+</tr>
+</tbody>
+</table></div>
+<figure class="schema"><div class="dessin" data-schema="deux-chaines"></div><figcaption>La chaîne d’information acquiert, traite et communique ; la chaîne d’énergie alimente, distribue, convertit et transmet. Elles se rejoignent au pré-actionneur.</figcaption></figure>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Le mot</th>
+<th>Ce qu’il désigne</th>
+<th>La confusion à éviter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Chaîne d’information</strong></td>
+<td>Le parcours des ordres et des états, du capteur ou de la commande jusqu’au pré-actionneur, puis vers la supervision.</td>
+<td>L’alimentation du bus en fait partie : elle n’alimente aucun actionneur, elle alimente la chaîne d’information.</td>
+</tr>
+<tr>
+<td><strong>Chaîne d’énergie</strong></td>
+<td>Le parcours de la puissance, de la source jusqu’à l’actionneur, en passant par le pré-actionneur.</td>
+<td>En câblage traditionnel, le même fil porte les deux chaînes ; cela ne les confond pas pour autant.</td>
+</tr>
+</tbody>
+</table></div>
+<div class="piege">
+<p>Le mot du catalogue n’est pas faux : il est celui du fabricant. Mais c’est le vocabulaire du référentiel qui fait foi à l’examen, et dans un dossier que lira un autre technicien.</p>
+</div>
+<h2 id="les-tensions">Les tensions</h2>
+<p>Le métier oppose courant fort et courant faible. La norme, elle, ne connaît que des domaines de tension et des modes de protection. La très basse tension, TBT, s’arrête à 50 V en alternatif et 120 V en continu, en milieu sec.</p>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Le mot</th>
+<th>Ce qu’il désigne</th>
+<th>La confusion à éviter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>TBTS</strong></td>
+<td>Très basse tension de sécurité : une source à séparation de sécurité, comme un transformateur de sécurité, et aucun point relié à la terre. C’est le cas du bus KNX, 30 V continu.</td>
+<td>« Courant faible » ne veut pas dire TBTS : les fils de commande d’un télérupteur ordinaire sont en 230 V, comme sa bobine.</td>
+</tr>
+<tr>
+<td><strong>TBTP</strong></td>
+<td>Très basse tension de protection : la même séparation de la source, mais un point du circuit ou des masses reliés à la terre.</td>
+<td>Elle n’est pas la TBTS : la liaison à la terre existe, et on la choisit quand une masse doit être mise à la terre.</td>
+</tr>
+<tr>
+<td><strong>TBTF</strong></td>
+<td>Très basse tension fonctionnelle : une tension basse obtenue sans séparation de sécurité, par exemple par un autotransformateur.</td>
+<td>Une tension basse n’est pas une protection : en TBTF, le circuit se protège contre les contacts comme un circuit basse tension.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="communiquer">Communiquer</h2>
+<figure>
+<img src="img/FICHE-VOCABULAIRE/fig3-medias.png" alt="Bus filaire, radio, courant porteur, fibre, Ethernet cuivre : cinq médias." />
+<figcaption aria-hidden="true">Bus filaire, radio, courant porteur, fibre, Ethernet cuivre : cinq médias.</figcaption>
+</figure>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Le mot</th>
+<th>Ce qu’il désigne</th>
+<th>La confusion à éviter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Média</strong></td>
+<td>Le support physique sur lequel circulent les signaux : paire torsadée, radio, courant porteur, fibre optique, Ethernet cuivre.</td>
+<td>Le média n’est pas le protocole : KNX circule sur paire torsadée, sur radio, sur courant porteur ou sur IP. Un même protocole, plusieurs médias.</td>
+</tr>
+<tr>
+<td><strong>Topologie</strong></td>
+<td>La forme du câblage : ligne, étoile, arbre, et l’anneau, interdit sur un bus KNX.</td>
+<td>La topologie physique dit où passe le câble ; la topologie logique, faite d’adresses de groupe, dit qui commande quoi. Les deux ne se ressemblent pas.</td>
+</tr>
+<tr>
+<td><strong>Protocole</strong></td>
+<td>Les règles de l’échange : sur quel support, qui prend la parole et quand, sous quelle forme les données sont écrites.</td>
+<td>« Les deux appareils sont en Modbus, ils vont se comprendre » : faux dès que leurs tables de registres diffèrent.</td>
+</tr>
+<tr>
+<td><strong>Interopérabilité</strong></td>
+<td>La capacité de deux appareils, de fabricants différents, à échanger des données qui ont le même sens des deux côtés.</td>
+<td>Elle tient au typage des données, pas au nom du protocole : KNX la garantit par ses types de points de données, BACnet par ses objets.</td>
+</tr>
+<tr>
+<td><strong>Passerelle</strong></td>
+<td>L’appareil qui traduit d’un protocole à un autre, point par point, d’après sa table de correspondance. Un point absent de la table n’existe pas de l’autre côté.</td>
+<td>En réseau IP, la « passerelle par défaut » est tout autre chose : l’adresse du routeur dans le réseau de l’équipement. Un même mot, deux sens.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="adresser">Adresser</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Le mot</th>
+<th>Ce qu’il désigne</th>
+<th>La confusion à éviter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Adresse physique KNX</strong></td>
+<td>zone.ligne.participant, par exemple 1.1.3 : un appareil, et un seul. Elle sert à le programmer.</td>
+<td>Le point sépare les champs d’une adresse physique, la barre oblique ceux d’une adresse de groupe. 1.1.3 et 1/1/3 ne désignent pas la même chose.</td>
+</tr>
+<tr>
+<td><strong>Adresse de groupe</strong></td>
+<td>principal/médian/sous-groupe, par exemple 1/1/0 : une fonction, partagée par tous les appareils qui y sont associés.</td>
+<td>Un poussoir n’envoie jamais d’ordre à un appareil : il écrit une valeur sur une fonction. La commande et l’état sont deux adresses distinctes.</td>
+</tr>
+<tr>
+<td><strong>Adresse physique et adresse logique, en IP</strong></td>
+<td>L’adresse physique est l’adresse MAC, fixée en usine ; l’adresse logique est l’adresse IP, fixée par le plan d’adressage.</td>
+<td>« Adresse physique » ne désigne pas la même chose sur un bus KNX et sur un réseau IP. Le référentiel emploie les deux sens.</td>
+</tr>
+</tbody>
+</table></div>
+<figure>
+<img src="img/FICHE-VOCABULAIRE/fig1-telegramme.png" alt="Un télégramme parcourt toute la ligne ; seuls les appareils dont la table contient l’adresse de groupe réagissent." />
+<figcaption aria-hidden="true">Un télégramme parcourt toute la ligne ; seuls les appareils dont la table contient l’adresse de groupe réagissent.</figcaption>
+</figure>
+<h2 id="le-cablage-vdi">Le câblage VDI</h2>
+<figure>
+<img src="img/FICHE-VOCABULAIRE/fig1-lien-permanent-canal.png" alt="Le lien permanent et le canal, du commutateur au poste de travail." />
+<figcaption aria-hidden="true">Le lien permanent et le canal, du commutateur au poste de travail.</figcaption>
+</figure>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Le mot</th>
+<th>Ce qu’il désigne</th>
+<th>La confusion à éviter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Lien permanent</strong></td>
+<td>Le câblage fixe, du panneau de brassage à la prise terminale : 90 m au plus. C’est l’ouvrage de l’installateur, et c’est lui que la recette certifie.</td>
+<td>Les 100 m de l’Ethernet cuivre ne sont pas les siens : ils comprennent les cordons.</td>
+</tr>
+<tr>
+<td><strong>Canal</strong></td>
+<td>Le lien permanent et ses deux cordons, du commutateur au poste : 100 m au plus.</td>
+<td>Un canal se mesure avec les cordons du jour ; ils changeront, et la recette ne porte donc pas sur lui.</td>
+</tr>
+<tr>
+<td><strong>Catégorie</strong></td>
+<td>Ce que garantit un composant pris seul : câble, prise, panneau, cordon. Catégorie 6 : 250 MHz.</td>
+<td>Acheter des composants de catégorie 6 ne fait pas un lien de classe E.</td>
+</tr>
+<tr>
+<td><strong>Classe</strong></td>
+<td>Ce que vaut un lien installé, de bout en bout, et que seule la certification établit. Classe E : 250 MHz.</td>
+<td>La classe n’est jamais celle d’un câble : elle est celle d’un lien, qui ne dépasse pas la classe de son composant le plus faible.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="le-reseau-ip">Le réseau IP</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Le mot</th>
+<th>Ce qu’il désigne</th>
+<th>La confusion à éviter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>VLAN</strong></td>
+<td>Un réseau virtuel découpé dans un commutateur : chaque port appartient à un VLAN, et deux VLAN ne communiquent que par le routeur.</td>
+<td>Un VLAN n’est pas un câble à part : la séparation est logique, dans le commutateur, et elle tombe si un port est mal affecté.</td>
+</tr>
+<tr>
+<td><strong>PoE</strong></td>
+<td>L’alimentation d’un équipement par son câble réseau, depuis un commutateur : 15,4 W, 30 W, puis 60 ou 90 W par port selon la norme, 802.3af, at ou bt.</td>
+<td>La puissance de la norme est celle du port ; l’équipement en reçoit moins, le câble dissipe le reste.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="surete-et-securite">Sûreté et sécurité</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Le mot</th>
+<th>Ce qu’il désigne</th>
+<th>La confusion à éviter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Sûreté</strong></td>
+<td>La protection contre un acte volontaire : intrusion, contrôle d’accès, vidéosurveillance.</td>
+<td>Le langage courant dit « système de sécurité » pour une alarme intrusion ; le dossier dit sûreté.</td>
+</tr>
+<tr>
+<td><strong>Sécurité</strong></td>
+<td>La protection contre un accident : incendie, éclairage de sécurité, assistance aux personnes.</td>
+<td>Le système de sécurité incendie, SSI, porte bien son nom : ce dont il protège n’a pas d’intention.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="compter-et-reguler">Compter et réguler</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Le mot</th>
+<th>Ce qu’il désigne</th>
+<th>La confusion à éviter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Index</strong></td>
+<td>La valeur cumulée qu’affiche un compteur, et qui ne redescend jamais. Une consommation est la différence de deux index relevés à deux instants.</td>
+<td>Un relevé n’est pas une consommation : il faut deux index pour obtenir une consommation.</td>
+</tr>
+<tr>
+<td><strong>Consigne</strong></td>
+<td>La valeur que l’on veut obtenir pour la grandeur réglée : 19 °C dans la salle.</td>
+<td>Ce qu’affiche un thermostat est tantôt la consigne, tantôt la mesure, et l’afficheur ne le dit pas toujours.</td>
+</tr>
+<tr>
+<td><strong>Mesure</strong></td>
+<td>La valeur de la même grandeur, lue par le capteur à cet instant. L’écart est la différence entre la consigne et la mesure.</td>
+<td>Une mesure porte une incertitude : un écart de 0,2 K ne dit rien si le capteur est connu à 0,5 K près.</td>
+</tr>
+<tr>
+<td><strong>Erreur statique</strong></td>
+<td>L’écart qui subsiste en régime établi avec un régulateur proportionnel seul : la commande a besoin d’un écart pour exister.</td>
+<td>Ce n’est pas une erreur du capteur : c’est une propriété de la loi de commande, que l’action intégrale rattrape avec le temps.</td>
+</tr>
+</tbody>
+</table></div>
+<h2 id="je-m-entraine">Je m’entraîne</h2>
+<section class="serie" id="FICHE-VOCABULAIRE-s1" data-serie="FICHE-VOCABULAIRE-s1" data-savoir="B8-1" data-a="IXgveGB4eHZ4LjU2eGBrdGp2eDN4YAEheDt4YAF4KigGL2pqP2N3OzkuMzU0ND8vKHh2eCooBi9qaj9jOzkuMzU0ND8vKHh2eCooP3c7OS4zNTQ0Py8oeHZ4LzR6KigGL2pqP2N3OzkuMzU0ND8vKHh2eDY/eiooBi9qaj9jdzs5LjM1NDQ/Lyh4Byd2IXg7eGABeDs5LjM1NDQ/Lyh4dngvNHo7OS4zNTQ0Py8oeHZ4NgYvaGprYzs5LjM1NDQ/Lyh4Byd2IXg7eGABeDs+KD8pKT96Pj96PSg1Lyo/eHZ4LzQ/ejs+KD8pKT96Pj96PSg1Lyo/eHZ4NgYvaGprYzs+KD8pKT96Pj96PSg1Lyo/eHZ4PSg1Lyo/eHZ4Pj96PSg1Lyo/eAcndiF4O3hgAXg5NjspKT94dng2O3o5NjspKT94dngvND96OTY7KSk/eHZ4KTt6OTY7KSk/eAcndiF4O3hgAXgzND4/Inh2eDYGL2hqa2MzND4/Inh2eC80ejM0Pj8ieAcndiF4O3hgAXgpBi9qajw4KD8uBi9qaj9jeHZ4Njt6KQYvamo8OCg/LgYvamo/Y3h2eCkvKD8uP3gHJwcn"><p class="k">Série · B8-1</p><h4>Quel est le mot ?</h4><div class="enonce">
+
+<p>Écrivez le mot que chaque ligne décrit.</p>
+</div><ol class="items larges"><li><span class="q">Le module de sortie qui établit ou coupe la puissance d’un luminaire</span></li><li><span class="q">L’organe qui reçoit la puissance et produit l’effet visible dans le bâtiment</span></li><li><span class="q">Ce que désigne 1/2/7, partagée par tous les appareils d’une même fonction</span></li><li><span class="q">Ce qu’établit la certification d’un lien installé, de bout en bout</span></li><li><span class="q">La valeur cumulée d’un compteur, qui ne redescend jamais</span></li><li><span class="q">Le domaine de la protection contre une intrusion, acte volontaire</span></li></ol><div class="indice" hidden>Chaque mot est dans un tableau de la fiche ; la colonne « la confusion à éviter » sépare les voisins.</div></section>
+<section class="exo" id="FICHE-VOCABULAIRE-e1" data-exo="FICHE-VOCABULAIRE-e1" data-type="lecture" data-savoir="B8-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4KigGL2pqP2N3OzkuMzU0ND8vKHh2eCooBi9qaj9jOzkuMzU0ND8vKHh2eCooP3c7OS4zNTQ0Py8oeHZ4KigGL2pqP2N6OzkuMzU0ND8vKHh2eC80eiooBi9qaj9jdzs5LjM1NDQ/Lyh4dng2P3oqKAYvamo/Y3c7OS4zNTQ0Py8oeHZ4Nj8peiooBi9qaj9jdzs5LjM1NDQ/LygpeHZ4KigGL2pqP2N3OzkuMzU0ND8vKCl4dng+Pyl6KigGL2pqP2N3OzkuMzU0ND8vKCl4dng8OzczNjY/ej4/KXoqKAYvamo/Y3c7OS4zNTQ0Py8oKXh2eDY7ejw7NzM2Nj96Pj8peiooBi9qaj9jdzs5LjM1NDQ/LygpeAcn"><p class="k">Exercice · B8-1</p><h4>Le module 4 sorties du catalogue</h4><div class="enonce">
+
+<p>Un catalogue propose un « actionneur de commutation KNX, 4 sorties 16 A, montage sur rail DIN ». Dans l’installation, il commande quatre circuits d’éclairage.</p>
+<p>Dans le vocabulaire du référentiel, à quelle famille de constituants ce module appartient-il ?</p>
+</div><div class="indice" hidden>se demander ce que le module produit dans le bâtiment. S’il ne produit rien de visible et ne fait que laisser passer la puissance, la première table de la fiche donne sa famille.</div></section>
+<section class="exo" id="FICHE-VOCABULAIRE-e2" data-exo="FICHE-VOCABULAIRE-e2" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4Nzs5eHZ4Oz4oPykpP3o3Ozl4dng2Bi9oamtjOz4oPykpP3o3Ozl4dngvND96Oz4oPykpP3o3Ozl4dng7Pig/KSk/ej8uMj8oND8ueHZ4NgYvaGprYzs+KD8pKT96Py4yPyg0Py54dng7Pig/KSk/eioyIykzKy8/ejc7OXh2eDc7OXo7Pj4oPykpeAcn"><p class="k">Exercice · D2-1</p><h4>L’adresse de l’étiquette</h4><div class="enonce">
+
+<p>L’étiquette d’une caméra IP porte la mention « adresse physique : 00-1B-63-84-45-E6 ». Le plan d’adressage du réseau technique, lui, attribue à cette caméra 192.168.20.61.</p>
+<p>De quel type d’adresse s’agit-il sur l’étiquette ?</p>
+</div><div class="indice" hidden>une adresse fixée en usine, écrite en hexadécimal, ne vient pas d’un plan d’adressage. Le réseau IP l’appelle physique, mais elle n’a rien d’une adresse KNX.</div></section>
+<section class="exo" id="FICHE-VOCABULAIRE-e3" data-exo="FICHE-VOCABULAIRE-e3" data-type="justification" data-savoir="B8-2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-2</p><h4>Sûreté ou sécurité ?</h4><div class="enonce">
+
+<p>Un client désigne son alarme intrusion comme « le système de sécurité » et vous demande pourquoi votre dossier écrit « sûreté ». Répondre en trois ou quatre lignes.</p>
+</div><div class="indice" hidden>se demander si ce dont on se protège a une intention.</div><ul class="verifier" hidden><li>J’ai défini la sûreté comme la protection contre un acte volontaire</li><li>J’ai défini la sécurité comme la protection contre un accident</li><li>J’ai rangé l’alarme intrusion du côté de la sûreté</li><li>J’ai donné un exemple de système de sécurité, incendie ou éclairage de sécurité</li></ul></section>
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+<div class="quiz">
+<ul>
+<li>Un détecteur de présence est : <strong>un capteur</strong> | une commande | un actionneur</li>
+<li>Un variateur d’éclairage est : <strong>un pré-actionneur</strong> | un actionneur | un capteur</li>
+<li>Le bus KNX TP1, 30 V continu, est alimenté en : <strong>TBTS</strong> | TBTP | TBTF</li>
+<li>Un réseau virtuel découpé dans un commutateur est : <strong>un VLAN</strong> | une passerelle | un canal</li>
+<li>L’adresse 1/1/0 désigne : <strong>une fonction</strong> | un appareil | une ligne</li>
+<li>La certification d’un câblage établit sa : <strong>classe</strong> | catégorie | topologie</li>
+<li>Une alarme intrusion relève de la : <strong>sûreté</strong> | sécurité | supervision</li>
+<li>L’écart qui subsiste avec un régulateur proportionnel seul est : <strong>l’erreur statique</strong> | le différentiel | la consigne</li>
+</ul>
+</div>
+<h2 id="a-retenir">À retenir</h2>
+<p>Ces mots reviennent dans toutes les séances de l’année, en études comme en atelier. La fiche du référentiel dit dans quelle famille de savoirs chacun se range, et à quel niveau il est attendu.</p>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="FICHE-REFERENTIEL.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">Le référentiel</span></a><a class="ap" href="POSITIONNEMENT.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">Bilan de départ</span></a></div></nav>
+<p class="pied">Fiche transversale de l'année. Elle ne remplace pas les polycopiés et ne donne aucun corrigé. Rien de ce que vous saisissez n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=fc1a8623"></script>
+<script src="../assets/site.js?v=fc1a8623"></script>
+<script src="../assets/vivant.js?v=fc1a8623"></script>

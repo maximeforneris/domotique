@@ -1,0 +1,156 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>A2 · lire un dossier de courant faible</title>
+<link rel="stylesheet" href="../assets/kit.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/site.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/domotique.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/vivant.css?v=fc1a8623">
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/DOMA2" data-rang="1">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 1 · Le socle</span><span class="fleches"><a class="fleche" href="DOMA1.html" rel="prev" title="A1 — câblage, commande, actionneurs" aria-label="A1 — câblage, commande, actionneurs">&lsaquo;</a><a class="fleche" href="DOMA3.html" rel="next" title="A3 · analyse fonctionnelle" aria-label="A3 · analyse fonctionnelle">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA2">Marquer comme lu</button></div>
+<header class="tete">
+  <span class="num" aria-hidden="true">A2</span>
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>Du dossier<span>à l'information</span></h1>
+  </div>
+  <p class="accroche">Huit pièces, et chacune répond à un type de question. Choisir la bonne pièce, suivre une liaison du tableau jusqu'au local, repérer l'écart entre deux documents. L'épreuve écrite demande quatre fois sur dix d'extraire une information d'un dossier.</p>
+  <p class="contenu">6 questions · 4 exercices · 3 replis · 6 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag">C1-1 Distribution BT, schémas · niveau 2</span><span class="tag n3">B8-1 Architecture des systèmes centralisés · niveau 3</span><span class="tag n3">D2-1 Réseaux, brassage et câbles · niveau 3</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">Les deux chaînes et le pré-actionneur</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">le dossier sépare les pièces de l'énergie et celles de l'information, et il faut savoir de quelle chaîne relève chaque appareil.</span></li><li><b><a href="DOMA1.html">Les limites d'une ligne KNX</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">la vérification d'une ligne à partir du carnet de câbles reprend les 64 participants, les 10 mA et les trois longueurs.</span></li><li><b>Le schéma électrique d'un départ</b><span class="car">disjoncteur, contact et récepteur se retrouvent dans le schéma développé du dossier, qui se lit comme celui d'un va-et-vient.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#chaque-question-a-sa-piece">Chaque question a sa pièce</a><a href="#suivre-une-liaison">Suivre une liaison</a><a href="#quand-deux-pieces-se-contredisent">Quand deux pièces se contredisent</a><a href="#le-tableau-de-communication">Le tableau de communication</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+<p>Le premier jour d’une intervention, le technicien ne dispose ni de l’installateur ni du programmeur. Il dispose du <strong>dossier</strong>, et tout ce qu’il doit savoir s’y trouve, à condition d’ouvrir la bonne pièce.</p>
+<p>La séance s’est appuyée sur le dossier fictif des <strong>Bureaux Les Oliviers</strong>, un bâtiment tertiaire de plain-pied : huit pièces, un bus KNX et un réseau VDI.</p>
+<figure>
+<img src="img/DOMA2/fig1-plan.png" alt="Le plan d’implantation : où se trouve chaque appareil." />
+<figcaption aria-hidden="true">Le plan d’implantation : où se trouve chaque appareil.</figcaption>
+</figure>
+<h2 id="chaque-question-a-sa-piece">Chaque question a sa pièce</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>La question</th>
+<th>La pièce qui répond</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Où se trouve l’appareil ?</td>
+<td>le plan d’implantation</td>
+</tr>
+<tr>
+<td>Qui est relié à qui, selon quelle topologie ?</td>
+<td>le synoptique</td>
+</tr>
+<tr>
+<td>Qu’est-ce qui part du tableau, protégé par quoi ?</td>
+<td>le schéma unifilaire</td>
+</tr>
+<tr>
+<td>Par où passe le courant, borne par borne ?</td>
+<td>le schéma développé</td>
+</tr>
+<tr>
+<td>Quels appareils, combien, sous quel repère ?</td>
+<td>la nomenclature</td>
+</tr>
+<tr>
+<td>D’où part ce câble, où arrive-t-il, quelle longueur ?</td>
+<td>le carnet de câbles</td>
+</tr>
+<tr>
+<td>Qu’exige le maître d’ouvrage ?</td>
+<td>le CCTP</td>
+</tr>
+</tbody>
+</table></div>
+<div class="cle">
+<p><strong>Avant de chercher une information, il faut choisir la pièce qui la contient.</strong> Le plan ne montre aucun câble, le synoptique ne respecte aucune distance : ce ne sont pas des défauts, chaque pièce a son rôle.</p>
+</div>
+<figure>
+<img src="img/DOMA2/fig2-synoptique.png" alt="Le synoptique : les liaisons et la topologie, sans les distances." />
+<figcaption aria-hidden="true">Le synoptique : les liaisons et la topologie, sans les distances.</figcaption>
+</figure>
+<figure class="schema"><div class="dessin" data-schema="topologies-bus"></div><figcaption>Le synoptique montre la topologie. La ligne KNX du dossier est un arbre, le réseau VDI une étoile centrée sur la baie.</figcaption></figure>
+<h2 id="suivre-une-liaison">Suivre une liaison</h2>
+<p>Chaque appareil, chaque câble et chaque borne porte un <strong>repère</strong>, identique sur toutes les pièces et sur l’étiquette posée aux deux extrémités du câble. Un repère de borne nomme toujours son bornier : <strong>X1:5</strong> désigne la borne 5 du bornier X1.</p>
+<figure>
+<img src="img/DOMA2/fig4-developpe.png" alt="Le schéma développé : le courant se suit borne par borne." />
+<figcaption aria-hidden="true">Le schéma développé : le courant se suit borne par borne.</figcaption>
+</figure>
+<div class="piege">
+<p>Sur un bus, aucun fil ne relie le poussoir au luminaire qu’il commande. <strong>Le câble renseigne sur la topologie ; seule la programmation renseigne sur la fonction.</strong> Chercher la fonction d’un poussoir dans le carnet de câbles ne mène à rien.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Où se trouve alors la fonction d&#39;un poussoir bus ?</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Dans le <strong>dossier de programmation</strong> : le fichier du projet de paramétrage et la liste des fonctions et des adresses de groupe. C’est l’intégrateur qui l’établit et le détient.</p>
+<p>Il doit être remis au maître d’ouvrage avec le dossier des ouvrages exécutés. Un dossier de courant faible qui ne le contient pas est incomplet, et il convient de le réclamer avant toute intervention sur les fonctions.</p></div></details>
+</div><h2 id="quand-deux-pieces-se-contredisent">Quand deux pièces se contredisent</h2>
+<p>Dans le dossier étudié, une sonde figure sur le plan, sur le synoptique et dans la nomenclature, mais dans aucune ligne du carnet de câbles. Un tel écart se <strong>signale</strong> au bureau d’études, se <strong>vérifie</strong> sur place, puis se fait <strong>corriger</strong>. Il ne se tranche pas au jugé.</p>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi recouper les pièces entre elles</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Un comptage qui ne se recoupe avec rien n’est pas terminé. Les poussoirs comptés sur le plan doivent se retrouver dans la nomenclature ; les prises doivent correspondre aux liens du carnet de câbles et aux ports occupés du panneau.</p>
+<p>C’est aussi ainsi que se dimensionne une ligne : le nombre de participants vient de la nomenclature, les longueurs viennent du carnet de câbles.</p></div></details>
+</div><h2 id="le-tableau-de-communication">Le tableau de communication</h2>
+<figure>
+<img src="img/DOMA2/fig5-baie.png" alt="La baie de brassage : panneau, commutateur, cordons." />
+<figcaption aria-hidden="true">La baie de brassage : panneau, commutateur, cordons.</figcaption>
+</figure>
+<p>Le <strong>panneau de brassage</strong> reçoit les câbles posés dans le bâtiment : c’est la partie fixe. Le <strong>commutateur</strong> est l’équipement actif. Les <strong>cordons de brassage</strong> relient l’un à l’autre, et c’est la seule partie qui se modifie sans intervenir dans le bâtiment.</p>
+<div class="formule">
+<p><strong>90 m · 100 m</strong></p>
+<ul>
+<li><strong>90 m</strong><span>: longueur maximale du lien permanent, de la prise au panneau</span></li>
+<li><strong>100 m</strong><span>: longueur maximale du canal complet, cordons compris</span></li>
+<li><strong>10 m</strong><span>: ce qu’il reste pour l’ensemble des cordons</span></li>
+</ul>
+<blockquote>
+<p>Le nombre de ports se dimensionne avec la réserve fixée par le CCTP.</p>
+</blockquote>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Logement ou bureau : le même rôle, une autre forme</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Dans un logement, le tableau de communication est un coffret placé dans la gaine technique, à côté du tableau électrique. Dans un bâtiment tertiaire, il prend la forme d’une baie de brassage de 19 pouces.</p>
+<p>Dans les deux cas, il réunit l’arrivée de l’opérateur et l’extrémité de tous les liens du réseau, et c’est le premier endroit à consulter lors d’une panne réseau.</p></div></details>
+</div><figure class="memo"><img src="img/DOMA2/memo-dossier.png" alt="" /></figure>
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+<div class="quiz">
+<ul>
+<li>La position d’un détecteur dans un local se lit sur : <strong>le plan d’implantation</strong> | le synoptique | le carnet de câbles</li>
+<li>Le calibre du disjoncteur d’un départ se lit sur : <strong>le schéma unifilaire</strong> | la nomenclature | le plan d’implantation</li>
+<li>Le repère X1:5 désigne : <strong>la borne 5 du bornier X1</strong> | le cinquième câble du dossier | la sortie 5 d’un actionneur</li>
+<li>La fonction d’un poussoir bus se trouve dans : <strong>le dossier de programmation</strong> | le carnet de câbles | le schéma développé</li>
+<li>Un lien permanent VDI ne dépasse pas : <strong>90 m</strong> | 100 m | 350 m</li>
+<li>La tension d’un bus KNX TP1 vaut : <strong>30 V continu</strong> | 24 V alternatif | 230 V</li>
+</ul>
+</div>
+<h2 id="s-entrainer">S’entraîner</h2>
+<section class="exo" id="DOMA2-e1" data-exo="DOMA2-e1" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgYml0anZ4LjU2eGBrdGp2eC94YHg3eCc="><p class="k">Exercice · D2-1</p><h4>La longueur de la ligne</h4><div class="enonce">
+
+<p>Extrait d’un carnet de câbles : KNX-21, tableau → boîte de dérivation, <strong>14 m</strong> ; KNX-22, boîte → salle A, <strong>27 m</strong> ; KNX-23, boîte → salle B, <strong>9 m</strong> ; KNX-24, tableau → hall, <strong>33 m</strong>.</p>
+<p>Quelle longueur de câble bus la ligne compte-t-elle au total ?</p>
+</div><div class="indice" hidden>additionner toutes les lignes du carnet qui portent un câble bus, sans en oublier une qui part directement du tableau.</div></section>
+<section class="exo" id="DOMA2-e2" data-exo="DOMA2-e2" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWJ0anZ4LjU2eGBrdGp2eC94YHgqNSguKXgn"><p class="k">Exercice · D2-1</p><h4>Les ports du panneau</h4><div class="enonce">
+
+<p>Un carnet de câbles recense <strong>31 liens</strong> VDI. Le CCTP exige sur le panneau de brassage une réserve d’au moins <strong>20 %</strong> par rapport au nombre de liens installés.</p>
+<p>Combien de ports le panneau doit-il offrir au minimum ?</p>
+</div><div class="indice" hidden>augmenter le nombre de liens de 20 %, puis arrondir au nombre entier supérieur : un port ne se coupe pas.</div></section>
+<section class="exo" id="DOMA2-e3" data-exo="DOMA2-e3" data-type="lecture" data-savoir="C1-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4KTkyBi9qaj9jNzt6LzQzPDM2OzMoP3h2eC80MzwzNjszKD94dng2P3opOTIGL2pqP2M3O3ovNDM8MzY7Myg/eHZ4NgYvaGprYy80MzwzNjszKD94dngpOTI/Nzt6LzQzPDM2OzMoP3gHJw=="><p class="k">Exercice · C1-1</p><h4>La bonne pièce</h4><div class="enonce">
+
+<p>Un départ d’éclairage ne fonctionne plus. Vous voulez savoir, avant d’ouvrir le tableau, par quel disjoncteur il est protégé.</p>
+<p>Quelle pièce du dossier ouvrez-vous ?</p>
+</div><div class="indice" hidden>la pièce cherchée représente chaque circuit par un seul trait, depuis le tableau.</div></section>
+<section class="exo" id="DOMA2-e4" data-exo="DOMA2-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>Le câble et la fonction</h4><div class="enonce">
+
+<p>Un collègue cherche dans le carnet de câbles quel luminaire commande le poussoir bus d’un bureau. Lui expliquer en trois ou quatre lignes pourquoi il ne le trouvera pas, et où chercher.</p>
+</div><div class="indice" hidden>distinguer ce que le câble renseigne et ce que la programmation renseigne.</div><ul class="verifier" hidden><li>J’ai dit que le poussoir et le luminaire ne sont reliés par aucun fil</li><li>J’ai dit que l’ordre circule sous forme de télégramme sur la paire commune</li><li>J’ai dit que l’association entre la touche et la sortie est faite par la programmation</li><li>J’ai nommé le dossier de programmation et l’intégrateur qui le détient</li></ul></section>
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+<p>La séance suivante reprend la salle de réunion des Bureaux Les Oliviers pour en faire l’<strong>analyse fonctionnelle</strong> : ce que le système doit faire, puis comment il le fait. Elle suppose acquis le vocabulaire de la chaîne et la lecture de la nomenclature.</p>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA1.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A1 — câblage, commande, actionneurs</span></a><a class="ap" href="DOMA3.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">A3 · analyse fonctionnelle</span></a></div><a class="vers-recap" href="SEQ1.html">Préparation au contrôle</a></nav>
+<p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Rien de ce que vous saisissez n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=fc1a8623"></script>
+<script src="../assets/site.js?v=fc1a8623"></script>
+<script src="../assets/vivant.js?v=fc1a8623"></script>

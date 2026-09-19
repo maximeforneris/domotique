@@ -1,0 +1,201 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>A8 : VDI et certification</title>
+<link rel="stylesheet" href="../assets/kit.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/site.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/domotique.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/vivant.css?v=fc1a8623">
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/DOMA8" data-rang="2">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 2 · Communiquer</span><span class="fleches"><a class="fleche" href="DOMA7.html" rel="prev" title="A7 · CEM, couplages, protections" aria-label="A7 · CEM, couplages, protections">&lsaquo;</a><a class="fleche" href="DOMA9.html" rel="next" title="A9 : téléphonie IP et multimédia" aria-label="A9 : téléphonie IP et multimédia">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA8">Marquer comme lu</button></div>
+<header class="tete">
+  <span class="num" aria-hidden="true">A8</span>
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>Du câble<span>au procès-verbal</span></h1>
+  </div>
+  <p class="accroche">Un câble de catégorie 6 ne fait pas à lui seul un lien de classe E. La séance a suivi le câblage d'un immeuble, de l'arrivée de l'opérateur jusqu'à la prise du bureau, puis appris à lire le document qui prouve qu'il fonctionne.</p>
+  <p class="contenu">2 outils · 6 questions · 4 exercices · 4 replis · 7 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag n3">D2-2 VDI, aspect matériel · niveau 3</span><span class="tag n3">D2-2 VDI, débit de données · niveau 3</span><span class="tag n3">D2-1 Réseaux, aspect matériel · niveau 3</span><span class="tag">D2-1 CEM · niveau 2</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">L'Ethernet cuivre et sa limite de 100 m</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">la séance partage ces 100 m entre le lien fixe et les cordons, et explique pourquoi.</span></li><li><b>Les décibels</b><span class="car">perte d'insertion, paradiaphonie et réflexion s'expriment en décibels, et une marge est une simple différence de décibels.</span></li><li><b>Le commutateur et la prise RJ45</b><span class="car">la baie de brassage relie chaque prise du bâtiment à un port de commutateur, vu avec le réseau IP du bâtiment.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#categorie-et-classe">Catégorie et classe</a><a href="#lien-permanent-et-canal">Lien permanent et canal</a><a href="#une-etoile-hierarchique">Une étoile hiérarchique</a><a href="#lire-un-proces-verbal-de-certification">Lire un procès-verbal de certification</a><a href="#pourquoi-cette-seance-compte">Pourquoi cette séance compte</a><a href="#essayer">Essayer</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+<p>Le cahier des charges d’un immeuble de bureaux exigeait « un câblage de classe E, certifié en lien permanent ». L’entreprise, elle, n’achète que des composants de catégorie 6. La séance a montré ce qui sépare les deux, puis comment le prouver.</p>
+<figure>
+<img src="img/DOMA8/fig1-lien-permanent-canal.png" alt="Le lien permanent et le canal, du commutateur au poste de travail." />
+<figcaption aria-hidden="true">Le lien permanent et le canal, du commutateur au poste de travail.</figcaption>
+</figure>
+<h2 id="categorie-et-classe">Catégorie et classe</h2>
+<div class="cle">
+<p>La <strong>catégorie</strong> qualifie un composant : câble, prise, panneau, cordon. La <strong>classe</strong> qualifie un lien installé, de bout en bout. Un lien ne dépasse jamais la classe de son composant le plus faible, et <strong>seule la certification établit sa classe</strong>.</p>
+</div>
+<div class="enveloppe-tbl"><table>
+<thead>
+<tr>
+<th>Catégorie</th>
+<th>Classe</th>
+<th>Fréquence maximale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>5e</td>
+<td>D</td>
+<td>100 MHz</td>
+</tr>
+<tr>
+<td>6</td>
+<td>E</td>
+<td>250 MHz</td>
+</tr>
+<tr>
+<td>6A</td>
+<td>EA</td>
+<td>500 MHz</td>
+</tr>
+<tr>
+<td>7A</td>
+<td>FA</td>
+<td>1 000 MHz</td>
+</tr>
+</tbody>
+</table></div>
+<div class="piege">
+<p>Des composants de la bonne catégorie ne suffisent pas. Un détorsadage trop long au raccordement, un rayon de courbure trop serré ou un collier qui écrase le câble font perdre la classe à un lien dont tous les composants sont conformes.</p>
+</div>
+<h2 id="lien-permanent-et-canal">Lien permanent et canal</h2>
+<div class="formule">
+<p><strong>90 m · 100 m · 10 m</strong></p>
+<ul>
+<li><strong>lien permanent</strong><span>: du panneau de brassage à la prise terminale, 90 m au plus</span></li>
+<li><strong>canal</strong><span>: le lien permanent et les deux cordons, 100 m au plus</span></li>
+<li><strong>cordons</strong><span>: 10 m au plus, les deux ensemble</span></li>
+</ul>
+<blockquote>
+<p>La réception porte sur le lien permanent : c’est l’ouvrage de l’installateur, et il reste en place toute la vie du bâtiment.</p>
+</blockquote>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi le lien fixe s&#39;arrête à 90 m</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La limite de 90 m réserve 10 m aux cordons, que l’exploitant choisira plus tard et que l’installateur ne connaît pas. Chaque mètre de lien fixe au-delà de 90 m serait pris sur la longueur des cordons.</p>
+<p>Il existe une seconde raison. Un cordon est souple, et il affaiblit davantage le signal par mètre qu’un câble rigide. La limite du canal a été calculée pour 90 m de câble et 10 m de cordons : c’est ce partage qui la rend tenable.</p></div></details>
+</div><h2 id="une-etoile-hierarchique">Une étoile hiérarchique</h2>
+<figure>
+<img src="img/DOMA8/fig2-architecture-tertiaire.png" alt="Arrivée de l’opérateur, répartiteur général, rocades, sous-répartiteurs, câblage horizontal." />
+<figcaption aria-hidden="true">Arrivée de l’opérateur, répartiteur général, rocades, sous-répartiteurs, câblage horizontal.</figcaption>
+</figure>
+<p>L’opérateur arrive au <strong>répartiteur général</strong>. Des <strong>rocades</strong>, le plus souvent en fibre, montent vers un <strong>sous-répartiteur</strong> par étage. De là, chaque prise reçoit son propre câble, en étoile, sur 90 m au plus.</p>
+<figure>
+<img src="img/DOMA8/fig3-baie-brassage.png" alt="La baie d’un sous-répartiteur : panneaux, commutateurs, cordons de brassage." />
+<figcaption aria-hidden="true">La baie d’un sous-répartiteur : panneaux, commutateurs, cordons de brassage.</figcaption>
+</figure>
+<div class="cle">
+<p><strong>Chaque lien porte un repère unique, identique à ses deux extrémités</strong> : sur la prise du bureau, sur le port du panneau et dans le carnet de câbles. C’est ce repère qui identifie le lien dans le procès-verbal.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Dans le logement : le tableau de communication et les grades</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le logement a son propre répartiteur : le <strong>tableau de communication</strong>, installé dans la gaine technique du logement, à côté du tableau électrique. Chaque prise RJ45 y est reliée en étoile, et le cordon placé dans le coffret décide du service.</p>
+<figure>
+<img src="img/DOMA8/fig6-tableau-communication.png" alt="Le coffret : terminaison optique, box, commutateur, répartiteur TV et panneau." />
+<figcaption aria-hidden="true">Le coffret : terminaison optique, box, commutateur, répartiteur TV et panneau.</figcaption>
+</figure>
+<p>Le <strong>grade</strong> indique ce que le câblage distribue. Les valeurs ci-dessous sont des ordres de grandeur.</p>
+<div class="enveloppe-tbl"><table>
+<thead>
+<tr>
+<th>Grade</th>
+<th>Services sur les prises RJ45</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>téléphone et données</td>
+</tr>
+<tr>
+<td>2TV</td>
+<td>téléphone, données, télévision terrestre</td>
+</tr>
+<tr>
+<td>3TV</td>
+<td>téléphone, très haut débit, télévision terrestre et satellite</td>
+</tr>
+</tbody>
+</table></div></div></details>
+</div><h2 id="lire-un-proces-verbal-de-certification">Lire un procès-verbal de certification</h2>
+<figure>
+<img src="img/DOMA8/fig4-pv-certification.png" alt="Un procès-verbal fictif : repère, limite de test, mesures, limites, marges, verdict." />
+<figcaption aria-hidden="true">Un procès-verbal fictif : repère, limite de test, mesures, limites, marges, verdict.</figcaption>
+</figure>
+<p>Un procès-verbal se lit comme le résultat de tout essai : <strong>une grandeur mesurée, une limite, une marge, un verdict</strong>. Il faut d’abord relever la limite de test appliquée, puis chercher la marge la plus faible.</p>
+<div class="formule">
+<p><strong>Marge = écart à la limite, positif si conforme</strong></p>
+<ul>
+<li><strong>grandeur plafonnée</strong><span>(longueur, perte d’insertion) : marge = limite − mesure</span></li>
+<li><strong>grandeur minimale</strong><span>(paradiaphonie, affaiblissement de réflexion) : marge = mesure − limite</span></li>
+<li><strong>longueur d’un lien</strong><span>: NVP × 0,3 m/ns × délai de propagation</span></li>
+</ul>
+<blockquote>
+<p>Le verdict d’un lien est celui de sa marge la plus défavorable.</p>
+</blockquote>
+</div>
+<div class="piege">
+<p>Une <strong>paradiaphonie élevée est favorable</strong>. La valeur mesure l’affaiblissement du signal parasite qui passe d’une paire à sa voisine : plus elle est grande, mieux la paire voisine est protégée.</p>
+</div>
+<figure>
+<img src="img/DOMA8/fig5-marge-next.png" alt="La marge la plus faible n’est pas forcément à la fréquence la plus haute." />
+<figcaption aria-hidden="true">La marge la plus faible n’est pas forcément à la fréquence la plus haute.</figcaption>
+</figure>
+<p>L’appareil balaie toute la bande de fréquences, parce qu’un défaut peut creuser la mesure à n’importe quelle fréquence. La marge retenue est l’écart le plus faible, où qu’il se trouve.</p>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Un défaut d&#39;un seul côté se cherche de ce côté</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>L’appareil mesure la paradiaphonie depuis les deux extrémités du lien. Si la mesure n’échoue que d’un côté, le défaut se trouve près de cette extrémité : le plus souvent un raccordement où les paires ont été trop détorsadées.</p>
+<p>La longueur et la perte d’insertion aident à trancher. Si elles sont correctes, le câble lui-même n’est pas en cause, et c’est le raccordement qu’il faut reprendre avant une nouvelle certification.</p></div></details>
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">La norme et le contrat ne disent pas toujours la même chose</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Une marge positive satisfait la norme. Un cahier des charges peut exiger davantage, par exemple une marge d’au moins 2 dB. Un lien peut donc être « réussi » pour l’appareil et refusé par le client.</p>
+<p>Une marge très faible pose aussi une question de précision : elle peut être du même ordre que l’incertitude de l’appareil. Certains appareils l’affichent alors avec un astérisque.</p></div></details>
+</div><h2 id="pourquoi-cette-seance-compte">Pourquoi cette séance compte</h2>
+<figure class="schema"><div class="dessin" data-schema="situations-e5"></div><figcaption>La première situation de CCF de l’épreuve E5 évalue C7, réaliser des essais et des mesures, avant la fin de la première année.</figcaption></figure>
+<p>Une certification de câblage a exactement la forme d’un essai : une mesure, une norme de référence, un verdict et un rapport. Savoir lire et commenter un procès-verbal, c’est déjà savoir rédiger la conclusion attendue en situation de CCF.</p>
+<h2 id="essayer">Essayer</h2>
+<div class="outil" data-outil="bilan-optique">
+
+</div>
+<div class="outil" data-outil="budget-poe">
+
+</div>
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+<div class="quiz">
+<ul>
+<li>La classe qualifie : <strong>un lien installé</strong> | un câble | une prise</li>
+<li>Le lien permanent mesure au plus : <strong>90 m</strong> | 100 m | 110 m</li>
+<li>Un câble de catégorie 5e raccordé sur un panneau de catégorie 6 donne au mieux un lien de classe : <strong>D</strong> | E | EA</li>
+<li>Pour la paradiaphonie, la marge vaut : <strong>mesure moins limite</strong> | limite moins mesure</li>
+<li>Le verdict d’un lien est celui de : <strong>sa marge la plus défavorable</strong> | sa marge moyenne | sa mesure à 250 MHz</li>
+<li>Les rocades d’un immeuble sont le plus souvent en : <strong>fibre optique</strong> | câble coaxial | paire torsadée non blindée</li>
+</ul>
+</div>
+<h2 id="s-entrainer">S’entraîner</h2>
+<section class="exo" id="DOMA8-e1" data-exo="DOMA8-e1" data-type="calcul" data-savoir="D2-2" data-a="IXgueGB4OTs2OS82eHZ4LHhgbWt0bnZ4LjU2eGBodGp2eC94YHg3eCc="><p class="k">Exercice · D2-2</p><h4>La longueur d’après le délai</h4><div class="enonce">
+
+<p>Un appareil de certification mesure un délai de propagation de <strong>340 ns</strong> sur un lien. La NVP du câble vaut <strong>70 %</strong>.</p>
+<p>Quelle est la longueur du lien ?</p>
+</div><div class="indice" hidden>la lumière parcourt 0,3 m par nanoseconde ; le signal ne va qu’à la fraction NVP de cette vitesse.</div></section>
+<section class="exo" id="DOMA8-e2" data-exo="DOMA8-e2" data-type="calcul" data-savoir="D2-2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaXRudnguNTZ4YGl0anZ4L3hgeD4YeCc="><p class="k">Exercice · D2-2</p><h4>Une marge de paradiaphonie</h4><div class="enonce">
+
+<p>Sur un lien de classe E, la paradiaphonie la plus défavorable vaut <strong>39,6 dB</strong> à 205 MHz. La limite à cette fréquence vaut <strong>36,2 dB</strong>.</p>
+<p>Quelle est la marge ?</p>
+</div><div class="indice" hidden>la paradiaphonie doit rester au-dessus de sa limite ; la marge est positive quand c’est le cas.</div></section>
+<section class="exo" id="DOMA8-e3" data-exo="DOMA8-e3" data-type="lecture" data-savoir="D2-2" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4Njt6KigzKT94dngqKDMpP3h2eCooMyk/ei4/KDczNDs2P3h2eDY7eiooMyk/ei4/KDczNDs2P3h2eCooMyk/ejcvKDs2P3h2eDY7eiooMyk/ejcvKDs2P3h2eCg7OTk1KD4/Nz80Lno+P3o2O3oqKDMpP3h2eDY/eig7OTk1KD4/Nz80Lno+P3o2O3oqKDMpP3gHJw=="><p class="k">Exercice · D2-2</p><h4>Où chercher le défaut ?</h4><div class="enonce">
+
+<p>Un lien échoue en paradiaphonie mesurée <strong>côté distant</strong> seulement. Sa longueur et sa perte d’insertion sont correctes. Le côté distant est celui du bureau.</p>
+<p>Quel élément faut-il reprendre en premier ?</p>
+</div><div class="indice" hidden>un défaut qui n’apparaît qu’à une extrémité se trouve près de cette extrémité, et le câble n’est pas en cause si la perte d’insertion est correcte.</div></section>
+<section class="exo" id="DOMA8-e4" data-exo="DOMA8-e4" data-type="justification" data-savoir="D2-2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · D2-2</p><h4>Réussi, et pourtant refusé</h4><div class="enonce">
+
+<p>Un lien affiche « réussi » avec une marge de <strong>0,6 dB</strong> en affaiblissement de réflexion. Le client le refuse. Expliquer à l’installateur pourquoi ce refus peut être fondé, en trois ou quatre lignes.</p>
+</div><div class="indice" hidden>comparer ce que demande la norme et ce que peut demander un contrat.</div><ul class="verifier" hidden><li>J’ai distingué le verdict de la norme et l’exigence du cahier des charges</li><li>J’ai indiqué qu’un cahier des charges peut imposer une marge minimale</li><li>J’ai évoqué la précision de l’appareil face à une marge aussi faible</li><li>J’ai proposé de reprendre le lien puis de le certifier de nouveau</li></ul></section>
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+<p>La séance suivante fait passer la voix et l’image sur cette infrastructure : des téléphones alimentés par le câble, un appel dont le débit se calcule, une vidéo distribuée dans le bâtiment. Elle suppose acquis le lien permanent, la baie de brassage et le repérage.</p>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA7.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A7 · CEM, couplages, protections</span></a><a class="ap" href="DOMA9.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">A9 : téléphonie IP et multimédia</span></a></div><a class="vers-recap" href="SEQ2.html">Préparation au contrôle</a></nav>
+<p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=fc1a8623"></script>
+<script src="../assets/site.js?v=fc1a8623"></script>
+<script src="../assets/vivant.js?v=fc1a8623"></script>

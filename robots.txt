@@ -1,0 +1,3 @@
+# Cours de classe : pas d'indexation publique.
+User-agent: *
+Disallow: /

@@ -1,0 +1,115 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>A3 · analyse fonctionnelle</title>
+<link rel="stylesheet" href="../assets/kit.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/site.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/domotique.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/vivant.css?v=fc1a8623">
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/DOMA3" data-rang="1">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 1 · Le socle</span><span class="fleches"><a class="fleche" href="DOMA2.html" rel="prev" title="A2 · lire un dossier de courant faible" aria-label="A2 · lire un dossier de courant faible">&lsaquo;</a><a class="fleche" href="DOMA4.html" rel="next" title="A4 : les médias" aria-label="A4 : les médias">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA3">Marquer comme lu</button></div>
+<header class="tete">
+  <span class="num" aria-hidden="true">A3</span>
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>Du besoin<span>au comportement</span></h1>
+  </div>
+  <p class="accroche">Trois outils décrivent un système, et chacun répond à une question. Ce qu'il doit faire, avec la bête à cornes et les fonctions de service. Comment il le fait, avec les deux chaînes du schéma fonctionnel. Comment il se comporte dans le temps, avec le GRAFCET.</p>
+  <p class="contenu">1 outil · 6 questions · 4 exercices · 3 replis · 5 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag n3">B8-1 Outils de description, analyse fonctionnelle · niveau 3</span><span class="tag n3">B8-1 Constituants d'un système · niveau 3</span><span class="tag n3">B8-2 Automatismes du bâtiment · niveau 3</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">Les familles de constituants</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">capteur, pré-actionneur et actionneur prennent place dans les fonctions acquérir, distribuer et convertir du schéma fonctionnel.</span></li><li><b><a href="DOMA2.html">La nomenclature d'un dossier</a></b><span class="ou">Semaine 2 · études · Du dossier à l'information</span><span class="car">les constituants à ranger dans les deux chaînes sont ceux de la nomenclature de la salle de réunion.</span></li><li><b>Les opérations logiques ET, OU, NON</b><span class="car">une réceptivité de GRAFCET est une condition logique qui combine plusieurs variables.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#le-besoin-ce-que-le-systeme-doit-faire">Le besoin : ce que le système doit faire</a><a href="#les-solutions-les-deux-chaines">Les solutions : les deux chaînes</a><a href="#le-comportement-le-grafcet">Le comportement : le GRAFCET</a><a href="#essayer">Essayer</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+<p>Avant de choisir un matériel, il faut savoir ce que le système doit faire ; avant de le mettre en service, il faut savoir comment il doit se comporter. La séance a décrit dans cet ordre la salle de réunion des Bureaux Les Oliviers, pour laquelle le gestionnaire demandait des volets motorisés.</p>
+<p>Le référentiel range ces savoirs sous le nom d’<strong>outils de description</strong>, au niveau 3 pour l’option C.</p>
+<figure class="memo"><img src="img/DOMA3/memo-analyse.png" alt="" /></figure>
+<h2 id="le-besoin-ce-que-le-systeme-doit-faire">Le besoin : ce que le système doit faire</h2>
+<p>La <strong>fonction globale</strong> répond à trois questions : à qui le système rend service, sur quoi il agit, dans quel but. Pour la salle : adapter l’ambiance lumineuse à son occupation et à son usage.</p>
+<figure>
+<img src="img/DOMA3/fig2-pieuvre.png" alt="Le diagramme des interacteurs de la salle de réunion." />
+<figcaption aria-hidden="true">Le diagramme des interacteurs de la salle de réunion.</figcaption>
+</figure>
+<p>Une <strong>fonction principale</strong> relie deux éléments extérieurs par l’intermédiaire du système. Une <strong>fonction contrainte</strong> exprime l’adaptation du système à un seul élément : le réseau 230 V, le vent, le réseau informatique.</p>
+<div class="cle">
+<p><strong>Une fonction se formule par un verbe à l’infinitif suivi de son complément, sans nommer la solution.</strong> « Éteindre l’éclairage de la salle inoccupée » est une fonction ; « posséder un détecteur de présence » décrit une solution.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Critère, niveau, flexibilité</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Chaque fonction se rend vérifiable par trois données. Le <strong>critère</strong> est la grandeur mesurée, le <strong>niveau</strong> la valeur attendue avec son unité, la <strong>flexibilité</strong> la marge admise, notée de F0, impérative, à F3, très négociable.</p>
+<p>Pour la remontée des volets : critère, la vitesse du vent ; niveau, 40 km/h ; flexibilité F0, car il s’agit de sécurité. L’ensemble de ces lignes constitue le cahier des charges fonctionnel.</p></div></details>
+</div><h2 id="les-solutions-les-deux-chaines">Les solutions : les deux chaînes</h2>
+<figure class="schema"><div class="dessin" data-schema="deux-chaines"></div><figcaption>La chaîne d’information acquiert, traite et communique ; la chaîne d’énergie alimente, distribue, convertit et transmet. Elles se rejoignent au pré-actionneur.</figcaption></figure>
+<p>Les familles de la semaine 1 trouvent leur place dans le schéma fonctionnel. Le capteur et l’organe de commande <strong>acquièrent</strong>, le pré-actionneur <strong>distribue</strong>, l’actionneur <strong>convertit</strong>, le réducteur <strong>transmet</strong>.</p>
+<figure>
+<img src="img/DOMA3/fig3-chaines-volets.png" alt="Le schéma fonctionnel de la fonction « occulter la salle »." />
+<figcaption aria-hidden="true">Le schéma fonctionnel de la fonction « occulter la salle ».</figcaption>
+</figure>
+<div class="piege">
+<p>L’alimentation du bus n’appartient pas à la chaîne d’énergie : elle n’alimente aucun actionneur. Elle assure la fonction <strong>alimenter de la chaîne d’information</strong>, en 30 V continu, TBTS.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Où se trouve la fonction traiter dans un système KNX ?</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Aucun appareil ne s’appelle « centrale ». Chaque participant contient un programme d’application, paramétré à la mise en service, qui décide de son action à la réception d’un télégramme. La fonction traiter est donc <strong>répartie</strong>.</p>
+<p>La conséquence est pratique : la panne d’un participant ne supprime que sa propre fonction. Seules la ligne et son alimentation restent communes à tous.</p></div></details>
+</div><h2 id="le-comportement-le-grafcet">Le comportement : le GRAFCET</h2>
+<figure>
+<img src="img/DOMA3/fig4-grafcet.png" alt="Le GRAFCET de l’éclairage général de la salle." />
+<figcaption aria-hidden="true">Le GRAFCET de l’éclairage général de la salle.</figcaption>
+</figure>
+<p>Une <strong>étape</strong> est une situation stable, à laquelle sont associées des actions. Une <strong>transition</strong> porte une <strong>réceptivité</strong>, condition logique qui fait passer d’une étape à la suivante.</p>
+<div class="formule">
+<p><strong>T/X2 + ↑bp</strong></p>
+<ul>
+<li><strong>+</strong><span>: se lit OU</span></li>
+<li><strong>·</strong><span>: se lit ET</span></li>
+<li><strong>↑bp</strong><span>: front montant, l’instant de l’appui sur le poussoir</span></li>
+<li><strong>T/X2</strong><span>: vraie quand l’étape 2 est active depuis la durée T</span></li>
+</ul>
+<blockquote>
+<p>La durée T est un paramètre : elle se règle sans redessiner le graphe.</p>
+</blockquote>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi la présence seule ne rallume pas la salle</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>À l’étape 0, la seule réceptivité est l’appui sur le poussoir. Le graphe traduit un fonctionnement en allumage manuel et extinction automatique : la lumière ne s’allume que si un occupant le juge nécessaire.</p>
+<p>Si la présence suffisait à rallumer, un occupant ne pourrait plus éteindre la salle pendant une projection : la présence, toujours détectée, rallumerait aussitôt.</p></div></details>
+</div><h2 id="essayer">Essayer</h2>
+<div class="outil" data-outil="chaine-fonctionnelle">
+
+</div>
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+<div class="quiz">
+<ul>
+<li>« Éteindre l’éclairage de la salle inoccupée » est : <strong>une fonction de service</strong> | une solution technique | un critère</li>
+<li>Un moteur de volet assure la fonction : <strong>convertir</strong> | distribuer | transmettre</li>
+<li>Un variateur assure la fonction : <strong>distribuer</strong> | convertir | acquérir</li>
+<li>L’alimentation du bus KNX appartient à : <strong>la chaîne d’information</strong> | la chaîne d’énergie | aucune chaîne</li>
+<li>Dans une réceptivité, « + » se lit : <strong>OU</strong> | ET | PLUS</li>
+<li>Pour changer une temporisation, il faut modifier : <strong>un paramètre</strong> | le graphe | le câblage</li>
+</ul>
+</div>
+<h2 id="s-entrainer">S’entraîner</h2>
+<section class="exo" id="DOMA3-e1" data-exo="DOMA3-e1" data-type="calcul" data-savoir="B8-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgb2l0anZ4LjU2eGBrdGp2eC94YHg3MzR4Jw=="><p class="k">Exercice · B8-1</p><h4>La salle qui se vide</h4><div class="enonce">
+
+<p>La temporisation d’extinction vaut <strong>15 min</strong>. La salle se vide à la minute <strong>38</strong> et personne ne revient.</p>
+<p>À quelle minute l’éclairage s’éteint-il ?</p>
+</div><div class="indice" hidden>l’étape 2 devient active au moment où la salle se vide ; la transition vers l’étape 0 est franchie quand elle l’est depuis la durée T.</div></section>
+<section class="exo" id="DOMA3-e2" data-exo="DOMA3-e2" data-type="calcul" data-savoir="B8-2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGlrdGp2eC41NnhgaHRqdngveGB4MQ0yeCc="><p class="k">Exercice · B8-2</p><h4>Ce que rapporte la fonction FC2</h4><div class="enonce">
+
+<p>L’éclairage général d’une salle absorbe <strong>420 W</strong>. La fonction FC2 évite chaque jour ouvré <strong>2 h 30</strong> d’éclairage inutile, sur <strong>220 jours</strong> par an.</p>
+<p>Quelle énergie est économisée par an ?</p>
+</div><div class="indice" hidden>énergie = puissance × durée ; convertir les heures en décimal et les watts-heures en kilowatts-heures.</div></section>
+<section class="exo" id="DOMA3-e3" data-exo="DOMA3-e3" data-type="lecture" data-savoir="B8-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4Lig7NCk3Py4uKD94dnguKDs0KTczKSkzNTR4dng2O3o8NTQ5LjM1NHouKDs0KTc/Li4oP3gHJw=="><p class="k">Exercice · B8-1</p><h4>La bonne fonction</h4><div class="enonce">
+
+<p>Dans la chaîne d’énergie d’un volet roulant, le réducteur intégré au moteur tubulaire adapte la vitesse et le couple avant l’axe d’enroulement.</p>
+<p>Quelle fonction de la chaîne d’énergie assure-t-il ?</p>
+</div><div class="indice" hidden>le réducteur ne produit pas l’énergie mécanique, il la reçoit du moteur et l’adapte.</div></section>
+<section class="exo" id="DOMA3-e4" data-exo="DOMA3-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>Fonction ou solution ?</h4><div class="enonce">
+
+<p>Un camarade propose, pour une fonction de service : « Le système possède une station météo sur le toit. » Lui expliquer en trois ou quatre lignes pourquoi ce n’est pas une fonction de service, puis proposer une reformulation.</p>
+</div><div class="indice" hidden>se demander ce que la station météo permet de faire pour les volets.</div><ul class="verifier" hidden><li>J’ai dit que la phrase nomme une solution au lieu d’un service rendu</li><li>J’ai dit qu’une fonction reste vraie quelle que soit la solution retenue</li><li>J’ai proposé une formulation commençant par un verbe à l’infinitif</li><li>Ma formulation ne nomme aucun appareil</li></ul></section>
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+<p>La séance d’atelier de la même semaine applique ces outils à une platine réelle : tracer ses deux chaînes, décrire chaque fonction en une phrase, prévoir son comportement avant l’essai. La semaine suivante ouvre le bloc communication par les médias : bus, radio, CPL et fibre.</p>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA2.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A2 · lire un dossier de courant faible</span></a><a class="ap" href="DOMA4.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">A4 : les médias</span></a></div><a class="vers-recap" href="SEQ1.html">Préparation au contrôle</a></nav>
+<p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Rien de ce que vous saisissez n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=fc1a8623"></script>
+<script src="../assets/site.js?v=fc1a8623"></script>
+<script src="../assets/vivant.js?v=fc1a8623"></script>

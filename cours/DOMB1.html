@@ -1,0 +1,248 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>B1 : prise en main de l'atelier</title>
+<link rel="stylesheet" href="../assets/kit.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/site.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/domotique.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/vivant.css?v=fc1a8623">
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/DOMB1" data-rang="1">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 1 · Le socle</span><span class="fleches"><a class="fleche" href="DOMA11.html" rel="prev" title="A11 · adresses de groupe" aria-label="A11 · adresses de groupe">&lsaquo;</a><a class="fleche" href="DOMB2.html" rel="next" title="B2 : la référence 230 V" aria-label="B2 : la référence 230 V">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMB1">Marquer comme lu</button></div>
+<header class="tete">
+  <span class="num" aria-hidden="true">B1</span>
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>Prise en main<span>de l'atelier</span></h1>
+  </div>
+  <p class="accroche">Trois gestes installés en quatre heures, et qui serviront jusqu'au CCF : choisir l'appareil d'après la grandeur cherchée, repérer un câble au moment où on le tire, écrire un relevé qu'une autre personne peut exploiter.</p>
+  <p class="contenu">6 questions · 4 exercices · 2 replis · 4 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag n3">B8-1 Architecture des systèmes centralisés, constituants et signaux · niveau 3</span><span class="tag">C1-1 Distribution BT, repérage · niveau 2</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">Le bus KNX et ses 30 V</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">la première mesure de l'année porte sur l'alimentation d'un bus, et il faut savoir ce qu'elle alimente et pourquoi elle est en TBTS.</span></li><li><b>Les unités électriques</b><span class="car">le volt, l'ampère et l'ohm ; un relevé sans unité n'est pas un relevé, et chaque tableau de cette page le rappelle.</span></li><li><b>Les pourcentages</b><span class="car">la précision d'un multimètre s'écrit en pour cent de la lecture, et l'encadrement se calcule avant de conclure.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#choisir-l-appareil-d-apres-la-grandeur">Choisir l’appareil d’après la grandeur</a><a href="#consigner-avant-d-ouvrir">Consigner avant d’ouvrir</a><a href="#reperer-au-moment-ou-l-on-tire">Repérer au moment où l’on tire</a><a href="#la-premiere-mesure-de-l-annee">La première mesure de l’année</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+<p>Quatre heures en atelier, six appareils sur la table et un seul dans la main : le multimètre, avec sa notice. Vous avez relevé ses calibres et sa précision, puis encadré une lecture de 29,0 V. Vous avez ensuite étiqueté quatre câbles aux deux bouts, rempli le carnet, et mesuré l’alimentation du bus à vide puis en charge.</p>
+<p>La dernière heure a été consacrée au positionnement É0. Il n’est pas noté, et il vous sera proposé à nouveau, à l’identique, en semaine 26 : un progrès mesuré vaut mieux qu’un discours sur le progrès.</p>
+<figure>
+<img src="img/DOMB1/fig1-appareils.png" alt="Six appareils, et quand on les sort." />
+<figcaption aria-hidden="true">Six appareils, et quand on les sort.</figcaption>
+</figure>
+<h2 id="choisir-l-appareil-d-apres-la-grandeur">Choisir l’appareil d’après la grandeur</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Ce que je cherche</th>
+<th>Avec quoi</th>
+<th>Ce qu’il faut noter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Une tension</td>
+<td>multimètre</td>
+<td>valeur, unité, calibre, précision</td>
+</tr>
+<tr>
+<td>Un courant, circuit ouvert</td>
+<td>multimètre en série</td>
+<td>idem, plus la position du calibre</td>
+</tr>
+<tr>
+<td>Un courant, sans rien ouvrir</td>
+<td>pince ampèremétrique</td>
+<td>idem, plus le sens si c’est du continu</td>
+</tr>
+<tr>
+<td>Un lien réseau conforme</td>
+<td>testeur de câblage</td>
+<td>la classe visée et le verdict</td>
+</tr>
+<tr>
+<td>Ce qui circule sur un bus</td>
+<td>moniteur de bus</td>
+<td>l’adresse et la valeur du télégramme</td>
+</tr>
+<tr>
+<td>Un éclairement</td>
+<td>luxmètre</td>
+<td>la valeur, et la hauteur de mesure</td>
+</tr>
+</tbody>
+</table></div>
+<div class="cle">
+<p>L’appareil se choisit <strong>d’après la grandeur cherchée</strong>, et non par habitude. Le multimètre ne mesure un courant qu’en ouvrant le circuit ; la pince le mesure sans rien ouvrir, et c’est souvent la seule mesure possible sur une installation en service.</p>
+</div>
+<div class="piege">
+<p>Dans un énoncé, les mots « sans rien débrancher » excluent le multimètre. Beaucoup répondent pourtant « multimètre » par réflexe : c’est l’appareil de la grandeur, pas celui de l’habitude, qu’il faut sortir.</p>
+</div>
+<h2 id="consigner-avant-d-ouvrir">Consigner avant d’ouvrir</h2>
+<p>Aucune mesure ne se fait sur un circuit ouvert sans avoir vérifié l’absence de tension, avec un appareil dont on vient de contrôler le fonctionnement.</p>
+<div class="etapes">
+<ol type="1">
+<li>Identifier l’ouvrage, et s’assurer qu’on travaille sur le bon.</li>
+<li>Séparer : ouvrir le dispositif de coupure.</li>
+<li>Condamner : verrouiller, poser la pancarte.</li>
+<li>Vérifier que l’appareil de vérification fonctionne, sur une source connue.</li>
+<li>Vérifier l’absence de tension sur le circuit, puis contrôler de nouveau l’appareil.</li>
+</ol>
+</div>
+<div class="cle">
+<p>La troisième étape est celle qu’on saute quand on est pressé, et l’appareil de vérification se contrôle <strong>avant et après</strong>. Personne n’ouvrira un coffret sous tension cette année ; chacun saura dire dans quel ordre on procède, et pourquoi.</p>
+</div>
+<h2 id="reperer-au-moment-ou-l-on-tire">Repérer au moment où l’on tire</h2>
+<figure>
+<img src="img/DOMB1/fig2-reperage.png" alt="Repérer un câble : la même étiquette aux deux bouts." />
+<figcaption aria-hidden="true">Repérer un câble : la même étiquette aux deux bouts.</figcaption>
+</figure>
+<p>Le repère est <strong>identique aux deux extrémités</strong>, et il s’écrit au moment où le câble est tiré, jamais après. Le carnet désigne l’origine et la destination par leur nom de repérage, du type « TD1-3 → B12 », et non par une description.</p>
+<div class="enveloppe-tbl"><table>
+<thead>
+<tr>
+<th>Repère</th>
+<th>Origine</th>
+<th>Destination</th>
+<th>Nature</th>
+<th>Longueur</th>
+<th>Fonction</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<div class="piege">
+<p>« Du tableau au plafond » n’est pas une destination. Le carnet attend le nom de repérage de l’origine et celui de la destination, tels qu’ils sont écrits sur le tableau et sur la boîte, et la nature du câble telle qu’elle est inscrite sur sa gaine.</p>
+</div>
+<h2 id="la-premiere-mesure-de-l-annee">La première mesure de l’année</h2>
+<p>L’alimentation du bus est en service. Il s’agit de dire ce qu’elle délivre, à vide puis avec les participants raccordés, et d’écrire un relevé <strong>complet</strong>.</p>
+<div class="enveloppe-tbl"><table>
+<thead>
+<tr>
+<th></th>
+<th>À vide</th>
+<th>En charge</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Valeur lue</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Unité</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Calibre utilisé</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Encadrement, avec la précision de l’appareil</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table></div>
+<div class="formule">
+<p><strong>Incertitude = x % × lecture + n digits</strong></p>
+<ul>
+<li><strong>x %</strong><span>: la part proportionnelle, lue dans la notice de l’appareil</span></li>
+<li><strong>n digits</strong><span>: n fois le dernier chiffre affiché, <strong>dans le calibre utilisé</strong></span></li>
+<li><strong>encadrement</strong><span>: de lecture − incertitude à lecture + incertitude</span></li>
+</ul>
+<blockquote>
+<p>Deux encadrements qui se chevauchent ne permettent pas de conclure à un écart.</p>
+</blockquote>
+</div>
+<figure class="schema"><div class="dessin" data-schema="deux-chaines"></div><figcaption>L’alimentation mesurée alimente la chaîne d’information, en 30 V continu, TBTS. La chaîne d’énergie du poste reste en 230 V : c’est elle qui impose la consignation.</figcaption></figure>
+<div class="cle">
+<p>Un relevé porte <strong>une valeur, une unité, l’appareil et sa précision</strong>. Une valeur seule ne dit ni l’unité ni la confiance qu’on peut lui accorder, et ne permet à personne de reproduire ou de contester la mesure.</p>
+</div>
+<div class="piege">
+<p>Conclure « la tension baisse » quand l’écart entre les deux lectures est plus petit que l’incertitude. C’est plausible physiquement, mais indémontrable avec cet appareil : la réponse juste est d’écrire qu’on ne peut pas conclure, et c’est un résultat.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi 3 digits ne valent pas toujours 0,03 V</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le digit est le dernier chiffre affiché. En calibre 60,00 V il vaut 0,01 V ; en calibre 600,0 V il vaut 0,1 V. Le même appareil, avec la même notice, est donc dix fois moins précis sur un calibre trop grand.</p>
+<p>C’est la raison de choisir le plus petit calibre qui contient la valeur, et de noter ce calibre dans le relevé : sans lui, personne ne peut recalculer l’encadrement.</p></div></details>
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Ce que le CCF regardera</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La situation 1 de l’épreuve E5, en semaine 18, évalue la compétence C7 : conduire des essais et des mesures. Trois de ses lignes sont déjà là : choisir et utiliser l’appareil (C7-5), le mettre en œuvre en sécurité (C7-4), et interpréter les résultats en appréciant leur précision (C7-6).</p>
+<p>Le référentiel écrit, pour C7-6 : « leur précision est appréciée ». L’encadrement d’aujourd’hui est exactement cela.</p></div></details>
+</div><figure class="memo"><img src="img/DOMB1/memo-atelier.png" alt="" /></figure>
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+<div class="quiz">
+<ul>
+<li>Pour mesurer un courant sans ouvrir le circuit, on sort : <strong>la pince ampèremétrique</strong> | le multimètre en série | le moniteur de bus</li>
+<li>Le testeur de câblage rend : <strong>un verdict et un procès-verbal</strong> | une tension et un calibre | une adresse et une valeur</li>
+<li>La consignation commence par : <strong>identifier l’ouvrage</strong> | condamner le dispositif | vérifier l’absence de tension</li>
+<li>L’appareil de vérification d’absence de tension se contrôle : <strong>avant et après la vérification</strong> | avant la vérification seulement | après la vérification seulement</li>
+<li>Un câble se repère : <strong>aux deux bouts, en le tirant</strong> | à un bout, après la pose | dans le carnet seulement</li>
+<li>Un relevé exploitable porte : <strong>valeur, unité, appareil, précision</strong> | la valeur et le calibre | la valeur et l’heure</li>
+</ul>
+</div>
+<h2 id="s-entrainer">S’entraîner</h2>
+<section class="exo" id="DOMB1-e1" data-exo="DOMB1-e1" data-type="calcul" data-savoir="B8-1" data-a="IXgueGB4OTs2OS82eHZ4LHhganRob2x2eC41NnhgaXRqdngveGB4DHgn"><p class="k">Exercice · B8-1</p><h4>L’encadrement d’une lecture</h4><div class="enonce">
+
+<p>La notice d’un multimètre annonce <strong>± 0,8 % de la lecture, ± 2 digits</strong>. En calibre <strong>60,00 V</strong>, il affiche <strong>29,50 V</strong>.</p>
+<p>Quelle est l’incertitude sur cette lecture, en volts ?</p>
+</div><div class="indice" hidden>calculer la part proportionnelle sur la lecture, puis ajouter n fois le dernier chiffre affiché dans ce calibre. Les deux parts s’additionnent.</div></section>
+<section class="exo" id="DOMB1-e2" data-exo="DOMB1-e2" data-type="calcul" data-savoir="B8-1" data-a="IXgueGB4OTs2OS82eHZ4LHhganRpbHZ4LjU2eGBpdGp2eC94YHgMeCc="><p class="k">Exercice · B8-1</p><h4>Le plus petit écart concluant</h4><div class="enonce">
+
+<p>Un multimètre à <strong>± 0,5 % de la lecture, ± 3 digits</strong>, en calibre <strong>60,00 V</strong>, donne deux lectures voisines de <strong>30 V</strong>, à vide puis en charge.</p>
+<p>De combien, au moins, les deux lectures doivent-elles différer pour que leurs encadrements ne se chevauchent pas ?</p>
+</div><div class="indice" hidden>chaque lecture porte sa propre incertitude, et les deux encadrements se touchent quand l’écart vaut la somme des deux.</div></section>
+<section class="exo" id="DOMB1-e3" data-exo="DOMB1-e3" data-type="lecture" data-savoir="B8-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4NSk5MzY2NSk5NSo/eHZ4LzR6NSk5MzY2NSk5NSo/eHZ4NgYvaGprYzUpOTM2NjUpOTUqP3h2eDUpOTM2NjV4Byc="><p class="k">Exercice · B8-1</p><h4>Un contact qui rebondit</h4><div class="enonce">
+
+<p>Un client signale que l’éclairage d’un couloir clignote brièvement à chaque allumage. Vous soupçonnez le contact d’un relais, qui rebondirait à la fermeture pendant quelques millisecondes.</p>
+<p>Quel appareil sortez-vous pour le voir ?</p>
+</div><div class="indice" hidden>un multimètre affiche une valeur moyenne ; il faut un appareil qui montre une tension qui varie dans le temps.</div></section>
+<section class="exo" id="DOMB1-e4" data-exo="DOMB1-e4" data-type="justification" data-savoir="C1-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · C1-1</p><h4>Repérer en tirant, pas après</h4><div class="enonce">
+
+<p>Un collègue propose de poser les étiquettes à la fin du chantier, quand tout sera tiré. Lui répondre en trois ou quatre lignes, avec deux raisons dont une qui n’est pas une question de temps.</p>
+</div><div class="indice" hidden>se demander sur quoi repose une étiquette posée trois semaines après la pose, et qui s’y fiera.</div><ul class="verifier" hidden><li>J’ai donné une raison qui tient au temps passé</li><li>J’ai donné une raison qui ne tient pas au temps</li><li>J’ai dit ce que devient le carnet quand il est rempli après coup</li><li>J’ai pensé à la personne qui interviendra après moi</li></ul></section>
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+<p>La séance B2 câble la référence 230 V : un va-et-vient, puis un télérupteur et sa boucle de poussoirs. La procédure de consignation y sera redemandée sans le tableau sous les yeux, et le multimètre servira en continuité, hors tension, avant toute mise sous tension.</p>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA11.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A11 · adresses de groupe</span></a><a class="ap" href="DOMB2.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">B2 : la référence 230 V</span></a></div><a class="vers-recap" href="SEQ1.html">Préparation au contrôle</a></nav>
+<p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=fc1a8623"></script>
+<script src="../assets/site.js?v=fc1a8623"></script>
+<script src="../assets/vivant.js?v=fc1a8623"></script>

@@ -1,0 +1,226 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>A4 : les médias</title>
+<link rel="stylesheet" href="../assets/kit.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/site.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/domotique.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/vivant.css?v=fc1a8623">
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/DOMA4" data-rang="2">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 2 · Communiquer</span><span class="fleches"><a class="fleche" href="DOMA3.html" rel="prev" title="A3 · analyse fonctionnelle" aria-label="A3 · analyse fonctionnelle">&lsaquo;</a><a class="fleche" href="DOMA5.html" rel="next" title="A5 : topologie et adressage" aria-label="A5 : topologie et adressage">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA4">Marquer comme lu</button></div>
+<header class="tete">
+  <span class="num" aria-hidden="true">A4</span>
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>Les médias<span>et ce qui les limite</span></h1>
+  </div>
+  <p class="accroche">Quatre médias, quatre budgets. Jusqu'où une liaison fonctionne-t-elle, et pour quelle raison s'arrête-t-elle ? La séance a montré comment compter chaque budget, puis comment le dépenser sans le dépasser.</p>
+  <p class="contenu">2 outils · 6 questions · 4 exercices · 4 replis · 6 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag n3">D1-1 Médias : bus, RF, CPL, fibre · niveau 3</span><span class="tag n3">D2-1 Réseaux, mode de transmission et câbles · niveau 3</span><span class="tag n3">B8-1 Standards, couches matérielles · niveau 3</span><span class="tag">D2-1 CEM, moyens de protection · niveau 2</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">Choisir un média sur trois questions</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">cette séance reprend les médias choisis en séance 1 et chiffre ce qui limite la portée de chacun.</span></li><li><b>La loi d'Ohm</b><span class="car">la chute de tension d'un bus est une résistance de boucle multipliée par un courant ; sans U = R × I, la limite des longueurs reste une règle apprise par cœur.</span></li><li><b>Les puissances de dix et les préfixes</b><span class="car">un condensateur se donne en nanofarads, une fréquence en kilohertz ; une conversion oubliée fausse une impédance d'un facteur mille.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#le-bus-une-paire-qui-alimente">Le bus : une paire qui alimente</a><a href="#la-radio-un-budget-en-decibels">La radio : un budget en décibels</a><a href="#le-courant-porteur-ce-qui-l-absorbe">Le courant porteur : ce qui l’absorbe</a><a href="#la-fibre-un-bilan-de-liaison">La fibre : un bilan de liaison</a><a href="#essayer">Essayer</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+<p>La séance 1 a montré comment choisir un média sur trois questions. Celle-ci a ouvert chacun des quatre médias pour chiffrer ce qui limite la liaison. Chaque média dispose d’un <strong>budget</strong>, et dimensionner une liaison consiste à le dépenser sans le dépasser.</p>
+<figure class="schema"><div class="dessin" data-schema="couches-protocole"></div><figcaption>Le média est la couche du bas : le support sur lequel circulent les télégrammes. Cette séance ne traite que cette couche.</figcaption></figure>
+<h2 id="le-bus-une-paire-qui-alimente">Le bus : une paire qui alimente</h2>
+<p>Sur un bus KNX TP1, la même paire transporte les télégrammes et l’alimentation des participants. Le courant parcourt le conducteur aller, puis le conducteur retour : la résistance à prendre en compte est celle de la <strong>boucle</strong>, 75 Ω par kilomètre.</p>
+<figure>
+<img src="img/DOMA4/fig1-bus-boucle.png" alt="Tout le courant des participants traverse la couronne, à l’aller et au retour." />
+<figcaption aria-hidden="true">Tout le courant des participants traverse la couronne, à l’aller et au retour.</figcaption>
+</figure>
+<div class="formule">
+<p><strong>ΔU = r × I × L</strong></p>
+<ul>
+<li><strong>ΔU</strong><span>: chute de tension, en volts</span></li>
+<li><strong>r</strong><span>: résistance de boucle, en ohms par mètre, soit 0,075 Ω/m</span></li>
+<li><strong>I</strong><span>: courant qui traverse le câble, <strong>en ampères</strong></span></li>
+<li><strong>L</strong><span>: longueur de câble, en mètres</span></li>
+</ul>
+<blockquote>
+<p>Valable lorsque tout le courant traverse la longueur L, c’est-à-dire lorsque les participants sont regroupés au bout.</p>
+</blockquote>
+</div>
+<div class="cle">
+<p>La tension part de 30 V et doit rester d’au moins 21 V chez le participant : <strong>la ligne dispose d’un budget de 9 V</strong>. En charge, après la self de l’alimentation, le bus se mesure autour de 29 V.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Une chute mesurée ne permet pas toujours de conclure</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>À l’atelier, la chute sur une couronne de 100 m se mesure par différence de deux lectures. Si chaque lecture est connue à ± 0,2 V près, la différence ne l’est qu’à ± 0,4 V près.</p>
+<p>Une chute plus faible que cette incertitude ne permet pas de conclure : il faut charger davantage la ligne, jusqu’à ce que l’écart sorte de l’incertitude.</p>
+<p>La fiche du câble donne une valeur maximale, qui sert au dimensionnement. Un câble réel à 20 °C présente plutôt 0,069 Ω/m de boucle : la mesure peut donc donner un peu moins que le calcul, sans qu’il y ait d’erreur.</p></div></details>
+</div><h2 id="la-radio-un-budget-en-decibels">La radio : un budget en décibels</h2>
+<p>Les affaiblissements rencontrés sur un trajet <strong>s’additionnent</strong> : celui de la distance, puis celui de chaque paroi traversée. La portée annoncée en champ libre donne le budget de l’émetteur ; une marge de 10 dB se réserve pour les variations de la propagation.</p>
+<table style="width:100%;">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+</colgroup>
+<thead>
+<tr>
+<th>Distance sans obstacle</th>
+<th>5 m</th>
+<th>10 m</th>
+<th>15 m</th>
+<th>20 m</th>
+<th>30 m</th>
+<th>50 m</th>
+<th>100 m</th>
+<th>300 m</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Affaiblissement, en dB</td>
+<td>45</td>
+<td>51</td>
+<td>55</td>
+<td>57</td>
+<td>61</td>
+<td>65</td>
+<td>71</td>
+<td>81</td>
+</tr>
+</tbody>
+</table>
+<p>À ces valeurs s’ajoute l’affaiblissement de chaque paroi traversée.</p>
+<div class="enveloppe-tbl"><table>
+<thead>
+<tr>
+<th>Paroi traversée</th>
+<th>Affaiblissement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cloison en plaque de plâtre</td>
+<td>3 dB</td>
+</tr>
+<tr>
+<td>Mur en brique ou en parpaing</td>
+<td>8 dB</td>
+</tr>
+<tr>
+<td>Mur en béton armé</td>
+<td>20 dB</td>
+</tr>
+<tr>
+<td>Plancher en béton</td>
+<td>25 dB</td>
+</tr>
+<tr>
+<td>Vitrage à couche métallique</td>
+<td>20 dB</td>
+</tr>
+</tbody>
+</table></div>
+<div class="cle">
+<p><strong>Doubler la distance coûte 6 dB ; un mur en béton armé en coûte 20</strong>, autant que multiplier la distance par dix.</p>
+</div>
+<figure>
+<img src="img/DOMA4/fig2-plan-radio.png" alt="Un émetteur sans pile, quatre récepteurs : les parois traversées font la différence." />
+<figcaption aria-hidden="true">Un émetteur sans pile, quatre récepteurs : les parois traversées font la différence.</figcaption>
+</figure>
+<div class="piege">
+<p>Une liaison qui fonctionne le jour de la réception n’est pas pour autant fiable : sans marge, elle fonctionnera de manière intermittente. C’est pour la même raison que la portée mesurée à l’atelier se retient au plus court de plusieurs essais.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Le répéteur</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Un répéteur reçoit un télégramme et le réémet. Il découpe un trajet trop long en deux bonds, et chaque bond se vérifie séparément, avec sa propre marge.</p>
+<p>Contrairement à un interrupteur sans pile, un répéteur écoute en permanence : il doit être alimenté, ce qui guide le choix de son emplacement.</p></div></details>
+</div><h2 id="le-courant-porteur-ce-qui-l-absorbe">Le courant porteur : ce qui l’absorbe</h2>
+<p>Le CPL superpose au 50 Hz un signal de haute fréquence, 110 kHz pour KNX PL110, injecté entre une phase et le neutre. Il passe mal d’une phase à l’autre sans <strong>coupleur de phases</strong>, et ne franchit pas le transformateur.</p>
+<figure>
+<img src="img/DOMA4/fig3-cpl.png" alt="Émetteur, récepteur, chargeur et coupleur dans une installation triphasée." />
+<figcaption aria-hidden="true">Émetteur, récepteur, chargeur et coupleur dans une installation triphasée.</figcaption>
+</figure>
+<div class="formule">
+<p><strong>Z = 1 / (2 π f C)</strong></p>
+<ul>
+<li><strong>Z</strong><span>: impédance du condensateur, en ohms</span></li>
+<li><strong>f</strong><span>: fréquence, en hertz</span></li>
+<li><strong>C</strong><span>: capacité, <strong>en farads</strong> : 100 nF valent 100 × 10⁻⁹ F</span></li>
+</ul>
+<blockquote>
+<p>Plus la fréquence est élevée, plus l’impédance d’un condensateur est faible.</p>
+</blockquote>
+</div>
+<div class="cle">
+<p>Un changement de phase peut <strong>interrompre</strong> la liaison ; une charge électronique l’<strong>atténue</strong>. Le diagnostic n’est pas le même, alors que le client décrira les deux cas de la même manière.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Le filtre de bande</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Placé en tête de l’installation, le filtre de bande arrête la fréquence porteuse. Il retient le signal à l’intérieur de l’installation et arrête les perturbations venues de l’extérieur.</p>
+<p>Le transformateur arrête lui aussi la porteuse, mais plusieurs installations raccordées au même poste ne sont séparées par rien d’autre que ce filtre.</p></div></details>
+</div><h2 id="la-fibre-un-bilan-de-liaison">La fibre : un bilan de liaison</h2>
+<p>Le <strong>budget</strong> d’un module est l’écart entre sa puissance émise minimale et la sensibilité de son récepteur, en dBm. Les pertes de la liaison s’additionnent ; ce qui reste du budget est la <strong>marge</strong>.</p>
+<figure>
+<img src="img/DOMA4/fig4-liaison-optique.png" alt="La liaison vers le gymnase : deux tiroirs, deux connexions, deux épissures." />
+<figcaption aria-hidden="true">La liaison vers le gymnase : deux tiroirs, deux connexions, deux épissures.</figcaption>
+</figure>
+<div class="formule">
+<p><strong>Marge = budget − (fibre + connexions + épissures)</strong></p>
+<ul>
+<li><strong>fibre</strong><span>: affaiblissement en dB/km multiplié par la longueur <strong>en km</strong> ; 3,5 dB/km en OM3, 0,4 dB/km en OS2</span></li>
+<li><strong>connexion</strong><span>: 0,75 dB au plus</span></li>
+<li><strong>épissure</strong><span>: 0,3 dB au plus</span></li>
+</ul>
+<blockquote>
+<p>Sur quelques centaines de mètres, les connexions et les épissures pèsent davantage que la fibre.</p>
+</blockquote>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Multimode ou monomode</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La fibre multimode a un cœur de 50 µm et des modules peu coûteux. Sa distance est limitée par la dispersion dès que le débit augmente : 300 m à 10 Gbit/s en OM3.</p>
+<p>La fibre monomode a un cœur de 9 µm. À l’échelle d’un site, elle ne connaît pas de limite pratique de distance : 10 km à 10 Gbit/s.</p></div></details>
+</div><div class="piege">
+<p>À la réception, une mesure d’affaiblissement supérieure au bilan calculé révèle un défaut, même si la liaison fonctionne. <strong>Fonctionner et être conforme ne sont pas la même chose.</strong></p>
+</div>
+<figure class="memo"><img src="img/DOMA4/memo-medias.png" alt="" /></figure>
+<h2 id="essayer">Essayer</h2>
+<div class="outil" data-outil="ligne-knx">
+
+</div>
+<div class="outil" data-outil="bilan-optique">
+
+</div>
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+<div class="quiz">
+<ul>
+<li>La résistance à prendre pour la chute de tension d’un bus est celle : <strong>de la boucle, aller et retour</strong> | d’un seul conducteur</li>
+<li>Doubler la distance entre un émetteur radio et son récepteur coûte : <strong>6 dB</strong> | 2 dB | 20 dB</li>
+<li>Un affaiblissement de 20 dB divise la puissance reçue par : <strong>100</strong> | 20 | 10</li>
+<li>Le signal CPL passe mal : <strong>d’une phase à l’autre</strong> | d’une prise à la prise voisine</li>
+<li>Sur une liaison optique de 300 m, ce qui pèse le plus dans le bilan : <strong>les connexions et les épissures</strong> | la fibre</li>
+<li>Une mesure de réception supérieure au bilan calculé signale : <strong>un défaut sur la liaison</strong> | une liaison plus performante</li>
+</ul>
+</div>
+<h2 id="s-entrainer">S’entraîner</h2>
+<section class="exo" id="DOMA4-e1" data-exo="DOMA4-e1" data-type="calcul" data-savoir="D1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaG90Y292eC41Nnhga3RqdngveGB4DHgn"><p class="k">Exercice · D1-1</p><h4>La liaison du local de sport</h4><div class="enonce">
+
+<p>Un local de sport est relié à l’alimentation du bus par <strong>180 m</strong> de câble TP1. Ses <strong>30 participants</strong> sont tous regroupés au bout de la liaison.</p>
+<p>Quelle tension reste-t-il au bout de la liaison ?</p>
+</div><div class="indice" hidden>convertir le courant en ampères, puis appliquer ΔU = r × I × L avec r = 0,075 Ω/m. La tension au bout est celle de l’alimentation moins la chute.</div></section>
+<section class="exo" id="DOMA4-e2" data-exo="DOMA4-e2" data-type="calcul" data-savoir="D1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgYnRqdnguNTZ4YGh0anZ4L3hgeD4YeCc="><p class="k">Exercice · D1-1</p><h4>Un détecteur au fond de la maison</h4><div class="enonce">
+
+<p>Un émetteur dont le budget vaut <strong>81 dB</strong> commande un récepteur situé à <strong>20 m</strong>, derrière <strong>deux murs en parpaing</strong>. Les tableaux de la section sur la radio donnent les affaiblissements.</p>
+<p>Quelle marge reste-t-il sur ce trajet ?</p>
+</div><div class="indice" hidden>additionner l’affaiblissement de la distance et celui des deux murs, puis retrancher ce total du budget. La liaison est fiable si la marge atteint 10 dB.</div></section>
+<section class="exo" id="DOMA4-e3" data-exo="DOMA4-e3" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaHRvYnZ4LjU2eGBodGp2eC94YHg+GHgn"><p class="k">Exercice · D2-1</p><h4>La liaison vers la chaufferie</h4><div class="enonce">
+
+<p>Une liaison en fibre monomode OS2 relie deux bâtiments par <strong>1,2 km</strong> de câble. Elle comporte <strong>deux connexions</strong> et <strong>deux épissures</strong>.</p>
+<p>Quelles sont les pertes totales de la liaison ?</p>
+</div><div class="indice" hidden>la longueur de fibre se met en kilomètres. Additionner ensuite la fibre, les connexions et les épissures, chacune à sa valeur maximale.</div></section>
+<section class="exo" id="DOMA4-e4" data-exo="DOMA4-e4" data-type="justification" data-savoir="D1-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · D1-1</p><h4>La liaison qui fonctionnait à la réception</h4><div class="enonce">
+
+<p>Un interrupteur radio fonctionnait parfaitement le jour de la réception. Un mois plus tard, le client signale que l’éclairage ne répond plus qu’une fois sur deux. Expliquer ce qui s’est probablement passé, en quatre lignes.</p>
+</div><div class="indice" hidden>comparer l’affaiblissement du trajet au budget de l’émetteur, et se demander ce qu’il reste une fois les occupants et le mobilier installés.</div><ul class="verifier" hidden><li>J’ai parlé de la marge de la liaison radio</li><li>J’ai cité au moins une cause de variation de la propagation</li><li>J’ai expliqué qu’une liaison peut fonctionner à l’essai sans être fiable</li><li>J’ai proposé une correction : répéteur, déplacement du récepteur ou autre média</li></ul></section>
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+<p>La séance 5 reprend la ligne de bus lorsque les participants sont répartis le long du câble : elle justifie la limite des 350 m, puis organise les lignes en zones reliées par des coupleurs. Elle suppose acquise la relation ΔU = r × I × L.</p>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA3.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A3 · analyse fonctionnelle</span></a><a class="ap" href="DOMA5.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">A5 : topologie et adressage</span></a></div><a class="vers-recap" href="SEQ2.html">Préparation au contrôle</a></nav>
+<p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=fc1a8623"></script>
+<script src="../assets/site.js?v=fc1a8623"></script>
+<script src="../assets/vivant.js?v=fc1a8623"></script>

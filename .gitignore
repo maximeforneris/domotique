@@ -1,0 +1,5 @@
+# Ce depot ne contient que la sortie du site : rien a ignorer,
+# hormis ce que les systemes deposent d'eux-memes.
+Thumbs.db
+.DS_Store
+desktop.ini

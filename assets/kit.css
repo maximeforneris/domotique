@@ -1,0 +1,594 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   KIT WEB — feuille unique de toutes les pages eleves.
+   Elle est INLINEE dans chaque page par webseance.py : ne pas la lier.
+   Ne pas la dupliquer dans un sous-projet. Une classe qui a besoin
+   d'autre chose obtient une option ici, pas une copie.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+:root{
+  --fond:#e9e7e3;
+  --carte:#fbfaf9;
+  --carte2:#f2f0ec;
+  --encre:#191a1c;
+  --encre2:#5d5b57;
+  --trait:#c9c5bf;
+  --trait2:#dedbd6;
+  --froid:#2c6da6;      /* le cours, le socle */
+  --tiede:#b8801f;      /* pour aller plus loin */
+  --chaud:#ab432a;      /* ce que fait un bureau d'etudes */
+  --vert:#2f7a55;       /* les outils, les reponses justes */
+  --violet:#6b4a9c;     /* 5e couleur de serie, quand quatre ne suffisent pas */
+  --ombre:0 1px 2px rgba(25,26,28,.05),0 10px 26px rgba(25,26,28,.07);
+  --r:4px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --fond:#131315;--carte:#1c1d20;--carte2:#232427;--encre:#eceae6;--encre2:#a6a49f;
+    --trait:#4a4a4d;--trait2:#333437;--froid:#63a6dd;--tiede:#dfae4e;--chaud:#ef7a58;
+    --vert:#5cc08d;--violet:#b18ee0;--ombre:0 1px 2px rgba(0,0,0,.5),0 12px 32px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  --fond:#131315;--carte:#1c1d20;--carte2:#232427;--encre:#eceae6;--encre2:#a6a49f;
+  --trait:#4a4a4d;--trait2:#333437;--froid:#63a6dd;--tiede:#dfae4e;--chaud:#ef7a58;
+  --vert:#5cc08d;--violet:#b18ee0;--ombre:0 1px 2px rgba(0,0,0,.5),0 12px 32px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--fond);color:var(--encre);
+  font-family:Newsreader,Georgia,"Times New Roman",serif;
+  font-size:17.5px;line-height:1.6;-webkit-font-smoothing:antialiased;
+}
+.page{max-width:1060px;margin:0 auto;padding:0 20px 90px}
+.col{max-width:660px}
+/* le texte courant tient dans une colonne lisible ; outils, figures et
+   tableaux debordent volontairement */
+.page>p,.page>h2,.page>h3,.page>h4,.page>ul,.page>ol,.page>blockquote{max-width:660px}
+h1,h2,h3,h4,.gro{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif}
+.mono,code{font-family:"IBM Plex Mono",ui-monospace,monospace}
+p{margin:0 0 13px}
+a{color:var(--froid)}
+
+/* ─────────────────────────────────────────────── entete illustre
+   « image: » nomme un schema du kit, qui vient se ranger a droite du titre.
+   L'accueil a trois enfants, une page de cours en a six : plutot que de leur
+   imposer une grille dont le nombre de lignes varie — span 99 fabriquait 98
+   gouttieres vides et un en-tete d'un metre de haut — on reserve la place a
+   droite et on y pose le dessin. */
+.tete.a-img{position:relative;padding-right:calc(clamp(210px,26vw,330px) + 34px)}
+.tete.a-img>.tete-img{position:absolute;right:0;top:50%;
+  transform:translateY(-50%);width:clamp(210px,26vw,330px)}
+.tete-img svg{display:block;width:100%;height:auto}
+@media (max-width:760px){
+  .tete.a-img{padding-right:0}
+  .tete.a-img>.tete-img{position:static;transform:none;max-width:330px;margin-top:14px}
+}
+
+/* ─────────────────────────────────────────────── entete
+   Le numero de seance est un reperage, pas une mention de plus dans une ligne
+   grise : on le reconnait avant d'avoir lu le titre. */
+header.tete{padding:34px 0 24px;border-bottom:2px solid var(--encre)}
+.titraille{display:flex;flex-direction:column;gap:11px}
+header.tete .num{
+  display:block;font-family:"Bricolage Grotesque",sans-serif;font-weight:800;
+  font-size:clamp(52px,9vw,86px);line-height:.8;letter-spacing:-.05em;
+  color:var(--froid);opacity:.22;margin:0 0 -6px;
+}
+.sur{
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--encre2);margin:0;
+}
+h1{font-weight:800;font-size:clamp(30px,5.6vw,54px);line-height:1;letter-spacing:-.03em;
+  margin:0;text-wrap:balance}
+h1 span{display:block;color:var(--froid)}
+.accroche{font-size:19px;color:var(--encre2);max-width:56ch;margin:20px 0 0}
+.accroche strong{color:var(--encre);font-weight:600}
+
+/* ce que la page contient — la meme information que sur les cartes de la frise */
+.contenu{
+  font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--encre2);margin:18px 0 0;
+}
+.k-savoirs{
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--encre2);margin:22px 0 8px;opacity:.75;
+}
+.savoirs{display:flex;flex-wrap:wrap;gap:7px;margin:0}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:11.5px;padding:3px 9px;
+  border:1px solid var(--trait);border-radius:99px;color:var(--encre2)}
+.tag.n3{border-color:var(--chaud);color:var(--chaud);font-weight:600}
+.tag.n3::before{content:"● ";font-size:8px;vertical-align:middle}
+
+/* ─────────────────────────────────────────────── prerequis
+   « prerequis: » liste ce qu'il faut tenir avant d'entrer dans la page — le
+   savoir, la raison, et la page qui l'enseigne quand elle existe. Il se lit
+   entre l'en-tete et le sommaire, pas dans le corps. */
+.prerequis{margin:22px 0 8px;padding:16px 20px 14px;background:var(--carte);
+  border:1px solid var(--trait);border-radius:var(--r)}
+.chapeau-p{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--encre2);margin:0 0 10px;opacity:.85}
+.prerequis ul{list-style:none;margin:0;padding:0;display:grid;gap:11px 24px;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr))}
+.prerequis li{margin:0;font-size:15.5px;line-height:1.45}
+.prerequis b{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif;
+  font-weight:700;font-size:16px;color:var(--encre)}
+.prerequis a{color:var(--encre);text-decoration:none;
+  border-bottom:1.5px solid var(--teinte,var(--froid))}
+.prerequis a:hover{color:var(--teinte,var(--froid))}
+.prerequis .ou{display:inline-block;margin-left:8px;font-family:"IBM Plex Mono",monospace;
+  font-size:11px;letter-spacing:.06em;color:var(--encre2);vertical-align:1px}
+.prerequis .ou::before{content:"→ "}
+.prerequis .car{display:block;color:var(--encre2);margin-top:2px}
+@media print{.prerequis{break-inside:avoid}}
+
+/* ─────────────────────────────────────────────── navigation */
+nav.somm{position:sticky;top:0;z-index:20;background:var(--fond);
+  border-bottom:1px solid var(--trait);margin-bottom:6px}
+nav.somm .in{display:flex;gap:4px;overflow-x:auto;padding:9px 0}
+nav.somm a{font-family:"Bricolage Grotesque",sans-serif;font-size:13px;font-weight:600;
+  color:var(--encre2);text-decoration:none;white-space:nowrap;padding:6px 11px;
+  border-radius:var(--r)}
+nav.somm a:hover{background:var(--carte);color:var(--encre)}
+nav.somm a.on{background:var(--encre);color:var(--fond)}
+nav.somm a:focus-visible{outline:2px solid var(--froid);outline-offset:2px}
+
+/* ─────────────────────────────────────────────── titres de section */
+h2{font-weight:700;font-size:clamp(24px,3.4vw,31px);letter-spacing:-.02em;
+  margin:52px 0 12px;text-wrap:balance;scroll-margin-top:60px}
+h2::before{content:"";display:block;width:34px;height:3px;background:var(--froid);
+  margin-bottom:14px;border-radius:2px}
+h3{font-weight:700;font-size:19px;letter-spacing:-.012em;margin:30px 0 9px}
+h4{font-weight:600;font-size:16.5px;margin:18px 0 6px}
+
+/* ─────────────────────────────────────────────── formule */
+.formule{background:var(--carte);border:1px solid var(--trait2);
+  border-left:3px solid var(--froid);border-radius:0 var(--r) var(--r) 0;
+  padding:14px 17px;margin:16px 0;box-shadow:var(--ombre);max-width:660px}
+.formule>p:first-child{font-family:"IBM Plex Mono",monospace;font-size:17px;
+  font-weight:600;letter-spacing:-.01em;margin:0 0 9px;overflow-x:auto}
+.formule ul{list-style:none;padding:0;margin:0;display:grid;
+  grid-template-columns:auto 1fr;gap:3px 12px;font-size:14.5px;color:var(--encre2)}
+.formule li{display:contents}
+.formule li strong:first-child{font-family:"IBM Plex Mono",monospace;color:var(--encre)}
+.formule blockquote{margin:10px 0 0;padding:0;border:0;font-size:14.5px;color:var(--encre2)}
+.formule blockquote p{margin:0}
+
+/* ─────────────────────────────────────────────── point cle */
+.cle{margin:18px 0;padding:14px 17px;background:var(--carte2);
+  border-left:3px solid var(--vert);border-radius:0 var(--r) var(--r) 0;
+  font-size:17px;max-width:660px}
+.cle p:last-child{margin:0}
+.cle strong{font-weight:600}
+
+/* ─────────────────────────────────────────────── piege */
+.piege{margin:18px 0;padding:14px 17px;background:var(--carte);
+  border-left:3px solid var(--chaud);border-radius:0 var(--r) var(--r) 0;
+  font-size:16.5px;max-width:660px;box-shadow:var(--ombre)}
+.piege p:last-child{margin:0}
+.piege::before{content:"Le piège";display:block;font-family:"Bricolage Grotesque",sans-serif;
+  font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--chaud);margin-bottom:5px}
+
+/* ─────────────────────────────────────────────── etapes */
+.etapes{max-width:660px}
+.etapes ol{list-style:none;padding:0;margin:12px 0 0;counter-reset:e}
+.etapes li{position:relative;padding:8px 0 8px 38px;border-bottom:1px solid var(--trait2);
+  font-size:16.5px}
+.etapes li:last-child{border-bottom:0}
+.etapes li::before{counter-increment:e;content:counter(e);position:absolute;left:0;top:10px;
+  font-family:"IBM Plex Mono",monospace;font-size:11.5px;font-weight:600;
+  width:23px;height:23px;line-height:22px;text-align:center;
+  border:1px solid var(--trait);border-radius:50%;color:var(--encre2)}
+
+/* ─────────────────────────────────────────────── mission */
+.mission{margin:22px 0;padding:15px 18px;background:var(--carte2);
+  border-radius:var(--r);font-size:16px;max-width:660px}
+.mission>p:first-child strong{font-family:"Bricolage Grotesque",sans-serif;font-size:12.5px;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--encre2)}
+.mission p:last-child{margin:0}
+
+/* ─────────────────────────────────────────────── figures */
+figure{margin:22px 0;max-width:760px}
+figure img{display:block;width:100%;height:auto;border-radius:var(--r);
+  border:1px solid var(--trait2);background:#fff}
+figcaption{margin-top:8px;font-size:14px;color:var(--encre2);
+  font-family:"Bricolage Grotesque",sans-serif}
+figure.memo{max-width:420px}
+figure.schema{max-width:760px}
+figure.schema .dessin svg{display:block;width:100%;height:auto;
+  border:1px solid var(--trait2);border-radius:var(--r);background:var(--carte)}
+.leg-schema{margin:8px 0 0;font-size:14.5px;color:var(--encre2)}
+.leg-schema b{color:var(--encre);font-weight:600}
+figure.schema svg text,.outil svg text{paint-order:stroke;stroke:var(--carte);
+  stroke-width:4px;stroke-linejoin:round}
+.s-nom{font-family:"Bricolage Grotesque",sans-serif;font-size:11.5px;
+  fill:var(--encre2)}
+.s-pet{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--encre2)}
+.s-lab{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;
+  fill:var(--encre)}
+.s-tit{font-family:"Bricolage Grotesque",sans-serif;font-size:10.5px;font-weight:700;
+  letter-spacing:.14em;fill:var(--trait)}
+figure.memo img{border:0;background:transparent}
+
+/* ─────────────────────────────────────────────── replis */
+.replis{margin:26px 0}
+.replis>.chapeau{font-family:"Bricolage Grotesque",sans-serif;font-size:12px;font-weight:700;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--encre2);
+  display:flex;align-items:center;gap:12px;margin-bottom:12px;max-width:660px}
+.replis>.chapeau::after{content:"";flex:1;height:1px;background:var(--trait)}
+details.appro{background:var(--carte);border:1px solid var(--trait2);border-radius:var(--r);
+  margin-bottom:9px;box-shadow:var(--ombre);overflow:hidden;max-width:660px}
+details.appro>summary{cursor:pointer;list-style:none;padding:13px 17px;
+  display:flex;gap:11px;align-items:flex-start}
+details.appro>summary::-webkit-details-marker{display:none}
+details.appro>summary:focus-visible{outline:2px solid var(--froid);outline-offset:-2px}
+.niv{flex:none;margin-top:4px;width:9px;height:9px;border-radius:50%;background:var(--tiede)}
+details.appro.be .niv{background:var(--chaud)}
+.titre-appro{flex:1;font-family:"Bricolage Grotesque",sans-serif;font-weight:600;
+  font-size:16.5px;letter-spacing:-.01em}
+.etiq{flex:none;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--tiede);padding-top:4px}
+details.appro.be .etiq{color:var(--chaud)}
+.chev{flex:none;color:var(--encre2);transition:transform .18s;padding-top:1px}
+details[open]>summary .chev{transform:rotate(90deg)}
+.corps{padding:0 17px 16px;font-size:16.5px}
+.corps>*:first-child{margin-top:0}
+.corps>*:last-child{margin-bottom:0}
+@media (prefers-reduced-motion:reduce){.chev{transition:none}}
+
+/* ─────────────────────────────────────────────── tableaux */
+.tbl,.corps table,.col table{max-width:100%}
+table{border-collapse:collapse;width:100%;font-size:15px;margin:14px 0}
+th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--trait2);
+  vertical-align:top}
+th{font-family:"Bricolage Grotesque",sans-serif;font-size:11.5px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--encre2);
+  border-bottom:1.5px solid var(--trait)}
+tbody tr:last-child td{border-bottom:0}
+.enveloppe-tbl{overflow-x:auto;max-width:760px;margin:14px 0}
+.enveloppe-tbl table{margin:0}
+
+/* ─────────────────────────────────────────────── quiz */
+.quiz{margin:22px 0;max-width:660px;background:var(--carte);border:1px solid var(--trait2);
+  border-radius:var(--r);padding:16px 18px;box-shadow:var(--ombre)}
+.quiz>.chapeau{font-family:"Bricolage Grotesque",sans-serif;font-size:11.5px;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--vert);margin-bottom:12px}
+.qq{padding:11px 0;border-bottom:1px solid var(--trait2)}
+.qq:last-of-type{border-bottom:0}
+.qq p{margin:0 0 8px;font-size:16.5px}
+.qq .choix{display:flex;flex-wrap:wrap;gap:7px}
+.qq button{font-family:"IBM Plex Mono",monospace;font-size:14px;padding:5px 12px;
+  border:1px solid var(--trait);border-radius:var(--r);background:transparent;
+  color:var(--encre);cursor:pointer}
+.qq button:hover{background:var(--carte2)}
+.qq button.juste{background:var(--vert);border-color:var(--vert);color:#fff}
+.qq button.faux{background:var(--chaud);border-color:var(--chaud);color:#fff}
+.qq button:disabled{cursor:default;opacity:.75}
+.score{margin-top:14px;font-family:"IBM Plex Mono",monospace;font-size:14px;color:var(--encre2)}
+
+/* ─────────────────────────────────────────────── outils */
+.outil{margin:28px 0;background:var(--carte);border:1px solid var(--trait);
+  border-radius:var(--r);box-shadow:var(--ombre);overflow:hidden}
+.outil>.tete-outil{padding:15px 20px 13px;border-bottom:1px solid var(--trait2);
+  background:var(--carte2)}
+.outil .k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--vert);margin:0 0 5px}
+.outil h4{margin:0;font-size:19px;font-weight:700}
+.outil .tete-outil p{margin:6px 0 0;font-size:15px;color:var(--encre2);max-width:64ch}
+.outil .dedans{padding:17px 20px 19px}
+.g2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px}
+@media (max-width:760px){.g2{grid-template-columns:1fr}}
+.chaine{font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--vert);
+  margin:0 0 10px}
+
+.champ{display:grid;grid-template-columns:1fr auto;gap:2px 10px;align-items:baseline;
+  padding:7px 0;border-bottom:1px solid var(--trait2)}
+.champ:last-child{border-bottom:0}
+.champ label{font-size:15px}
+.champ .v{font-family:"IBM Plex Mono",monospace;font-size:14px;font-weight:600;
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.champ input[type=range]{grid-column:1/3;width:100%;margin:5px 0 0;accent-color:var(--froid)}
+.champ select{grid-column:1/3;width:100%;margin-top:5px}
+input[type=number],select{font-family:"IBM Plex Mono",monospace;font-size:14px;
+  padding:5px 7px;border:1px solid var(--trait);border-radius:var(--r);
+  background:var(--carte);color:var(--encre);max-width:100%}
+input[type=number]{width:84px;text-align:right}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--froid);
+  outline-offset:1px}
+.bt{font-family:"Bricolage Grotesque",sans-serif;font-size:13.5px;font-weight:600;
+  padding:6px 13px;border:1px solid var(--trait);border-radius:var(--r);
+  background:transparent;color:var(--encre2);cursor:pointer}
+.bt:hover{background:var(--carte2);color:var(--encre)}
+.bt.p{background:var(--encre);color:var(--carte);border-color:var(--encre)}
+
+.lignec{display:grid;grid-template-columns:1fr 84px 74px 30px;gap:8px;align-items:center;
+  padding:6px 0;border-bottom:1px solid var(--trait2)}
+.lignec .rr{font-family:"IBM Plex Mono",monospace;font-size:13.5px;text-align:right;
+  font-variant-numeric:tabular-nums;color:var(--encre2)}
+.lignec .xx{border:0;background:transparent;color:var(--encre2);cursor:pointer;
+  font-size:17px;line-height:1;padding:2px 5px;border-radius:var(--r)}
+.lignec .xx:hover{background:var(--carte2);color:var(--chaud)}
+.entete-c{display:grid;grid-template-columns:1fr 84px 74px 30px;gap:8px;
+  font-family:"Bricolage Grotesque",sans-serif;font-size:11px;font-weight:700;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--encre2);
+  padding-bottom:6px;border-bottom:1.5px solid var(--trait)}
+.entete-c span:nth-child(2),.entete-c span:nth-child(3){text-align:right}
+@media (max-width:560px){
+  .lignec{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
+  .lignec select{flex:1 1 100%}
+  .lignec .rr{flex:0 0 auto;text-align:left}
+  .lignec input[type=number]{flex:0 0 80px;width:80px}
+  .lignec .xx{margin-left:auto}
+  .entete-c{display:none}
+}
+
+.res{margin-top:15px;padding:13px 16px;background:var(--carte2);border-radius:var(--r)}
+.res .gros{display:flex;flex-wrap:wrap;gap:8px 24px;align-items:baseline;
+  font-family:"IBM Plex Mono",monospace;font-variant-numeric:tabular-nums}
+.res .gros b{font-family:"Bricolage Grotesque",sans-serif;font-size:10.5px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--encre2);margin-right:7px}
+.res .gros span{font-size:19px;font-weight:600}
+.res p{margin:9px 0 0;font-size:14.5px;color:var(--encre2)}
+.barres{margin-top:13px;display:flex;flex-direction:column;gap:5px}
+.barre{display:grid;grid-template-columns:130px 1fr auto;gap:10px;align-items:center;
+  font-size:14px}
+.barre .b{height:14px;border-radius:2px;background:var(--froid);min-width:2px}
+.barre .p{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--encre2);
+  font-variant-numeric:tabular-nums;white-space:nowrap}
+.barre .l{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:520px){.barre{grid-template-columns:96px 1fr auto;font-size:13px}}
+/* des la tablette, la place ne manque pas : plus de libelle tronque */
+@media (min-width:620px){.barre{grid-template-columns:198px 1fr auto}}
+
+/* ─────────────────────────────────────────────── symboles */
+.grille-sym{display:grid;grid-template-columns:repeat(auto-fill,minmax(124px,1fr));
+  gap:8px}
+.case-sym{display:flex;flex-direction:column;align-items:center;gap:5px;
+  padding:9px 6px;border:1px solid var(--trait2);border-radius:var(--r);
+  background:var(--carte);cursor:pointer;color:var(--encre2)}
+.case-sym:hover{border-color:var(--trait);background:var(--carte2)}
+.case-sym.on{border-color:var(--encre);background:var(--carte2);color:var(--encre)}
+.case-sym span{font-family:"Bricolage Grotesque",sans-serif;font-size:11.5px;
+  text-align:center;line-height:1.25}
+.sym{width:64px;height:44px;flex:none}
+.s-sym{font-family:"IBM Plex Mono",monospace;font-size:13px;font-weight:600;
+  fill:var(--encre)}
+.s-rep{font-family:"IBM Plex Mono",monospace;font-size:12px;font-weight:600;
+  fill:var(--encre)}
+@media (pointer:coarse){.case-sym{padding:13px 6px}}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   TABLETTE ET ECRANS TACTILES
+   Les eleves lisent ces pages sur tablette. Deux corrections :
+   la glissiere, inattrapable au doigt tant qu'on garde la piste par defaut,
+   et les cibles tactiles, qui doivent faire 44 px.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* la glissiere, sur tous les ecrans : piste et curseur dessines */
+input[type=range]{
+  -webkit-appearance:none;appearance:none;background:transparent;
+  cursor:pointer;height:22px;
+}
+input[type=range]::-webkit-slider-runnable-track{
+  height:6px;border-radius:3px;background:var(--trait2);
+}
+input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;width:20px;height:20px;border-radius:50%;
+  background:var(--froid);margin-top:-7px;box-shadow:0 1px 3px rgba(0,0,0,.25);
+}
+input[type=range]::-moz-range-track{
+  height:6px;border-radius:3px;background:var(--trait2);
+}
+input[type=range]::-moz-range-thumb{
+  width:20px;height:20px;border:0;border-radius:50%;background:var(--froid);
+  box-shadow:0 1px 3px rgba(0,0,0,.25);
+}
+
+/* en portrait de tablette, deux colonnes dans un outil sont trop etroites */
+@media (max-width:900px){
+  .g2{grid-template-columns:1fr}
+}
+
+@media (pointer:coarse){
+  body{font-size:18px}
+  .bt,.seg button,.qq button{padding:12px 18px;font-size:15px}
+  .qq .choix{gap:10px}
+  .qq p{font-size:17.5px}
+  details.appro>summary{padding:16px 18px}
+  .titre-appro{font-size:17.5px}
+  nav.somm .in{gap:6px;padding:11px 0}
+  nav.somm a{padding:11px 15px;font-size:14px}
+  input[type=number],select{padding:10px;font-size:15.5px}
+  input[type=number]{width:96px}
+  .lignec,.entete-c{grid-template-columns:1fr 96px 88px 42px;gap:10px}
+  .lignec .xx{font-size:22px;padding:7px 11px}
+  .champ{padding:10px 0}
+  .champ label{font-size:16px}
+  .res .gros{gap:10px 22px}
+  input[type=range]{height:36px}
+  input[type=range]::-webkit-slider-runnable-track{height:8px;border-radius:4px}
+  input[type=range]::-webkit-slider-thumb{width:30px;height:30px;margin-top:-11px}
+  input[type=range]::-moz-range-track{height:8px;border-radius:4px}
+  input[type=range]::-moz-range-thumb{width:30px;height:30px}
+}
+
+/* ─────────────────────────────────────────────── pied */
+.pied{margin-top:56px;padding-top:18px;border-top:2px solid var(--encre);
+  color:var(--encre2);font-size:15.5px;max-width:660px}
+.pied strong{color:var(--encre)}
+
+/* ─────────────────────────────────────────────── exercices
+   L'exercice dit si c'est juste et rappelle la methode. Il ne montre jamais la
+   valeur attendue ni la redaction : le corrige reste au polycopie. */
+.exo{margin:24px 0;max-width:660px;background:var(--carte);
+  border:1px solid var(--trait2);border-left:3px solid var(--vert);
+  border-radius:var(--r);padding:17px 19px 19px;box-shadow:var(--ombre)}
+.exo>.k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--vert);margin:0 0 6px;font-weight:600}
+.exo h4{margin:0 0 9px;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.exo .enonce>*:last-child{margin-bottom:0}
+.exo .enonce img{border-radius:var(--r);margin:10px 0}
+.exo.fait{border-left-color:var(--froid)}
+
+.exo .saisie{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin:14px 0 0}
+.exo input[type=text]{font-family:"IBM Plex Mono",monospace;font-size:16px;
+  color:var(--encre);background:var(--fond);border:1px solid var(--trait);
+  border-radius:var(--r);padding:9px 12px;width:170px}
+.exo textarea{width:100%;font-family:Newsreader,Georgia,serif;font-size:16.5px;
+  line-height:1.5;color:var(--encre);background:var(--fond);
+  border:1px solid var(--trait);border-radius:var(--r);padding:11px 13px;resize:vertical}
+.exo input:focus,.exo textarea:focus{outline:2px solid var(--vert);outline-offset:1px;
+  border-color:var(--vert)}
+.exo .unite{font-family:"IBM Plex Mono",monospace;font-size:13px;color:var(--encre2)}
+.exo .btn{font-family:"Bricolage Grotesque",sans-serif;font-size:13.5px;font-weight:600;
+  cursor:pointer;color:var(--fond);background:var(--vert);border:1px solid var(--vert);
+  border-radius:var(--r);padding:9px 16px}
+.exo .btn:hover{filter:brightness(1.08)}
+.exo .btn.creux{color:var(--encre2);background:none;border-color:var(--trait)}
+.exo .btn.creux:hover{color:var(--vert);border-color:var(--vert);filter:none}
+.exo .btn:focus-visible{outline:2px solid var(--froid);outline-offset:2px}
+
+.exo .verdict{margin:11px 0 0;font-size:15.5px;color:var(--encre2);min-height:1px}
+.exo .verdict.juste{color:var(--vert);font-weight:600}
+.exo .verdict.faux{color:var(--chaud);font-weight:600}
+.exo .verdict.deja{color:var(--froid)}
+
+/* l'indice donne LA METHODE, jamais le resultat */
+.exo .indice{margin:12px 0 0;padding:11px 14px;border-radius:var(--r);
+  background:var(--carte2);border-left:2px solid var(--tiede);
+  font-size:15.5px;color:var(--encre2)}
+.exo .indice::before{content:"Indice — ";font-family:"Bricolage Grotesque",sans-serif;
+  font-weight:700;color:var(--tiede)}
+
+/* les points a verifier disent QUOI relire dans sa reponse, pas quoi ecrire */
+.exo .verifier{margin:14px 0 0;padding:12px 14px;list-style:none;border-radius:var(--r);
+  background:var(--carte2)}
+.exo .verifier li{display:flex;gap:9px;align-items:flex-start;font-size:15.5px;
+  padding:5px 0;color:var(--encre2)}
+.exo .verifier input{margin-top:4px;width:16px;height:16px;accent-color:var(--vert);flex:none}
+
+/* ──────────────────────────── series d'entrainement
+   Le tableau a remplir du polycopie, en deux colonnes d'items. Il travaille,
+   il ne corrige pas : une croix sur l'item faux, jamais la valeur attendue. */
+.serie{margin:22px 0;max-width:660px;background:var(--carte);
+  border:1px solid var(--trait2);border-left:3px solid var(--tiede);
+  border-radius:var(--r);padding:16px 18px 18px;box-shadow:var(--ombre)}
+.serie>.k{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--tiede);margin:0 0 6px;font-weight:600}
+.serie h4{margin:0 0 8px;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.serie .enonce>*:last-child{margin-bottom:0}
+.serie.fait{border-left-color:var(--froid)}
+
+.serie ol.items{display:grid;grid-template-columns:1fr 1fr;gap:6px 22px;
+  margin:13px 0 0;padding:0;list-style:none;counter-reset:it}
+.serie ol.items.larges{grid-template-columns:1fr}
+.serie ol.items li{display:flex;align-items:center;justify-content:space-between;
+  gap:10px;padding:6px 8px;border-radius:var(--r);border:1px solid transparent}
+.serie ol.items li .q{font-size:16px;color:var(--encre)}
+.serie ol.items li.juste{border-color:var(--vert);background:var(--carte2)}
+.serie ol.items li.faux{border-color:var(--chaud);background:var(--carte2)}
+.serie .rep{display:flex;align-items:center;gap:6px;flex:none}
+.serie input[type=text]{font-family:"IBM Plex Mono",monospace;font-size:15.5px;
+  color:var(--encre);background:var(--fond);border:1px solid var(--trait);
+  border-radius:var(--r);padding:6px 9px;width:88px;text-align:right}
+.serie input:focus{outline:2px solid var(--vert);outline-offset:1px;
+  border-color:var(--vert)}
+/* une reponse en mots a besoin de place, et se lit de gauche a droite */
+.serie input.texte{width:138px;text-align:left;font-size:14.5px}
+.serie .unite{font-family:"IBM Plex Mono",monospace;font-size:12.5px;
+  color:var(--encre2);min-width:1.5em}
+.serie .marque{font-size:15px;font-weight:700;width:1em;text-align:center}
+.serie li.juste .marque{color:var(--vert)}
+.serie li.faux .marque{color:var(--chaud)}
+
+.serie .barre{display:flex;flex-wrap:wrap;gap:9px;margin:15px 0 0}
+.serie .btn{font-family:"Bricolage Grotesque",sans-serif;font-size:13.5px;font-weight:600;
+  cursor:pointer;color:var(--fond);background:var(--tiede);border:1px solid var(--tiede);
+  border-radius:var(--r);padding:9px 16px}
+.serie .btn:hover{filter:brightness(1.08)}
+.serie .btn.creux{color:var(--encre2);background:none;border-color:var(--trait)}
+.serie .btn.creux:hover{color:var(--tiede);border-color:var(--tiede);filter:none}
+.serie .btn:focus-visible{outline:2px solid var(--froid);outline-offset:2px}
+.serie .verdict{margin:11px 0 0;font-size:15.5px;color:var(--encre2);min-height:1px}
+.serie .verdict.juste{color:var(--vert);font-weight:600}
+.serie .verdict.faux{color:var(--chaud);font-weight:600}
+.serie .verdict.deja{color:var(--froid)}
+.serie .indice{margin:12px 0 0;padding:11px 14px;border-radius:var(--r);
+  background:var(--carte2);border-left:2px solid var(--tiede);
+  font-size:15.5px;color:var(--encre2)}
+.serie .indice::before{content:"Indice — ";font-family:"Bricolage Grotesque",sans-serif;
+  font-weight:700;color:var(--tiede)}
+
+/* Sous 700 px la grille passe a une colonne : deux items cote a cote y
+   reduiraient la case de saisie a rien. */
+@media (max-width:700px){
+  .serie ol.items{grid-template-columns:1fr;gap:4px}
+}
+@media (max-width:560px){
+  .serie{padding:14px 15px 16px}
+  .serie input[type=text]{width:76px;padding:9px}
+  .serie .btn{padding:12px 18px;font-size:15px}
+}
+
+@media (max-width:560px){
+  .exo{padding:15px 16px 17px}
+  .exo input[type=text]{width:100%}
+  .exo .saisie{gap:11px}
+  .exo .btn{padding:12px 18px;font-size:15px}
+}
+
+/* ── page de formation du professeur : elle ne se diffuse pas ──
+   L'encart rouge encombrait a l'ecran, ou l'on sait deja ou l'on est. Il ne
+   reste que sur le papier : c'est la feuille imprimee qui se retrouve entre
+   des mains auxquelles elle n'etait pas destinee, jamais l'onglet du
+   navigateur. La mention discrete du pied de page, elle, est sur les deux. */
+.bandeau-prof{display:none}
+@media print{
+  .bandeau-prof{display:block;margin:0 0 14px;padding:6px 10px;
+    border:2px solid #000;color:#000;background:#fff;font-weight:600;
+    font-size:11px;letter-spacing:.06em;text-transform:uppercase;
+    text-align:center}}
+
+/* ══════════════════════════════════════════════════════ ecrans larges
+   Mesure faite au navigateur : a 1600 px de large, une page tenait dans
+   1060 px dont 660 utiles pour les blocs — un tableau de repli faisait
+   624 px pendant que 270 px restaient vides de chaque cote. On elargit
+   donc ce qui n'est PAS du texte courant : replis, tableaux, figures.
+   La mesure de lecture, elle, ne bouge pas : un paragraphe de mille
+   pixels ne se lit plus, et c'est pour cela que .corps est recadre --
+   sans lui, la prose d'un repli elargi suivrait le repli.
+   Les pages de formation (public: prof) gagnent 60 px de mesure en plus :
+   elles se lisent d'affilee, a un bureau, jamais sur un telephone. */
+@media (min-width:1180px){
+  .page{max-width:min(1240px,95vw)}
+  details.appro{max-width:min(1000px,95vw)}
+  .corps>p,.corps>ul,.corps>ol,.corps>h4,.corps>blockquote{max-width:660px}
+  .enveloppe-tbl,figure,figure.schema{max-width:900px}
+  .page[data-public="prof"]>p,.page[data-public="prof"]>h2,
+  .page[data-public="prof"]>h3,.page[data-public="prof"]>h4,
+  .page[data-public="prof"]>ul,.page[data-public="prof"]>ol,
+  .page[data-public="prof"]>blockquote,
+  .page[data-public="prof"] .corps>p,
+  .page[data-public="prof"] .corps>ul,
+  .page[data-public="prof"] .corps>ol{max-width:720px}
+}
+
+/* ─────────────────────────────────────────────── le bilan d'une epreuve
+   Il n'apparait que sur une page « epreuve: oui ». Il compte, il ne corrige
+   pas : aucune valeur attendue n'y figure. */
+.bilan-epreuve{position:sticky;top:0;z-index:5;display:flex;align-items:center;
+  gap:14px;margin:26px 0 18px;padding:11px 16px;border-radius:var(--r);
+  background:var(--carte);border:1px solid var(--trait2);
+  box-shadow:var(--ombre);max-width:660px}
+.bilan-epreuve>i{flex:1;display:block;height:7px;border-radius:4px;
+  background:var(--trait2);overflow:hidden}
+.bilan-epreuve>i>b{display:block;height:100%;width:0;border-radius:4px;
+  background:var(--vert);transition:width .3s ease}
+.bilan-epreuve .compte{font-family:"Bricolage Grotesque",sans-serif;
+  font-size:13px;font-weight:600;letter-spacing:.02em;color:var(--encre2);
+  white-space:nowrap}
+@media (max-width:560px){
+  .bilan-epreuve{flex-direction:column;align-items:stretch;gap:8px}
+  .bilan-epreuve .compte{white-space:normal}
+}

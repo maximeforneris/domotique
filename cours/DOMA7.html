@@ -1,0 +1,149 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>A7 · CEM, couplages, protections</title>
+<link rel="stylesheet" href="../assets/kit.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/site.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/domotique.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/vivant.css?v=fc1a8623">
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/DOMA7" data-rang="2">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 2 · Communiquer</span><span class="fleches"><a class="fleche" href="DOMA6.html" rel="prev" title="A6 · réseau IP, adressage, PoE" aria-label="A6 · réseau IP, adressage, PoE">&lsaquo;</a><a class="fleche" href="DOMA8.html" rel="next" title="A8 : VDI et certification" aria-label="A8 : VDI et certification">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA7">Marquer comme lu</button></div>
+<header class="tete">
+  <span class="num" aria-hidden="true">A7</span>
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>La CEM<span>en courant faible</span></h1>
+  </div>
+  <p class="accroche">Un équipement de courant faible qui se comporte mal a souvent sa cause ailleurs, dans un câble voisin ou une terre lointaine. La séance a appris à nommer la source, le couplage et la victime, puis à choisir la protection qui agit sur le bon terme.</p>
+  <p class="contenu">6 questions · 4 exercices · 3 replis · 6 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag">D2-1 CEM, moyens et méthodes de protection · niveau 2</span><span class="tag n3">D1-1 Médias de communication · niveau 3</span><span class="tag n3">D2-1 Réseaux, types de câbles · niveau 3</span><span class="tag">C1-1 Distribution BT · niveau 2</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA6.html">Le réseau IP de l'immeuble et la caméra du parking</a></b><span class="ou">Semaine 6 · études · Le réseau IP du bâtiment</span><span class="car">l'activité 3 reprend cette liaison de 85 m, son fourreau et son commutateur.</span></li><li><b><a href="DOMA1.html">Les médias et la paire torsadée</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">la protection d'une liaison commence par le choix du câble, et la fibre revient ici comme remède.</span></li><li><b>La tension induite dans une boucle</b><span class="car">un courant variable crée un champ magnétique, et ce champ induit une tension dans toute boucle qu'il traverse.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#les-quatre-modes-de-couplage">Les quatre modes de couplage</a><a href="#proteger-par-le-cablage">Protéger par le câblage</a><a href="#deux-terres-une-liaison">Deux terres, une liaison</a><a href="#diagnostiquer">Diagnostiquer</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+<p>La <strong>compatibilité électromagnétique</strong>, ou CEM, est l’aptitude d’un équipement à fonctionner correctement dans son environnement sans perturber ce qui l’entoure. Un bâtiment en est un environnement exigeant : moteurs, variateurs, éclairage, et parfois la foudre.</p>
+<div class="cle">
+<p>Toute perturbation suppose trois termes : une <strong>source</strong>, qui émet ; un <strong>couplage</strong>, par lequel la perturbation voyage ; une <strong>victime</strong>, dont le fonctionnement est dégradé. Supprimer un seul terme suffit.</p>
+</div>
+<figure class="schema"><div class="dessin" data-schema="deux-chaines"></div><figcaption>La source d’une perturbation se trouve le plus souvent sur la chaîne d’énergie, la victime sur la chaîne d’information. Le couplage est le chemin qui les relie malgré leur séparation.</figcaption></figure>
+<h2 id="les-quatre-modes-de-couplage">Les quatre modes de couplage</h2>
+<figure>
+<img src="img/DOMA7/fig1-quatre-couplages.png" alt="Source, couplage, victime, et les quatre modes de couplage." />
+<figcaption aria-hidden="true">Source, couplage, victime, et les quatre modes de couplage.</figcaption>
+</figure>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Mode</th>
+<th>Par quoi</th>
+<th>L’indice qui le trahit</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Par conduction</td>
+<td>un conducteur commun</td>
+<td>le défaut suit l’alimentation</td>
+</tr>
+<tr>
+<td>Capacitif</td>
+<td>le champ électrique, entre câbles voisins</td>
+<td>une grande longueur commune, une tension à fronts raides</td>
+</tr>
+<tr>
+<td>Inductif</td>
+<td>le champ magnétique, dans une boucle</td>
+<td>une forte variation de courant, une grande boucle</td>
+</tr>
+<tr>
+<td>Rayonné</td>
+<td>un champ électromagnétique, à distance</td>
+<td>le défaut suit la position de l’émetteur</td>
+</tr>
+</tbody>
+</table></div>
+<div class="piege">
+<p>Changer la victime paraît souvent la solution la plus simple. Dans un bâtiment, pourtant, la source et la victime sont imposées par le programme : c’est presque toujours sur le <strong>couplage</strong> que porte la protection.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi la surface d&#39;une boucle compte autant</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La tension induite dans une boucle est proportionnelle à la surface que le champ traverse. Deux câbles qui suivent deux trajets distincts forment une boucle de plusieurs mètres carrés ; reposés côte à côte, ils n’en forment plus qu’une de quelques centièmes de mètre carré.</p>
+<p>C’est pour cette raison qu’un conducteur aller et son conducteur retour cheminent toujours ensemble, et qu’une paire se torsade.</p></div></details>
+</div><h2 id="proteger-par-le-cablage">Protéger par le câblage</h2>
+<figure>
+<img src="img/DOMA7/fig2-paire-torsadee.png" alt="Deux fils parallèles et deux fils torsadés dans le même champ." />
+<figcaption aria-hidden="true">Deux fils parallèles et deux fils torsadés dans le même champ.</figcaption>
+</figure>
+<div class="etapes">
+<ol type="1">
+<li>Garder les paires torsadées jusqu’au raccordement : un détorsadage de quelques centimètres supprime la compensation.</li>
+<li>Faire cheminer séparément puissance et courants faibles : chemins distincts, cloison métallique, ou à défaut une distance de l’ordre de 30 cm.</li>
+<li>Croiser à angle droit.</li>
+<li>Raccorder les écrans sur tout leur pourtour, par un collier ou un presse-étoupe prévu pour cet usage.</li>
+<li>Relier les masses entre elles : chemins de câbles continus, liaisons équipotentielles.</li>
+</ol>
+</div>
+<figure>
+<img src="img/DOMA7/fig4-blindage.png" alt="Trois raccordements d’écran : un seul est efficace en haute fréquence." />
+<figcaption aria-hidden="true">Trois raccordements d’écran : un seul est efficace en haute fréquence.</figcaption>
+</figure>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Un écran relié aux deux bouts, ou à un seul ?</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Relié à ses deux extrémités, un écran protège bien contre les perturbations de haute fréquence. Il relie aussi les masses des deux extrémités : si elles ne sont pas au même potentiel, un courant à 50 Hz circule en permanence dans l’écran.</p>
+<p>La réponse n’est pas de déconnecter un côté, ce qui fait perdre l’essentiel de la protection. Elle consiste à relier les masses entre elles par un réseau maillé, de façon qu’elles restent au même potentiel.</p></div></details>
+</div><h2 id="deux-terres-une-liaison">Deux terres, une liaison</h2>
+<figure>
+<img src="img/DOMA7/fig5-parking.png" alt="La liaison de la caméra du parking, du dossier des ouvrages exécutés." />
+<figcaption aria-hidden="true">La liaison de la caméra du parking, du dossier des ouvrages exécutés.</figcaption>
+</figure>
+<p>Le câble de la caméra partage 70 m de fourreau avec le câble de l’éclairage. Son écran est raccordé aux deux extrémités, et le mât est relié à une prise de terre distincte de celle de l’immeuble.</p>
+<p>Deux prises de terre distinctes ne sont jamais au même potentiel. Un conducteur qui les relie, écran de câble ou conducteur de protection, forme une <strong>boucle de masse</strong> et devient le chemin des surtensions de foudre.</p>
+<div class="cle">
+<p>Entre deux bâtiments, ou vers un équipement extérieur doté de sa propre terre, la solution de référence est la <strong>fibre optique</strong> : elle ne conduit aucun courant. À défaut, les masses sont reliées et chaque extrémité reçoit un <strong>parafoudre</strong>, raccordé à la masse par un conducteur très court.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">La fibre, et ce qu&#39;elle impose</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Une caméra reliée par fibre ne peut plus être alimentée par son câble. Il faut une alimentation locale, et elle doit être permanente : sur un mât d’éclairage commandé par une horloge, le circuit de l’éclairage ne convient pas.</p></div></details>
+</div><h2 id="diagnostiquer">Diagnostiquer</h2>
+<p>Un diagnostic de CEM identifie successivement la source, le couplage et la victime. Chaque essai ne fait varier <strong>qu’un seul terme</strong> : allumer la source à volonté prouve la source ; déplacer le seul câble prouve le couplage.</p>
+<figure class="memo"><img src="img/DOMA7/memo-cem.png" alt="" /></figure>
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+<div class="quiz">
+<ul>
+<li>Un défaut qui suit la position d’un talkie-walkie relève d’un couplage : <strong>rayonné</strong> | par conduction | capacitif</li>
+<li>Deux appareils sur la même prise multiple se perturbent par : <strong>conduction</strong> | rayonnement | induction</li>
+<li>La tension induite dans une boucle croît avec : <strong>sa surface</strong> | la section du câble | la tension de service du câble</li>
+<li>Un croisement entre câble de puissance et câble de bus se fait : <strong>à angle droit</strong> | en biais | en parallèle sur un mètre</li>
+<li>Un écran se raccorde à la masse : <strong>sur tout son pourtour</strong> | par un fil de 10 cm | nulle part</li>
+<li>Entre deux bâtiments dotés de terres distinctes, la liaison de référence est : <strong>la fibre optique</strong> | un câble F/UTP | un câble téléphonique</li>
+</ul>
+</div>
+<h2 id="s-entrainer">S’entraîner</h2>
+<section class="exo" id="DOMA7-e1" data-exo="DOMA7-e1" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhga29qdGp2eC41Nnhga3RqdngveGB4PDUzKXgn"><p class="k">Exercice · D2-1</p><h4>La boucle d’un détecteur</h4><div class="enonce">
+
+<p>Le câble d’un détecteur et son câble d’alimentation suivent deux trajets qui forment une boucle de <strong>5 m sur 1,5 m</strong>. Après reprise, ils cheminent côte à côte à <strong>1 cm</strong> l’un de l’autre sur les 5 m.</p>
+<p>Par combien la tension induite est-elle divisée ?</p>
+</div><div class="indice" hidden>la tension induite est proportionnelle à la surface. Calculer les deux surfaces dans la même unité, puis leur rapport.</div></section>
+<section class="exo" id="DOMA7-e2" data-exo="DOMA7-e2" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4OTsqOzkzLjM8eHZ4OTUvKjY7PT96OTsqOzkzLjM8eHZ4Nj96OTUvKjY7PT96OTsqOzkzLjM8eHZ4Kjsoejk1Lyo2Oz0/ejk7Kjs5My4zPHgHJw=="><p class="k">Exercice · D2-1</p><h4>Le mode de couplage</h4><div class="enonce">
+
+<p>Un câble de sonde de température chemine sur 30 m contre le câble de sortie d’un variateur de vitesse, dans le même chemin de câbles. La mesure devient instable lorsque le moteur tourne.</p>
+<p>Quel est le mode de couplage principal ?</p>
+</div><div class="indice" hidden>relever dans l’énoncé la disposition des câbles et la nature de la source, puis les rapprocher des indices de chacun des quatre modes.</div></section>
+<section class="exo" id="DOMA7-e3" data-exo="DOMA7-e3" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4OTUvKjY7PT94dng2P3o5NS8qNjs9P3h2eCkvKHo2P3o5NS8qNjs9P3gHJw=="><p class="k">Exercice · D2-1</p><h4>Le terme visé</h4><div class="enonce">
+
+<p>Pour supprimer une perturbation, un technicien fait passer le câble de bus dans un autre chemin de câbles.</p>
+<p>Sur quel terme de la perturbation cette mesure agit-elle ?</p>
+</div><div class="indice" hidden>se demander lequel des trois termes la mesure modifie, et lesquels elle laisse en place.</div></section>
+<section class="exo" id="DOMA7-e4" data-exo="DOMA7-e4" data-type="justification" data-savoir="D2-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · D2-1</p><h4>Déconnecter l’écran ?</h4><div class="enonce">
+
+<p>Un courant permanent à 50 Hz circule dans l’écran d’une liaison entre deux bâtiments. Un collègue propose de déconnecter l’écran d’un côté. Répondre en trois ou quatre lignes.</p>
+</div><div class="indice" hidden>une mesure se juge sur ce qu’elle corrige et sur ce qu’elle dégrade.</div><ul class="verifier" hidden><li>J’ai expliqué l’origine du courant par la différence de potentiel entre deux terres</li><li>J’ai dit ce que la déconnexion corrige</li><li>J’ai dit ce qu’elle dégrade en haute fréquence</li><li>J’ai proposé une solution de référence</li></ul></section>
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+<p>La séance suivante traite le câblage VDI : catégories, classes et architecture. La diaphonie, rencontrée ici au raccordement d’une paire détorsadée, y devient une valeur mesurée et comparée à une limite.</p>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA6.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A6 · réseau IP, adressage, PoE</span></a><a class="ap" href="DOMA8.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">A8 : VDI et certification</span></a></div><a class="vers-recap" href="SEQ2.html">Préparation au contrôle</a></nav>
+<p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=fc1a8623"></script>
+<script src="../assets/site.js?v=fc1a8623"></script>
+<script src="../assets/vivant.js?v=fc1a8623"></script>

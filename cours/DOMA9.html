@@ -1,0 +1,167 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>A9 : téléphonie IP et multimédia</title>
+<link rel="stylesheet" href="../assets/kit.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/site.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/domotique.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/vivant.css?v=fc1a8623">
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/DOMA9" data-rang="2">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 2 · Communiquer</span><span class="fleches"><a class="fleche" href="DOMA8.html" rel="prev" title="A8 : VDI et certification" aria-label="A8 : VDI et certification">&lsaquo;</a><a class="fleche" href="DOMA10.html" rel="next" title="A10 · protocoles et passerelles" aria-label="A10 · protocoles et passerelles">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA9">Marquer comme lu</button></div>
+<header class="tete">
+  <span class="num" aria-hidden="true">A9</span>
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>La voix et l'image<span>sur le réseau du bâtiment</span></h1>
+  </div>
+  <p class="accroche">Le téléphone est devenu un équipement du réseau, alimenté par le câble. La séance a établi ce qu'un appel coûte en débit, ce qu'il exige pour rester audible, et comment le son et l'image empruntent la même infrastructure.</p>
+  <p class="contenu">1 outil · 6 questions · 4 exercices · 4 replis · 6 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag n3">D2-3 Téléphonie numérique et IP · niveau 3</span><span class="tag n3">D2-2 VDI, débit et sécurité · niveau 3</span><span class="tag n3">B8-2 Installation multimédia · niveau 3</span><span class="tag">D2-1 Réseaux, aspect logiciel · niveau 2</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA8.html">Le lien permanent et la baie de brassage</a></b><span class="ou">Semaine 8 · études · Du câble au procès-verbal</span><span class="car">chaque poste IP se raccorde à une prise certifiée, brassée vers un port de commutateur.</span></li><li><b><a href="DOMA1.html">L'Ethernet cuivre et le PoE</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">le poste IP est alimenté par son câble réseau, comme la caméra de la séance A1.</span></li><li><b>Les bits et les octets</b><span class="car">un octet vaut 8 bits, et tout le calcul du débit d'un appel passe de l'un à l'autre.</span></li><li><b>La puissance électrique</b><span class="car">la relation P = U² / Z sert à dimensionner la ligne 100 V d'une diffusion sonore.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#le-telephone-devient-un-equipement-du-reseau">Le téléphone devient un équipement du réseau</a><a href="#un-appel-de-la-sonnerie-au-raccroche">Un appel, de la sonnerie au raccroché</a><a href="#ce-que-pese-un-appel">Ce que pèse un appel</a><a href="#rester-audible">Rester audible</a><a href="#le-son-et-l-image">Le son et l’image</a><a href="#essayer">Essayer</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+<p>Une entreprise remplace son autocommutateur et ses postes analogiques par un <strong>IPBX</strong>, des <strong>postes IP</strong> alimentés par le réseau et un raccordement à l’opérateur par <strong>trunk SIP</strong>. La séance a suivi ce projet, puis la diffusion du son et de l’image dans le même immeuble.</p>
+<figure>
+<img src="img/DOMA9/fig1-architecture-toip.png" alt="L’installation téléphonique IP d’un plateau de bureaux." />
+<figcaption aria-hidden="true">L’installation téléphonique IP d’un plateau de bureaux.</figcaption>
+</figure>
+<h2 id="le-telephone-devient-un-equipement-du-reseau">Le téléphone devient un équipement du réseau</h2>
+<div class="cle">
+<p>L’<strong>IPBX</strong> est un serveur d’appels : il enregistre les postes, établit et libère les appels, gère renvois et messagerie. Le <strong>trunk SIP</strong> le raccorde à l’opérateur avec un nombre fixé de canaux simultanés.</p>
+</div>
+<p>Chaque poste IP est alimenté par le <strong>commutateur PoE</strong>. Le commutateur réserve à chaque port la puissance de la classe de l’équipement, et la somme ne doit pas dépasser son <strong>budget PoE</strong>.</p>
+<div class="piege">
+<p>Un poste analogique était alimenté par la ligne, et fonctionnait pendant une coupure de courant. <strong>Un poste IP s’arrête avec son commutateur</strong> : commutateur, IPBX et routeur doivent être secourus par un onduleur.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Les équipements du bâtiment qui attendent une ligne analogique</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La téléalarme d’un ascenseur, un transmetteur d’alarme ou un ancien portier attendent une ligne analogique. Une <strong>passerelle</strong> leur en fournit une, raccordée à l’IPBX.</p>
+<p>Ces équipements portent souvent une fonction de sécurité : leur raccordement et leur secours se vérifient avant la mise en service, et non après.</p></div></details>
+</div><h2 id="un-appel-de-la-sonnerie-au-raccroche">Un appel, de la sonnerie au raccroché</h2>
+<figure>
+<img src="img/DOMA9/fig3-appel-sip.png" alt="SIP établit et libère l’appel ; la voix passe ensuite de poste à poste en RTP." />
+<figcaption aria-hidden="true">SIP établit et libère l’appel ; la voix passe ensuite de poste à poste en RTP.</figcaption>
+</figure>
+<p>Le protocole <strong>SIP</strong> établit l’appel, puis le libère. Il ne transporte pas la voix : pendant la conversation, la voix circule en paquets <strong>RTP</strong>, directement d’un poste à l’autre dans le bâtiment.</p>
+<h2 id="ce-que-pese-un-appel">Ce que pèse un appel</h2>
+<figure>
+<img src="img/DOMA9/fig2-trame-voix.png" alt="Une trame de voix : les en-têtes, puis 20 ms de parole." />
+<figcaption aria-hidden="true">Une trame de voix : les en-têtes, puis 20 ms de parole.</figcaption>
+</figure>
+<div class="formule">
+<p><strong>Débit sur le câble = taille de la trame × 8 × paquets par seconde</strong></p>
+<ul>
+<li><strong>voix par paquet</strong><span>: débit du codec × durée du paquet ÷ 8, en octets</span></li>
+<li><strong>taille de la trame</strong><span>: voix + 40 octets d’en-têtes IP, UDP, RTP + 18 octets Ethernet</span></li>
+<li><strong>paquets par seconde</strong><span>: 1 ÷ durée du paquet</span></li>
+</ul>
+<blockquote>
+<p>Le débit se compte dans chaque sens de la conversation.</p>
+</blockquote>
+</div>
+<div class="piege">
+<p><strong>64 kbit/s est le débit de la voix, pas celui de l’appel.</strong> Les en-têtes s’ajoutent à chaque paquet, quel que soit le codec : le débit réel sur le câble est toujours supérieur à celui du codec.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi 8 000 échantillons par seconde</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La voix téléphonique est limitée à 3 400 Hz. Pour restituer un signal, il faut l’échantillonner au moins deux fois plus vite que sa plus haute fréquence : 8 000 échantillons par seconde satisfont cette condition avec une marge.</p>
+<p>Chaque échantillon est codé sur 8 bits en G.711. Le codec G.722, dit HD, restitue une bande plus large ; le G.729 compresse la voix pour les liens à faible débit.</p></div></details>
+</div><h2 id="rester-audible">Rester audible</h2>
+<p>La voix supporte mal trois défauts, bien plus que le manque de débit.</p>
+<div class="enveloppe-tbl"><table>
+<thead>
+<tr>
+<th>Grandeur</th>
+<th>Ce qu’elle mesure</th>
+<th>Valeur usuelle à respecter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Délai</td>
+<td>le temps de bout en bout, dans un sens</td>
+<td>150 ms au plus</td>
+</tr>
+<tr>
+<td>Gigue</td>
+<td>la variation de ce délai</td>
+<td>30 ms au plus</td>
+</tr>
+<tr>
+<td>Pertes</td>
+<td>les paquets qui n’arrivent pas</td>
+<td>1 % au plus</td>
+</tr>
+</tbody>
+</table></div>
+<div class="cle">
+<p>La voix circule dans un <strong>VLAN</strong> séparé des données, avec une <strong>priorité</strong> dans chaque commutateur du trajet. Le poste et l’ordinateur partagent la même prise et le même câble, mais pas le même réseau logique.</p>
+</div>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Des couches, comme pour les protocoles du bâtiment</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Une trame de voix empile des en-têtes : Ethernet, puis IP, UDP et RTP, puis la voix. Chaque couche ajoute ce dont elle a besoin. Les protocoles du bâtiment suivent le même principe, et BACnet/IP circule lui aussi sur UDP, sur le même réseau que la téléphonie.</p>
+<figure class="schema"><div class="dessin" data-schema="couches-protocole"></div><figcaption>Physique, liaison, application : deux systèmes se parlent quand les trois couches concordent.</figcaption></figure>
+<p>La séance suivante reprend ce schéma avec les protocoles métier.</p></div></details>
+</div><h2 id="le-son-et-l-image">Le son et l’image</h2>
+<figure>
+<img src="img/DOMA9/fig5-ligne-100v.png" alt="Une diffusion sonore sur ligne 100 V : des haut-parleurs en parallèle, chacun sur une prise de puissance." />
+<figcaption aria-hidden="true">Une diffusion sonore sur ligne 100 V : des haut-parleurs en parallèle, chacun sur une prise de puissance.</figcaption>
+</figure>
+<p>En tertiaire, les haut-parleurs sont raccordés <strong>en parallèle</strong> sur une ligne 100 V. La prise choisie sur le transformateur de chacun fixe la puissance qu’il prélève. L’amplificateur se choisit sur la somme des prises, augmentée d’une réserve.</p>
+<div class="formule">
+<p><strong>Z = U² / P</strong></p>
+<ul>
+<li><strong>U</strong><span>: tension de la ligne, 100 V</span></li>
+<li><strong>P</strong><span>: puissance totale prélevée, en watts</span></li>
+<li><strong>Z</strong><span>: impédance de la ligne chargée, en ohms</span></li>
+</ul>
+<blockquote>
+<p>Chaque haut-parleur ajouté en parallèle fait baisser l’impédance de la ligne.</p>
+</blockquote>
+</div>
+<figure>
+<img src="img/DOMA9/fig4-transport-image.png" alt="Cordon HDMI, HDBaseT ou réseau IP : trois façons de transporter une image." />
+<figcaption aria-hidden="true">Cordon HDMI, HDBaseT ou réseau IP : trois façons de transporter une image.</figcaption>
+</figure>
+<p>Une image non compressée dépasse de loin le débit d’un réseau local. Elle se transporte <strong>par cordon</strong> sur quelques mètres, <strong>en HDBaseT</strong> sur un câble dédié d’une centaine de mètres, ou <strong>compressée sur le réseau IP</strong>, qui la distribue à autant d’écrans que nécessaire.</p>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">La télévision dans le logement</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Dans un logement câblé en grade 2TV ou 3TV, la télévision reçue par l’antenne circule sur une paire du câblage de communication. Elle est affectée à une prise par un cordon placé dans le tableau de communication.</p>
+<p>La télévision proposée par la box circule, elle, sur le réseau de données : elle emprunte une prise affectée aux données et dépend de l’accès internet.</p></div></details>
+</div><h2 id="essayer">Essayer</h2>
+<div class="outil" data-outil="debit-appel">
+
+</div>
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+<div class="quiz">
+<ul>
+<li>Le serveur d’appels d’une installation IP est : <strong>l’IPBX</strong> | le routeur | la passerelle</li>
+<li>Pendant la conversation, la voix circule : <strong>d’un poste à l’autre</strong> | toujours par l’IPBX</li>
+<li>Le codec G.711 produit : <strong>64 kbit/s de voix</strong> | 8 kbit/s de voix | 87,2 kbit/s de voix</li>
+<li>La gigue est : <strong>la variation du délai</strong> | la perte de paquets | le débit de la voix</li>
+<li>HDBaseT transporte l’image sur : <strong>un câble à paires torsadées dédié</strong> | le réseau IP | une liaison radio</li>
+<li>Ajouter des haut-parleurs sur une ligne 100 V fait : <strong>baisser son impédance</strong> | monter son impédance</li>
+</ul>
+</div>
+<h2 id="s-entrainer">S’entraîner</h2>
+<section class="exo" id="DOMA9-e1" data-exo="DOMA9-e1" data-type="calcul" data-savoir="D2-3" data-a="IXgueGB4OTs2OS82eHZ4LHhgbWN0b3Z4LjU2eGBodGp2eC94YHgxODMudSl4Jw=="><p class="k">Exercice · D2-3</p><h4>Des paquets de 30 ms</h4><div class="enonce">
+
+<p>Un IPBX envoie la voix en G.711 par paquets de <strong>30 ms</strong>. Les en-têtes IP, UDP et RTP font 40 octets, l’en-tête et la fin de trame Ethernet 18 octets.</p>
+<p>Quel est le débit sur le câble, dans un sens ?</p>
+</div><div class="indice" hidden>calculer d’abord la voix contenue dans un paquet, puis la taille de la trame, puis le nombre de paquets par seconde.</div></section>
+<section class="exo" id="DOMA9-e2" data-exo="DOMA9-e2" data-type="calcul" data-savoir="D2-3" data-a="IXgueGB4OTs2OS82eHZ4LHhgaG9idGp2eC41Nnhga3RqdngveGB4DXgn"><p class="k">Exercice · D2-3</p><h4>Le budget d’un commutateur</h4><div class="enonce">
+
+<p>Un commutateur alimente <strong>24 postes IP de classe 2</strong>, à 7,0 W réservés par port, et <strong>3 bornes Wi-Fi de classe 4</strong>, à 30 W réservés par port.</p>
+<p>Quelle puissance PoE le commutateur doit-il réserver au total ?</p>
+</div><div class="indice" hidden>une puissance par classe, multipliée par le nombre d’équipements de cette classe, puis la somme.</div></section>
+<section class="exo" id="DOMA9-e3" data-exo="DOMA9-e3" data-type="lecture" data-savoir="D2-3" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4CRMKeHZ4Nj96CRMKeHZ4Nj96Kig1LjU5NTY/egkTCnh2eCooNS41OTU2P3oJEwp4Byc="><p class="k">Exercice · D2-3</p><h4>Établir l’appel</h4><div class="enonce">
+
+<p>Quel protocole établit puis libère un appel entre deux postes IP, sans transporter la voix ?</p>
+</div><div class="indice" hidden>il circule entre les postes et l’IPBX ; la voix, elle, circule dans un autre protocole.</div></section>
+<section class="exo" id="DOMA9-e4" data-exo="DOMA9-e4" data-type="justification" data-savoir="B8-2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-2</p><h4>En parallèle, pas en série</h4><div class="enonce">
+
+<p>Un installateur propose de raccorder en série les haut-parleurs d’une diffusion sur ligne 100 V. Expliquer en trois ou quatre lignes pourquoi ils se raccordent en parallèle.</p>
+</div><div class="indice" hidden>se demander quelle tension reçoit chaque haut-parleur dans les deux montages.</div><ul class="verifier" hidden><li>J’ai indiqué qu’en parallèle, chaque haut-parleur reçoit la tension de la ligne</li><li>J’ai expliqué qu’en série, la tension se partage entre les haut-parleurs</li><li>J’ai signalé qu’un haut-parleur coupé interromprait toute une ligne en série</li><li>J’ai relié la puissance de chacun à la prise de son transformateur</li></ul></section>
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+<p>La séance suivante traite les protocoles métier du bâtiment et la façon de faire dialoguer deux systèmes. Elle reprend le principe des couches et le calcul d’un débit à partir d’une trame. Elle comporte aussi le premier devoir surveillé, sur les séances des semaines 4 à 9.</p>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA8.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A8 : VDI et certification</span></a><a class="ap" href="DOMA10.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">A10 · protocoles et passerelles</span></a></div><a class="vers-recap" href="SEQ2.html">Préparation au contrôle</a></nav>
+<p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=fc1a8623"></script>
+<script src="../assets/site.js?v=fc1a8623"></script>
+<script src="../assets/vivant.js?v=fc1a8623"></script>

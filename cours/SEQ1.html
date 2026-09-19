@@ -1,0 +1,419 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>Le socle, semaines 1 à 3</title>
+<link rel="stylesheet" href="../assets/kit.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/site.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/domotique.css?v=fc1a8623">
+<link rel="stylesheet" href="../assets/vivant.css?v=fc1a8623">
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/SEQ1" data-rang="1">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 1 · Le socle</span><span class="fleches"><a class="fleche" href="DOMB4.html" rel="prev" title="B4 : mesurer sur trois médias" aria-label="B4 : mesurer sur trois médias">&lsaquo;</a><a class="fleche" href="SEQ2.html" rel="next" title="Communiquer, semaines 4 à 10" aria-label="Communiquer, semaines 4 à 10">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/SEQ1">Marquer comme lu</button></div>
+<header class="tete">
+  
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>Récapitulatif et approfondissements - Le socle<span>semaines 1 à 3</span></h1>
+  </div>
+  <p class="accroche">Trois semaines pour poser le vocabulaire de la chaîne, les trois façons de câbler, la lecture d'un dossier et l'analyse fonctionnelle ; côté atelier, l'appareil qu'on sort, le circuit qu'on contrôle hors tension et le système qu'on décrit avant de l'essayer. Cette page rassemble les règles, les pièges et deux outils, puis vous fait vérifier que tout est en place. Ce socle fait partie du devoir de la semaine 10.</p>
+  <p class="contenu">2 outils · 10 questions · 8 exercices · 6 replis · 6 figures</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag n3">B8-1 Architecture, constituants, analyse fonctionnelle · niveau 3</span><span class="tag n3">D1-1 Médias de communication · niveau 3</span><span class="tag n3">D2-1 Réseaux informatiques, matériel · niveau 3</span><span class="tag">C1-1 Distribution BT, schémas · niveau 2</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">Les trois façons de câbler et les deux chaînes</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">le vocabulaire du référentiel, capteur, pré-actionneur, actionneur, sert dans toutes les questions de la séquence.</span></li><li><b><a href="DOMA2.html">Les pièces d'un dossier de courant faible</a></b><span class="ou">Semaine 2 · études · Du dossier à l'information</span><span class="car">chaque question d'un sujet renvoie à une pièce, et il faut savoir laquelle ouvrir.</span></li><li><b><a href="DOMA3.html">L'analyse fonctionnelle</a></b><span class="ou">Semaine 3 · études · Du besoin au comportement</span><span class="car">fonctions de service, schéma fonctionnel et GRAFCET sont les trois outils de description exigés au niveau 3.</span></li><li><b><a href="DOMB1.html">Le relevé complet d'une mesure</a></b><span class="ou">Semaine 1 · atelier · Prise en main de l'atelier</span><span class="car">valeur, unité, appareil et précision ; un chiffre seul ne compte pas, ni en atelier ni sur une copie.</span></li><li><b><a href="DOMB2.html">Les trois schémas d'un circuit et le contrôle hors tension</a></b><span class="ou">Semaine 2 · atelier · Câbler la référence 230 V</span><span class="car">la référence 230 V à laquelle tout le reste de l'année se compare.</span></li><li><b><a href="DOMB3.html">Relever et décrire un système</a></b><span class="ou">Semaine 3 · atelier · Relever et décrire un système de l'atelier</span><span class="car">lister, classer, relier, puis prévoir avant d'essayer.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#les-regles-de-la-sequence">Les règles de la séquence</a><a href="#semaine-1-les-trois-facons-de-cabler">Semaine 1 · les trois façons de câbler</a><a href="#semaine-1-l-atelier-choisir-consigner-reperer-noter">Semaine 1 · l’atelier : choisir, consigner, repérer, noter</a><a href="#semaine-2-lire-un-dossier-de-courant-faible">Semaine 2 · lire un dossier de courant faible</a><a href="#semaine-2-l-atelier-la-reference-230-v">Semaine 2 · l’atelier : la référence 230 V</a><a href="#semaine-3-l-analyse-fonctionnelle">Semaine 3 · l’analyse fonctionnelle</a><a href="#semaine-3-l-atelier-relever-et-decrire">Semaine 3 · l’atelier : relever et décrire</a><a href="#vous-verifier">Vous vérifier</a><a href="#pour-aller-plus-loin">Pour aller plus loin</a><a href="#s-entrainer">S’entraîner</a><a href="#le-jour-du-controle">Le jour du contrôle</a></div></nav>
+<h2 id="les-regles-de-la-sequence">Les règles de la séquence</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr>
+<th>Ce que je cherche</th>
+<th>Formule ou règle</th>
+<th>Unités ou limite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>La tension d’un bus KNX TP1</td>
+<td>30 V continu, TBTS ; 21 V au moins chez chaque participant</td>
+<td>en charge, autour de 29 V</td>
+</tr>
+<tr>
+<td>Le courant d’une ligne</td>
+<td>I = n × 10 mA</td>
+<td>64 participants au plus, 640 mA au plus</td>
+</tr>
+<tr>
+<td>Ce qu’une ligne peut encore recevoir</td>
+<td>courant de l’alimentation ÷ 10 mA, moins les participants déjà raccordés</td>
+<td>un nombre entier de participants</td>
+</tr>
+<tr>
+<td>Les trois longueurs d’une ligne</td>
+<td>350 m de l’alimentation au participant le plus éloigné ; 700 m entre deux participants ; 1 000 m de câble en tout</td>
+<td>en mètres de câble posé, jamais à vol d’oiseau</td>
+</tr>
+<tr>
+<td>La topologie d’une ligne</td>
+<td>ligne, étoile, arbre ; jamais l’anneau</td>
+<td></td>
+</tr>
+<tr>
+<td>L’Ethernet cuivre</td>
+<td>100 m au plus entre deux équipements actifs</td>
+<td>90 m de lien permanent et 10 m de cordons</td>
+</tr>
+<tr>
+<td>Les ports d’un panneau</td>
+<td>nombre de liens × (1 + réserve), arrondi à l’entier supérieur</td>
+<td>la réserve est fixée par le CCTP</td>
+</tr>
+<tr>
+<td>Un repère de borne</td>
+<td>X1:5 désigne la borne 5 du bornier X1</td>
+<td>identique sur toutes les pièces du dossier</td>
+</tr>
+<tr>
+<td>La précision d’un multimètre</td>
+<td>± x % de la lecture, ± n digits</td>
+<td>le digit est le dernier chiffre affiché sur le calibre choisi</td>
+</tr>
+<tr>
+<td>L’énergie économisée</td>
+<td>E = P × t</td>
+<td>P en kW et t en h donnent des kWh</td>
+</tr>
+<tr>
+<td>Une temporisation de GRAFCET</td>
+<td>T/X2 est vraie quand l’étape 2 est active depuis la durée T</td>
+<td>T est un paramètre, pas un câblage</td>
+</tr>
+</tbody>
+</table></div>
+<div class="cle">
+<p>Le bus ne se justifie pas par une économie de cuivre, mais par ce que l’on pourra y ajouter sans rouvrir un mur. Sur la salle de réunion de la semaine 1, le métré donne même l’avantage au câblage traditionnel.</p>
+</div>
+<h2 id="semaine-1-les-trois-facons-de-cabler">Semaine 1 · les trois façons de câbler</h2>
+<figure>
+<img src="img/SEQ1/fig1-trois-cablages.png" alt="Le même éclairage, câblé de trois façons." />
+<figcaption aria-hidden="true">Le même éclairage, câblé de trois façons.</figcaption>
+</figure>
+<p>En câblage traditionnel, le même fil porte l’information et l’énergie. Avec un télérupteur, l’énergie reste au tableau, mais la boucle de poussoirs reste en 230 V. Sur le bus, la paire ne porte plus que l’information, en 30 V continu, et ce qui s’ajoute ensuite se raccorde sur la paire déjà posée.</p>
+<figure class="schema"><div class="dessin" data-schema="deux-chaines"></div><figcaption>La chaîne d’information porte des ordres et des états ; la chaîne d’énergie porte de la puissance. Le pré-actionneur est la frontière entre les deux.</figcaption></figure>
+<div class="piege">
+<p>Les fabricants vendent des « actionneurs KNX ». Dans le vocabulaire du référentiel, ce sont des <strong>pré-actionneurs</strong> : l’actionneur est le luminaire ou le moteur, celui qui produit l’effet que le client voit. C’est ce vocabulaire qui fait foi le jour du devoir.</p>
+</div>
+<p>Le média se choisit sur trois questions, dans cet ordre : peut-on passer un câble, quelle distance, quel débit. Le bus filaire va au neuf, la radio à la rénovation occupée, le CPL là où le 230 V existe déjà, la fibre au-delà de 100 m ou en milieu perturbé, l’Ethernet cuivre aux caméras et à la supervision.</p>
+<div class="cle">
+<p>Une ligne KNX se vérifie sur trois longueurs et deux comptes, 64 participants et 640 mA. Les deux limites tombent ensemble : au-delà, on ne rallonge pas la ligne, on en crée une seconde, avec son coupleur et son alimentation.</p>
+</div>
+<div class="outil" data-outil="ligne-knx">
+
+</div>
+<h2 id="semaine-1-l-atelier-choisir-consigner-reperer-noter">Semaine 1 · l’atelier : choisir, consigner, repérer, noter</h2>
+<figure>
+<img src="img/SEQ1/fig1-appareils.png" alt="Six appareils, et quand on les sort." />
+<figcaption aria-hidden="true">Six appareils, et quand on les sort.</figcaption>
+</figure>
+<div class="cle">
+<p>L’appareil se choisit d’après la grandeur cherchée, et non par habitude. Le multimètre ne mesure un courant qu’en ouvrant le circuit ; la pince le mesure sans rien ouvrir. Le moniteur de bus montre ce qui est envoyé, jamais ce qui est reçu.</p>
+</div>
+<p>Aucune mesure sur un circuit ouvert sans avoir vérifié l’absence de tension, et cette vérification se fait avec un appareil dont on a contrôlé le fonctionnement juste avant, puis juste après.</p>
+<div class="etapes">
+<ol type="1">
+<li>Identifier l’ouvrage, et s’assurer qu’on travaille sur le bon.</li>
+<li>Séparer : ouvrir le dispositif de coupure.</li>
+<li>Condamner : verrouiller, poser la pancarte.</li>
+<li>Contrôler l’appareil de vérification sur une source connue.</li>
+<li>Vérifier l’absence de tension, puis contrôler de nouveau l’appareil.</li>
+</ol>
+</div>
+<div class="piege">
+<p>« 29 » n’est pas un relevé. Sans unité, sans calibre et sans la précision de l’appareil, personne d’autre ne peut l’exploiter, et deux lectures ne se comparent pas : leur écart n’est significatif que s’il dépasse l’incertitude.</p>
+</div>
+<p>Le repérage se fait au moment où l’on tire le câble, aux deux extrémités, et le carnet de câbles reçoit aussitôt l’origine, la destination, la nature et la longueur. Un câble qui n’arrive nulle part s’inscrit quand même : c’est celui qu’on cherchera le jour de l’extension.</p>
+<h2 id="semaine-2-lire-un-dossier-de-courant-faible">Semaine 2 · lire un dossier de courant faible</h2>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>La question</th>
+<th>La pièce qui répond</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Où se trouve l’appareil ?</td>
+<td>le plan d’implantation</td>
+</tr>
+<tr>
+<td>Qui est relié à qui, selon quelle topologie ?</td>
+<td>le synoptique</td>
+</tr>
+<tr>
+<td>Qu’est-ce qui part du tableau, protégé par quoi ?</td>
+<td>le schéma unifilaire</td>
+</tr>
+<tr>
+<td>Par où passe le courant, borne par borne ?</td>
+<td>le schéma développé</td>
+</tr>
+<tr>
+<td>Quels appareils, combien, sous quel repère ?</td>
+<td>la nomenclature</td>
+</tr>
+<tr>
+<td>D’où part ce câble, où arrive-t-il, quelle longueur ?</td>
+<td>le carnet de câbles</td>
+</tr>
+<tr>
+<td>Qu’exige le maître d’ouvrage ?</td>
+<td>le CCTP</td>
+</tr>
+</tbody>
+</table></div>
+<div class="cle">
+<p>Avant de chercher une information, choisir la pièce qui la contient. Le plan ne montre aucun câble, le synoptique ne respecte aucune distance : ce ne sont pas des défauts, chaque pièce a son rôle.</p>
+</div>
+<figure class="schema"><div class="dessin" data-schema="topologies-bus"></div><figcaption>Le synoptique montre la topologie : un arbre pour la ligne KNX du dossier, une étoile centrée sur la baie pour le réseau VDI. Les trois longueurs se comptent en câble posé.</figcaption></figure>
+<div class="piege">
+<p>Sur un bus, aucun fil ne relie le poussoir au luminaire qu’il commande. Le câble renseigne sur la topologie ; seule la programmation renseigne sur la fonction, et elle se trouve dans le dossier de programmation, que l’intégrateur détient.</p>
+</div>
+<p>Quand deux pièces se contredisent, l’écart se signale au bureau d’études, se vérifie sur place, puis se fait corriger. Il ne se tranche pas au jugé. Un comptage n’est terminé que lorsqu’il se recoupe avec une autre pièce.</p>
+<h2 id="semaine-2-l-atelier-la-reference-230-v">Semaine 2 · l’atelier : la référence 230 V</h2>
+<figure>
+<img src="img/SEQ1/fig1-trois-schemas.png" alt="Le même va-et-vient, trois représentations." />
+<figcaption aria-hidden="true">Le même va-et-vient, trois représentations.</figcaption>
+</figure>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>La question qu’on se pose</th>
+<th>Le schéma qui répond</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Où sont les organes dans le local, où percer, où tirer ?</td>
+<td>l’architectural</td>
+</tr>
+<tr>
+<td>Par où passe le courant, contact par contact ?</td>
+<td>le développé</td>
+</tr>
+<tr>
+<td>Ce qui part du tableau, et combien de conducteurs ?</td>
+<td>l’unifilaire, avec ses barres obliques</td>
+</tr>
+</tbody>
+</table></div>
+<div class="cle">
+<p>On ne met pas sous tension pour voir. Le circuit se contrôle au multimètre, en continuité, hors tension, et la case attendue, continuité ou coupure, s’écrit avant de mesurer. Mettre sous tension pour voir n’est pas un essai, c’est un pari.</p>
+</div>
+<div class="piege">
+<p>Les fils qui montent aux poussoirs d’un télérupteur ordinaire sont en 230 V, parce que sa bobine l’est. Seul le bus est en TBTS. Un circuit de commande n’est pas pour autant un circuit sans danger.</p>
+</div>
+<p>Le télérupteur déporte la commutation au tableau : un poussoir de plus, c’est deux fils piqués en parallèle sur la boucle. Un troisième point sur un va-et-vient demande un permutateur inséré entre les deux interrupteurs, et une gaine à rouvrir.</p>
+<h2 id="semaine-3-l-analyse-fonctionnelle">Semaine 3 · l’analyse fonctionnelle</h2>
+<p>Trois outils, trois questions. Ce que le système doit faire : la bête à cornes et les fonctions de service. Comment il le fait : les deux chaînes du schéma fonctionnel. Comment il se comporte dans le temps : le GRAFCET.</p>
+<div class="cle">
+<p>Une fonction se formule par un verbe à l’infinitif suivi de son complément, sans nommer la solution. « Éteindre l’éclairage de la salle inoccupée » est une fonction ; « posséder un détecteur de présence » décrit une solution.</p>
+</div>
+<figure>
+<img src="img/SEQ1/fig3-chaines-volets.png" alt="Le schéma fonctionnel de la fonction « occulter la salle »." />
+<figcaption aria-hidden="true">Le schéma fonctionnel de la fonction « occulter la salle ».</figcaption>
+</figure>
+<div class="enveloppe-tbl"><table>
+<thead>
+<tr>
+<th>Famille de la semaine 1</th>
+<th>Fonction dans le schéma fonctionnel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>capteur, organe de commande</td>
+<td>acquérir</td>
+</tr>
+<tr>
+<td>centrale, ou le programme de chaque participant</td>
+<td>traiter</td>
+</tr>
+<tr>
+<td>pré-actionneur</td>
+<td>distribuer</td>
+</tr>
+<tr>
+<td>actionneur</td>
+<td>convertir</td>
+</tr>
+<tr>
+<td>réducteur, axe, transmission</td>
+<td>transmettre</td>
+</tr>
+</tbody>
+</table></div>
+<div class="piege">
+<p>L’alimentation du bus n’appartient pas à la chaîne d’énergie : elle n’alimente aucun actionneur. Elle assure la fonction <strong>alimenter</strong> de la chaîne d’information, en 30 V continu.</p>
+</div>
+<div class="formule">
+<p><strong>T/X2 + ↑bp</strong></p>
+<ul>
+<li><strong>+</strong><span>: se lit OU</span></li>
+<li><strong>·</strong><span>: se lit ET</span></li>
+<li><strong>↑bp</strong><span>: front montant, l’instant de l’appui sur le poussoir</span></li>
+<li><strong>T/X2</strong><span>: vraie quand l’étape 2 est active depuis la durée T</span></li>
+</ul>
+<blockquote>
+<p>Une étape est une situation stable, à laquelle sont associées des actions. Une transition porte une réceptivité, la condition logique du passage à l’étape suivante.</p>
+</blockquote>
+</div>
+<h2 id="semaine-3-l-atelier-relever-et-decrire">Semaine 3 · l’atelier : relever et décrire</h2>
+<div class="outil" data-outil="chaine-fonctionnelle">
+
+</div>
+<div class="etapes">
+<ol type="1">
+<li>Lister les organes, par leur nom exact, lu sur la plaque et non deviné à l’allure.</li>
+<li>Classer chacun dans sa famille : capteur, organe de commande, centrale, pré-actionneur, actionneur.</li>
+<li>Relier : l’information d’un côté, l’énergie de l’autre, et entourer les points de rencontre.</li>
+<li>Décrire chaque fonction en une phrase, au présent, sans nommer de marque.</li>
+<li>Prévoir ce que fera l’essai, essayer, puis corriger la description.</li>
+</ol>
+</div>
+<div class="cle">
+<p>Les deux chaînes ne se rejoignent qu’aux pré-actionneurs. Une description n’est juste que si elle permet de prévoir le comportement, et la prévision s’écrit avant l’essai : c’est elle qui rend l’erreur visible.</p>
+</div>
+<h2 id="vous-verifier">Vous vérifier</h2>
+<div class="quiz">
+<ul>
+<li>En câblage traditionnel, le même fil porte : <strong>l’information et l’énergie</strong> | l’information seulement | l’énergie seulement</li>
+<li>La boucle de poussoirs d’un télérupteur ordinaire est en : <strong>230 V</strong> | 30 V continu | 12 V continu</li>
+<li>Dans la chaîne fonctionnelle, le variateur est : <strong>un pré-actionneur</strong> | un actionneur | un capteur</li>
+<li>Une ligne KNX porte au plus : <strong>64 participants</strong> | 255 participants | 15 participants</li>
+<li>La topologie interdite sur une ligne KNX est : <strong>l’anneau</strong> | l’étoile | l’arbre</li>
+<li>L’origine et la destination d’un câble se lisent sur : <strong>le carnet de câbles</strong> | le plan d’implantation | la nomenclature</li>
+<li>La fonction d’un poussoir bus est fixée par : <strong>la programmation</strong> | le carnet de câbles | le schéma développé</li>
+<li>« Éteindre l’éclairage de la salle inoccupée » est : <strong>une fonction de service</strong> | une solution technique | un critère</li>
+<li>Un courant se mesure sans ouvrir le circuit avec : <strong>la pince ampèremétrique</strong> | le multimètre en série | le moniteur de bus</li>
+<li>Avant la mise sous tension, un circuit se contrôle : <strong>en continuité, hors tension</strong> | en mettant sous tension | au luxmètre</li>
+</ul>
+</div>
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi 30 V, et pourquoi 21 V</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>L’alimentation d’une ligne délivre 30 V continu ; derrière sa self, en charge, le bus se mesure autour de 29 V. Un participant fonctionne tant qu’il reçoit au moins 21 V.</p>
+<p>L’écart de 9 V est le budget que le câble consomme en chute de tension. C’est lui qui fixe la première des trois longueurs, les 350 m, calculée en semaines 4 et 5.</p>
+<p>Ces tensions relèvent de la très basse tension de sécurité : on peut raccorder un participant sans couper le bus et sans risque de choc électrique. Rien de tel sur la boucle de poussoirs d’un télérupteur, qui est en 230 V.</p></div></details>
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Le télérupteur, à mi-chemin entre le fil et le bus</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le télérupteur sépare déjà la commande de la puissance : la puissance reste au tableau, les poussoirs ne portent que l’ordre. Mais cet ordre voyage encore sous forme d’énergie, 230 V dans une bobine, et chaque fonction demande sa propre boucle de fils.</p>
+<p>Le bus fait un pas de plus. L’ordre devient un télégramme, une même paire sert à toutes les fonctions, et la correspondance entre une touche et une sortie n’est plus câblée mais programmée.</p>
+<p>D’où les deux temps chronométrés en atelier : deux fils pour un quatrième poussoir de télérupteur, une gaine à rouvrir pour un troisième point de va-et-vient, et rien du tout sur un bus, si la paire passe déjà.</p></div></details>
+<details class="appro be"><summary><span class="niv"></span><span class="titre-appro">Centralisé ou décentralisé : deux architectures dans le même bâtiment</span><span class="etiq">Bureau d'études</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>En KNX, aucun appareil n’est une centrale. Chaque participant porte son programme d’application et décide seul à partir du télégramme qu’il reçoit : la fonction traiter est répartie. La panne d’un participant ne supprime que sa propre fonction.</p>
+<p>Un automate à modules d’entrées-sorties fonctionne à l’inverse : tout remonte à l’unité centrale, qui décide de tout, et sa panne arrête la commande. En échange, une seule modification de programme change tout le comportement.</p>
+<p>Les deux architectures coexistent dans un même bâtiment. Le bus pilote l’éclairage et les stores, l’automate pilote la chaufferie et la centrale de traitement d’air, et la supervision de GTB, étudiée en deuxième année, les réunit sur le réseau IP.</p></div></details>
+<details class="appro be"><summary><span class="niv"></span><span class="titre-appro">Ce que devient le dossier à la fin du chantier</span><span class="etiq">Bureau d'études</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>À la réception, l’installateur remet le dossier des ouvrages exécutés. Il reprend les pièces du dossier d’étude, mises à jour selon ce qui a réellement été posé : plans, synoptique, nomenclature, carnet de câbles, et les procès-verbaux d’essais.</p>
+<p>Pour un bus, il doit contenir aussi le dossier de programmation : le fichier du projet de paramétrage et la liste des fonctions. Sans lui, la fonction d’un poussoir reste inconnue, et l’intégrateur suivant recommence tout.</p>
+<p>Un dossier qui ne le contient pas est incomplet. On le réclame avant toute intervention sur les fonctions, jamais après.</p></div></details>
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Les règles d&#39;évolution du GRAFCET</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Trois règles suffisent pour lire un graphe. À l’initialisation, les étapes initiales, à double cadre, sont actives. Une transition est validée quand toutes les étapes qui la précèdent sont actives ; elle est franchie quand elle est validée <strong>et</strong> que sa réceptivité est vraie.</p>
+<p>Le franchissement active les étapes qui suivent et désactive celles qui précèdent, dans le même instant.</p>
+<p>Le front montant ↑bp évite un piège : il est vrai à l’instant de l’appui, pas tant que le doigt reste posé. Sans lui, un appui un peu long ferait franchir deux transitions d’affilée, et la lumière s’éteindrait aussitôt allumée.</p></div></details>
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">D&#39;où viennent les digits d&#39;un multimètre</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Une précision s’écrit ± x % de la lecture, ± n digits. Le pourcentage vient de la chaîne analogique de l’appareil ; les digits viennent du convertisseur, et un digit vaut le dernier chiffre affiché sur le calibre choisi.</p>
+<p>Sur le calibre 200 V, ce dernier chiffre vaut 0,1 V : deux digits font 0,2 V. Sur le calibre 20 V, il vaut 0,01 V : deux digits ne font plus que 0,02 V. Le bon calibre est le plus petit qui contient la valeur.</p>
+<p>Deux lectures ne sont différentes que si leurs encadrements ne se recouvrent pas. Une chute de 0,3 V mesurée avec deux encadrements de ± 0,35 V ne prouve rien : il faut charger davantage la ligne, ou changer de calibre.</p></div></details>
+</div><h2 id="s-entrainer">S’entraîner</h2>
+<p>Les valeurs attendues ne sont pas dans la page : elle vous dit si c’est juste et vous rappelle la méthode. Le corrigé reste dans le polycopié.</p>
+<section class="exo" id="SEQ1-e1" data-exo="SEQ1-e1" data-type="calcul" data-savoir="B8-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaG10anZ4LjU2eGBqdGp2eC94YHgqOyguMzkzKjs0Lil4Jw=="><p class="k">Exercice · B8-1</p><h4>Ce que la ligne peut encore recevoir</h4><div class="enonce">
+
+<p>L’alimentation d’une ligne KNX délivre <strong>640 mA</strong>. La nomenclature compte déjà <strong>37 participants</strong> raccordés.</p>
+<p>Combien de participants la ligne peut-elle encore recevoir ?</p>
+</div><div class="indice" hidden>diviser le courant de l’alimentation par la consommation normalisée d’un participant, puis retrancher ceux qui sont déjà raccordés.</div></section>
+<section class="exo" id="SEQ1-e2" data-exo="SEQ1-e2" data-type="calcul" data-savoir="B8-2" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGJidGp2eC41Nnhga3RqdngveGB4MQ0yeCc="><p class="k">Exercice · B8-2</p><h4>Ce que rapporte une détection</h4><div class="enonce">
+
+<p>Un couloir compte <strong>8 luminaires de 36 W</strong>. Le détecteur de présence évite <strong>4 h</strong> d’éclairage inutile par jour, <strong>250 jours</strong> par an.</p>
+<p>Quelle énergie est économisée par an ?</p>
+</div><div class="indice" hidden>la puissance totale en kilowatts, multipliée par le nombre d’heures de l’année, c’est-à-dire les heures par jour fois les jours.</div></section>
+<section class="exo" id="SEQ1-e3" data-exo="SEQ1-e3" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWxqdGp2eC41Nnhga3RqdngveGB4N3gn"><p class="k">Exercice · D2-1</p><h4>Les deux participants les plus éloignés</h4><div class="enonce">
+
+<p>Une ligne KNX TP1 : de l’alimentation à une boîte de répartition, <strong>60 m</strong> ; de la boîte au bout de la branche A, <strong>210 m</strong> ; de la boîte au bout de la branche B, <strong>150 m</strong>.</p>
+<p>Quelle longueur de câble sépare le participant du bout de la branche A de celui du bout de la branche B ?</p>
+</div><div class="indice" hidden>suivre le câble d’un participant à l’autre en passant par la boîte ; le tronçon qui vient de l’alimentation n’est pas sur ce chemin. Comparer ensuite le résultat à la deuxième des trois longueurs.</div></section>
+<section class="exo" id="SEQ1-e4" data-exo="SEQ1-e4" data-type="calcul" data-savoir="B8-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGN0bG92eC41NnhganRpdngveGB4DHgn"><p class="k">Exercice · B8-1</p><h4>Encadrer une lecture</h4><div class="enonce">
+
+<p>Un multimètre affiche <strong>29,3 V</strong> sur le calibre 200 V, dont le dernier chiffre vaut 0,1 V. Sa notice annonce <strong>± 0,5 % de la lecture, ± 2 digits</strong>.</p>
+<p>Quelle est la borne supérieure de l’encadrement de cette mesure ?</p>
+</div><div class="indice" hidden>calculer le pourcentage de la lecture, ajouter la valeur des deux digits sur ce calibre, puis ajouter le tout à la lecture.</div></section>
+<section class="exo" id="SEQ1-e5" data-exo="SEQ1-e5" data-type="lecture" data-savoir="C1-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4PgYvamo/Yyw/NjUqKgYvamo/Y3h2eDY/ej4GL2pqP2MsPzY1KioGL2pqP2N4dngpOTIGL2pqP2M3O3o+Bi9qaj9jLD82NSoqBi9qaj9jeHZ4Nj96KTkyBi9qaj9jNzt6PgYvamo/Yyw/NjUqKgYvamo/Y3h2eD4/LD82NSoqP3h2eDY/eik5Mj83O3o+Pyw/NjUqKj94Byc="><p class="k">Exercice · C1-1</p><h4>Le contact collé</h4><div class="enonce">
+
+<p>La lampe d’un va-et-vient reste allumée quelle que soit la position des interrupteurs. Vous voulez savoir quel contact est collé.</p>
+<p>Quel schéma ouvrez-vous ?</p>
+</div><div class="indice" hidden>la pièce cherchée déplie le circuit organe par organe et montre le chemin du courant contact par contact.</div></section>
+<section class="exo" id="SEQ1-e6" data-exo="SEQ1-e6" data-type="lecture" data-savoir="B8-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4KigGL2pqP2N3OzkuMzU0ND8vKHh2eCooPzs5LjM1NDQ/Lyh4dngqKD93OzkuMzU0ND8vKHh2eC80eiooBi9qaj9jdzs5LjM1NDQ/Lyh4dng2P3oqKAYvamo/Y3c7OS4zNTQ0Py8oeHZ4KigGL2pqP2M7OS4zNTQ0Py8oeAcn"><p class="k">Exercice · B8-1</p><h4>La famille du module</h4><div class="enonce">
+
+<p>Un module sur rail DIN reçoit un télégramme sur la paire bus et ferme un contact 16 A vers un luminaire.</p>
+<p>Dans quelle famille du référentiel le rangez-vous ?</p>
+</div><div class="indice" hidden>se demander ce que le module reçoit, ce qui le traverse, et qui produit l’effet que le client voit.</div></section>
+<section class="exo" id="SEQ1-e7" data-exo="SEQ1-e7" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>L’alimentation du bus</h4><div class="enonce">
+
+<p>Un camarade range l’alimentation du bus parmi les pré-actionneurs, « puisqu’elle fournit la puissance ». Lui expliquer en trois ou quatre lignes pourquoi elle n’en est pas un, et où elle se place.</p>
+</div><div class="indice" hidden>se demander quels appareils reçoivent l’énergie de cette alimentation, et s’ils produisent un effet dans le bâtiment.</div><ul class="verifier" hidden><li>J’ai dit qu’un pré-actionneur reçoit un ordre et établit ou coupe la puissance vers un actionneur</li><li>J’ai dit que l’alimentation du bus n’alimente aucun actionneur</li><li>J’ai placé l’alimentation dans la chaîne d’information, fonction alimenter</li><li>J’ai précisé sa tension et son domaine de sécurité</li></ul></section>
+<section class="exo" id="SEQ1-e8" data-exo="SEQ1-e8" data-type="justification" data-savoir="D1-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · D1-1</p><h4>Le métré donne tort au bus</h4><div class="enonce">
+
+<p>Sur la salle de réunion, le métré donne l’avantage au câblage en 230 V. Le client demande pourquoi vous proposez néanmoins le bus. Répondre en quatre lignes, avec un argument que le client peut vérifier lui-même.</p>
+</div><div class="indice" hidden>le bon argument se trouve dans ce qui se passe le jour où le client change d’avis, pas dans le devis initial.</div><ul class="verifier" hidden><li>J’ai dit que le bus ne se justifie pas par l’économie de cuivre</li><li>J’ai expliqué qu’un point de commande de plus se raccorde sur la paire déjà posée</li><li>J’ai dit que la fonction se change par programmation, sans rouvrir un mur</li><li>J’ai cité ce qui pourra s’ajouter plus tard, détecteur, horloge ou supervision</li></ul></section>
+<h2 id="le-jour-du-controle">Le jour du contrôle</h2>
+<p>Ce socle fait partie du devoir surveillé É1 de la semaine 10, qui porte sur les semaines 1 à 9. Les questions qui s’y rapportent demandent moins de calcul que de vocabulaire exact et de lecture de dossier.</p>
+<div class="etapes">
+<ol type="1">
+<li>Lire la question et repérer la pièce du dossier qu’elle vise, ou la famille de constituants qu’elle nomme.</li>
+<li>Employer les mots du référentiel : capteur, organe de commande, pré-actionneur, actionneur, jamais « la boîte grise ».</li>
+<li>Pour une ligne KNX, vérifier les cinq nombres : 64 participants, 640 mA, 350, 700 et 1 000 m, en mètres de câble.</li>
+<li>Pour une mesure, écrire la valeur, l’unité, l’appareil, le calibre et l’encadrement.</li>
+<li>Pour une fonction, un verbe à l’infinitif et son complément, sans nommer d’appareil.</li>
+</ol>
+</div>
+<div class="enveloppe-tbl"><table>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr>
+<th>L’unité qui coûte des points</th>
+<th>Ce qu’il faut faire</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>le courant d’une ligne</td>
+<td>10 mA par participant ; la somme s’écrit en mA, puis en A pour tout calcul</td>
+</tr>
+<tr>
+<td>une longueur de ligne</td>
+<td>en mètres de câble posé, tronçon par tronçon</td>
+</tr>
+<tr>
+<td>une énergie</td>
+<td>P en kW × t en h, résultat en kWh</td>
+</tr>
+<tr>
+<td>une tension mesurée</td>
+<td>la valeur suivie de son encadrement, en volts</td>
+</tr>
+</tbody>
+</table></div>
+<p>Une réponse rédigée tient en trois temps : la règle ou la formule en lettres, l’application avec les nombres et leurs unités, puis la conclusion en une phrase, qui répond à la question posée et non à une autre. Une justification sans le mot du référentiel n’est pas comptée juste.</p>
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMB4.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">B4 : mesurer sur trois médias</span></a><a class="ap" href="SEQ2.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">Communiquer, semaines 4 à 10</span></a></div></nav>
+<p class="pied">Cette page ne remplace pas les polycopiés et ne donne aucun corrigé. Les outils démarrent sur des cas voisins de ceux des activités. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+<script src="../assets/kit.js?v=fc1a8623"></script>
+<script src="../assets/site.js?v=fc1a8623"></script>
+<script src="../assets/vivant.js?v=fc1a8623"></script>

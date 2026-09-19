@@ -1,0 +1,446 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   DOMOTIQUE — charte du site des étudiants de BTS FED option C, 1re année,
+   cours de domotique et bâtiments communicants.
+
+   Le monde est celui du tableau de communication : le rail DIN et ses
+   modules, la paire torsadée du bus, le repère collé sur chaque conducteur,
+   le voyant d'état qui dit qu'une ligne est montée. Un papier gris-chaud,
+   une encre presque noire, des traits gris — et une seule couleur d'accent,
+   le cuivre du conducteur, assombri pour tenir 4,5:1 sur le papier. Elle ne
+   sert qu'aux liens, au bouton « marquer comme lu », au rang des séquences,
+   aux voyants « lu » et au repère de séance. Tout le reste est du trait.
+
+   Les cinq couleurs de série du kit (--froid, --tiede, --chaud, --vert,
+   --violet) sont conservées, distinctes et assourdies : elles servent aux
+   dessins des outils et aux blocs pédagogiques (piège, point clé, exercice),
+   pas à l'habillage du site.
+
+   Couche posée après kit.css et site.css : elle redéfinit les jetons,
+   repose ses polices sélecteur par sélecteur, ajoute ses blocs de structure.
+   Aucun !important, aucune copie du kit. Polices hébergées, aucun appel
+   extérieur. Écrite le 16 septembre 2026.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+@font-face{font-family:'Titillium Web';font-style:normal;font-weight:400;font-display:swap;src:url(polices/titillium-web-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Titillium Web';font-style:normal;font-weight:400;font-display:swap;src:url(polices/titillium-web-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Titillium Web';font-style:italic;font-weight:400;font-display:swap;src:url(polices/titillium-web-400i-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Titillium Web';font-style:italic;font-weight:400;font-display:swap;src:url(polices/titillium-web-400i-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Titillium Web';font-style:normal;font-weight:600;font-display:swap;src:url(polices/titillium-web-600-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Titillium Web';font-style:normal;font-weight:600;font-display:swap;src:url(polices/titillium-web-600-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'Titillium Web';font-style:normal;font-weight:700;font-display:swap;src:url(polices/titillium-web-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:'Titillium Web';font-style:normal;font-weight:700;font-display:swap;src:url(polices/titillium-web-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(polices/jetbrains-mono-400-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:400;font-display:swap;src:url(polices/jetbrains-mono-400-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(polices/jetbrains-mono-700-latin-ext.woff2) format('woff2');unicode-range:U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF}
+@font-face{font-family:'JetBrains Mono';font-style:normal;font-weight:700;font-display:swap;src:url(polices/jetbrains-mono-700-latin.woff2) format('woff2');unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+
+/* ─── les jetons : papier, encre, trait, et le cuivre ─── */
+:root{
+  --fond:#e7e4de;            /* le papier, gris chaud */
+  --carte:#f7f5f1;           /* la face d'un module */
+  --carte2:#eeebe5;
+  --encre:#1b1a18;
+  --encre2:#5b5850;
+  --trait:#b8b3aa;
+  --trait2:#d5d1c9;
+  /* le cuivre du conducteur, assombri : 5,0:1 sur le papier, 5,8:1 sur la carte */
+  --cuivre:#8f4f1e;
+  --cuivre2:#733d15;         /* survol */
+  /* les couleurs de série, assourdies, toutes à 4,5:1 au moins sur le papier */
+  --froid:#2c6595;
+  --tiede:#84600f;
+  --chaud:#ad392a;
+  --vert:#2a6f47;
+  --violet:#654791;
+  --ombre:0 1px 0 rgba(27,26,24,.08);
+  --r:2px;
+  --teinte:var(--cuivre);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --fond:#151412;--carte:#1d1c19;--carte2:#26241f;--encre:#ebe8e1;--encre2:#a7a298;
+    --trait:#47443d;--trait2:#302e29;
+    --cuivre:#d4915a;--cuivre2:#e2a774;
+    --froid:#6fb0e3;--tiede:#dcae4e;--chaud:#ee7d62;--vert:#5fc08f;--violet:#b394e2;
+    --ombre:0 1px 0 rgba(0,0,0,.5);
+  }
+}
+:root[data-theme="dark"]{
+  --fond:#151412;--carte:#1d1c19;--carte2:#26241f;--encre:#ebe8e1;--encre2:#a7a298;
+  --trait:#47443d;--trait2:#302e29;
+  --cuivre:#d4915a;--cuivre2:#e2a774;
+  --froid:#6fb0e3;--tiede:#dcae4e;--chaud:#ee7d62;--vert:#5fc08f;--violet:#b394e2;
+  --ombre:0 1px 0 rgba(0,0,0,.5);
+}
+
+/* ─── les polices, reposées sélecteur par sélecteur ─── */
+body{font-family:"Titillium Web","Helvetica Neue",Arial,sans-serif}
+h1,h2,h3,h4,.gro{font-family:"Titillium Web","Helvetica Neue",Arial,sans-serif}
+.mono,code{font-family:"JetBrains Mono",ui-monospace,monospace}
+header.tete .num{font-family:"JetBrains Mono",monospace}
+.sur{font-family:"JetBrains Mono",monospace}
+.contenu{font-family:"JetBrains Mono",monospace}
+.k-savoirs{font-family:"JetBrains Mono",monospace}
+.tag{font-family:"JetBrains Mono",monospace}
+nav.somm a{font-family:"Titillium Web",sans-serif}
+.formule>p:first-child{font-family:"JetBrains Mono",monospace}
+.formule li strong:first-child{font-family:"JetBrains Mono",monospace}
+.piege::before{font-family:"Titillium Web",sans-serif}
+.etapes li::before{font-family:"JetBrains Mono",monospace}
+.mission>p:first-child strong{font-family:"Titillium Web",sans-serif}
+figcaption{font-family:"Titillium Web",sans-serif}
+.s-nom{font-family:"Titillium Web",sans-serif}
+.s-pet{font-family:"JetBrains Mono",monospace}
+.s-lab{font-family:"JetBrains Mono",monospace}
+.s-tit{font-family:"Titillium Web",sans-serif}
+.replis>.chapeau{font-family:"Titillium Web",sans-serif}
+.titre-appro{font-family:"Titillium Web",sans-serif}
+.etiq{font-family:"JetBrains Mono",monospace}
+th{font-family:"Titillium Web",sans-serif}
+.quiz>.chapeau{font-family:"Titillium Web",sans-serif}
+.qq button{font-family:"Titillium Web",sans-serif}
+.score{font-family:"JetBrains Mono",monospace}
+.outil .k{font-family:"JetBrains Mono",monospace}
+.chaine{font-family:"JetBrains Mono",monospace}
+.champ .v{font-family:"JetBrains Mono",monospace}
+input[type=number],select{font-family:"JetBrains Mono",monospace}
+.bt{font-family:"Titillium Web",sans-serif}
+.lignec .rr{font-family:"JetBrains Mono",monospace}
+.entete-c{font-family:"Titillium Web",sans-serif}
+.res .gros{font-family:"JetBrains Mono",monospace}
+.res .gros b{font-family:"Titillium Web",sans-serif}
+.barre .p{font-family:"JetBrains Mono",monospace}
+.case-sym span{font-family:"Titillium Web",sans-serif}
+.s-sym{font-family:"JetBrains Mono",monospace}
+.s-rep{font-family:"JetBrains Mono",monospace}
+.exo>.k{font-family:"JetBrains Mono",monospace}
+.exo input[type=text]{font-family:"JetBrains Mono",monospace}
+.exo textarea{font-family:"Titillium Web","Helvetica Neue",Arial,sans-serif}
+.exo .unite{font-family:"JetBrains Mono",monospace}
+.exo .btn{font-family:"Titillium Web",sans-serif}
+.exo .indice::before{font-family:"Titillium Web",sans-serif}
+.serie>.k{font-family:"JetBrains Mono",monospace}
+.serie input[type=text]{font-family:"JetBrains Mono",monospace}
+.serie .unite{font-family:"JetBrains Mono",monospace}
+.serie .btn{font-family:"Titillium Web",sans-serif}
+.serie .indice::before{font-family:"Titillium Web",sans-serif}
+.bilan-epreuve .compte{font-family:"Titillium Web",sans-serif}
+.prerequis b{font-family:"Titillium Web","Helvetica Neue",Arial,sans-serif}
+.chapeau-p{font-family:"JetBrains Mono",monospace}
+.prerequis .ou{font-family:"JetBrains Mono",monospace}
+.barre-site{font-family:"Titillium Web",sans-serif}
+.barre-site .lu{font-family:inherit}
+.chercher input{font-family:"Titillium Web",sans-serif}
+.resultats a{font-family:"Titillium Web",sans-serif}
+.resultats .ou{font-family:"JetBrains Mono",monospace}
+.raccourcis a{font-family:"Titillium Web",sans-serif}
+.espace>.compte{font-family:"JetBrains Mono",monospace}
+.frise .n{font-family:"JetBrains Mono",monospace}
+.frise .t{font-family:"Titillium Web",sans-serif}
+.frise .meta{font-family:"JetBrains Mono",monospace}
+.recap{font-family:"Titillium Web",sans-serif}
+.outils-grille .t{font-family:"Titillium Web",sans-serif}
+.outils-grille .ou{font-family:"JetBrains Mono",monospace}
+.filtres{font-family:"Titillium Web",sans-serif}
+.filtres select{font-family:inherit}
+.exo-ligne a{font-family:"Titillium Web",sans-serif}
+.exo-ligne .ou{font-family:"JetBrains Mono",monospace}
+.exo-ligne .etat{font-family:"JetBrains Mono",monospace}
+.partie .n{font-family:"JetBrains Mono",monospace}
+.partie .t{font-family:"Titillium Web",sans-serif}
+.partie .meta{font-family:"JetBrains Mono",monospace}
+.partie .sv{font-family:"JetBrains Mono",monospace}
+.partie .rep{font-family:"JetBrains Mono",monospace}
+.chiffres b{font-family:"Titillium Web",sans-serif}
+.chiffres span{font-family:"JetBrains Mono",monospace}
+.porte .n{font-family:"JetBrains Mono",monospace}
+.porte .t{font-family:"Titillium Web",sans-serif}
+.reprendre{font-family:"Titillium Web",sans-serif}
+.sequence .rang{font-family:"JetBrains Mono",monospace}
+.sequence .jauge{font-family:"JetBrains Mono",monospace}
+.chapeau-f{font-family:"JetBrains Mono",monospace}
+.grille-f .k{font-family:"JetBrains Mono",monospace}
+.grille-f .t{font-family:"Titillium Web",sans-serif}
+.barre-site .fil{font-family:"JetBrains Mono",monospace}
+.chapeau-s{font-family:"JetBrains Mono",monospace}
+.pas-a-pas .k{font-family:"JetBrains Mono",monospace}
+.pas-a-pas .t{font-family:"Titillium Web",sans-serif}
+.vers-recap{font-family:"Titillium Web",sans-serif}
+.theme-outils .rang{font-family:"JetBrains Mono",monospace}
+.avancee{font-family:"JetBrains Mono",monospace}
+.seg{font-family:"Titillium Web",sans-serif}
+.titre-savoir .code{font-family:"JetBrains Mono",monospace}
+.exo-ligne .genre{font-family:"JetBrains Mono",monospace}
+.suggestions .ou{font-family:"JetBrains Mono",monospace}
+.recap.tenu{font-family:"Titillium Web",sans-serif}
+
+.page,table,.res,.champ .v,.frise .n,.compteur,.chiffres,.espace>.compte,.rang{
+  font-variant-numeric:tabular-nums;
+}
+/* Titillium n'a pas de 800 : le titre descend en 700, sans synthèse de graisse */
+h1{font-weight:700}
+h1 span{color:var(--encre2)}
+header.tete .num{font-weight:700;letter-spacing:-.02em;color:var(--cuivre);opacity:.3}
+.chiffres b{font-weight:700}
+
+/* ═══ L'ACCENT — le cuivre, et rien d'autre ══════════════════════════════
+   Le kit pose sa couleur de cours (--froid) sur le lien, la barre de h2, le
+   grand numéro, le sommaire actif, le curseur des outils. Ici tout cela est
+   du cuivre ; et les cinq teintes de séquence du kit se ramènent à une seule,
+   parce qu'un tableau de communication n'a qu'un code couleur. */
+a{color:var(--cuivre);text-underline-offset:3px;text-decoration-thickness:1px}
+a:hover{color:var(--cuivre2)}
+h2::before{background:var(--encre);height:2px;width:30px}
+.formule{border-left-color:var(--encre)}
+.sequence,.sequence[data-rang="1"],.sequence[data-rang="2"],.sequence[data-rang="3"],
+.sequence[data-rang="4"],.sequence[data-rang="5"],
+.page[data-rang],.page[data-rang="1"],.page[data-rang="2"],.page[data-rang="3"],
+.page[data-rang="4"],.page[data-rang="5"],
+.theme-outils,.theme-outils[data-rang="1"],.theme-outils[data-rang="2"],
+.theme-outils[data-rang="3"],.theme-outils[data-rang="4"],.theme-outils[data-rang="5"],
+.porte,.porte.outils,.porte.exos,.porte.annales{--teinte:var(--cuivre)}
+.page[data-rang] h1 span{color:var(--encre2)}
+nav.somm a.on{background:var(--encre);color:var(--fond)}
+.page[data-rang] nav.somm a.on{background:var(--encre);color:var(--fond)}
+.champ input[type=range]{accent-color:var(--cuivre)}
+input[type=range]::-webkit-slider-thumb{background:var(--cuivre);box-shadow:0 0 0 1.5px var(--carte)}
+input[type=range]::-moz-range-thumb{background:var(--cuivre);box-shadow:0 0 0 1.5px var(--carte)}
+.prerequis a{border-bottom-color:var(--cuivre)}
+.prerequis a:hover{color:var(--cuivre)}
+.barre-site .accueil{border-bottom-color:var(--cuivre)}
+.barre-site .accueil:hover{color:var(--cuivre)}
+.page[data-rang] .barre-site .accueil{border-bottom-color:var(--cuivre)}
+.reprendre a{border-bottom-color:var(--cuivre)}
+.reprendre a:hover{color:var(--cuivre)}
+.compteur .raz{color:var(--cuivre)}
+.resultats a:hover,.exo-ligne a:hover{color:var(--cuivre)}
+.suggestions mark{color:var(--cuivre)}
+.resultats mark{background:color-mix(in srgb,var(--cuivre) 22%,transparent)}
+.raccourcis a:hover{border-color:var(--encre);color:var(--encre)}
+.outil .k,.outils-grille .ou,.theme-outils .outils-grille .ou{color:var(--encre2)}
+.exo .verdict.deja,.serie .verdict.deja{color:var(--cuivre)}
+.exo.fait,.serie.fait{border-left-color:var(--cuivre)}
+/* le savoir central : une pastille cuivre, pas une étiquette rouge */
+.tag{border-radius:2px}
+.tag.n3{border-color:var(--encre);color:var(--encre);font-weight:400}
+.tag.n3::before{color:var(--cuivre)}
+/* le sommaire d'une séance : un trait sous l'entrée, pas un fond */
+nav.somm a{border-radius:2px}
+
+/* ═══ PIÈCE 1 — LA PAIRE TORSADÉE ═══════════════════════════════════════
+   Un tuile de 56 × 16 : deux conducteurs, cuivre et encre, qui se croisent
+   deux fois par tuile et passent alternativement dessus et dessous — c'est
+   une torsade, pas deux sinusoïdes posées l'une sur l'autre. Elle court en
+   haut du cartouche de l'accueil, comme le bus entre dans un tableau. */
+.page[data-site]:not([data-page]) header.tete{
+  position:relative;padding-top:46px;
+  background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 16'><path d='M0 4 C14 4 14 12 28 12 C42 12 42 4 56 4' fill='none' stroke='%238f4f1e' stroke-width='2.2' stroke-linecap='round'/><path d='M0 12 C14 12 14 4 28 4 C42 4 42 12 56 12' fill='none' stroke='%231b1a18' stroke-width='2.2' stroke-linecap='round'/><path d='M28 12 C42 12 42 4 56 4' fill='none' stroke='%238f4f1e' stroke-width='2.2' stroke-linecap='round'/></svg>");
+  background-repeat:repeat-x;background-position:left 10px;background-size:56px 16px;
+}
+
+/* ─── le cartouche d'en-tête, toutes pages ─── */
+header.tete{border-bottom:1.5px solid var(--encre)}
+.page[data-rang] header.tete{border-bottom-color:var(--encre)}
+header.tete .sur{
+  font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--encre2);
+}
+.accroche{color:var(--encre2)}
+
+/* ─── la bande de chiffres : une réglette de repères ─── */
+.chiffres{border-top:1.5px solid var(--encre);border-bottom:1px solid var(--trait2)}
+.chiffres b{letter-spacing:-.02em}
+.chiffres span{font-size:10.5px;letter-spacing:.12em}
+
+/* ─── recherche et portes : sobres, bordées, plates ─── */
+.chercher input{
+  min-height:48px;font-size:16.5px;background:var(--carte);color:var(--encre);
+  border:1px solid var(--encre);border-radius:var(--r);padding:0 14px;
+}
+.chercher input::placeholder{color:var(--encre2);opacity:1}
+.chercher input:focus{outline:none;border-color:var(--cuivre);box-shadow:inset 0 0 0 1px var(--cuivre)}
+nav.portes .porte{
+  background:var(--carte);border:1px solid var(--trait);border-radius:var(--r);
+  box-shadow:none;transform:none;
+}
+nav.portes .porte::before{display:none}
+nav.portes .porte:hover{background:var(--carte2);border-color:var(--encre);transform:none;box-shadow:none}
+nav.portes .porte .n{color:var(--cuivre);font-weight:700}
+nav.portes .porte .t{font-weight:700;letter-spacing:-.01em}
+nav.portes .porte .ico{stroke:var(--encre2)}
+
+/* ═══ PIÈCE 2 — LE RAIL ET SES MODULES ═══════════════════════════════════
+   Chaque espace est une rangée de tableau, chaque séance un module clipsé
+   sur le rail : le repère en monospace à gauche, le titre à droite, un fin
+   trait de rail qui les tient tous. Une séance non produite est un module
+   dont l'emplacement est réservé — bord tireté, pas un lien mort. */
+.espace>h2{
+  font-weight:700;letter-spacing:-.015em;
+  padding-bottom:9px;border-bottom:1px solid var(--encre);
+}
+.espace>.compte{font-size:11px;letter-spacing:.1em}
+
+.sequence{position:relative;padding-left:0;margin-top:34px}
+.sequence::before{display:none}
+.sequence>.rang{
+  font-family:"JetBrains Mono",monospace;font-weight:700;font-size:11.5px;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--cuivre);margin:0 0 3px;
+}
+.sequence>.rang span{color:var(--encre2);font-weight:400;letter-spacing:.04em;text-transform:none}
+.sequence>h3{margin:0 0 4px;font-size:22px;font-weight:700;letter-spacing:-.015em;color:var(--encre)}
+.sequence>.quoi{color:var(--encre2);max-width:66ch}
+.sequence .jauge i{background:var(--trait2)}
+.sequence .jauge i b{background:var(--cuivre)}
+
+.frise{
+  display:block;grid-template-columns:none;gap:0;padding:0 0 0 24px;margin:12px 0 0;
+  position:relative;
+}
+/* le rail : deux arêtes et la rangée d'oblongs */
+.frise::before{
+  content:"";position:absolute;left:0;top:4px;bottom:4px;width:8px;
+  background:
+    repeating-linear-gradient(180deg,var(--trait) 0 6px,transparent 6px 14px) center/2px 100% no-repeat,
+    linear-gradient(var(--trait),var(--trait)) left/1px 100% no-repeat,
+    linear-gradient(var(--trait),var(--trait)) right/1px 100% no-repeat;
+}
+.frise li{position:relative;margin:0 0 6px}
+.frise li:last-child{margin-bottom:0}
+/* le clip du module sur le rail */
+.frise li::before{
+  content:"";position:absolute;left:-16px;top:50%;width:16px;height:1px;
+  background:var(--trait);
+}
+.frise a,.frise .vide{
+  display:grid;grid-template-columns:80px 1fr;align-items:baseline;gap:0 14px;
+  height:auto;padding:11px 14px 11px 12px;border:1px solid var(--trait);
+  border-radius:var(--r);background:var(--carte);box-shadow:none;text-decoration:none;
+  color:var(--encre);transform:none;
+}
+.frise a:hover{border-color:var(--encre);background:var(--carte);transform:none}
+.frise li.lu a{border-color:var(--trait)}
+
+/* le repère collé sur le module */
+.frise .n{
+  grid-column:1;justify-self:start;position:relative;
+  font-family:"JetBrains Mono",monospace;font-weight:700;font-size:11.5px;
+  letter-spacing:.04em;text-transform:none;color:var(--encre);white-space:nowrap;
+  background:var(--carte2);border:1px solid var(--trait);border-radius:2px;
+  padding:1px 7px;margin:0;
+}
+.frise .t{grid-column:2;font-weight:600;font-size:16.5px;color:var(--encre);margin:0}
+.frise .meta{grid-column:2;font-size:11px;color:var(--encre2);margin-top:4px}
+.frise .vide{border-style:dashed;background:transparent}
+.frise .vide .t{color:var(--encre2);font-weight:500}
+.frise .vide .meta{color:var(--encre2)}
+.frise .vide .n{color:var(--encre2);border-style:dashed;background:transparent}
+.frise .vide.a-venir{background:transparent}
+.frise .vide.a-venir .n::after{content:none}
+
+/* ═══ PIÈCE 3 — LE VOYANT ═══════════════════════════════════════════════
+   Lu = la ligne est montée : un voyant cuivre s'allume au bout du repère.
+   Pas de halo, pas de coche — un point, comme sur un coupleur. */
+.frise li.lu .n::after{
+  content:"";position:absolute;right:-13px;top:50%;width:7px;height:7px;margin-top:-3.5px;
+  border-radius:50%;background:var(--cuivre);box-shadow:0 0 0 1.5px var(--carte);
+  color:transparent;font-weight:400;
+}
+.frise li.lu .t{color:var(--encre2)}
+
+/* le récapitulatif de séquence : un bornier en bout de rangée */
+.recap{
+  display:inline-block;margin:12px 0 0 24px;border:1px solid var(--encre);
+  border-radius:var(--r);background:var(--carte);padding:7px 14px;
+  color:var(--encre);font-weight:600;letter-spacing:.01em;
+}
+.recap:hover{background:var(--encre);color:var(--fond);border-color:var(--encre)}
+.recap.tenu{color:var(--encre2);border-style:dashed;background:transparent}
+
+/* ─── les fiches transversales et les défis : des modules aussi ─── */
+.chapeau-f{
+  font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--encre2);
+}
+.grille-f{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:8px}
+.grille-f a{
+  border:1px solid var(--trait);border-left:1px solid var(--trait);border-radius:var(--r);
+  background:var(--carte);box-shadow:none;padding:13px 16px;transform:none;
+}
+.grille-f a:hover{transform:none;border-color:var(--encre)}
+.grille-f a .k{
+  font-size:11px;letter-spacing:.04em;text-transform:none;color:var(--encre);
+  background:var(--carte2);border:1px solid var(--trait);border-radius:2px;
+  padding:1px 7px;display:inline-block;font-weight:700;
+}
+.grille-f a .t{font-weight:600;font-size:16.5px;color:var(--encre)}
+.grille-f a .d{color:var(--encre2);font-size:14.5px}
+
+/* ─── le catalogue des outils, la suite en fin de page : plats ─── */
+.outils-grille a,.pas-a-pas a{box-shadow:none;border-radius:var(--r);transform:none}
+.outils-grille a:hover,.pas-a-pas a:hover{transform:none;border-color:var(--encre)}
+.theme-outils{padding-left:0}
+.theme-outils::before{display:none}
+.theme-outils .rang{color:var(--cuivre)}
+.vers-recap{border-radius:var(--r)}
+.barre-site .fleche{border-radius:var(--r)}
+
+/* ─── marquer comme lu : allumer le voyant ─── */
+.barre-site .lu{
+  font-family:"JetBrains Mono",monospace;font-size:12px;font-weight:400;
+  border:1px solid var(--trait);border-radius:var(--r);color:var(--encre2);
+  background:var(--carte);min-height:36px;padding:6px 13px;
+}
+.barre-site .lu:hover{border-color:var(--encre);color:var(--encre)}
+.barre-site .lu[aria-pressed="true"]{
+  position:relative;color:var(--encre);border-color:var(--encre);
+  background:var(--carte);padding-left:27px;
+}
+.barre-site .lu[aria-pressed="true"]::before{
+  content:"";position:absolute;left:11px;top:50%;width:7px;height:7px;margin-top:-3.5px;
+  border-radius:50%;background:var(--cuivre);
+}
+
+/* ─── les blocs du kit : angles francs, pas d'ombre portée ─── */
+.formule,.piege,.quiz,details.appro,.exo,.serie,.outil,.prerequis,figure img,
+figure.schema .dessin svg,.raccourcis a,.resultats,.suggestions{box-shadow:none}
+.exo .btn,.serie .btn,.bt,.qq button{border-radius:var(--r)}
+.exo .btn:focus-visible,.serie .btn:focus-visible{outline-color:var(--cuivre)}
+th{border-bottom:1.5px solid var(--encre);color:var(--encre2);letter-spacing:.08em}
+
+/* ─── surfaces du navigateur ─── */
+::selection{background:var(--cuivre);color:#fff}
+input,textarea{caret-color:var(--cuivre)}
+:where(a,button,input,select,textarea,summary,[tabindex]):focus-visible{
+  outline:2px solid var(--cuivre);outline-offset:2px;
+}
+input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid var(--cuivre)}
+nav.somm a:focus-visible,details.appro>summary:focus-visible{outline-color:var(--cuivre)}
+html{scrollbar-color:var(--trait) var(--fond);scrollbar-width:thin}
+
+/* les seules transitions de la charte, et elles s'éteignent sur demande */
+.frise a,.grille-f a,nav.portes .porte,.barre-site .lu{transition:border-color .12s,background-color .12s}
+@media (prefers-reduced-motion:reduce){
+  .frise a,.grille-f a,nav.portes .porte,.barre-site .lu,.outils-grille a,.pas-a-pas a{transition:none}
+}
+
+/* ─── tablette et téléphone ─── */
+@media (max-width:560px){
+  .frise{padding-left:20px}
+  .frise li::before{left:-12px;width:12px}
+  .frise a,.frise .vide{grid-template-columns:72px 1fr;gap:0 10px;padding:10px 12px 10px 10px}
+  .recap{margin-left:20px}
+  .page[data-site]:not([data-page]) header.tete{padding-top:40px;background-position:left 8px}
+}
+
+/* ═══ LA NUIT DU TABLEAU ═══════════════════════════════════════════════
+   La paire torsadée en encre claire ; le cuivre s'éclaircit pour tenir
+   7:1 sur le fond. Les modules gardent leur carte, plus sombre que le fond. */
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .page[data-site]:not([data-page]) header.tete{
+    background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 16'><path d='M0 4 C14 4 14 12 28 12 C42 12 42 4 56 4' fill='none' stroke='%23d4915a' stroke-width='2.2' stroke-linecap='round'/><path d='M0 12 C14 12 14 4 28 4 C42 4 42 12 56 12' fill='none' stroke='%23ebe8e1' stroke-width='2.2' stroke-linecap='round'/><path d='M28 12 C42 12 42 4 56 4' fill='none' stroke='%23d4915a' stroke-width='2.2' stroke-linecap='round'/></svg>");
+  }
+  :root:not([data-theme="light"]) ::selection{background:var(--cuivre);color:#1b1a18}
+  :root:not([data-theme="light"]) figure img{background:#f4f2ee}
+}
+:root[data-theme="dark"] .page[data-site]:not([data-page]) header.tete{
+  background-image:url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 16'><path d='M0 4 C14 4 14 12 28 12 C42 12 42 4 56 4' fill='none' stroke='%23d4915a' stroke-width='2.2' stroke-linecap='round'/><path d='M0 12 C14 12 14 4 28 4 C42 4 42 12 56 12' fill='none' stroke='%23ebe8e1' stroke-width='2.2' stroke-linecap='round'/><path d='M28 12 C42 12 42 4 56 4' fill='none' stroke='%23d4915a' stroke-width='2.2' stroke-linecap='round'/></svg>");
+}

@@ -1,0 +1,97 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   VIVANT — option « vivant: oui » de SITE.md, retenue le 10 septembre 2026
+   après un essai sur l'accueil du site BTS FED (« mets les sites en vivant »).
+   Ce que « React le rendrait plus vivant » veut dire, obtenu sans rien
+   remplacer : le passage d'une page à l'autre en fondu, le diagramme
+   d'en-tête où le fluide circule, les compteurs qui montent, la frise qui
+   se révèle, les portes qui répondent, les résultats qui apparaissent.
+   Une feuille et un script, liés APRÈS la charte par site.py. Tout s'éteint
+   sous « réduire les animations ». Le diagramme animé n'existe que sur la
+   charte « fluides » : c'est le sien.
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ─── 1. d'une page à l'autre : un fondu, et le titre qui voyage ─── */
+@view-transition{navigation:auto}
+::view-transition-old(root){animation:200ms ease-in both v-sort}
+::view-transition-new(root){animation:260ms ease-out both v-entre}
+@keyframes v-sort{to{opacity:0;transform:translateY(-6px)}}
+@keyframes v-entre{from{opacity:0;transform:translateY(8px)}}
+header.tete h1{view-transition-name:titre}
+::view-transition-group(titre){animation-duration:320ms}
+
+/* ─── 2. le diagramme enthalpique, avec le fluide dedans ─── */
+/* quand le script a posé le diagramme vivant, celui de la charte s'efface */
+header.tete:has(.tete-anim)::after{display:none}
+.tete-anim{
+  position:absolute;right:14px;top:50%;transform:translateY(-50%);
+  width:clamp(0px,24vw,300px);aspect-ratio:16/10;pointer-events:none;
+}
+.tete-anim svg{display:block;width:100%;height:100%;overflow:visible}
+.tete-anim .va-axe{stroke:var(--trait)}
+.tete-anim .va-iso{stroke:var(--trait2)}
+.tete-anim .va-sat{stroke:var(--encre)}
+.tete-anim .va-satp{fill:var(--encre)}
+/* la feuille de la page impose sa taille aux <text> : on la reprend ici */
+.tete-anim .va-num{fill:var(--encre);font:10px/1 ui-monospace,Menlo,Consolas,monospace}
+.tete-anim .va-ax{fill:var(--encre2);font:9px/1 ui-monospace,Menlo,Consolas,monospace}
+.tete-anim .va-cycle,.tete-anim .va-pts{stroke:#1f8f97}
+.tete-anim .va-pts{fill:#1f8f97}
+.tete-anim .va-flux{stroke:var(--carte);animation:flux 1.6s linear infinite}
+.tete-anim .va-pt{fill:#1f8f97;stroke:var(--carte);stroke-width:2}
+.tete-anim .va-chaud{stroke:var(--chaud)}
+.tete-anim .va-froid{stroke:var(--froid)}
+.tete-anim .va-f{animation:souffle 2.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+.tete-anim .va-f2{animation-delay:.4s}
+.tete-anim .va-f3{animation-delay:.8s}
+@keyframes flux{to{stroke-dashoffset:-28}}
+@keyframes souffle{0%,100%{opacity:.2;transform:translateY(2px)}50%{opacity:1;transform:translateY(-2px)}}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) .tete-anim .va-cycle,
+  :root:not([data-theme="light"]) .tete-anim .va-pts{stroke:#4fb8bf}
+  :root:not([data-theme="light"]) .tete-anim .va-pts,
+  :root:not([data-theme="light"]) .tete-anim .va-pt{fill:#4fb8bf}
+}
+@media (max-width:780px){
+  .tete-anim{right:auto;left:20px;top:auto;bottom:16px;transform:none;width:min(300px,80%)}
+}
+
+/* ─── 3. les compteurs montent (le script fait le compte) ─── */
+.chiffres b{font-variant-numeric:tabular-nums}
+
+/* ─── 4. la frise se révèle au défilement, une séance après l'autre ───
+   Animation menée par le défilement, sans script : chaque séance entre en
+   fondu quand elle entre dans l'écran. Un navigateur qui ne connaît pas
+   « animation-timeline » ignore la ligne et montre tout, tout de suite. */
+@supports (animation-timeline:view()){
+  .frise li,.grille-f a{
+    animation:v-revele linear both;
+    animation-timeline:view();
+    animation-range:entry 0% entry 45%;
+  }
+}
+@keyframes v-revele{from{opacity:0;transform:translateY(12px)}}
+
+/* ─── 5. les portes répondent à la main ─── */
+nav.portes .porte{transition:transform .18s ease,box-shadow .18s ease,background-color .18s ease}
+nav.portes .porte:hover{transform:translateY(-2px)}
+nav.portes .porte .ico path,nav.portes .porte .ico circle{stroke-dasharray:70;stroke-dashoffset:0}
+nav.portes .porte:hover .ico path,nav.portes .porte:hover .ico circle{animation:trace .55s ease-out}
+@keyframes trace{from{stroke-dashoffset:70}}
+
+/* ─── 6. les résultats de recherche arrivent un par un ─── */
+.resultats li{animation:apparait .22s ease-out both}
+.resultats li:nth-child(2){animation-delay:30ms}
+.resultats li:nth-child(3){animation-delay:60ms}
+.resultats li:nth-child(4){animation-delay:90ms}
+.resultats li:nth-child(5){animation-delay:120ms}
+.resultats li:nth-child(6){animation-delay:150ms}
+.resultats li:nth-child(n+7){animation-delay:180ms}
+@keyframes apparait{from{opacity:0;transform:translateY(4px)}}
+
+/* ─── et tout s'éteint pour qui l'a demandé ─── */
+@media (prefers-reduced-motion:reduce){
+  ::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}
+  .tete-anim *,.resultats li,nav.portes .porte .ico *{animation:none!important}
+  .frise li,.grille-f a{animation:none}
+  nav.portes .porte{transition:none}
+}
