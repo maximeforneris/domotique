@@ -312,7 +312,9 @@ nav.portes .porte .ico{stroke:var(--encre2)}
   background:var(--trait);
 }
 .frise a,.frise .vide{
-  display:grid;grid-template-columns:80px 1fr;align-items:baseline;gap:0 14px;
+  /* Le repere porte « Semaine 10 · atelier » : 80 px le faisaient deborder sur
+     le titre. La colonne tient le plus long, et les titres restent alignes. */
+  display:grid;grid-template-columns:168px 1fr;align-items:baseline;gap:0 14px;
   height:auto;padding:11px 14px 11px 12px;border:1px solid var(--trait);
   border-radius:var(--r);background:var(--carte);box-shadow:none;text-decoration:none;
   color:var(--encre);transform:none;
@@ -336,6 +338,14 @@ nav.portes .porte .ico{stroke:var(--encre2)}
 .frise .vide .n{color:var(--encre2);border-style:dashed;background:transparent}
 .frise .vide.a-venir{background:transparent}
 .frise .vide.a-venir .n::after{content:none}
+
+/* Sous 640 px, la colonne du repere prendrait toute la largeur : il passe
+   au-dessus du titre, et le module se lit en trois lignes. */
+@media (max-width:640px){
+  .frise a,.frise .vide{grid-template-columns:1fr}
+  .frise .n{grid-column:1;justify-self:start;margin-bottom:5px}
+  .frise .t,.frise .meta{grid-column:1}
+}
 
 /* ═══ PIÈCE 3 — LE VOYANT ═══════════════════════════════════════════════
    Lu = la ligne est montée : un voyant cuivre s'allume au bout du repère.
@@ -426,7 +436,8 @@ html{scrollbar-color:var(--trait) var(--fond);scrollbar-width:thin}
 @media (max-width:560px){
   .frise{padding-left:20px}
   .frise li::before{left:-12px;width:12px}
-  .frise a,.frise .vide{grid-template-columns:72px 1fr;gap:0 10px;padding:10px 12px 10px 10px}
+  /* une seule colonne : le repere long passe au-dessus du titre (voir plus haut) */
+  .frise a,.frise .vide{grid-template-columns:1fr;gap:0 10px;padding:10px 12px 10px 10px}
   .recap{margin-left:20px}
   .page[data-site]:not([data-page]) header.tete{padding-top:40px;background-position:left 8px}
 }
