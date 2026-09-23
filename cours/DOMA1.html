@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>A1 — câblage, commande, actionneurs</title>
-<link rel="stylesheet" href="../assets/kit.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/site.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/domotique.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/vivant.css?v=af9949d4">
+<link rel="stylesheet" href="../assets/kit.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/site.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/domotique.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/vivant.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/impression.css?v=56a16c5f">
+<script src="../assets/kit.js?v=56a16c5f-1e219d" defer></script>
+<script src="../assets/site.js?v=56a16c5f" defer></script>
+<script src="../assets/vivant.js?v=56a16c5f" defer></script>
 
 <div class="page" data-site="fed-domo-1a" data-page="cours/DOMA1" data-rang="1">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 1 · Le socle</span><span class="fleches"><a class="fleche" href="DOMA2.html" rel="next" title="A2 · lire un dossier de courant faible" aria-label="A2 · lire un dossier de courant faible">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA1">Marquer comme lu</button></div>
@@ -22,131 +28,251 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b>La loi d'Ohm et la puissance</b><span class="car">un bouton commande un contacteur, et un contacteur commande une puissance ; U, I et P se lisent sur chaque schéma de la séance.</span></li><li><b>Lire un schéma électrique unifilaire</b><span class="car">bouton-poussoir, contacteur, télérupteur ; les trois façons de câbler se dessinent avant de se comprendre.</span></li><li><b>Les préfixes et les longueurs</b><span class="car">une ligne KNX se vérifie sur trois longueurs en mètres ; la conversion des mètres en kilomètres doit être immédiate.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#ce-qui-passe-dans-le-fil">Ce qui passe dans le fil</a><a href="#les-deux-chaines">Les deux chaînes</a><a href="#cinq-medias-cinq-emplois">Cinq médias, cinq emplois</a><a href="#une-ligne-knx-se-verifie-sur-trois-longueurs">Une ligne KNX se vérifie sur trois longueurs</a><a href="#essayer">Essayer</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
-<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
-<p>La séance a porté sur une salle de réunion comportant six luminaires et trois points de commande, câblée de trois façons : tout en 230 V, au télérupteur et sur un bus KNX. Le métré ne permet pas de départager les trois solutions ; il donne même l’avantage à la plus ancienne.</p>
-<p>Ce qui les distingue n’apparaît que plus tard, lorsque le client demande une modification.</p>
-<figure>
-<img src="img/DOMA1/fig1-trois-cablages.png" alt="Le même éclairage, câblé de trois façons." />
-<figcaption aria-hidden="true">Le même éclairage, câblé de trois façons.</figcaption>
-</figure>
-<h2 id="ce-qui-passe-dans-le-fil">Ce qui passe dans le fil</h2>
-<div class="cle">
-<p>En câblage traditionnel, <strong>le même fil porte l’information et l’énergie</strong>. Avec un télérupteur, l’énergie reste au tableau. Avec un bus, le fil ne porte plus que l’information, et ce qui s’ajoute ensuite se raccorde sur la paire déjà posée.</p>
-</div>
-<p>Le bus ne se justifie donc pas par une économie de cuivre, mais par <strong>le droit de changer d’avis sans rouvrir un mur</strong>.</p>
-<div class="piege">
-<p>Les fils qui montent aux poussoirs d’un télérupteur ordinaire sont en <strong>230 V</strong>, car sa bobine l’est aussi. Seul le bus est en TBTS, 30 V continu. Un circuit de commande n’est pas pour autant un circuit sans danger.</p>
-</div>
-<h2 id="les-deux-chaines">Les deux chaînes</h2>
-<figure class="schema"><div class="dessin" data-schema="deux-chaines"></div><figcaption>La chaîne d’information porte des ordres et des états ; la chaîne d’énergie porte de la puissance. Le pré-actionneur est la frontière.</figcaption></figure>
-<p>Le <strong>pré-actionneur</strong> reçoit un ordre en petite puissance et établit ou coupe la puissance : relais, contacteur, télérupteur, variateur. L’<strong>actionneur</strong> transforme cette énergie en effet : lumière, mouvement, ouverture.</p>
-<div class="piege">
-<p>Les fabricants commercialisent des « actionneurs KNX ». Dans la chaîne fonctionnelle, ce sont des <strong>pré-actionneurs</strong> : l’actionneur est le luminaire ou le moteur. C’est le vocabulaire du référentiel qui fait foi à l’examen.</p>
-</div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Et la centrale, dans ce schéma ?</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>En KNX, il n’y a <strong>pas de centrale obligatoire</strong>. Chaque participant décide seul à partir du télégramme qu’il reçoit : le système est décentralisé. La centrale n’apparaît que pour la supervision, l’IP et les passerelles.</p>
-<p>C’est ce qui distingue ce système d’un automate à modules d’entrées-sorties, où tout remonte à l’unité centrale et où la panne de celle-ci arrête la commande. Les deux architectures coexistent dans un même bâtiment ; la GTB, étudiée en deuxième année, repose sur cette coexistence.</p></div></details>
-</div><h2 id="cinq-medias-cinq-emplois">Cinq médias, cinq emplois</h2>
-<figure>
-<img src="img/DOMA1/fig3-medias.png" alt="Bus filaire, radio, CPL, fibre, Ethernet cuivre." />
-<figcaption aria-hidden="true">Bus filaire, radio, CPL, fibre, Ethernet cuivre.</figcaption>
-</figure>
-<p>Le choix se fait sur trois questions, dans cet ordre : <strong>peut-on passer un câble</strong>, <strong>quelle distance</strong>, <strong>quel débit</strong>.</p>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Situation</th>
-<th>Le média qui s’impose</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Neuf, avant les cloisons</td>
-<td>bus filaire TP1</td>
-</tr>
-<tr>
-<td>Rénovation occupée, sans saignée</td>
-<td>radio : KNX RF, EnOcean</td>
-</tr>
-<tr>
-<td>Le 230 V existe, le budget est serré</td>
-<td>CPL</td>
-</tr>
-<tr>
-<td>Au-delà de 100 m, ou en milieu perturbé</td>
-<td>fibre optique</td>
-</tr>
-<tr>
-<td>Caméras, écrans, supervision</td>
-<td>Ethernet cuivre, moins de 100 m</td>
-</tr>
-</tbody>
-</table></div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi le bus ne partage pas la gaine du 230 V</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le câble TP1 ordinaire n’est pas isolé pour 230 V. La NF C 15-100 n’admet la cohabitation dans un même conduit que si <strong>tous</strong> les conducteurs sont isolés pour la tension la plus élevée.</p>
-<p>Il existe des câbles bus à isolation renforcée, prévus pour cela, et plus chers. Une seconde raison, d’ordre technique plutôt que réglementaire, s’y ajoute : les perturbations conduites par le 230 V dégradent la transmission sur le bus.</p></div></details>
-</div><h2 id="une-ligne-knx-se-verifie-sur-trois-longueurs">Une ligne KNX se vérifie sur trois longueurs</h2>
-<figure>
-<img src="img/DOMA1/fig4-topologies.png" alt="Topologies autorisées, et les trois longueurs à vérifier." />
-<figcaption aria-hidden="true">Topologies autorisées, et les trois longueurs à vérifier.</figcaption>
-</figure>
-<div class="formule">
-<p><strong>350 m · 700 m · 1 000 m</strong></p>
-<ul>
-<li><strong>350 m</strong><span>: de l’alimentation au participant le plus éloigné</span></li>
-<li><strong>700 m</strong><span>: entre deux participants quelconques</span></li>
-<li><strong>1 000 m</strong><span>: de câble posé au total sur la ligne</span></li>
-<li><strong>64 participants</strong><span>par ligne, à <strong>10 mA</strong> chacun : soit 640 mA, le calibre maximal</span></li>
-</ul>
-<blockquote>
-<p>Toute topologie est acceptée (ligne, étoile, arbre) <strong>sauf l’anneau</strong>.</p>
-</blockquote>
-</div>
-<div class="cle">
-<p>Les deux limites d’une ligne sont atteintes ensemble : 64 participants consomment exactement 640 mA. Au-delà, une ligne pleine ne s’allonge pas : il faut en créer une <strong>seconde</strong>, avec son coupleur et son alimentation.</p>
-</div>
-<figure class="memo"><img src="img/DOMA1/memo-cablage.png" alt="" /></figure>
-<h2 id="essayer">Essayer</h2>
-<div class="outil" data-outil="chaine-fonctionnelle">
-
-</div>
-<div class="outil" data-outil="ligne-knx">
-
-</div>
-<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
-<div class="quiz">
-<ul>
-<li>Le pré-actionneur, c’est : <strong>le variateur</strong> | le luminaire | le poussoir</li>
-<li>La tension d’un bus KNX TP1 vaut : <strong>30 V continu</strong> | 24 V alternatif | 230 V</li>
-<li>La topologie interdite sur une ligne KNX est : <strong>l’anneau</strong> | l’étoile | l’arbre</li>
-<li>Entre deux équipements actifs, l’Ethernet cuivre s’arrête à : <strong>100 m</strong> | 350 m | 1 000 m</li>
-<li>Un interrupteur sans fil et sans pile, c’est : <strong>EnOcean</strong> | le CPL | la fibre</li>
-<li>Le bus KNX se justifie surtout par : <strong>ce qu’on pourra y ajouter</strong> | l’économie de cuivre | la vitesse</li>
-</ul>
-</div>
-<h2 id="s-entrainer">S’entraîner</h2>
-<section class="exo" id="DOMA1-e1" data-exo="DOMA1-e1" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWJvdGp2eC41NnhgaHRqdngveGB4N3gn"><p class="k">Exercice · D2-1</p><h4>La ligne du collège</h4><div class="enonce">
-
-<p>Une ligne KNX TP1 part de son alimentation. Les longueurs de câble posées : alimentation → boîte de répartition, <strong>45 m</strong> ; répartition → bout de la branche principale, <strong>260 m</strong> ; bout de cette branche → antenne des combles, <strong>80 m</strong>.</p>
-<p>À quelle distance de l’alimentation se trouve le participant le plus éloigné ?</p>
-</div><div class="indice" hidden>additionner les tronçons du chemin, du premier au dernier. Le tronçon de l’alimentation à la répartition en fait partie.</div></section>
-<section class="exo" id="DOMA1-e2" data-exo="DOMA1-e2" data-type="calcul" data-savoir="B8-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgbmlqdGp2eC41NnhgaHRqdngveGB4Nxt4Jw=="><p class="k">Exercice · B8-1</p><h4>Le courant du bus</h4><div class="enonce">
-
-<p>Une ligne compte <strong>43 participants</strong>. Chacun consomme 10 mA sur le bus.</p>
-<p>Quel courant l’alimentation doit-elle fournir ?</p>
-</div><div class="indice" hidden>un participant, 10 mA. Le résultat se compare ensuite aux calibres du catalogue.</div></section>
-<section class="exo" id="DOMA1-e3" data-exo="DOMA1-e3" data-type="lecture" data-savoir="D1-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4PDM4KD94dng8MzgoP3o1Ki4zKy8/eHZ4Njt6PDM4KD96NSouMysvP3h2eDUqLjMrLz94Byc="><p class="k">Exercice · D1-1</p><h4>Deux bâtiments, 400 mètres</h4><div class="enonce">
-
-<p>Il faut relier la supervision du bâtiment principal à l’automate d’un local technique situé à <strong>400 m</strong>, en extérieur, le long d’un poste de transformation.</p>
-<p>Quel média retenir ?</p>
-</div><div class="indice" hidden>deux contraintes se cumulent ici, la distance et l’environnement électrique. Un seul média répond aux deux, et il isole en plus les deux bâtiments l’un de l’autre.</div></section>
-<section class="exo" id="DOMA1-e4" data-exo="DOMA1-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>Pré-actionneur ou actionneur ?</h4><div class="enonce">
-
-<p>Un client vous demande pourquoi le variateur et le luminaire ne sont pas rangés dans la même famille. Répondre en trois ou quatre lignes.</p>
-</div><div class="indice" hidden>le critère tient en une question : qu’est-ce qui produit l’effet que le client voit ?</div><ul class="verifier" hidden><li>J’ai dit que le pré-actionneur reçoit un ordre et établit ou coupe la puissance</li><li>J’ai dit que l’actionneur transforme l’énergie en un effet dans le bâtiment</li><li>J’ai donné un exemple de chacun</li><li>J’ai précisé que le pré-actionneur est traversé par la puissance sans produire d’effet</li></ul></section>
-<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
-<p>La séance suivante apprend à lire un dossier de courant faible : schémas, repérage des câbles, carnet de câbles et tableau de communication. Elle suppose acquis le vocabulaire de la chaîne et les trois façons de câbler. Les adresses de groupe viendront en semaine 11, une fois le réseau construit.</p>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+
+<p>La séance a porté sur une salle de réunion comportant six luminaires et trois points de commande, câblée de trois façons : tout en 230 V, au télérupteur et sur un bus KNX. Le métré ne permet pas de départager les trois solutions ; il donne même l’avantage à la plus ancienne.</p>
+
+<p>Ce qui les distingue n’apparaît que plus tard, lorsque le client demande une modification.</p>
+
+<figure>
+
+<img src="img/DOMA1/fig1-trois-cablages.png" alt="Le même éclairage, câblé de trois façons." />
+
+<figcaption aria-hidden="true">Le même éclairage, câblé de trois façons.</figcaption>
+
+</figure>
+
+<h2 id="ce-qui-passe-dans-le-fil">Ce qui passe dans le fil</h2>
+
+<div class="cle">
+
+<p>En câblage traditionnel, <strong>le même fil porte l’information et l’énergie</strong>. Avec un télérupteur, l’énergie reste au tableau. Avec un bus, le fil ne porte plus que l’information, et ce qui s’ajoute ensuite se raccorde sur la paire déjà posée.</p>
+
+</div>
+
+<p>Le bus ne se justifie donc pas par une économie de cuivre, mais par <strong>le droit de changer d’avis sans rouvrir un mur</strong>.</p>
+
+<div class="piege">
+
+<p>Les fils qui montent aux poussoirs d’un télérupteur ordinaire sont en <strong>230 V</strong>, car sa bobine l’est aussi. Seul le bus est en TBTS, 30 V continu. Un circuit de commande n’est pas pour autant un circuit sans danger.</p>
+
+</div>
+
+<h2 id="les-deux-chaines">Les deux chaînes</h2>
+
+<figure class="schema"><div class="dessin" data-schema="deux-chaines"></div><figcaption>La chaîne d’information porte des ordres et des états ; la chaîne d’énergie porte de la puissance. Le pré-actionneur est la frontière.</figcaption></figure>
+
+<p>Le <strong>pré-actionneur</strong> reçoit un ordre en petite puissance et établit ou coupe la puissance : relais, contacteur, télérupteur, variateur. L’<strong>actionneur</strong> transforme cette énergie en effet : lumière, mouvement, ouverture.</p>
+
+<div class="piege">
+
+<p>Les fabricants commercialisent des « actionneurs KNX ». Dans la chaîne fonctionnelle, ce sont des <strong>pré-actionneurs</strong> : l’actionneur est le luminaire ou le moteur. C’est le vocabulaire du référentiel qui fait foi à l’examen.</p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Et la centrale, dans ce schéma ?</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>En KNX, il n’y a <strong>pas de centrale obligatoire</strong>. Chaque participant décide seul à partir du télégramme qu’il reçoit : le système est décentralisé. La centrale n’apparaît que pour la supervision, l’IP et les passerelles.</p>
+
+<p>C’est ce qui distingue ce système d’un automate à modules d’entrées-sorties, où tout remonte à l’unité centrale et où la panne de celle-ci arrête la commande. Les deux architectures coexistent dans un même bâtiment ; la GTB, étudiée en deuxième année, repose sur cette coexistence.</p></div></details>
+
+</div><h2 id="cinq-medias-cinq-emplois">Cinq médias, cinq emplois</h2>
+
+<figure>
+
+<img src="img/DOMA1/fig3-medias.png" alt="Bus filaire, radio, CPL, fibre, Ethernet cuivre." />
+
+<figcaption aria-hidden="true">Bus filaire, radio, CPL, fibre, Ethernet cuivre.</figcaption>
+
+</figure>
+
+<p>Le choix se fait sur trois questions, dans cet ordre : <strong>peut-on passer un câble</strong>, <strong>quelle distance</strong>, <strong>quel débit</strong>.</p>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Situation</th>
+
+<th>Le média qui s’impose</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Neuf, avant les cloisons</td>
+
+<td>bus filaire TP1</td>
+
+</tr>
+
+<tr>
+
+<td>Rénovation occupée, sans saignée</td>
+
+<td>radio : KNX RF, EnOcean</td>
+
+</tr>
+
+<tr>
+
+<td>Le 230 V existe, le budget est serré</td>
+
+<td>CPL</td>
+
+</tr>
+
+<tr>
+
+<td>Au-delà de 100 m, ou en milieu perturbé</td>
+
+<td>fibre optique</td>
+
+</tr>
+
+<tr>
+
+<td>Caméras, écrans, supervision</td>
+
+<td>Ethernet cuivre, moins de 100 m</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi le bus ne partage pas la gaine du 230 V</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le câble TP1 ordinaire n’est pas isolé pour 230 V. La NF C 15-100 n’admet la cohabitation dans un même conduit que si <strong>tous</strong> les conducteurs sont isolés pour la tension la plus élevée.</p>
+
+<p>Il existe des câbles bus à isolation renforcée, prévus pour cela, et plus chers. Une seconde raison, d’ordre technique plutôt que réglementaire, s’y ajoute : les perturbations conduites par le 230 V dégradent la transmission sur le bus.</p></div></details>
+
+</div><h2 id="une-ligne-knx-se-verifie-sur-trois-longueurs">Une ligne KNX se vérifie sur trois longueurs</h2>
+
+<figure>
+
+<img src="img/DOMA1/fig4-topologies.png" alt="Topologies autorisées, et les trois longueurs à vérifier." />
+
+<figcaption aria-hidden="true">Topologies autorisées, et les trois longueurs à vérifier.</figcaption>
+
+</figure>
+
+<div class="formule">
+
+<p><strong>350 m · 700 m · 1 000 m</strong></p>
+
+<ul>
+
+<li><strong>350 m</strong><span>: de l’alimentation au participant le plus éloigné</span></li>
+
+<li><strong>700 m</strong><span>: entre deux participants quelconques</span></li>
+
+<li><strong>1 000 m</strong><span>: de câble posé au total sur la ligne</span></li>
+
+<li><strong>64 participants</strong><span>par ligne, à <strong>10 mA</strong> chacun : soit 640 mA, le calibre maximal</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>Toute topologie est acceptée (ligne, étoile, arbre) <strong>sauf l’anneau</strong>.</p>
+
+</blockquote>
+
+</div>
+
+<div class="cle">
+
+<p>Les deux limites d’une ligne sont atteintes ensemble : 64 participants consomment exactement 640 mA. Au-delà, une ligne pleine ne s’allonge pas : il faut en créer une <strong>seconde</strong>, avec son coupleur et son alimentation.</p>
+
+</div>
+
+<figure class="memo"><img src="img/DOMA1/memo-cablage.png" alt="" /></figure>
+
+<h2 id="essayer">Essayer</h2>
+
+<div class="outil" data-outil="chaine-fonctionnelle">
+
+
+
+</div>
+
+<div class="outil" data-outil="ligne-knx">
+
+
+
+</div>
+
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+
+<div class="quiz">
+
+<ul>
+
+<li>Le pré-actionneur, c’est : <strong>le variateur</strong> | le luminaire | le poussoir</li>
+
+<li>La tension d’un bus KNX TP1 vaut : <strong>30 V continu</strong> | 24 V alternatif | 230 V</li>
+
+<li>La topologie interdite sur une ligne KNX est : <strong>l’anneau</strong> | l’étoile | l’arbre</li>
+
+<li>Entre deux équipements actifs, l’Ethernet cuivre s’arrête à : <strong>100 m</strong> | 350 m | 1 000 m</li>
+
+<li>Un interrupteur sans fil et sans pile, c’est : <strong>EnOcean</strong> | le CPL | la fibre</li>
+
+<li>Le bus KNX se justifie surtout par : <strong>ce qu’on pourra y ajouter</strong> | l’économie de cuivre | la vitesse</li>
+
+</ul>
+
+</div>
+
+<h2 id="s-entrainer">S’entraîner</h2>
+
+<section class="exo" id="DOMA1-e1" data-exo="DOMA1-e1" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWJvdGp2eC41NnhgaHRqdngveGB4N3gn"><p class="k">Exercice · D2-1</p><h4>La ligne du collège</h4><div class="enonce">
+
+
+
+<p>Une ligne KNX TP1 part de son alimentation. Les longueurs de câble posées : alimentation → boîte de répartition, <strong>45 m</strong> ; répartition → bout de la branche principale, <strong>260 m</strong> ; bout de cette branche → antenne des combles, <strong>80 m</strong>.</p>
+
+<p>À quelle distance de l’alimentation se trouve le participant le plus éloigné ?</p>
+
+</div><div class="indice" hidden>additionner les tronçons du chemin, du premier au dernier. Le tronçon de l’alimentation à la répartition en fait partie.</div></section>
+
+<section class="exo" id="DOMA1-e2" data-exo="DOMA1-e2" data-type="calcul" data-savoir="B8-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgbmlqdGp2eC41NnhgaHRqdngveGB4Nxt4Jw=="><p class="k">Exercice · B8-1</p><h4>Le courant du bus</h4><div class="enonce">
+
+
+
+<p>Une ligne compte <strong>43 participants</strong>. Chacun consomme 10 mA sur le bus.</p>
+
+<p>Quel courant l’alimentation doit-elle fournir ?</p>
+
+</div><div class="indice" hidden>un participant, 10 mA. Le résultat se compare ensuite aux calibres du catalogue.</div></section>
+
+<section class="exo" id="DOMA1-e3" data-exo="DOMA1-e3" data-type="lecture" data-savoir="D1-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4PDM4KD94dng8MzgoP3o1Ki4zKy8/eHZ4Njt6PDM4KD96NSouMysvP3h2eDUqLjMrLz94Byc="><p class="k">Exercice · D1-1</p><h4>Deux bâtiments, 400 mètres</h4><div class="enonce">
+
+
+
+<p>Il faut relier la supervision du bâtiment principal à l’automate d’un local technique situé à <strong>400 m</strong>, en extérieur, le long d’un poste de transformation.</p>
+
+<p>Quel média retenir ?</p>
+
+</div><div class="indice" hidden>deux contraintes se cumulent ici, la distance et l’environnement électrique. Un seul média répond aux deux, et il isole en plus les deux bâtiments l’un de l’autre.</div></section>
+
+<section class="exo" id="DOMA1-e4" data-exo="DOMA1-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>Pré-actionneur ou actionneur ?</h4><div class="enonce">
+
+
+
+<p>Un client vous demande pourquoi le variateur et le luminaire ne sont pas rangés dans la même famille. Répondre en trois ou quatre lignes.</p>
+
+</div><div class="indice" hidden>le critère tient en une question : qu’est-ce qui produit l’effet que le client voit ?</div><ul class="verifier" hidden><li>J’ai dit que le pré-actionneur reçoit un ordre et établit ou coupe la puissance</li><li>J’ai dit que l’actionneur transforme l’énergie en un effet dans le bâtiment</li><li>J’ai donné un exemple de chacun</li><li>J’ai précisé que le pré-actionneur est traversé par la puissance sans produire d’effet</li></ul></section>
+
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+
+<p>La séance suivante apprend à lire un dossier de courant faible : schémas, repérage des câbles, carnet de câbles et tableau de communication. Elle suppose acquis le vocabulaire de la chaîne et les trois façons de câbler. Les adresses de groupe viendront en semaine 11, une fois le réseau construit.</p>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="ap" href="DOMA2.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">A2 · lire un dossier de courant faible</span></a></div><a class="vers-recap" href="SEQ1.html">Préparation au contrôle</a></nav>
 <p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=af9949d4"></script>
-<script src="../assets/site.js?v=af9949d4"></script>
-<script src="../assets/vivant.js?v=af9949d4"></script>
+

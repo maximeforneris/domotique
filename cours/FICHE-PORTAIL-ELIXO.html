@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="fr">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta name="robots" content="noindex, nofollow">
+<title>Le portail coulissant</title>
+<link rel="stylesheet" href="../assets/kit.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/site.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/domotique.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/vivant.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/impression.css?v=56a16c5f">
+<script src="../assets/kit.js?v=56a16c5f-1e219d" defer></script>
+<script src="../assets/site.js?v=56a16c5f" defer></script>
+<script src="../assets/vivant.js?v=56a16c5f" defer></script>
+
+<div class="page" data-site="fed-domo-1a" data-page="cours/FICHE-PORTAIL-ELIXO">
+<div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fleches"><a class="fleche" href="FICHE-CCF-E5.html" rel="prev" title="Fiche CCF E5" aria-label="Fiche CCF E5">&lsaquo;</a><a class="fleche" href="FICHE-REFERENTIEL.html" rel="next" title="Le référentiel" aria-label="Le référentiel">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/FICHE-PORTAIL-ELIXO">Marquer comme lu</button></div>
+<header class="tete">
+  
+  <div class="titraille">
+    <p class="sur">BTS FED option C · 1re année</p>
+    <h1>Le portail<span>coulissant motorisé</span></h1>
+  </div>
+  <p class="accroche">Une ligne 230 V réservée, un moteur en très basse tension, quatre périphériques et trois sécurités. Ce que vous avez câblé, réglé et surtout essayé sur la motorisation de l'atelier. Ce travail pratique ne tient pas une semaine du calendrier : il se fait quand le portail est disponible.</p>
+  <p class="contenu">1 outil · 6 questions · 4 exercices · 2 replis · 1 figure</p>
+  <p class="k-savoirs">Savoirs travaillés</p><div class="savoirs"><span class="tag n3">B8-2 Automatismes du bâtiment · niveau 3</span><span class="tag n3">B10 Alimentations secourues · niveau 3</span><span class="tag">C2-1 Moteurs électriques · niveau 2</span><span class="tag">C1-1 Distribution BT, ligne dédiée · niveau 2</span></div>
+</header>
+<aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">La chaîne et le pré-actionneur</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">sur un portail, la carte reçoit l'ordre et le moteur produit le mouvement ; la séance sépare les deux du premier au dernier raccordement.</span></li><li><b><a href="DOMB2.html">La consignation et le contrôle hors tension</a></b><span class="ou">Semaine 2 · atelier · Câbler la référence 230 V</span><span class="car">on ne met pas un portail sous tension pour voir, on vérifie avant.</span></li><li><b>Lire une notice constructeur</b><span class="car">les numéros de bornes, les codes de l'afficheur et les paramètres ne se devinent pas ; ils se relèvent.</span></li></ul></aside>
+<nav class="somm"><div class="in"><a href="#ce-que-la-seance-a-fait-faire">Ce que la séance a fait faire</a><a href="#une-ligne-qui-n-alimente-que-le-portail">Une ligne qui n’alimente que le portail</a><a href="#trois-securites-et-ce-qu-elles-font-chacune">Trois sécurités, et ce qu’elles font chacune</a><a href="#ce-que-le-pont-interdit">Ce que le pont interdit</a><a href="#la-mise-en-service-dans-l-ordre">La mise en service, dans l’ordre</a><a href="#les-codes-de-l-afficheur">Les codes de l’afficheur</a><a href="#la-chaine-sur-ce-poste">La chaîne, sur ce poste</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#ce-que-ce-poste-prepare">Ce que ce poste prépare</a></div></nav>
+<h2 id="ce-que-la-seance-a-fait-faire">Ce que la séance a fait faire</h2>
+
+<p>Le poste porte une motorisation <strong>Somfy Elixo 500 3S</strong>, prévue pour les portails coulissants jusqu’à 500 kg. Vous avez câblé la ligne d’alimentation, quatre périphériques et les sécurités, puis mis l’ensemble en service.</p>
+
+<p>La séance ne s’arrête pas à un portail qui bouge : elle s’arrête à un portail <strong>essayé</strong>.</p>
+
+<figure>
+
+<img src="img/FICHE-PORTAIL-ELIXO/fig1-implantation.png" alt="Ce qu’il y a autour du moteur, et ce qui les relie." />
+
+<figcaption aria-hidden="true">Ce qu’il y a autour du moteur, et ce qui les relie.</figcaption>
+
+</figure>
+
+<h2 id="une-ligne-qui-n-alimente-que-le-portail">Une ligne qui n’alimente que le portail</h2>
+
+<div class="formule">
+
+<p><strong>230 V · ligne réservée · 1,5 mm² au minimum</strong></p>
+
+<ul>
+
+<li><strong>interrupteur omnipolaire</strong><span>homologué, ouverture des contacts de 3,5 mm au moins</span></li>
+
+<li><strong>disjoncteur 16 A</strong><span>, ou fusible équivalent</span></li>
+
+<li><strong>différentiel 30 mA</strong><span>, qui protège les personnes</span></li>
+
+<li><strong>parafoudre</strong><span>conforme à la NF C 61740, tension résiduelle de 2 kV au plus</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>La terre ne va pas au bornier : elle se raccorde sur la carcasse du moteur.</p>
+
+</blockquote>
+
+</div>
+
+<p>Le moteur, lui, est en <strong>24 V</strong>. Tout ce qui sort de la carte vers les cellules, le feu, le clavier et la batterie est en très basse tension de sécurité.</p>
+
+<div class="cle">
+
+<p>Une seule ligne 230 V, réservée au portail, et <strong>rien d’autre dessus</strong> : ni éclairage de jardin, ni prise de service. C’est le manuel qui l’impose, et c’est ce qui permet de consigner le portail sans couper autre chose.</p>
+
+</div>
+
+<h2 id="trois-securites-et-ce-qu-elles-font-chacune">Trois sécurités, et ce qu’elles font chacune</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th>La sécurité</th>
+
+<th>Ce qu’elle surveille</th>
+
+<th>Quand elle agit</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Cellules photoélectriques</td>
+
+<td>le passage libre</td>
+
+<td>en <strong>fermeture</strong> seulement</td>
+
+</tr>
+
+<tr>
+
+<td>Détection d’obstacle</td>
+
+<td>l’effort du moteur</td>
+
+<td>à l’ouverture <strong>et</strong> à la fermeture</td>
+
+</tr>
+
+<tr>
+
+<td>Barre palpeuse</td>
+
+<td>le contact en bout de vantail</td>
+
+<td>en fermeture</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="piege">
+
+<p>Les cellules ne protègent <strong>pas l’ouverture</strong> : le manuel prévoit que leur occultation n’a aucun effet pendant ce mouvement. Ce qui protège à l’ouverture, c’est la détection d’obstacle. Confondre les deux conduit à annoncer à un client une protection qui n’existe pas.</p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi un contact de sécurité est fermé au repos</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Les entrées de sécurité de la carte attendent un <strong>contact normalement fermé</strong>. Un fil qui se débranche, une cellule déréglée ou un récepteur qui perd son alimentation ouvrent le contact : le portail refuse alors de fermer.</p>
+
+<p>C’est le principe de la sécurité positive. Une panne du dispositif de sécurité doit conduire au refus, jamais à une fermeture qui ne serait plus surveillée.</p>
+
+<p>C’est aussi pourquoi le <strong>pont entre les bornes 19 et 20</strong> est obligatoire lorsqu’aucune cellule n’est posée : sans lui, la carte lit une sécurité ouverte.</p></div></details>
+
+</div><h2 id="ce-que-le-pont-interdit">Ce que le pont interdit</h2>
+
+<div class="cle">
+
+<p>Poser le pont revient à déclarer qu’il n’y a pas de cellules. La <strong>fermeture automatique</strong> devient alors interdite : le manuel ne l’autorise que si une entrée de sécurité cellules est active.</p>
+
+</div>
+
+<p>Un portail qui se referme seul le fait sans que personne le surveille. C’est la raison de la règle, et c’est ce qu’il faut savoir répondre à un client qui demande les deux à la fois.</p>
+
+<h2 id="la-mise-en-service-dans-l-ordre">La mise en service, dans l’ordre</h2>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Mémoriser une télécommande : l’afficheur passe par <strong>F0</strong>, puis indique <strong>Add</strong>.</li>
+
+<li>Placer le vantail en <strong>position intermédiaire</strong>.</li>
+
+<li>Lancer l’<strong>auto-apprentissage</strong> : deux cycles complets, en commençant par une ouverture.</li>
+
+<li>Lire le code final : <strong>C1</strong> si l’apprentissage est réussi, <strong>H0</strong> s’il a été interrompu.</li>
+
+<li>Régler les paramètres : mode de fonctionnement, temporisation, entrée cellules, préavis du feu.</li>
+
+<li>Conduire les essais, et les écrire.</li>
+
+</ol>
+
+</div>
+
+<div class="piege">
+
+<p>Pendant l’auto-apprentissage, la <strong>détection d’obstacle est inactive</strong> : le manuel l’écrit. C’est le moment où le passage doit être vide, et où la commande d’arrêt reste à portée de main.</p>
+
+</div>
+
+<h2 id="les-codes-de-l-afficheur">Les codes de l’afficheur</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Code</th>
+
+<th>Ce qu’il signale</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>C1</td>
+
+<td>attente de commande</td>
+
+</tr>
+
+<tr>
+
+<td>C2 · C4</td>
+
+<td>ouverture en cours · fermeture en cours</td>
+
+</tr>
+
+<tr>
+
+<td>C6 · C7</td>
+
+<td>détection sur les cellules · sur la barre palpeuse</td>
+
+</tr>
+
+<tr>
+
+<td>C13</td>
+
+<td>auto-test d’un dispositif de sécurité en cours</td>
+
+</tr>
+
+<tr>
+
+<td>H0 · H1</td>
+
+<td>attente de réglage · auto-apprentissage</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Auto-test : ce que la carte vérifie toute seule</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Sans auto-test, le manuel impose d’essayer les sécurités <strong>tous les six mois</strong> : c’est une ligne de la notice remise à l’exploitant, pas une recommandation.</p>
+
+<p>Avec auto-test, la carte coupe puis rétablit l’alimentation des cellules à chaque mouvement et vérifie que le faisceau réagit. Si le test échoue, plus aucun mouvement n’est possible jusqu’au passage en mode homme mort.</p>
+
+<p>L’auto-test suppose que le récepteur soit alimenté par la <strong>sortie pilotée</strong>, et non par l’alimentation permanente des accessoires. Le câblage décide donc de ce que la carte pourra vérifier.</p></div></details>
+
+</div><h2 id="la-chaine-sur-ce-poste">La chaîne, sur ce poste</h2>
+
+<div class="outil" data-outil="chaine-fonctionnelle">
+
+
+
+</div>
+
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+
+<div class="quiz">
+
+<ul>
+
+<li>Sans cellules, il faut poser un pont entre les bornes : <strong>19 et 20</strong> | 21 et 22 | 23 et 24</li>
+
+<li>Les cellules photoélectriques protègent : <strong>la fermeture</strong> | l’ouverture | les deux</li>
+
+<li>Pendant l’auto-apprentissage, n’est pas active : <strong>la détection d’obstacle</strong> | la radio | la butée</li>
+
+<li>La ligne d’alimentation du portail doit être : <strong>réservée au portail</strong> | partagée | secourue</li>
+
+<li>La terre de la motorisation se raccorde : <strong>sur la carcasse</strong> | à la borne 1 | à la borne 30</li>
+
+<li>Un contact de sécurité, au repos, est : <strong>fermé</strong> | ouvert | alimenté</li>
+
+</ul>
+
+</div>
+
+<h2 id="s-entrainer">S’entraîner</h2>
+
+<section class="exo" id="FICHE-PORTAIL-ELIXO-e1" data-exo="FICHE-PORTAIL-ELIXO-e1" data-type="lecture" data-savoir="B8-2" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4aG94dng4NSg0P3pob3gHJw=="><p class="k">Exercice · B8-2</p><h4>Le périphérique et ses bornes</h4><div class="enonce">
+
+
+
+<p>Sur la carte, un feu orange de 24 V se raccorde sur deux bornes voisines de la sortie destinée à la signalisation.</p>
+
+<p>Donner le numéro de la première de ces deux bornes.</p>
+
+</div><div class="indice" hidden>le tableau des bornes du dossier range les sorties dans l’ordre ; la signalisation vient après l’alimentation des accessoires.</div></section>
+
+<section class="exo" id="FICHE-PORTAIL-ELIXO-e2" data-exo="FICHE-PORTAIL-ELIXO-e2" data-type="calcul" data-savoir="B10" data-a="IXgueGB4OTs2OS82eHZ4LHhga2pja3RqdnguNTZ4YGh0anZ4L3hgeDcbeCc="><p class="k">Exercice · B10</p><h4>Le budget des accessoires</h4><div class="enonce">
+
+
+
+<p>La carte fournit <strong>1,2 A</strong> pour l’ensemble des accessoires. Le poste comporte une paire de cellules qui consomme <strong>24 mA</strong>, un clavier à code de <strong>30 mA</strong> et un lecteur de badges de <strong>55 mA</strong>.</p>
+
+<p>Combien de milliampères restent disponibles ?</p>
+
+</div><div class="indice" hidden>additionner les trois consommations, puis retrancher la somme du courant disponible. Attention aux unités : 1,2 A n’est pas 1,2 mA.</div></section>
+
+<section class="exo" id="FICHE-PORTAIL-ELIXO-e3" data-exo="FICHE-PORTAIL-ELIXO-e3" data-type="calcul" data-savoir="C1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWxianRqdnguNTZ4YGhqdGp2eC94YHgMG3gn"><p class="k">Exercice · C1-1</p><h4>La protection de la ligne</h4><div class="enonce">
+
+
+
+<p>La ligne du portail est protégée par un disjoncteur de <strong>16 A</strong> sous 230 V.</p>
+
+<p>Quelle puissance apparente cette protection autorise-t-elle au maximum ?</p>
+
+</div><div class="indice" hidden>la puissance apparente est le produit de la tension par le courant. Le résultat se compare ensuite aux 600 W annoncés par le manuel.</div></section>
+
+<section class="exo" id="FICHE-PORTAIL-ELIXO-e4" data-exo="FICHE-PORTAIL-ELIXO-e4" data-type="justification" data-savoir="B8-2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-2</p><h4>Le client veut la fermeture automatique</h4><div class="enonce">
+
+
+
+<p>Un client demande la fermeture automatique de son portail, mais refuse les cellules photoélectriques, qu’il trouve inesthétiques. Rédiger la réponse, en trois ou quatre lignes.</p>
+
+</div><div class="indice" hidden>la question n’est pas de savoir si le client a le droit de choisir, mais ce que le manuel autorise à livrer.</div><ul class="verifier" hidden><li>J’ai dit que la fermeture automatique n’est autorisée que si une entrée de sécurité cellules est active</li><li>J’ai expliqué qu’un portail qui se ferme seul le fait sans surveillance</li><li>J’ai distingué ce qui relève de la sécurité de ce qui relève de l’esthétique</li><li>J’ai proposé une solution : cellules discrètes, ou renoncer à la fermeture automatique</li></ul></section>
+
+<h2 id="ce-que-ce-poste-prepare">Ce que ce poste prépare</h2>
+
+<p>Les séances de sûreté reprendront ce même portail par l’autre bout : le clavier laissera la place à un lecteur de badges, et la question deviendra celle des <strong>droits et des plages horaires</strong>. Le câblage des sécurités, lui, ne changera pas.</p>
+
+<nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="FICHE-CCF-E5.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">Fiche CCF E5</span></a><a class="ap" href="FICHE-REFERENTIEL.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">Le référentiel</span></a></div></nav>
+<p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
+</div>
+

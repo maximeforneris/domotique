@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>A11 · adresses de groupe</title>
-<link rel="stylesheet" href="../assets/kit.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/site.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/domotique.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/vivant.css?v=af9949d4">
+<link rel="stylesheet" href="../assets/kit.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/site.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/domotique.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/vivant.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/impression.css?v=56a16c5f">
+<script src="../assets/kit.js?v=56a16c5f-1e219d" defer></script>
+<script src="../assets/site.js?v=56a16c5f" defer></script>
+<script src="../assets/vivant.js?v=56a16c5f" defer></script>
 
 <div class="page" data-site="fed-domo-1a" data-page="cours/DOMA11">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fleches"><a class="fleche" href="DOMA10.html" rel="prev" title="A10 · protocoles et passerelles" aria-label="A10 · protocoles et passerelles">&lsaquo;</a><a class="fleche" href="DOMB1.html" rel="next" title="B1 : prise en main de l'atelier" aria-label="B1 : prise en main de l'atelier">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA11">Marquer comme lu</button></div>
@@ -22,158 +28,305 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">Les limites d'une ligne KNX</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">une adresse physique numérote des participants, et une ligne n'en accepte que 64 pour 640 mA.</span></li><li><b><a href="DOMA10.html">Protocole et interopérabilité</a></b><span class="ou">Semaine 10 · études · Le même protocole ne suffit pas</span><span class="car">la séance montre ce que KNX met dans sa couche application, les objets typés que Modbus n'a pas.</span></li><li><b>Le bit et l'octet</b><span class="car">un objet de communication se décrit par sa taille, de 1 bit à 2 octets ; un octet vaut huit bits.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#deux-adresses-deux-roles">Deux adresses, deux rôles</a><a href="#objets-types-drapeaux">Objets, types, drapeaux</a><a href="#le-projet-et-son-arborescence">Le projet et son arborescence</a><a href="#un-poussoir-de-plus">Un poussoir de plus</a><a href="#essayer">Essayer</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
-<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
-<p>Les six salles de réunion de la semaine 1 sont câblées sur une seule ligne. La séance a répondu à une question simple : qu’est-ce qui fait qu’un poussoir commande un luminaire, puisque aucun fil ne les relie directement ?</p>
-<p>La réponse tient en deux adresses, qui ne répondent pas à la même question. Elle aboutit au <strong>tableau d’adressage de la salle 1</strong>, que l’atelier utilise la semaine suivante.</p>
-<h2 id="deux-adresses-deux-roles">Deux adresses, deux rôles</h2>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th></th>
-<th>Forme</th>
-<th>Ce qu’elle désigne</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>Adresse physique</strong></td>
-<td>zone.ligne.participant : <code>1.1.3</code></td>
-<td><strong>un appareil</strong>, et un seul ; elle sert à le programmer</td>
-</tr>
-<tr>
-<td><strong>Adresse de groupe</strong></td>
-<td>principal/médian/sous-groupe : <code>1/1/0</code></td>
-<td><strong>une fonction</strong>, partagée par tous les appareils qui y sont associés</td>
-</tr>
-</tbody>
-</table></div>
-<div class="cle">
-<p>L’adresse physique dit <strong>où</strong> est l’appareil. L’adresse de groupe dit <strong>ce qui est commandé</strong>. Un poussoir n’envoie jamais un ordre à un appareil : il écrit une valeur sur une fonction.</p>
-</div>
-<figure>
-<img src="img/DOMA11/fig1-telegramme.png" alt="Un télégramme parcourt toute la ligne ; seuls les appareils dont la table contient la destination réagissent." />
-<figcaption aria-hidden="true">Un télégramme parcourt toute la ligne ; seuls les appareils dont la table contient la destination réagissent.</figcaption>
-</figure>
-<p>Un télégramme porte trois champs : la <strong>source</strong>, adresse physique de l’émetteur ; la <strong>destination</strong>, une adresse de groupe ; la <strong>valeur</strong>. Tous les participants le reçoivent, chacun le compare à sa propre table et décide seul.</p>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi KNX fonctionne sans centrale</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Chaque appareil conserve dans sa mémoire ses paramètres et sa table d’adresses de groupe, écrits une fois pour toutes par le logiciel de mise en service. Aucune information ne transite par une unité centrale : les seuls éléments partagés sont le câble et l’alimentation.</p>
-<p>La conséquence se vérifie en panne. Si la passerelle IP d’une salle s’arrête, l’éclairage fonctionne toujours ; seule la remontée vers la GTB est perdue. C’est la différence avec un automate à modules d’entrées-sorties, dont la panne arrête toutes les commandes qu’il porte.</p></div></details>
-<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi deux télégrammes ne se brouillent pas</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Deux appareils peuvent commencer à émettre en même temps. Les deux états du bus ne sont pas symétriques : l’un l’emporte sur l’autre. Chaque émetteur relit le bus pendant qu’il émet ; s’il lit autre chose que ce qu’il envoie, il se tait et réessaie ensuite.</p>
-<p>Le télégramme prioritaire passe donc sans être retardé. À 9 600 bit/s, un télégramme court occupe le bus une vingtaine de millisecondes : une ligne en transporte une cinquantaine par seconde, ce qui explique qu’une fonction centrale utilise une seule adresse écoutée par tous.</p></div></details>
-</div><h2 id="objets-types-drapeaux">Objets, types, drapeaux</h2>
-<figure>
-<img src="img/DOMA11/fig2-objets.png" alt="Le logiciel associe des objets de communication à des adresses de groupe." />
-<figcaption aria-hidden="true">Le logiciel associe des objets de communication à des adresses de groupe.</figcaption>
-</figure>
-<p>Le logiciel de mise en service ne relie pas des appareils : il associe des <strong>objets de communication</strong> à des adresses de groupe. Chaque objet a une taille et un <strong>type de point de données</strong>, le DPT.</p>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>DPT</th>
-<th>Ce qu’il transporte</th>
-<th>Taille</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1.001</td>
-<td>commutation : marche ou arrêt</td>
-<td>1 bit</td>
-</tr>
-<tr>
-<td>1.008</td>
-<td>montée ou descente</td>
-<td>1 bit</td>
-</tr>
-<tr>
-<td>3.007</td>
-<td>variation relative</td>
-<td>4 bits</td>
-</tr>
-<tr>
-<td>5.001</td>
-<td>pourcentage, de 0 à 100 %</td>
-<td>1 octet</td>
-</tr>
-<tr>
-<td>9.001</td>
-<td>température en degrés Celsius</td>
-<td>2 octets</td>
-</tr>
-</tbody>
-</table></div>
-<p>Une adresse de groupe ne réunit que des objets <strong>de même type</strong>. Les <strong>drapeaux</strong> fixent ce que chaque objet a le droit de faire : C communiquer, L être lu, E être écrit, T émettre, A s’actualiser.</p>
-<div class="piege">
-<p>La commande et l’état sont <strong>deux adresses distinctes</strong>. L’état peut changer sans passer par l’adresse de commande : un détecteur, l’écran ou la GTB éteignent aussi la salle. Seul le pré-actionneur connaît la position réelle de sa sortie ; c’est donc lui qui émet l’état, et c’est cette adresse que le voyant doit écouter.</p>
-</div>
-<h2 id="le-projet-et-son-arborescence">Le projet et son arborescence</h2>
-<figure>
-<img src="img/DOMA11/fig3-vues-projet.png" alt="Le même bâtiment sous trois vues : bâtiment, topologie, adresses de groupe." />
-<figcaption aria-hidden="true">Le même bâtiment sous trois vues : bâtiment, topologie, adresses de groupe.</figcaption>
-</figure>
-<figure class="schema"><div class="dessin" data-schema="topologies-bus"></div><figcaption>La topologie physique dit où passe le câble. Les adresses de groupe forment la topologie logique : elles disent qui commande quoi, quel que soit le câble.</figcaption></figure>
-<p>L’arborescence à trois niveaux se choisit <strong>avant</strong> d’adresser, et s’écrit dans le dossier. Dans le bâtiment étudié, le principal désigne la fonction, le médian le local, le sous-groupe la commande ou l’état.</p>
-<div class="formule">
-<p><strong>principal / médian / sous-groupe</strong></p>
-<ul>
-<li><strong>principal</strong><span>: de 0 à 31, ici la fonction : 1 éclairage, 2 volets, 3 mesures</span></li>
-<li><strong>médian</strong><span>: de 0 à 7, ici le local : 1 à 6 les salles, 7 les parties communes</span></li>
-<li><strong>sous-groupe</strong><span>: de 0 à 255, ici la commande ou l’état</span></li>
-<li><strong>0/0/0</strong><span>: réservée</span></li>
-</ul>
-<blockquote>
-<p>Huit médians seulement : une convention qui range les locaux dans le médian ne tient pas au-delà de huit locaux.</p>
-</blockquote>
-</div>
-<h2 id="un-poussoir-de-plus">Un poussoir de plus</h2>
-<div class="cle">
-<p>Ajouter un poussoir ne modifie aucun appareil existant. Il se raccorde sur la paire déjà posée, ses objets sont associés aux adresses déjà créées, et <strong>lui seul est téléversé</strong>.</p>
-</div>
-<p>Il faut en revanche lui trouver une adresse physique <strong>libre</strong>, et vérifier les deux limites de la ligne : 64 participants, 640 mA. Une adresse physique en double est l’une des pannes que l’atelier fera diagnostiquer.</p>
-<figure class="memo"><img src="img/DOMA11/memo-adresses.png" alt="" /></figure>
-<h2 id="essayer">Essayer</h2>
-<div class="outil" data-outil="adresses-groupe">
-
-</div>
-<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
-<div class="quiz">
-<ul>
-<li>L’adresse 1/1/0 désigne : <strong>une fonction</strong> | un appareil | une ligne</li>
-<li>Le participant 0 d’une ligne est : <strong>son coupleur</strong> | son alimentation | le premier poussoir</li>
-<li>Un télégramme porte comme destination : <strong>une adresse de groupe</strong> | une adresse physique | une adresse IP</li>
-<li>L’état d’une sortie est émis par : <strong>le pré-actionneur</strong> | le poussoir | l’écran</li>
-<li>Le drapeau T permet à un objet : <strong>d’émettre quand sa valeur change</strong> | d’être lu | de recevoir</li>
-<li>Une température se transporte en DPT : <strong>9.001</strong> | 1.001 | 5.001</li>
-</ul>
-</div>
-<h2 id="s-entrainer">S’entraîner</h2>
-<section class="exo" id="DOMA11-e1" data-exo="DOMA11-e1" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4KTU0Pj94dng2O3opNTQ+P3h2eCk1ND4/ej4GL2hqa2M7NzgzOzQ5P3h2eCk1ND4/ej4/ei4/NyoGL2pqP2MoOy4vKD94dngpNTQ+P3o+P3ouPzcqBi9qaj9jKDsuLyg/ej4GL2hqa2M7NzgzOzQ5P3gHJw=="><p class="k">Exercice · D2-1</p><h4>Retrouver un participant</h4><div class="enonce">
-
-<p>Dans le bâtiment de la séance, les dix participants de chaque salle sont numérotés salle après salle : pré-actionneur, variateur, trois poussoirs, écran, détecteur, sonde, pré-actionneur de volets, passerelle. La salle 1 commence à 1.1.1.</p>
-<p>Quel équipement porte l’adresse physique <strong>1.1.28</strong> ?</p>
-</div><div class="indice" hidden>les salles occupent des dizaines successives. Retrancher la dizaine de la salle donne le rang de l’équipement.</div></section>
-<section class="exo" id="DOMA11-e2" data-exo="DOMA11-e2" data-type="calcul" data-savoir="B8-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgbGpqdGp2eC41Nnhga3RqdngveGB4Nxt4Jw=="><p class="k">Exercice · B8-1</p><h4>La marge d’une ligne</h4><div class="enonce">
-
-<p>Une ligne KNX TP1 compte <strong>57 participants</strong>, à 10 mA chacun. Un écran et deux poussoirs y sont ajoutés.</p>
-<p>Quel courant l’alimentation doit-elle alors fournir ?</p>
-</div><div class="indice" hidden>compter d’abord les participants après l’ajout, puis multiplier par la consommation d’un participant.</div></section>
-<section class="exo" id="DOMA11-e3" data-exo="DOMA11-e3" data-type="lecture" data-savoir="B8-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4b3Rqamt4dnhvdmpqa3h2eD4qLnpvdGpqa3h2eD4qLm90ampreAcn"><p class="k">Exercice · B8-1</p><h4>Le bon type</h4><div class="enonce">
-
-<p>L’écran d’une salle affiche la valeur de luminosité de l’estrade, de 0 à 100 %. Quel type de point de données, DPT, l’adresse correspondante doit-elle porter ?</p>
-</div><div class="indice" hidden>la valeur est un pourcentage, codé sur un octet.</div></section>
-<section class="exo" id="DOMA11-e4" data-exo="DOMA11-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>Commande et état</h4><div class="enonce">
-
-<p>Un collègue propose d’associer le voyant d’un poussoir à l’adresse de commande de l’éclairage, « pour économiser une adresse ». Expliquer en trois ou quatre lignes pourquoi ce choix produit un voyant faux.</p>
-</div><div class="indice" hidden>imaginer que le détecteur de présence éteint la salle pendant la pause.</div><ul class="verifier" hidden><li>J’ai cité une autre voie par laquelle l’éclairage peut changer d’état</li><li>J’ai dit que seul le pré-actionneur connaît la position réelle de sa sortie</li><li>J’ai dit que l’adresse d’état est émise par le pré-actionneur</li><li>J’ai décrit la conséquence pour l’utilisateur</li></ul></section>
-<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
-<p>En atelier, le projet est créé à partir du tableau d’adressage de la salle 1 : adresses physiques, associations, téléversement. En études, la séance suivante ouvre l’éclairage : ses grandeurs, son dimensionnement et son asservissement, qui s’appuieront sur les adresses de l’estrade.</p>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+
+<p>Les six salles de réunion de la semaine 1 sont câblées sur une seule ligne. La séance a répondu à une question simple : qu’est-ce qui fait qu’un poussoir commande un luminaire, puisque aucun fil ne les relie directement ?</p>
+
+<p>La réponse tient en deux adresses, qui ne répondent pas à la même question. Elle aboutit au <strong>tableau d’adressage de la salle 1</strong>, que l’atelier utilise la semaine suivante.</p>
+
+<h2 id="deux-adresses-deux-roles">Deux adresses, deux rôles</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th></th>
+
+<th>Forme</th>
+
+<th>Ce qu’elle désigne</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td><strong>Adresse physique</strong></td>
+
+<td>zone.ligne.participant : <code>1.1.3</code></td>
+
+<td><strong>un appareil</strong>, et un seul ; elle sert à le programmer</td>
+
+</tr>
+
+<tr>
+
+<td><strong>Adresse de groupe</strong></td>
+
+<td>principal/médian/sous-groupe : <code>1/1/0</code></td>
+
+<td><strong>une fonction</strong>, partagée par tous les appareils qui y sont associés</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="cle">
+
+<p>L’adresse physique dit <strong>où</strong> est l’appareil. L’adresse de groupe dit <strong>ce qui est commandé</strong>. Un poussoir n’envoie jamais un ordre à un appareil : il écrit une valeur sur une fonction.</p>
+
+</div>
+
+<figure>
+
+<img src="img/DOMA11/fig1-telegramme.png" alt="Un télégramme parcourt toute la ligne ; seuls les appareils dont la table contient la destination réagissent." />
+
+<figcaption aria-hidden="true">Un télégramme parcourt toute la ligne ; seuls les appareils dont la table contient la destination réagissent.</figcaption>
+
+</figure>
+
+<p>Un télégramme porte trois champs : la <strong>source</strong>, adresse physique de l’émetteur ; la <strong>destination</strong>, une adresse de groupe ; la <strong>valeur</strong>. Tous les participants le reçoivent, chacun le compare à sa propre table et décide seul.</p>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi KNX fonctionne sans centrale</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Chaque appareil conserve dans sa mémoire ses paramètres et sa table d’adresses de groupe, écrits une fois pour toutes par le logiciel de mise en service. Aucune information ne transite par une unité centrale : les seuls éléments partagés sont le câble et l’alimentation.</p>
+
+<p>La conséquence se vérifie en panne. Si la passerelle IP d’une salle s’arrête, l’éclairage fonctionne toujours ; seule la remontée vers la GTB est perdue. C’est la différence avec un automate à modules d’entrées-sorties, dont la panne arrête toutes les commandes qu’il porte.</p></div></details>
+
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi deux télégrammes ne se brouillent pas</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Deux appareils peuvent commencer à émettre en même temps. Les deux états du bus ne sont pas symétriques : l’un l’emporte sur l’autre. Chaque émetteur relit le bus pendant qu’il émet ; s’il lit autre chose que ce qu’il envoie, il se tait et réessaie ensuite.</p>
+
+<p>Le télégramme prioritaire passe donc sans être retardé. À 9 600 bit/s, un télégramme court occupe le bus une vingtaine de millisecondes : une ligne en transporte une cinquantaine par seconde, ce qui explique qu’une fonction centrale utilise une seule adresse écoutée par tous.</p></div></details>
+
+</div><h2 id="objets-types-drapeaux">Objets, types, drapeaux</h2>
+
+<figure>
+
+<img src="img/DOMA11/fig2-objets.png" alt="Le logiciel associe des objets de communication à des adresses de groupe." />
+
+<figcaption aria-hidden="true">Le logiciel associe des objets de communication à des adresses de groupe.</figcaption>
+
+</figure>
+
+<p>Le logiciel de mise en service ne relie pas des appareils : il associe des <strong>objets de communication</strong> à des adresses de groupe. Chaque objet a une taille et un <strong>type de point de données</strong>, le DPT.</p>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>DPT</th>
+
+<th>Ce qu’il transporte</th>
+
+<th>Taille</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>1.001</td>
+
+<td>commutation : marche ou arrêt</td>
+
+<td>1 bit</td>
+
+</tr>
+
+<tr>
+
+<td>1.008</td>
+
+<td>montée ou descente</td>
+
+<td>1 bit</td>
+
+</tr>
+
+<tr>
+
+<td>3.007</td>
+
+<td>variation relative</td>
+
+<td>4 bits</td>
+
+</tr>
+
+<tr>
+
+<td>5.001</td>
+
+<td>pourcentage, de 0 à 100 %</td>
+
+<td>1 octet</td>
+
+</tr>
+
+<tr>
+
+<td>9.001</td>
+
+<td>température en degrés Celsius</td>
+
+<td>2 octets</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<p>Une adresse de groupe ne réunit que des objets <strong>de même type</strong>. Les <strong>drapeaux</strong> fixent ce que chaque objet a le droit de faire : C communiquer, L être lu, E être écrit, T émettre, A s’actualiser.</p>
+
+<div class="piege">
+
+<p>La commande et l’état sont <strong>deux adresses distinctes</strong>. L’état peut changer sans passer par l’adresse de commande : un détecteur, l’écran ou la GTB éteignent aussi la salle. Seul le pré-actionneur connaît la position réelle de sa sortie ; c’est donc lui qui émet l’état, et c’est cette adresse que le voyant doit écouter.</p>
+
+</div>
+
+<h2 id="le-projet-et-son-arborescence">Le projet et son arborescence</h2>
+
+<figure>
+
+<img src="img/DOMA11/fig3-vues-projet.png" alt="Le même bâtiment sous trois vues : bâtiment, topologie, adresses de groupe." />
+
+<figcaption aria-hidden="true">Le même bâtiment sous trois vues : bâtiment, topologie, adresses de groupe.</figcaption>
+
+</figure>
+
+<figure class="schema"><div class="dessin" data-schema="topologies-bus"></div><figcaption>La topologie physique dit où passe le câble. Les adresses de groupe forment la topologie logique : elles disent qui commande quoi, quel que soit le câble.</figcaption></figure>
+
+<p>L’arborescence à trois niveaux se choisit <strong>avant</strong> d’adresser, et s’écrit dans le dossier. Dans le bâtiment étudié, le principal désigne la fonction, le médian le local, le sous-groupe la commande ou l’état.</p>
+
+<div class="formule">
+
+<p><strong>principal / médian / sous-groupe</strong></p>
+
+<ul>
+
+<li><strong>principal</strong><span>: de 0 à 31, ici la fonction : 1 éclairage, 2 volets, 3 mesures</span></li>
+
+<li><strong>médian</strong><span>: de 0 à 7, ici le local : 1 à 6 les salles, 7 les parties communes</span></li>
+
+<li><strong>sous-groupe</strong><span>: de 0 à 255, ici la commande ou l’état</span></li>
+
+<li><strong>0/0/0</strong><span>: réservée</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>Huit médians seulement : une convention qui range les locaux dans le médian ne tient pas au-delà de huit locaux.</p>
+
+</blockquote>
+
+</div>
+
+<h2 id="un-poussoir-de-plus">Un poussoir de plus</h2>
+
+<div class="cle">
+
+<p>Ajouter un poussoir ne modifie aucun appareil existant. Il se raccorde sur la paire déjà posée, ses objets sont associés aux adresses déjà créées, et <strong>lui seul est téléversé</strong>.</p>
+
+</div>
+
+<p>Il faut en revanche lui trouver une adresse physique <strong>libre</strong>, et vérifier les deux limites de la ligne : 64 participants, 640 mA. Une adresse physique en double est l’une des pannes que l’atelier fera diagnostiquer.</p>
+
+<figure class="memo"><img src="img/DOMA11/memo-adresses.png" alt="" /></figure>
+
+<h2 id="essayer">Essayer</h2>
+
+<div class="outil" data-outil="adresses-groupe">
+
+
+
+</div>
+
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+
+<div class="quiz">
+
+<ul>
+
+<li>L’adresse 1/1/0 désigne : <strong>une fonction</strong> | un appareil | une ligne</li>
+
+<li>Le participant 0 d’une ligne est : <strong>son coupleur</strong> | son alimentation | le premier poussoir</li>
+
+<li>Un télégramme porte comme destination : <strong>une adresse de groupe</strong> | une adresse physique | une adresse IP</li>
+
+<li>L’état d’une sortie est émis par : <strong>le pré-actionneur</strong> | le poussoir | l’écran</li>
+
+<li>Le drapeau T permet à un objet : <strong>d’émettre quand sa valeur change</strong> | d’être lu | de recevoir</li>
+
+<li>Une température se transporte en DPT : <strong>9.001</strong> | 1.001 | 5.001</li>
+
+</ul>
+
+</div>
+
+<h2 id="s-entrainer">S’entraîner</h2>
+
+<section class="exo" id="DOMA11-e1" data-exo="DOMA11-e1" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4KTU0Pj94dng2O3opNTQ+P3h2eCk1ND4/ej4GL2hqa2M7NzgzOzQ5P3h2eCk1ND4/ej4/ei4/NyoGL2pqP2MoOy4vKD94dngpNTQ+P3o+P3ouPzcqBi9qaj9jKDsuLyg/ej4GL2hqa2M7NzgzOzQ5P3gHJw=="><p class="k">Exercice · D2-1</p><h4>Retrouver un participant</h4><div class="enonce">
+
+
+
+<p>Dans le bâtiment de la séance, les dix participants de chaque salle sont numérotés salle après salle : pré-actionneur, variateur, trois poussoirs, écran, détecteur, sonde, pré-actionneur de volets, passerelle. La salle 1 commence à 1.1.1.</p>
+
+<p>Quel équipement porte l’adresse physique <strong>1.1.28</strong> ?</p>
+
+</div><div class="indice" hidden>les salles occupent des dizaines successives. Retrancher la dizaine de la salle donne le rang de l’équipement.</div></section>
+
+<section class="exo" id="DOMA11-e2" data-exo="DOMA11-e2" data-type="calcul" data-savoir="B8-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgbGpqdGp2eC41Nnhga3RqdngveGB4Nxt4Jw=="><p class="k">Exercice · B8-1</p><h4>La marge d’une ligne</h4><div class="enonce">
+
+
+
+<p>Une ligne KNX TP1 compte <strong>57 participants</strong>, à 10 mA chacun. Un écran et deux poussoirs y sont ajoutés.</p>
+
+<p>Quel courant l’alimentation doit-elle alors fournir ?</p>
+
+</div><div class="indice" hidden>compter d’abord les participants après l’ajout, puis multiplier par la consommation d’un participant.</div></section>
+
+<section class="exo" id="DOMA11-e3" data-exo="DOMA11-e3" data-type="lecture" data-savoir="B8-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4b3Rqamt4dnhvdmpqa3h2eD4qLnpvdGpqa3h2eD4qLm90ampreAcn"><p class="k">Exercice · B8-1</p><h4>Le bon type</h4><div class="enonce">
+
+
+
+<p>L’écran d’une salle affiche la valeur de luminosité de l’estrade, de 0 à 100 %. Quel type de point de données, DPT, l’adresse correspondante doit-elle porter ?</p>
+
+</div><div class="indice" hidden>la valeur est un pourcentage, codé sur un octet.</div></section>
+
+<section class="exo" id="DOMA11-e4" data-exo="DOMA11-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>Commande et état</h4><div class="enonce">
+
+
+
+<p>Un collègue propose d’associer le voyant d’un poussoir à l’adresse de commande de l’éclairage, « pour économiser une adresse ». Expliquer en trois ou quatre lignes pourquoi ce choix produit un voyant faux.</p>
+
+</div><div class="indice" hidden>imaginer que le détecteur de présence éteint la salle pendant la pause.</div><ul class="verifier" hidden><li>J’ai cité une autre voie par laquelle l’éclairage peut changer d’état</li><li>J’ai dit que seul le pré-actionneur connaît la position réelle de sa sortie</li><li>J’ai dit que l’adresse d’état est émise par le pré-actionneur</li><li>J’ai décrit la conséquence pour l’utilisateur</li></ul></section>
+
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+
+<p>En atelier, le projet est créé à partir du tableau d’adressage de la salle 1 : adresses physiques, associations, téléversement. En études, la séance suivante ouvre l’éclairage : ses grandeurs, son dimensionnement et son asservissement, qui s’appuieront sur les adresses de l’estrade.</p>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA10.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A10 · protocoles et passerelles</span></a><a class="ap" href="DOMB1.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">B1 : prise en main de l'atelier</span></a></div></nav>
 <p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=af9949d4"></script>
-<script src="../assets/site.js?v=af9949d4"></script>
-<script src="../assets/vivant.js?v=af9949d4"></script>
+

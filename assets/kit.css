@@ -471,6 +471,19 @@ input[type=range]::-moz-range-thumb{
 /* ──────────────────────────── series d'entrainement
    Le tableau a remplir du polycopie, en deux colonnes d'items. Il travaille,
    il ne corrige pas : une croix sur l'item faux, jamais la valeur attendue. */
+/* La remise : l'eleve produit un fichier texte de ses reponses.
+   Meme carte que les exercices, accent vert : c'est un aboutissement,
+   pas une question de plus. */
+.remise{margin:26px 0;max-width:660px;background:var(--carte);
+  border:1px solid var(--trait2);border-left:3px solid var(--vert);
+  border-radius:var(--r);padding:16px 18px 18px;box-shadow:var(--ombre)}
+.remise .remise-quoi{margin:0 0 12px;font-size:14.5px;line-height:1.5;
+  color:var(--encre2)}
+.remise .saisie{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.remise .saisie input{flex:1 1 220px;min-width:0}
+.remise .verdict:empty{display:none}
+@media print{.remise{display:none}}
+
 .serie{margin:22px 0;max-width:660px;background:var(--carte);
   border:1px solid var(--trait2);border-left:3px solid var(--tiede);
   border-radius:var(--r);padding:16px 18px 18px;box-shadow:var(--ombre)}

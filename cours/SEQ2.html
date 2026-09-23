@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>Communiquer, semaines 4 à 10</title>
-<link rel="stylesheet" href="../assets/kit.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/site.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/domotique.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/vivant.css?v=af9949d4">
+<link rel="stylesheet" href="../assets/kit.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/site.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/domotique.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/vivant.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/impression.css?v=56a16c5f">
+<script src="../assets/kit.js?v=56a16c5f-1e219d" defer></script>
+<script src="../assets/site.js?v=56a16c5f" defer></script>
+<script src="../assets/vivant.js?v=56a16c5f" defer></script>
 
 <div class="page" data-site="fed-domo-1a" data-page="cours/SEQ2" data-rang="2">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 2 · Communiquer</span><span class="fleches"><a class="fleche" href="SEQ1.html" rel="prev" title="Le socle, semaines 1 à 3" aria-label="Le socle, semaines 1 à 3">&lsaquo;</a><a class="fleche" href="FICHE-CCF-E5.html" rel="next" title="Fiche CCF E5" aria-label="Fiche CCF E5">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/SEQ2">Marquer comme lu</button></div>
@@ -22,603 +28,1195 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA4.html">Les quatre budgets</a></b><span class="ou">Semaine 4 · études · Les médias et ce qui les limite</span><span class="car">chute de tension du bus, décibels de la radio, impédance pour le CPL, bilan de la fibre ; chaque média se dimensionne en dépensant un budget sans le dépasser.</span></li><li><b><a href="DOMA5.html">La ligne, la zone et la dorsale</a></b><span class="ou">Semaine 5 · études · Topologie adressage et coupleurs</span><span class="car">la limite des 350 m se calcule, et l'adresse physique dit où se trouve un appareil.</span></li><li><b><a href="DOMA6.html">L'adresse IP, le masque et le commutateur PoE</a></b><span class="ou">Semaine 6 · études · Le réseau IP du bâtiment</span><span class="car">trois réglages par équipement et deux vérifications de puissance.</span></li><li><b><a href="DOMA7.html">Source, couplage, victime</a></b><span class="ou">Semaine 7 · études · La CEM en courant faible</span><span class="car">une protection agit sur un seul des trois termes, presque toujours le couplage.</span></li><li><b><a href="DOMA8.html">Catégorie, classe, lien permanent et canal</a></b><span class="ou">Semaine 8 · études · Du câble au procès-verbal</span><span class="car">le procès-verbal se lit comme le résultat d'un essai, marge par marge.</span></li><li><b><a href="DOMA9.html">Le débit d'un appel et ce qui le rend audible</a></b><span class="ou">Semaine 9 · études · La voix et l'image sur le réseau du bâtiment</span><span class="car">la voix pèse plus que son codec, à cause des en-têtes.</span></li><li><b><a href="DOMA10.html">Les trois couches d'un protocole</a></b><span class="ou">Semaine 10 · études · Le même protocole ne suffit pas</span><span class="car">deux appareils conformes au même protocole ne se comprennent pas forcément.</span></li><li><b><a href="DOMB4.html">Mesurer sur trois médias</a></b><span class="ou">Semaine 4 · atelier · Mesurer sur les trois médias</span><span class="car">un chiffre relevé en atelier ne vaut que si l'écart dépasse l'incertitude de l'appareil.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#les-formules-de-la-sequence">Les formules de la séquence</a><a href="#semaine-4-les-medias-et-leurs-budgets">Semaine 4 · les médias et leurs budgets</a><a href="#semaine-4-l-atelier-mesurer-sur-trois-medias">Semaine 4 · l’atelier : mesurer sur trois médias</a><a href="#semaine-5-topologie-adressage-coupleurs">Semaine 5 · topologie, adressage, coupleurs</a><a href="#semaine-6-le-reseau-ip-du-batiment">Semaine 6 · le réseau IP du bâtiment</a><a href="#semaine-7-la-cem-en-courant-faible">Semaine 7 · la CEM en courant faible</a><a href="#semaine-8-vdi-du-cable-au-proces-verbal">Semaine 8 · VDI : du câble au procès-verbal</a><a href="#semaine-9-telephonie-ip-et-multimedia">Semaine 9 · téléphonie IP et multimédia</a><a href="#semaine-10-protocoles-et-interoperabilite">Semaine 10 · protocoles et interopérabilité</a><a href="#vous-verifier">Vous vérifier</a><a href="#pour-aller-plus-loin">Pour aller plus loin</a><a href="#s-entrainer">S’entraîner</a><a href="#le-jour-du-controle">Le jour du contrôle</a></div></nav>
-<h2 id="les-formules-de-la-sequence">Les formules de la séquence</h2>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Ce que je cherche</th>
-<th>Formule ou règle</th>
-<th>Unités ou limite</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Chute de tension, participants regroupés au bout</td>
-<td>ΔU = r × I × L</td>
-<td>r = 0,075 Ω/m, I <strong>en A</strong>, L en m</td>
-</tr>
-<tr>
-<td>Chute de tension, participants répartis</td>
-<td>ΔU = ½ × r × I × L</td>
-<td>même unités ; le ½ vient de la répartition</td>
-</tr>
-<tr>
-<td>Budget de tension d’une ligne</td>
-<td>30 V − 21 V = 9 V</td>
-<td>21 V au moins chez le dernier participant</td>
-</tr>
-<tr>
-<td>Seconde alimentation</td>
-<td>à 200 m de câble au moins de la première</td>
-<td>chaque participant à 350 m au plus d’une alimentation</td>
-</tr>
-<tr>
-<td>Adresse physique KNX</td>
-<td>zone.ligne.participant</td>
-<td>Z.L.0 coupleur de ligne ; Z.0.0 coupleur de zone ; 15 lignes par zone</td>
-</tr>
-<tr>
-<td>Affaiblissement radio</td>
-<td>distance + parois, en dB</td>
-<td>doubler la distance coûte 6 dB ; marge de 10 dB à réserver</td>
-</tr>
-<tr>
-<td>Impédance d’un condensateur</td>
-<td>Z = 1 / (2 π f C)</td>
-<td>f en Hz, C <strong>en farads</strong></td>
-</tr>
-<tr>
-<td>Bilan d’une liaison optique</td>
-<td>marge = budget − (fibre + connexions + épissures)</td>
-<td>3,5 dB/km en OM3, 0,4 dB/km en OS2, L <strong>en km</strong> ; 0,75 dB par connexion, 0,3 dB par épissure</td>
-</tr>
-<tr>
-<td>Adresse IPv4 en /24</td>
-<td>trois octets de réseau, un octet d’équipement</td>
-<td>.0 et .255 réservées, 254 adresses utilisables</td>
-</tr>
-<tr>
-<td>Puissance PoE par port, côté commutateur</td>
-<td>15,4 W (802.3af), 30 W (802.3at), 60 ou 90 W (802.3bt)</td>
-<td>100 m de câble au plus</td>
-</tr>
-<tr>
-<td>Budget PoE</td>
-<td>somme des puissances réservées port par port</td>
-<td>comparée au budget total du commutateur</td>
-</tr>
-<tr>
-<td>Lien VDI</td>
-<td>90 m de lien permanent, 100 m de canal</td>
-<td>10 m pour les deux cordons ensemble</td>
-</tr>
-<tr>
-<td>Longueur d’après le délai</td>
-<td>L = NVP × 0,3 m/ns × délai</td>
-<td>délai en ns</td>
-</tr>
-<tr>
-<td>Marge d’un procès-verbal</td>
-<td>limite − mesure pour une grandeur plafonnée ; mesure − limite pour une grandeur minimale</td>
-<td>positive si conforme</td>
-</tr>
-<tr>
-<td>Débit d’un appel</td>
-<td>trame × 8 × paquets par seconde</td>
-<td>voix par paquet = 64 000 × durée ÷ 8, en octets ; 40 octets IP, UDP, RTP ; 18 octets Ethernet</td>
-</tr>
-<tr>
-<td>Ligne 100 V</td>
-<td>Z = U² / P</td>
-<td>U = 100 V, P en W, Z en Ω</td>
-</tr>
-<tr>
-<td>Un registre Modbus</td>
-<td>seize bits, sans type ni unité</td>
-<td>le sens est dans la table du fabricant</td>
-</tr>
-</tbody>
-</table></div>
-<div class="cle">
-<p>Chaque média a un budget : des volts pour le bus, des décibels pour la radio et la fibre, des watts pour le PoE, des mètres pour le cuivre. Dimensionner, c’est dépenser ce budget sans le dépasser, et garder une marge.</p>
-</div>
-<h2 id="semaine-4-les-medias-et-leurs-budgets">Semaine 4 · les médias et leurs budgets</h2>
-<figure class="schema"><div class="dessin" data-schema="couches-protocole"></div><figcaption>Le média est la couche du bas, celle du support. Les semaines 4 à 9 la parcourent média par média ; la semaine 10 monte aux deux couches du dessus.</figcaption></figure>
-<p>Sur un bus KNX TP1, la même paire transporte les télégrammes et l’alimentation. Le courant fait l’aller et le retour : la résistance qui compte est celle de la <strong>boucle</strong>, 75 Ω par kilomètre, soit 0,075 Ω par mètre.</p>
-<div class="formule">
-<p><strong>ΔU = r × I × L</strong></p>
-<ul>
-<li><strong>ΔU</strong><span>: chute de tension, en volts</span></li>
-<li><strong>r</strong><span>: résistance de boucle, 0,075 Ω/m</span></li>
-<li><strong>I</strong><span>: courant qui traverse le câble, <strong>en ampères</strong></span></li>
-<li><strong>L</strong><span>: longueur de câble, en mètres</span></li>
-</ul>
-<blockquote>
-<p>Valable lorsque tout le courant traverse la longueur L : les participants sont regroupés au bout.</p>
-</blockquote>
-</div>
-<p>En radio, les affaiblissements s’additionnent : celui de la distance, puis celui de chaque paroi traversée. La portée annoncée en champ libre donne le budget de l’émetteur.</p>
-<table style="width:100%;">
-<colgroup>
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-<col style="width: 11%" />
-</colgroup>
-<thead>
-<tr>
-<th>Distance sans obstacle</th>
-<th>5 m</th>
-<th>10 m</th>
-<th>15 m</th>
-<th>20 m</th>
-<th>30 m</th>
-<th>50 m</th>
-<th>100 m</th>
-<th>300 m</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Affaiblissement, en dB</td>
-<td>45</td>
-<td>51</td>
-<td>55</td>
-<td>57</td>
-<td>61</td>
-<td>65</td>
-<td>71</td>
-<td>81</td>
-</tr>
-</tbody>
-</table>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Paroi traversée</th>
-<th>Affaiblissement</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Cloison en plaque de plâtre</td>
-<td>3 dB</td>
-</tr>
-<tr>
-<td>Mur en brique ou en parpaing</td>
-<td>8 dB</td>
-</tr>
-<tr>
-<td>Mur en béton armé</td>
-<td>20 dB</td>
-</tr>
-<tr>
-<td>Plancher en béton</td>
-<td>25 dB</td>
-</tr>
-<tr>
-<td>Vitrage à couche métallique</td>
-<td>20 dB</td>
-</tr>
-</tbody>
-</table></div>
-<div class="cle">
-<p>Doubler la distance coûte 6 dB ; un mur en béton armé en coûte 20, autant que multiplier la distance par dix. Une liaison sans marge fonctionne le jour de la réception et devient intermittente ensuite : on réserve 10 dB.</p>
-</div>
-<div class="piege">
-<p>Le CPL passe mal d’une phase à l’autre sans coupleur de phases, et ne franchit pas le transformateur. Un changement de phase peut <strong>interrompre</strong> la liaison ; une charge électronique l’<strong>atténue</strong>. Le client décrit les deux cas de la même façon, le diagnostic n’est pas le même.</p>
-</div>
-<div class="formule">
-<p><strong>Marge = budget − (fibre + connexions + épissures)</strong></p>
-<ul>
-<li><strong>budget</strong><span>: puissance émise minimale moins sensibilité du récepteur, en dB</span></li>
-<li><strong>fibre</strong><span>: dB/km × longueur <strong>en km</strong> ; 3,5 dB/km en OM3, 0,4 dB/km en OS2</span></li>
-<li><strong>connexion</strong><span>: 0,75 dB au plus ; <strong>épissure</strong> : 0,3 dB au plus</span></li>
-</ul>
-<blockquote>
-<p>Sur quelques centaines de mètres, les connexions et les épissures pèsent davantage que la fibre.</p>
-</blockquote>
-</div>
-<div class="outil" data-outil="bilan-optique">
-
-</div>
-<h2 id="semaine-4-l-atelier-mesurer-sur-trois-medias">Semaine 4 · l’atelier : mesurer sur trois médias</h2>
-<figure>
-<img src="img/SEQ2/fig1-trois-postes.png" alt="Trois postes, un par média." />
-<figcaption aria-hidden="true">Trois postes, un par média.</figcaption>
-</figure>
-<div class="cle">
-<p>Une mesure ne permet de conclure que si l’écart dépasse l’incertitude de l’appareil ; sinon, la bonne réponse est qu’on ne peut pas trancher. Une portée radio se retient au plus court de trois essais, jamais à la moyenne.</p>
-</div>
-<p>Le courant total de la ligne divisé par le nombre de participants redonne les 10 mA normalisés. La chute mesurée sur 100 m s’extrapole à 350 m ; le CPL se teste en changeant de phase, puis en ajoutant une charge.</p>
-<h2 id="semaine-5-topologie-adressage-coupleurs">Semaine 5 · topologie, adressage, coupleurs</h2>
-<figure>
-<img src="img/SEQ2/fig2-courant-ligne.png" alt="Tous au bout, ou répartis : la chute suit l’aire sous la courbe du courant." />
-<figcaption aria-hidden="true">Tous au bout, ou répartis : la chute suit l’aire sous la courbe du courant.</figcaption>
-</figure>
-<div class="formule">
-<p><strong>ΔU = ½ × r × I × L</strong></p>
-<ul>
-<li><strong>I</strong><span>: courant fourni par l’alimentation, <strong>en ampères</strong></span></li>
-<li><strong>L</strong><span>: longueur de l’alimentation au dernier participant, en mètres</span></li>
-</ul>
-<blockquote>
-<p>Pour des participants répartis régulièrement. Regroupés au bout, le facteur ½ disparaît.</p>
-</blockquote>
-</div>
-<div class="piege">
-<p>Le calcul suppose des participants <strong>répartis</strong>. Une ligne dont les participants sont regroupés loin de l’alimentation peut respecter les 350 m et ne pas fonctionner : la règle tombe dès que son hypothèse tombe.</p>
-</div>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Champ de l’adresse</th>
-<th>Valeurs</th>
-<th>La valeur 0 désigne</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Zone</td>
-<td>0 à 15</td>
-<td>la dorsale</td>
-</tr>
-<tr>
-<td>Ligne</td>
-<td>0 à 15</td>
-<td>la ligne principale de la zone</td>
-</tr>
-<tr>
-<td>Participant</td>
-<td>0 à 255</td>
-<td>le coupleur de la ligne, ou de la zone</td>
-</tr>
-</tbody>
-</table></div>
-<div class="cle">
-<p>L’adresse physique dit <strong>où</strong> se trouve un appareil. Le coupleur sépare électriquement les lignes, chacune avec sa propre alimentation, et filtre les télégrammes de groupe : il ne transmet que ceux qui sont attendus de l’autre côté.</p>
-</div>
-<div class="outil" data-outil="ligne-knx">
-
-</div>
-<h2 id="semaine-6-le-reseau-ip-du-batiment">Semaine 6 · le réseau IP du bâtiment</h2>
-<div class="formule">
-<p><strong>192.168.20.65 /24</strong></p>
-<ul>
-<li><strong>192.168.20</strong><span>: partie réseau, commune à tous les équipements du réseau</span></li>
-<li><strong>65</strong><span>: partie équipement, propre à chacun</span></li>
-<li><strong>/24</strong><span>: masque 255.255.255.0, trois octets pour le réseau</span></li>
-<li><strong>.0 et .255</strong><span>: adresse du réseau et adresse de diffusion, réservées</span></li>
-</ul>
-<blockquote>
-<p>La passerelle par défaut est l’adresse du routeur dans le réseau de l’équipement.</p>
-</blockquote>
-</div>
-<div class="cle">
-<p>Le <strong>commutateur</strong> relie les équipements d’un même réseau, par l’adresse MAC. Le <strong>routeur</strong> relie des réseaux différents, par l’adresse IP. Une configuration se vérifie sur trois réglages, adresse, masque, passerelle, et non sur la seule présence de l’image.</p>
-</div>
-<div class="outil" data-outil="plan-ip">
-
-</div>
-<figure>
-<img src="img/SEQ2/fig4-budget-poe.png" alt="Les deux vérifications de puissance d’un commutateur PoE." />
-<figcaption aria-hidden="true">Les deux vérifications de puissance d’un commutateur PoE.</figcaption>
-</figure>
-<div class="etapes">
-<ol type="1">
-<li>Compter les ports : équipements PoE, équipements en 230 V, liaison vers le routeur.</li>
-<li>Vérifier chaque port : la puissance de la classe de l’équipement ne dépasse pas ce que le port fournit.</li>
-<li>Additionner les puissances réservées et les comparer au budget PoE total.</li>
-</ol>
-</div>
-<div class="piege">
-<p>Un commutateur peut avoir assez de ports sans avoir assez de puissance, et un port peut être libre sans pouvoir alimenter un équipement trop puissant. Les deux vérifications se font toutes les deux, dans cet ordre.</p>
-</div>
-<div class="outil" data-outil="budget-poe">
-
-</div>
-<h2 id="semaine-7-la-cem-en-courant-faible">Semaine 7 · la CEM en courant faible</h2>
-<div class="cle">
-<p>Toute perturbation suppose trois termes : une <strong>source</strong>, un <strong>couplage</strong>, une <strong>victime</strong>. Supprimer un seul terme suffit, et dans un bâtiment c’est presque toujours sur le couplage que porte la protection, la source et la victime étant imposées.</p>
-</div>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Mode</th>
-<th>Par quoi</th>
-<th>L’indice qui le trahit</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Par conduction</td>
-<td>un conducteur commun</td>
-<td>le défaut suit l’alimentation</td>
-</tr>
-<tr>
-<td>Capacitif</td>
-<td>le champ électrique, entre câbles voisins</td>
-<td>grande longueur commune, tension à fronts raides</td>
-</tr>
-<tr>
-<td>Inductif</td>
-<td>le champ magnétique, dans une boucle</td>
-<td>forte variation de courant, grande boucle</td>
-</tr>
-<tr>
-<td>Rayonné</td>
-<td>un champ électromagnétique, à distance</td>
-<td>le défaut suit la position de l’émetteur</td>
-</tr>
-</tbody>
-</table></div>
-<div class="etapes">
-<ol type="1">
-<li>Garder les paires torsadées jusqu’au raccordement.</li>
-<li>Séparer puissance et courants faibles : chemins distincts, cloison métallique, ou 30 cm environ.</li>
-<li>Croiser à angle droit.</li>
-<li>Raccorder les écrans sur tout leur pourtour.</li>
-<li>Relier les masses entre elles : chemins de câbles continus, liaisons équipotentielles.</li>
-</ol>
-</div>
-<div class="piege">
-<p>Deux prises de terre distinctes ne sont jamais au même potentiel. Un écran ou un conducteur qui les relie forme une <strong>boucle de masse</strong> et devient le chemin de la foudre. Entre deux bâtiments, la liaison de référence est la fibre, qui ne conduit aucun courant.</p>
-</div>
-<h2 id="semaine-8-vdi-du-cable-au-proces-verbal">Semaine 8 · VDI : du câble au procès-verbal</h2>
-<figure>
-<img src="img/SEQ2/fig1-lien-permanent-canal.png" alt="Le lien permanent et le canal, du commutateur au poste de travail." />
-<figcaption aria-hidden="true">Le lien permanent et le canal, du commutateur au poste de travail.</figcaption>
-</figure>
-<div class="cle">
-<p>La <strong>catégorie</strong> qualifie un composant ; la <strong>classe</strong> qualifie un lien installé, de bout en bout. Un lien ne dépasse jamais la classe de son composant le plus faible, et seule la certification établit sa classe.</p>
-</div>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Catégorie</th>
-<th>Classe</th>
-<th>Fréquence maximale</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>5e</td>
-<td>D</td>
-<td>100 MHz</td>
-</tr>
-<tr>
-<td>6</td>
-<td>E</td>
-<td>250 MHz</td>
-</tr>
-<tr>
-<td>6A</td>
-<td>EA</td>
-<td>500 MHz</td>
-</tr>
-<tr>
-<td>7A</td>
-<td>FA</td>
-<td>1 000 MHz</td>
-</tr>
-</tbody>
-</table></div>
-<div class="formule">
-<p><strong>Marge = écart à la limite, positive si conforme</strong></p>
-<ul>
-<li><strong>grandeur plafonnée</strong><span>(longueur, perte d’insertion) : marge = limite − mesure</span></li>
-<li><strong>grandeur minimale</strong><span>(paradiaphonie, affaiblissement de réflexion) : marge = mesure − limite</span></li>
-</ul>
-<blockquote>
-<p>Le verdict d’un lien est celui de sa marge la plus défavorable, à quelque fréquence qu’elle se trouve.</p>
-</blockquote>
-</div>
-<div class="piege">
-<p>Une <strong>paradiaphonie élevée est favorable</strong> : la valeur mesure l’affaiblissement du signal parasite qui passe d’une paire à sa voisine. Plus elle est grande, mieux la paire voisine est protégée. Se tromper de sens inverse le verdict.</p>
-</div>
-<p>Une certification a exactement la forme d’un essai : une mesure, une norme de référence, un verdict et un rapport. C’est la forme de la situation de CCF de l’épreuve E5, en semaine 18.</p>
-<h2 id="semaine-9-telephonie-ip-et-multimedia">Semaine 9 · téléphonie IP et multimédia</h2>
-<figure>
-<img src="img/SEQ2/fig2-trame-voix.png" alt="Une trame de voix : les en-têtes, puis 20 ms de parole." />
-<figcaption aria-hidden="true">Une trame de voix : les en-têtes, puis 20 ms de parole.</figcaption>
-</figure>
-<div class="formule">
-<p><strong>Débit sur le câble = taille de la trame × 8 × paquets par seconde</strong></p>
-<ul>
-<li><strong>voix par paquet</strong><span>: débit du codec × durée du paquet ÷ 8, en octets</span></li>
-<li><strong>taille de la trame</strong><span>: voix + 40 octets IP, UDP, RTP + 18 octets Ethernet</span></li>
-<li><strong>paquets par seconde</strong><span>: 1 ÷ durée du paquet</span></li>
-</ul>
-<blockquote>
-<p>Le débit se compte dans chaque sens de la conversation.</p>
-</blockquote>
-</div>
-<div class="piege">
-<p><strong>64 kbit/s est le débit de la voix, pas celui de l’appel.</strong> Les en-têtes s’ajoutent à chaque paquet, quel que soit le codec : le débit réel sur le câble est toujours supérieur à celui du codec.</p>
-</div>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Grandeur</th>
-<th>Ce qu’elle mesure</th>
-<th>Valeur usuelle à respecter</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Délai</td>
-<td>le temps de bout en bout, dans un sens</td>
-<td>150 ms au plus</td>
-</tr>
-<tr>
-<td>Gigue</td>
-<td>la variation de ce délai</td>
-<td>30 ms au plus</td>
-</tr>
-<tr>
-<td>Pertes</td>
-<td>les paquets qui n’arrivent pas</td>
-<td>1 % au plus</td>
-</tr>
-</tbody>
-</table></div>
-<div class="outil" data-outil="debit-appel">
-
-</div>
-<div class="cle">
-<p>SIP établit et libère l’appel ; la voix circule ensuite de poste à poste en RTP. Un poste IP s’arrête avec son commutateur : commutateur, IPBX et routeur sont secourus par un onduleur. Sur une ligne 100 V, les haut-parleurs sont en parallèle et Z = U² / P.</p>
-</div>
-<h2 id="semaine-10-protocoles-et-interoperabilite">Semaine 10 · protocoles et interopérabilité</h2>
-<p>Un protocole fixe trois choses : sur quel support les données circulent, qui prend la parole et quand, sous quelle forme les données sont écrites. Deux systèmes se comprennent quand les trois couches concordent, et c’est la couche du haut, celle du sens, qui décide.</p>
-<div class="piege">
-<p>« Les deux appareils sont en Modbus, ils vont se comprendre. » Un registre Modbus contient seize bits sans type ni unité : si les tables de registres diffèrent, un courant en centièmes d’ampère s’affiche comme une puissance en watts, sans aucune alarme.</p>
-</div>
-<div class="cle">
-<p>Une passerelle ne devine rien : elle traduit les points inscrits dans sa table, avec leur type, leur sens et leur échelle. Un point absent de la table n’existe pas pour l’autre système.</p>
-</div>
-<p>Cette dixième semaine ouvre la suite : le devoir É1 porte sur les semaines 1 à 9, et les protocoles servent en semaine 11, puis dans le TP noté de la semaine 14.</p>
-<h2 id="vous-verifier">Vous vérifier</h2>
-<div class="quiz">
-<ul>
-<li>La résistance à prendre pour la chute de tension d’un bus est celle : <strong>de la boucle, aller et retour</strong> | d’un seul conducteur | du blindage du câble</li>
-<li>Pour des participants répartis, la chute le long d’une ligne vaut : <strong>la moitié de r × I × L</strong> | r × I × L | le double de r × I × L</li>
-<li>Doubler la distance entre un émetteur radio et son récepteur coûte : <strong>6 dB</strong> | 2 dB | 20 dB</li>
-<li>Le signal CPL ne franchit pas : <strong>le transformateur du poste</strong> | la prise voisine | une cloison en plâtre</li>
-<li>L’adresse 2.3.0 désigne : <strong>le coupleur de la ligne 3 de la zone 2</strong> | le participant 3 de la zone 2 | le coupleur de la zone 3</li>
-<li>Relier deux réseaux IP différents est le rôle : <strong>du routeur</strong> | du commutateur | du panneau de brassage</li>
-<li>Un port PoE+ (802.3at) fournit au plus : <strong>30 W</strong> | 15,4 W | 90 W</li>
-<li>Une perturbation se supprime en agissant sur : <strong>un seul des trois termes</strong> | les trois termes à la fois | la victime seulement</li>
-<li>Le lien permanent mesure au plus : <strong>90 m</strong> | 100 m | 110 m</li>
-<li>Pendant la conversation, la voix circule : <strong>de poste à poste, en RTP</strong> | par l’IPBX, en SIP | par le trunk de l’opérateur</li>
-</ul>
-</div>
-<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi les décibels s&#39;additionnent</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Un décibel exprime un rapport de puissances : 10 × log(P₂ / P₁). Trois valeurs suffisent à tout lire : 3 dB pour un facteur 2, 10 dB pour un facteur 10, 20 dB pour un facteur 100.</p>
-<p>Multiplier deux atténuations revient à additionner leurs logarithmes. Un mur de 8 dB derrière 10 m à 51 dB font 59 dB, soit une puissance reçue divisée par près de 800 000. C’est ce qui rend le calcul radio si rapide : on additionne, on compare au budget.</p>
-<p>Le dBm des bilans optiques est la même échelle, rapportée à 1 mW : 0 dBm vaut 1 mW, −10 dBm vaut 0,1 mW. Une différence de deux dBm redonne des dB.</p></div></details>
-<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Le masque autrement qu&#39;en /24</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le nombre d’adresses utilisables vaut 2 puissance (32 − n), moins les deux adresses réservées. En /24, 256 − 2 = 254. En /25, 128 − 2 = 126 ; en /26, 62 ; en /23, 512 − 2 = 510.</p>
-<p>Un réseau technique de quarante équipements tient dans un /26, mais le découpage se fait rarement plus fin que le /24 dans un bâtiment : la réserve ne coûte rien, et un plan lisible vaut mieux qu’un plan serré.</p>
-<p>L’outil de plan IP de cette page accepte n’importe quel masque : essayer un /25 sur la même adresse et regarder ce que deviennent le réseau et la diffusion.</p></div></details>
-<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi deux puissances par classe en PoE</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le câble dissipe une partie de la puissance par effet Joule. En PoE, le port délivre au moins 44 V sous 350 mA, soit 15,4 W. Sur 100 m, la boucle du câble peut atteindre 20 Ω : les pertes valent 20 × 0,35², soit 2,45 W.</p>
-<p>L’équipement ne dispose donc que de 12,95 W. Le commutateur fournit la puissance de l’équipement <strong>et</strong> celle des pertes : il se dimensionne sur la puissance côté port, celle de la table.</p>
-<p>C’est aussi pourquoi la limite des 100 m vaut pour l’alimentation comme pour les données : plus loin, les pertes mangent la marge.</p></div></details>
-<details class="appro be"><summary><span class="niv"></span><span class="titre-appro">Un écran relié aux deux bouts, ou à un seul ?</span><span class="etiq">Bureau d'études</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Relié à ses deux extrémités, un écran protège bien contre les perturbations de haute fréquence. Il relie aussi les masses des deux extrémités : si elles ne sont pas au même potentiel, un courant à 50 Hz circule en permanence dans l’écran.</p>
-<p>La réponse n’est pas de déconnecter un côté, ce qui fait perdre l’essentiel de la protection. Elle consiste à relier les masses entre elles par un réseau maillé, de façon qu’elles restent au même potentiel.</p>
-<p>Vers un équipement extérieur doté de sa propre terre, on sort du dilemme par la fibre. Elle impose alors une alimentation locale et permanente pour la caméra, qui ne peut plus être alimentée par son câble.</p></div></details>
-<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi le lien fixe s&#39;arrête à 90 m</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La limite de 90 m réserve 10 m aux cordons, que l’exploitant choisira plus tard et que l’installateur ne connaît pas. Chaque mètre de lien fixe au-delà de 90 m serait pris sur la longueur des cordons.</p>
-<p>Une seconde raison s’y ajoute : un cordon est souple, et il affaiblit davantage le signal par mètre qu’un câble rigide. La limite du canal a été calculée pour 90 m de câble et 10 m de cordons ; c’est ce partage qui la rend tenable.</p>
-<p>La réception porte sur le lien permanent, parce que c’est l’ouvrage de l’installateur, et qu’il reste en place toute la vie du bâtiment.</p></div></details>
-<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Compresser la voix ne divise pas le débit d&#39;autant</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>En G.711 avec des paquets de 20 ms, la voix pèse 160 octets et la trame 218 : 87,2 kbit/s sur le câble. Le G.729 compresse la voix à 8 kbit/s, huit fois moins : la voix d’un paquet tombe à 20 octets.</p>
-<p>Mais les 58 octets d’en-têtes ne bougent pas. La trame pèse 78 octets, et le débit 31,2 kbit/s : le codec est huit fois plus léger, l’appel moins de trois fois. Sur un réseau local, on garde le G.711 ; le G.729 sert sur les liens étroits.</p>
-<p>La voix téléphonique s’arrête à 3 400 Hz, d’où les 8 000 échantillons par seconde du G.711, codés chacun sur 8 bits.</p></div></details>
-<details class="appro be"><summary><span class="niv"></span><span class="titre-appro">Vérifier une table de registres sur site</span><span class="etiq">Bureau d'études</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La méthode consiste à lire une valeur connue. La tension du réseau, voisine de 230 V, doit apparaître quelque part sous la forme 2 300 si elle est écrite en dixièmes de volt. Le courant lu doit concorder avec une mesure à la pince, et la puissance avec le produit de la tension et du courant.</p>
-<p>Si la valeur connue apparaît dans le registre voisin de celui qui était attendu, la configuration présente un décalage d’une unité : les documentations ne numérotent pas toujours les registres comme le protocole.</p>
-<p>Une supervision mise en service sans cette vérification affiche des nombres plausibles et faux. C’est le défaut le plus long à découvrir, parce qu’aucune alarme ne le signale.</p></div></details>
-</div><h2 id="s-entrainer">S’entraîner</h2>
-<p>Les valeurs attendues ne sont pas dans la page : elle vous dit si c’est juste et vous rappelle la méthode. Le corrigé reste dans le polycopié.</p>
-<section class="exo" id="SEQ2-e1" data-exo="SEQ2-e1" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGtrdGh2eC41Nnhga3RqdngveGB4DXgn"><p class="k">Exercice · D2-1</p><h4>Le budget d’un commutateur</h4><div class="enonce">
-
-<p>Un commutateur doit alimenter <strong>8 contrôleurs de porte de classe 3</strong> (15,4 W réservés par port), <strong>4 postes IP de classe 2</strong> (7,0 W) et <strong>2 bornes Wi-Fi de classe 4</strong> (30 W).</p>
-<p>Quelle puissance totale le commutateur doit-il réserver ?</p>
-</div><div class="indice" hidden>une ligne par classe, nombre × puissance réservée par port, puis la somme. Vérifier ensuite chaque port séparément.</div></section>
-<section class="exo" id="SEQ2-e2" data-exo="SEQ2-e2" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4a2NodGtsYnRpanRob294dnhrY2h6a2xiemlqemhvb3gHJw=="><p class="k">Exercice · D2-1</p><h4>L’adresse de diffusion</h4><div class="enonce">
-
-<p>Le réseau technique d’un immeuble est <strong>192.168.30.0 /24</strong>.</p>
-<p>Quelle est son adresse de diffusion ?</p>
-</div><div class="indice" hidden>avec un masque /24, les trois premiers octets sont fixés ; le dernier prend la plus grande valeur possible pour la diffusion, la plus petite pour le réseau.</div></section>
-<section class="exo" id="SEQ2-e3" data-exo="SEQ2-e3" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGh0YnZ4LjU2eGBrdGp2eC94YHgMeCc="><p class="k">Exercice · D2-1</p><h4>La ligne du plateau</h4><div class="enonce">
-
-<p>Une ligne KNX TP1 porte <strong>60 participants répartis</strong> régulièrement sur <strong>320 m</strong>, depuis son alimentation de 30 V. Chaque participant consomme 10 mA.</p>
-<p>Quelle tension reste-t-il au dernier participant ?</p>
-</div><div class="indice" hidden>le courant total en ampères, la formule des participants répartis avec r = 0,075 Ω/m, puis la chute retranchée des 30 V. Comparer enfin aux 21 V.</div></section>
-<section class="exo" id="SEQ2-e4" data-exo="SEQ2-e4" data-type="calcul" data-savoir="D1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhga2N0anZ4LjU2eGBodGp2eC94YHg+GHgn"><p class="k">Exercice · D1-1</p><h4>Le détecteur du garage</h4><div class="enonce">
-
-<p>Un émetteur radio dont le budget vaut <strong>81 dB</strong> commande un récepteur situé à <strong>10 m</strong>, derrière <strong>une cloison en plaque de plâtre</strong> et <strong>un mur en brique</strong>. Les tableaux de la semaine 4 donnent les affaiblissements.</p>
-<p>Quelle marge reste-t-il sur ce trajet ?</p>
-</div><div class="indice" hidden>l’affaiblissement de la distance dans le premier tableau, puis celui de chaque paroi dans le second ; retrancher la somme du budget. Comparer la marge aux 10 dB de réserve.</div></section>
-<section class="exo" id="SEQ2-e5" data-exo="SEQ2-e5" data-type="calcul" data-savoir="D1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaXRqaG92eC41NnhgaXRqdngveGB4Phh4Jw=="><p class="k">Exercice · D1-1</p><h4>La rocade vers l’étage</h4><div class="enonce">
-
-<p>Une rocade en fibre multimode OM3 mesure <strong>250 m</strong>. Elle comporte <strong>quatre connexions</strong> et <strong>deux épissures</strong>. Le budget des modules vaut <strong>7,5 dB</strong>.</p>
-<p>Quelle marge reste-t-il sur cette liaison ?</p>
-</div><div class="indice" hidden>la longueur en kilomètres, chaque connexion et chaque épissure à sa valeur maximale ; la marge est ce qui reste du budget une fois les pertes retranchées.</div></section>
-<section class="exo" id="SEQ2-e6" data-exo="SEQ2-e6" data-type="lecture" data-savoir="D2-2" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4Hxt4dng5NjspKT96Hxt4dng2O3o5NjspKT96Hxt4dngfeht4dng2O3o5NjspKT96H3obeAcn"><p class="k">Exercice · D2-2</p><h4>La classe du lien</h4><div class="enonce">
-
-<p>Un installateur pose un câble, des prises et un panneau de <strong>catégorie 6A</strong>, et fait certifier le lien permanent.</p>
-<p>Quelle classe le procès-verbal peut-il annoncer, au mieux ?</p>
-</div><div class="indice" hidden>la classe d’un lien est celle de son composant le plus faible ; le tableau des catégories et des classes de la semaine 8 fait la correspondance.</div></section>
-<section class="exo" id="SEQ2-e7" data-exo="SEQ2-e7" data-type="calcul" data-savoir="D2-3" data-a="IXgueGB4OTs2OS82eHZ4LHhga2tqdG52eC41NnhgaHRqdngveGB4MTgzLnUpeCc="><p class="k">Exercice · D2-3</p><h4>Des paquets de 10 ms</h4><div class="enonce">
-
-<p>Un IPBX envoie la voix en G.711 par paquets de <strong>10 ms</strong>. Les en-têtes IP, UDP et RTP font 40 octets, l’en-tête et la fin de trame Ethernet 18 octets.</p>
-<p>Quel est le débit sur le câble, dans un sens ?</p>
-</div><div class="indice" hidden>la voix d’un paquet en octets, puis la trame complète, puis le nombre de paquets par seconde ; multiplier par 8 pour passer des octets aux bits.</div></section>
-<section class="exo" id="SEQ2-e8" data-exo="SEQ2-e8" data-type="justification" data-savoir="D2-2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · D2-2</p><h4>Le lien de 96 mètres</h4><div class="enonce">
-
-<p>À la certification, un lien permanent mesure <strong>96 m</strong>. Tous ses composants sont de catégorie 6 et toutes ses autres mesures sont conformes. L’installateur veut le déclarer réussi. Expliquer en quatre lignes pourquoi il ne le peut pas, et ce qu’il peut proposer.</p>
-</div><div class="indice" hidden>se demander pourquoi le lien fixe s’arrête à 90 m alors que le canal accepte 100 m.</div><ul class="verifier" hidden><li>J’ai distingué le lien permanent et le canal, et donné la limite de chacun</li><li>J’ai dit que la longueur au-delà de 90 m serait prise sur les 10 m des cordons</li><li>J’ai dit qu’un lien est jugé sur sa marge la plus défavorable, ici négative</li><li>J’ai proposé une solution, raccourcir le cheminement, rapprocher le sous-répartiteur ou passer en fibre</li></ul></section>
-<h2 id="le-jour-du-controle">Le jour du contrôle</h2>
-<p>Le devoir surveillé É1 dure deux heures et porte sur les semaines 1 à 9 : le socle de la préparation précédente en fait partie. Les questions de calcul suivent toutes le même chemin.</p>
-<div class="etapes">
-<ol type="1">
-<li>Repérer la grandeur cherchée et le média concerné : le budget n’est pas le même.</li>
-<li>Écrire la formule en lettres avant tout nombre.</li>
-<li>Convertir : les milliampères en ampères, les mètres de fibre en kilomètres, les octets en bits, les nanofarads en farads.</li>
-<li>Calculer, puis comparer à la limite : 21 V, 10 dB de marge, 100 m, budget PoE, marge positive.</li>
-<li>Conclure par une phrase avec un verdict, conforme ou non, et la raison.</li>
-</ol>
-</div>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<thead>
-<tr>
-<th>L’unité qui coûte des points</th>
-<th>Ce qu’il faut faire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>le courant d’une ligne</td>
-<td>10 mA par participant, puis <strong>en ampères</strong> dans ΔU = r × I × L</td>
-</tr>
-<tr>
-<td>la longueur d’une fibre</td>
-<td><strong>en kilomètres</strong>, parce que l’affaiblissement est en dB/km</td>
-</tr>
-<tr>
-<td>les décibels</td>
-<td>ils s’additionnent ; une marge est une différence de dB</td>
-</tr>
-<tr>
-<td>une trame</td>
-<td>en octets, puis × 8 pour un débit en bit/s</td>
-</tr>
-<tr>
-<td>une capacité</td>
-<td>100 nF valent 100 × 10⁻⁹ F dans Z = 1 / (2 π f C)</td>
-</tr>
-</tbody>
-</table></div>
-<p>Une réponse rédigée tient en trois temps : la formule en lettres, l’application numérique avec les unités, puis la comparaison à la limite et le verdict en une phrase. Pour une justification, les mots du référentiel comptent : source, couplage et victime ; lien permanent et canal ; catégorie et classe ; commutateur et routeur.</p>
+<h2 id="les-formules-de-la-sequence">Les formules de la séquence</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th>Ce que je cherche</th>
+
+<th>Formule ou règle</th>
+
+<th>Unités ou limite</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Chute de tension, participants regroupés au bout</td>
+
+<td>ΔU = r × I × L</td>
+
+<td>r = 0,075 Ω/m, I <strong>en A</strong>, L en m</td>
+
+</tr>
+
+<tr>
+
+<td>Chute de tension, participants répartis</td>
+
+<td>ΔU = ½ × r × I × L</td>
+
+<td>même unités ; le ½ vient de la répartition</td>
+
+</tr>
+
+<tr>
+
+<td>Budget de tension d’une ligne</td>
+
+<td>30 V − 21 V = 9 V</td>
+
+<td>21 V au moins chez le dernier participant</td>
+
+</tr>
+
+<tr>
+
+<td>Seconde alimentation</td>
+
+<td>à 200 m de câble au moins de la première</td>
+
+<td>chaque participant à 350 m au plus d’une alimentation</td>
+
+</tr>
+
+<tr>
+
+<td>Adresse physique KNX</td>
+
+<td>zone.ligne.participant</td>
+
+<td>Z.L.0 coupleur de ligne ; Z.0.0 coupleur de zone ; 15 lignes par zone</td>
+
+</tr>
+
+<tr>
+
+<td>Affaiblissement radio</td>
+
+<td>distance + parois, en dB</td>
+
+<td>doubler la distance coûte 6 dB ; marge de 10 dB à réserver</td>
+
+</tr>
+
+<tr>
+
+<td>Impédance d’un condensateur</td>
+
+<td>Z = 1 / (2 π f C)</td>
+
+<td>f en Hz, C <strong>en farads</strong></td>
+
+</tr>
+
+<tr>
+
+<td>Bilan d’une liaison optique</td>
+
+<td>marge = budget − (fibre + connexions + épissures)</td>
+
+<td>3,5 dB/km en OM3, 0,4 dB/km en OS2, L <strong>en km</strong> ; 0,75 dB par connexion, 0,3 dB par épissure</td>
+
+</tr>
+
+<tr>
+
+<td>Adresse IPv4 en /24</td>
+
+<td>trois octets de réseau, un octet d’équipement</td>
+
+<td>.0 et .255 réservées, 254 adresses utilisables</td>
+
+</tr>
+
+<tr>
+
+<td>Puissance PoE par port, côté commutateur</td>
+
+<td>15,4 W (802.3af), 30 W (802.3at), 60 ou 90 W (802.3bt)</td>
+
+<td>100 m de câble au plus</td>
+
+</tr>
+
+<tr>
+
+<td>Budget PoE</td>
+
+<td>somme des puissances réservées port par port</td>
+
+<td>comparée au budget total du commutateur</td>
+
+</tr>
+
+<tr>
+
+<td>Lien VDI</td>
+
+<td>90 m de lien permanent, 100 m de canal</td>
+
+<td>10 m pour les deux cordons ensemble</td>
+
+</tr>
+
+<tr>
+
+<td>Longueur d’après le délai</td>
+
+<td>L = NVP × 0,3 m/ns × délai</td>
+
+<td>délai en ns</td>
+
+</tr>
+
+<tr>
+
+<td>Marge d’un procès-verbal</td>
+
+<td>limite − mesure pour une grandeur plafonnée ; mesure − limite pour une grandeur minimale</td>
+
+<td>positive si conforme</td>
+
+</tr>
+
+<tr>
+
+<td>Débit d’un appel</td>
+
+<td>trame × 8 × paquets par seconde</td>
+
+<td>voix par paquet = 64 000 × durée ÷ 8, en octets ; 40 octets IP, UDP, RTP ; 18 octets Ethernet</td>
+
+</tr>
+
+<tr>
+
+<td>Ligne 100 V</td>
+
+<td>Z = U² / P</td>
+
+<td>U = 100 V, P en W, Z en Ω</td>
+
+</tr>
+
+<tr>
+
+<td>Un registre Modbus</td>
+
+<td>seize bits, sans type ni unité</td>
+
+<td>le sens est dans la table du fabricant</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="cle">
+
+<p>Chaque média a un budget : des volts pour le bus, des décibels pour la radio et la fibre, des watts pour le PoE, des mètres pour le cuivre. Dimensionner, c’est dépenser ce budget sans le dépasser, et garder une marge.</p>
+
+</div>
+
+<h2 id="semaine-4-les-medias-et-leurs-budgets">Semaine 4 · les médias et leurs budgets</h2>
+
+<figure class="schema"><div class="dessin" data-schema="couches-protocole"></div><figcaption>Le média est la couche du bas, celle du support. Les semaines 4 à 9 la parcourent média par média ; la semaine 10 monte aux deux couches du dessus.</figcaption></figure>
+
+<p>Sur un bus KNX TP1, la même paire transporte les télégrammes et l’alimentation. Le courant fait l’aller et le retour : la résistance qui compte est celle de la <strong>boucle</strong>, 75 Ω par kilomètre, soit 0,075 Ω par mètre.</p>
+
+<div class="formule">
+
+<p><strong>ΔU = r × I × L</strong></p>
+
+<ul>
+
+<li><strong>ΔU</strong><span>: chute de tension, en volts</span></li>
+
+<li><strong>r</strong><span>: résistance de boucle, 0,075 Ω/m</span></li>
+
+<li><strong>I</strong><span>: courant qui traverse le câble, <strong>en ampères</strong></span></li>
+
+<li><strong>L</strong><span>: longueur de câble, en mètres</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>Valable lorsque tout le courant traverse la longueur L : les participants sont regroupés au bout.</p>
+
+</blockquote>
+
+</div>
+
+<p>En radio, les affaiblissements s’additionnent : celui de la distance, puis celui de chaque paroi traversée. La portée annoncée en champ libre donne le budget de l’émetteur.</p>
+
+<table style="width:100%;">
+
+<colgroup>
+
+<col style="width: 11%" />
+
+<col style="width: 11%" />
+
+<col style="width: 11%" />
+
+<col style="width: 11%" />
+
+<col style="width: 11%" />
+
+<col style="width: 11%" />
+
+<col style="width: 11%" />
+
+<col style="width: 11%" />
+
+<col style="width: 11%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th>Distance sans obstacle</th>
+
+<th>5 m</th>
+
+<th>10 m</th>
+
+<th>15 m</th>
+
+<th>20 m</th>
+
+<th>30 m</th>
+
+<th>50 m</th>
+
+<th>100 m</th>
+
+<th>300 m</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Affaiblissement, en dB</td>
+
+<td>45</td>
+
+<td>51</td>
+
+<td>55</td>
+
+<td>57</td>
+
+<td>61</td>
+
+<td>65</td>
+
+<td>71</td>
+
+<td>81</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Paroi traversée</th>
+
+<th>Affaiblissement</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Cloison en plaque de plâtre</td>
+
+<td>3 dB</td>
+
+</tr>
+
+<tr>
+
+<td>Mur en brique ou en parpaing</td>
+
+<td>8 dB</td>
+
+</tr>
+
+<tr>
+
+<td>Mur en béton armé</td>
+
+<td>20 dB</td>
+
+</tr>
+
+<tr>
+
+<td>Plancher en béton</td>
+
+<td>25 dB</td>
+
+</tr>
+
+<tr>
+
+<td>Vitrage à couche métallique</td>
+
+<td>20 dB</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="cle">
+
+<p>Doubler la distance coûte 6 dB ; un mur en béton armé en coûte 20, autant que multiplier la distance par dix. Une liaison sans marge fonctionne le jour de la réception et devient intermittente ensuite : on réserve 10 dB.</p>
+
+</div>
+
+<div class="piege">
+
+<p>Le CPL passe mal d’une phase à l’autre sans coupleur de phases, et ne franchit pas le transformateur. Un changement de phase peut <strong>interrompre</strong> la liaison ; une charge électronique l’<strong>atténue</strong>. Le client décrit les deux cas de la même façon, le diagnostic n’est pas le même.</p>
+
+</div>
+
+<div class="formule">
+
+<p><strong>Marge = budget − (fibre + connexions + épissures)</strong></p>
+
+<ul>
+
+<li><strong>budget</strong><span>: puissance émise minimale moins sensibilité du récepteur, en dB</span></li>
+
+<li><strong>fibre</strong><span>: dB/km × longueur <strong>en km</strong> ; 3,5 dB/km en OM3, 0,4 dB/km en OS2</span></li>
+
+<li><strong>connexion</strong><span>: 0,75 dB au plus ; <strong>épissure</strong> : 0,3 dB au plus</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>Sur quelques centaines de mètres, les connexions et les épissures pèsent davantage que la fibre.</p>
+
+</blockquote>
+
+</div>
+
+<div class="outil" data-outil="bilan-optique">
+
+
+
+</div>
+
+<h2 id="semaine-4-l-atelier-mesurer-sur-trois-medias">Semaine 4 · l’atelier : mesurer sur trois médias</h2>
+
+<figure>
+
+<img src="img/SEQ2/fig1-trois-postes.png" alt="Trois postes, un par média." />
+
+<figcaption aria-hidden="true">Trois postes, un par média.</figcaption>
+
+</figure>
+
+<div class="cle">
+
+<p>Une mesure ne permet de conclure que si l’écart dépasse l’incertitude de l’appareil ; sinon, la bonne réponse est qu’on ne peut pas trancher. Une portée radio se retient au plus court de trois essais, jamais à la moyenne.</p>
+
+</div>
+
+<p>Le courant total de la ligne divisé par le nombre de participants redonne les 10 mA normalisés. La chute mesurée sur 100 m s’extrapole à 350 m ; le CPL se teste en changeant de phase, puis en ajoutant une charge.</p>
+
+<h2 id="semaine-5-topologie-adressage-coupleurs">Semaine 5 · topologie, adressage, coupleurs</h2>
+
+<figure>
+
+<img src="img/SEQ2/fig2-courant-ligne.png" alt="Tous au bout, ou répartis : la chute suit l’aire sous la courbe du courant." />
+
+<figcaption aria-hidden="true">Tous au bout, ou répartis : la chute suit l’aire sous la courbe du courant.</figcaption>
+
+</figure>
+
+<div class="formule">
+
+<p><strong>ΔU = ½ × r × I × L</strong></p>
+
+<ul>
+
+<li><strong>I</strong><span>: courant fourni par l’alimentation, <strong>en ampères</strong></span></li>
+
+<li><strong>L</strong><span>: longueur de l’alimentation au dernier participant, en mètres</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>Pour des participants répartis régulièrement. Regroupés au bout, le facteur ½ disparaît.</p>
+
+</blockquote>
+
+</div>
+
+<div class="piege">
+
+<p>Le calcul suppose des participants <strong>répartis</strong>. Une ligne dont les participants sont regroupés loin de l’alimentation peut respecter les 350 m et ne pas fonctionner : la règle tombe dès que son hypothèse tombe.</p>
+
+</div>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Champ de l’adresse</th>
+
+<th>Valeurs</th>
+
+<th>La valeur 0 désigne</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Zone</td>
+
+<td>0 à 15</td>
+
+<td>la dorsale</td>
+
+</tr>
+
+<tr>
+
+<td>Ligne</td>
+
+<td>0 à 15</td>
+
+<td>la ligne principale de la zone</td>
+
+</tr>
+
+<tr>
+
+<td>Participant</td>
+
+<td>0 à 255</td>
+
+<td>le coupleur de la ligne, ou de la zone</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="cle">
+
+<p>L’adresse physique dit <strong>où</strong> se trouve un appareil. Le coupleur sépare électriquement les lignes, chacune avec sa propre alimentation, et filtre les télégrammes de groupe : il ne transmet que ceux qui sont attendus de l’autre côté.</p>
+
+</div>
+
+<div class="outil" data-outil="ligne-knx">
+
+
+
+</div>
+
+<h2 id="semaine-6-le-reseau-ip-du-batiment">Semaine 6 · le réseau IP du bâtiment</h2>
+
+<div class="formule">
+
+<p><strong>192.168.20.65 /24</strong></p>
+
+<ul>
+
+<li><strong>192.168.20</strong><span>: partie réseau, commune à tous les équipements du réseau</span></li>
+
+<li><strong>65</strong><span>: partie équipement, propre à chacun</span></li>
+
+<li><strong>/24</strong><span>: masque 255.255.255.0, trois octets pour le réseau</span></li>
+
+<li><strong>.0 et .255</strong><span>: adresse du réseau et adresse de diffusion, réservées</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>La passerelle par défaut est l’adresse du routeur dans le réseau de l’équipement.</p>
+
+</blockquote>
+
+</div>
+
+<div class="cle">
+
+<p>Le <strong>commutateur</strong> relie les équipements d’un même réseau, par l’adresse MAC. Le <strong>routeur</strong> relie des réseaux différents, par l’adresse IP. Une configuration se vérifie sur trois réglages, adresse, masque, passerelle, et non sur la seule présence de l’image.</p>
+
+</div>
+
+<div class="outil" data-outil="plan-ip">
+
+
+
+</div>
+
+<figure>
+
+<img src="img/SEQ2/fig4-budget-poe.png" alt="Les deux vérifications de puissance d’un commutateur PoE." />
+
+<figcaption aria-hidden="true">Les deux vérifications de puissance d’un commutateur PoE.</figcaption>
+
+</figure>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Compter les ports : équipements PoE, équipements en 230 V, liaison vers le routeur.</li>
+
+<li>Vérifier chaque port : la puissance de la classe de l’équipement ne dépasse pas ce que le port fournit.</li>
+
+<li>Additionner les puissances réservées et les comparer au budget PoE total.</li>
+
+</ol>
+
+</div>
+
+<div class="piege">
+
+<p>Un commutateur peut avoir assez de ports sans avoir assez de puissance, et un port peut être libre sans pouvoir alimenter un équipement trop puissant. Les deux vérifications se font toutes les deux, dans cet ordre.</p>
+
+</div>
+
+<div class="outil" data-outil="budget-poe">
+
+
+
+</div>
+
+<h2 id="semaine-7-la-cem-en-courant-faible">Semaine 7 · la CEM en courant faible</h2>
+
+<div class="cle">
+
+<p>Toute perturbation suppose trois termes : une <strong>source</strong>, un <strong>couplage</strong>, une <strong>victime</strong>. Supprimer un seul terme suffit, et dans un bâtiment c’est presque toujours sur le couplage que porte la protection, la source et la victime étant imposées.</p>
+
+</div>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th>Mode</th>
+
+<th>Par quoi</th>
+
+<th>L’indice qui le trahit</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Par conduction</td>
+
+<td>un conducteur commun</td>
+
+<td>le défaut suit l’alimentation</td>
+
+</tr>
+
+<tr>
+
+<td>Capacitif</td>
+
+<td>le champ électrique, entre câbles voisins</td>
+
+<td>grande longueur commune, tension à fronts raides</td>
+
+</tr>
+
+<tr>
+
+<td>Inductif</td>
+
+<td>le champ magnétique, dans une boucle</td>
+
+<td>forte variation de courant, grande boucle</td>
+
+</tr>
+
+<tr>
+
+<td>Rayonné</td>
+
+<td>un champ électromagnétique, à distance</td>
+
+<td>le défaut suit la position de l’émetteur</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Garder les paires torsadées jusqu’au raccordement.</li>
+
+<li>Séparer puissance et courants faibles : chemins distincts, cloison métallique, ou 30 cm environ.</li>
+
+<li>Croiser à angle droit.</li>
+
+<li>Raccorder les écrans sur tout leur pourtour.</li>
+
+<li>Relier les masses entre elles : chemins de câbles continus, liaisons équipotentielles.</li>
+
+</ol>
+
+</div>
+
+<div class="piege">
+
+<p>Deux prises de terre distinctes ne sont jamais au même potentiel. Un écran ou un conducteur qui les relie forme une <strong>boucle de masse</strong> et devient le chemin de la foudre. Entre deux bâtiments, la liaison de référence est la fibre, qui ne conduit aucun courant.</p>
+
+</div>
+
+<h2 id="semaine-8-vdi-du-cable-au-proces-verbal">Semaine 8 · VDI : du câble au procès-verbal</h2>
+
+<figure>
+
+<img src="img/SEQ2/fig1-lien-permanent-canal.png" alt="Le lien permanent et le canal, du commutateur au poste de travail." />
+
+<figcaption aria-hidden="true">Le lien permanent et le canal, du commutateur au poste de travail.</figcaption>
+
+</figure>
+
+<div class="cle">
+
+<p>La <strong>catégorie</strong> qualifie un composant ; la <strong>classe</strong> qualifie un lien installé, de bout en bout. Un lien ne dépasse jamais la classe de son composant le plus faible, et seule la certification établit sa classe.</p>
+
+</div>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Catégorie</th>
+
+<th>Classe</th>
+
+<th>Fréquence maximale</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>5e</td>
+
+<td>D</td>
+
+<td>100 MHz</td>
+
+</tr>
+
+<tr>
+
+<td>6</td>
+
+<td>E</td>
+
+<td>250 MHz</td>
+
+</tr>
+
+<tr>
+
+<td>6A</td>
+
+<td>EA</td>
+
+<td>500 MHz</td>
+
+</tr>
+
+<tr>
+
+<td>7A</td>
+
+<td>FA</td>
+
+<td>1 000 MHz</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="formule">
+
+<p><strong>Marge = écart à la limite, positive si conforme</strong></p>
+
+<ul>
+
+<li><strong>grandeur plafonnée</strong><span>(longueur, perte d’insertion) : marge = limite − mesure</span></li>
+
+<li><strong>grandeur minimale</strong><span>(paradiaphonie, affaiblissement de réflexion) : marge = mesure − limite</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>Le verdict d’un lien est celui de sa marge la plus défavorable, à quelque fréquence qu’elle se trouve.</p>
+
+</blockquote>
+
+</div>
+
+<div class="piege">
+
+<p>Une <strong>paradiaphonie élevée est favorable</strong> : la valeur mesure l’affaiblissement du signal parasite qui passe d’une paire à sa voisine. Plus elle est grande, mieux la paire voisine est protégée. Se tromper de sens inverse le verdict.</p>
+
+</div>
+
+<p>Une certification a exactement la forme d’un essai : une mesure, une norme de référence, un verdict et un rapport. C’est la forme de la situation de CCF de l’épreuve E5, en semaine 18.</p>
+
+<h2 id="semaine-9-telephonie-ip-et-multimedia">Semaine 9 · téléphonie IP et multimédia</h2>
+
+<figure>
+
+<img src="img/SEQ2/fig2-trame-voix.png" alt="Une trame de voix : les en-têtes, puis 20 ms de parole." />
+
+<figcaption aria-hidden="true">Une trame de voix : les en-têtes, puis 20 ms de parole.</figcaption>
+
+</figure>
+
+<div class="formule">
+
+<p><strong>Débit sur le câble = taille de la trame × 8 × paquets par seconde</strong></p>
+
+<ul>
+
+<li><strong>voix par paquet</strong><span>: débit du codec × durée du paquet ÷ 8, en octets</span></li>
+
+<li><strong>taille de la trame</strong><span>: voix + 40 octets IP, UDP, RTP + 18 octets Ethernet</span></li>
+
+<li><strong>paquets par seconde</strong><span>: 1 ÷ durée du paquet</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>Le débit se compte dans chaque sens de la conversation.</p>
+
+</blockquote>
+
+</div>
+
+<div class="piege">
+
+<p><strong>64 kbit/s est le débit de la voix, pas celui de l’appel.</strong> Les en-têtes s’ajoutent à chaque paquet, quel que soit le codec : le débit réel sur le câble est toujours supérieur à celui du codec.</p>
+
+</div>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Grandeur</th>
+
+<th>Ce qu’elle mesure</th>
+
+<th>Valeur usuelle à respecter</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Délai</td>
+
+<td>le temps de bout en bout, dans un sens</td>
+
+<td>150 ms au plus</td>
+
+</tr>
+
+<tr>
+
+<td>Gigue</td>
+
+<td>la variation de ce délai</td>
+
+<td>30 ms au plus</td>
+
+</tr>
+
+<tr>
+
+<td>Pertes</td>
+
+<td>les paquets qui n’arrivent pas</td>
+
+<td>1 % au plus</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="outil" data-outil="debit-appel">
+
+
+
+</div>
+
+<div class="cle">
+
+<p>SIP établit et libère l’appel ; la voix circule ensuite de poste à poste en RTP. Un poste IP s’arrête avec son commutateur : commutateur, IPBX et routeur sont secourus par un onduleur. Sur une ligne 100 V, les haut-parleurs sont en parallèle et Z = U² / P.</p>
+
+</div>
+
+<h2 id="semaine-10-protocoles-et-interoperabilite">Semaine 10 · protocoles et interopérabilité</h2>
+
+<p>Un protocole fixe trois choses : sur quel support les données circulent, qui prend la parole et quand, sous quelle forme les données sont écrites. Deux systèmes se comprennent quand les trois couches concordent, et c’est la couche du haut, celle du sens, qui décide.</p>
+
+<div class="piege">
+
+<p>« Les deux appareils sont en Modbus, ils vont se comprendre. » Un registre Modbus contient seize bits sans type ni unité : si les tables de registres diffèrent, un courant en centièmes d’ampère s’affiche comme une puissance en watts, sans aucune alarme.</p>
+
+</div>
+
+<div class="cle">
+
+<p>Une passerelle ne devine rien : elle traduit les points inscrits dans sa table, avec leur type, leur sens et leur échelle. Un point absent de la table n’existe pas pour l’autre système.</p>
+
+</div>
+
+<p>Cette dixième semaine ouvre la suite : le devoir É1 porte sur les semaines 1 à 9, et les protocoles servent en semaine 11, puis dans le TP noté de la semaine 14.</p>
+
+<h2 id="vous-verifier">Vous vérifier</h2>
+
+<div class="quiz">
+
+<ul>
+
+<li>La résistance à prendre pour la chute de tension d’un bus est celle : <strong>de la boucle, aller et retour</strong> | d’un seul conducteur | du blindage du câble</li>
+
+<li>Pour des participants répartis, la chute le long d’une ligne vaut : <strong>la moitié de r × I × L</strong> | r × I × L | le double de r × I × L</li>
+
+<li>Doubler la distance entre un émetteur radio et son récepteur coûte : <strong>6 dB</strong> | 2 dB | 20 dB</li>
+
+<li>Le signal CPL ne franchit pas : <strong>le transformateur du poste</strong> | la prise voisine | une cloison en plâtre</li>
+
+<li>L’adresse 2.3.0 désigne : <strong>le coupleur de la ligne 3 de la zone 2</strong> | le participant 3 de la zone 2 | le coupleur de la zone 3</li>
+
+<li>Relier deux réseaux IP différents est le rôle : <strong>du routeur</strong> | du commutateur | du panneau de brassage</li>
+
+<li>Un port PoE+ (802.3at) fournit au plus : <strong>30 W</strong> | 15,4 W | 90 W</li>
+
+<li>Une perturbation se supprime en agissant sur : <strong>un seul des trois termes</strong> | les trois termes à la fois | la victime seulement</li>
+
+<li>Le lien permanent mesure au plus : <strong>90 m</strong> | 100 m | 110 m</li>
+
+<li>Pendant la conversation, la voix circule : <strong>de poste à poste, en RTP</strong> | par l’IPBX, en SIP | par le trunk de l’opérateur</li>
+
+</ul>
+
+</div>
+
+<h2 id="pour-aller-plus-loin">Pour aller plus loin</h2>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi les décibels s&#39;additionnent</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Un décibel exprime un rapport de puissances : 10 × log(P₂ / P₁). Trois valeurs suffisent à tout lire : 3 dB pour un facteur 2, 10 dB pour un facteur 10, 20 dB pour un facteur 100.</p>
+
+<p>Multiplier deux atténuations revient à additionner leurs logarithmes. Un mur de 8 dB derrière 10 m à 51 dB font 59 dB, soit une puissance reçue divisée par près de 800 000. C’est ce qui rend le calcul radio si rapide : on additionne, on compare au budget.</p>
+
+<p>Le dBm des bilans optiques est la même échelle, rapportée à 1 mW : 0 dBm vaut 1 mW, −10 dBm vaut 0,1 mW. Une différence de deux dBm redonne des dB.</p></div></details>
+
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Le masque autrement qu&#39;en /24</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le nombre d’adresses utilisables vaut 2 puissance (32 − n), moins les deux adresses réservées. En /24, 256 − 2 = 254. En /25, 128 − 2 = 126 ; en /26, 62 ; en /23, 512 − 2 = 510.</p>
+
+<p>Un réseau technique de quarante équipements tient dans un /26, mais le découpage se fait rarement plus fin que le /24 dans un bâtiment : la réserve ne coûte rien, et un plan lisible vaut mieux qu’un plan serré.</p>
+
+<p>L’outil de plan IP de cette page accepte n’importe quel masque : essayer un /25 sur la même adresse et regarder ce que deviennent le réseau et la diffusion.</p></div></details>
+
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi deux puissances par classe en PoE</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le câble dissipe une partie de la puissance par effet Joule. En PoE, le port délivre au moins 44 V sous 350 mA, soit 15,4 W. Sur 100 m, la boucle du câble peut atteindre 20 Ω : les pertes valent 20 × 0,35², soit 2,45 W.</p>
+
+<p>L’équipement ne dispose donc que de 12,95 W. Le commutateur fournit la puissance de l’équipement <strong>et</strong> celle des pertes : il se dimensionne sur la puissance côté port, celle de la table.</p>
+
+<p>C’est aussi pourquoi la limite des 100 m vaut pour l’alimentation comme pour les données : plus loin, les pertes mangent la marge.</p></div></details>
+
+<details class="appro be"><summary><span class="niv"></span><span class="titre-appro">Un écran relié aux deux bouts, ou à un seul ?</span><span class="etiq">Bureau d'études</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Relié à ses deux extrémités, un écran protège bien contre les perturbations de haute fréquence. Il relie aussi les masses des deux extrémités : si elles ne sont pas au même potentiel, un courant à 50 Hz circule en permanence dans l’écran.</p>
+
+<p>La réponse n’est pas de déconnecter un côté, ce qui fait perdre l’essentiel de la protection. Elle consiste à relier les masses entre elles par un réseau maillé, de façon qu’elles restent au même potentiel.</p>
+
+<p>Vers un équipement extérieur doté de sa propre terre, on sort du dilemme par la fibre. Elle impose alors une alimentation locale et permanente pour la caméra, qui ne peut plus être alimentée par son câble.</p></div></details>
+
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi le lien fixe s&#39;arrête à 90 m</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La limite de 90 m réserve 10 m aux cordons, que l’exploitant choisira plus tard et que l’installateur ne connaît pas. Chaque mètre de lien fixe au-delà de 90 m serait pris sur la longueur des cordons.</p>
+
+<p>Une seconde raison s’y ajoute : un cordon est souple, et il affaiblit davantage le signal par mètre qu’un câble rigide. La limite du canal a été calculée pour 90 m de câble et 10 m de cordons ; c’est ce partage qui la rend tenable.</p>
+
+<p>La réception porte sur le lien permanent, parce que c’est l’ouvrage de l’installateur, et qu’il reste en place toute la vie du bâtiment.</p></div></details>
+
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Compresser la voix ne divise pas le débit d&#39;autant</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>En G.711 avec des paquets de 20 ms, la voix pèse 160 octets et la trame 218 : 87,2 kbit/s sur le câble. Le G.729 compresse la voix à 8 kbit/s, huit fois moins : la voix d’un paquet tombe à 20 octets.</p>
+
+<p>Mais les 58 octets d’en-têtes ne bougent pas. La trame pèse 78 octets, et le débit 31,2 kbit/s : le codec est huit fois plus léger, l’appel moins de trois fois. Sur un réseau local, on garde le G.711 ; le G.729 sert sur les liens étroits.</p>
+
+<p>La voix téléphonique s’arrête à 3 400 Hz, d’où les 8 000 échantillons par seconde du G.711, codés chacun sur 8 bits.</p></div></details>
+
+<details class="appro be"><summary><span class="niv"></span><span class="titre-appro">Vérifier une table de registres sur site</span><span class="etiq">Bureau d'études</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>La méthode consiste à lire une valeur connue. La tension du réseau, voisine de 230 V, doit apparaître quelque part sous la forme 2 300 si elle est écrite en dixièmes de volt. Le courant lu doit concorder avec une mesure à la pince, et la puissance avec le produit de la tension et du courant.</p>
+
+<p>Si la valeur connue apparaît dans le registre voisin de celui qui était attendu, la configuration présente un décalage d’une unité : les documentations ne numérotent pas toujours les registres comme le protocole.</p>
+
+<p>Une supervision mise en service sans cette vérification affiche des nombres plausibles et faux. C’est le défaut le plus long à découvrir, parce qu’aucune alarme ne le signale.</p></div></details>
+
+</div><h2 id="s-entrainer">S’entraîner</h2>
+
+<p>Les valeurs attendues ne sont pas dans la page : elle vous dit si c’est juste et vous rappelle la méthode. Le corrigé reste dans le polycopié.</p>
+
+<section class="exo" id="SEQ2-e1" data-exo="SEQ2-e1" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGtrdGh2eC41Nnhga3RqdngveGB4DXgn"><p class="k">Exercice · D2-1</p><h4>Le budget d’un commutateur</h4><div class="enonce">
+
+
+
+<p>Un commutateur doit alimenter <strong>8 contrôleurs de porte de classe 3</strong> (15,4 W réservés par port), <strong>4 postes IP de classe 2</strong> (7,0 W) et <strong>2 bornes Wi-Fi de classe 4</strong> (30 W).</p>
+
+<p>Quelle puissance totale le commutateur doit-il réserver ?</p>
+
+</div><div class="indice" hidden>une ligne par classe, nombre × puissance réservée par port, puis la somme. Vérifier ensuite chaque port séparément.</div></section>
+
+<section class="exo" id="SEQ2-e2" data-exo="SEQ2-e2" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4a2NodGtsYnRpanRob294dnhrY2h6a2xiemlqemhvb3gHJw=="><p class="k">Exercice · D2-1</p><h4>L’adresse de diffusion</h4><div class="enonce">
+
+
+
+<p>Le réseau technique d’un immeuble est <strong>192.168.30.0 /24</strong>.</p>
+
+<p>Quelle est son adresse de diffusion ?</p>
+
+</div><div class="indice" hidden>avec un masque /24, les trois premiers octets sont fixés ; le dernier prend la plus grande valeur possible pour la diffusion, la plus petite pour le réseau.</div></section>
+
+<section class="exo" id="SEQ2-e3" data-exo="SEQ2-e3" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGh0YnZ4LjU2eGBrdGp2eC94YHgMeCc="><p class="k">Exercice · D2-1</p><h4>La ligne du plateau</h4><div class="enonce">
+
+
+
+<p>Une ligne KNX TP1 porte <strong>60 participants répartis</strong> régulièrement sur <strong>320 m</strong>, depuis son alimentation de 30 V. Chaque participant consomme 10 mA.</p>
+
+<p>Quelle tension reste-t-il au dernier participant ?</p>
+
+</div><div class="indice" hidden>le courant total en ampères, la formule des participants répartis avec r = 0,075 Ω/m, puis la chute retranchée des 30 V. Comparer enfin aux 21 V.</div></section>
+
+<section class="exo" id="SEQ2-e4" data-exo="SEQ2-e4" data-type="calcul" data-savoir="D1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhga2N0anZ4LjU2eGBodGp2eC94YHg+GHgn"><p class="k">Exercice · D1-1</p><h4>Le détecteur du garage</h4><div class="enonce">
+
+
+
+<p>Un émetteur radio dont le budget vaut <strong>81 dB</strong> commande un récepteur situé à <strong>10 m</strong>, derrière <strong>une cloison en plaque de plâtre</strong> et <strong>un mur en brique</strong>. Les tableaux de la semaine 4 donnent les affaiblissements.</p>
+
+<p>Quelle marge reste-t-il sur ce trajet ?</p>
+
+</div><div class="indice" hidden>l’affaiblissement de la distance dans le premier tableau, puis celui de chaque paroi dans le second ; retrancher la somme du budget. Comparer la marge aux 10 dB de réserve.</div></section>
+
+<section class="exo" id="SEQ2-e5" data-exo="SEQ2-e5" data-type="calcul" data-savoir="D1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaXRqaG92eC41NnhgaXRqdngveGB4Phh4Jw=="><p class="k">Exercice · D1-1</p><h4>La rocade vers l’étage</h4><div class="enonce">
+
+
+
+<p>Une rocade en fibre multimode OM3 mesure <strong>250 m</strong>. Elle comporte <strong>quatre connexions</strong> et <strong>deux épissures</strong>. Le budget des modules vaut <strong>7,5 dB</strong>.</p>
+
+<p>Quelle marge reste-t-il sur cette liaison ?</p>
+
+</div><div class="indice" hidden>la longueur en kilomètres, chaque connexion et chaque épissure à sa valeur maximale ; la marge est ce qui reste du budget une fois les pertes retranchées.</div></section>
+
+<section class="exo" id="SEQ2-e6" data-exo="SEQ2-e6" data-type="lecture" data-savoir="D2-2" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4Hxt4dng5NjspKT96Hxt4dng2O3o5NjspKT96Hxt4dngfeht4dng2O3o5NjspKT96H3obeAcn"><p class="k">Exercice · D2-2</p><h4>La classe du lien</h4><div class="enonce">
+
+
+
+<p>Un installateur pose un câble, des prises et un panneau de <strong>catégorie 6A</strong>, et fait certifier le lien permanent.</p>
+
+<p>Quelle classe le procès-verbal peut-il annoncer, au mieux ?</p>
+
+</div><div class="indice" hidden>la classe d’un lien est celle de son composant le plus faible ; le tableau des catégories et des classes de la semaine 8 fait la correspondance.</div></section>
+
+<section class="exo" id="SEQ2-e7" data-exo="SEQ2-e7" data-type="calcul" data-savoir="D2-3" data-a="IXgueGB4OTs2OS82eHZ4LHhga2tqdG52eC41NnhgaHRqdngveGB4MTgzLnUpeCc="><p class="k">Exercice · D2-3</p><h4>Des paquets de 10 ms</h4><div class="enonce">
+
+
+
+<p>Un IPBX envoie la voix en G.711 par paquets de <strong>10 ms</strong>. Les en-têtes IP, UDP et RTP font 40 octets, l’en-tête et la fin de trame Ethernet 18 octets.</p>
+
+<p>Quel est le débit sur le câble, dans un sens ?</p>
+
+</div><div class="indice" hidden>la voix d’un paquet en octets, puis la trame complète, puis le nombre de paquets par seconde ; multiplier par 8 pour passer des octets aux bits.</div></section>
+
+<section class="exo" id="SEQ2-e8" data-exo="SEQ2-e8" data-type="justification" data-savoir="D2-2" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · D2-2</p><h4>Le lien de 96 mètres</h4><div class="enonce">
+
+
+
+<p>À la certification, un lien permanent mesure <strong>96 m</strong>. Tous ses composants sont de catégorie 6 et toutes ses autres mesures sont conformes. L’installateur veut le déclarer réussi. Expliquer en quatre lignes pourquoi il ne le peut pas, et ce qu’il peut proposer.</p>
+
+</div><div class="indice" hidden>se demander pourquoi le lien fixe s’arrête à 90 m alors que le canal accepte 100 m.</div><ul class="verifier" hidden><li>J’ai distingué le lien permanent et le canal, et donné la limite de chacun</li><li>J’ai dit que la longueur au-delà de 90 m serait prise sur les 10 m des cordons</li><li>J’ai dit qu’un lien est jugé sur sa marge la plus défavorable, ici négative</li><li>J’ai proposé une solution, raccourcir le cheminement, rapprocher le sous-répartiteur ou passer en fibre</li></ul></section>
+
+<h2 id="le-jour-du-controle">Le jour du contrôle</h2>
+
+<p>Le devoir surveillé É1 dure deux heures et porte sur les semaines 1 à 9 : le socle de la préparation précédente en fait partie. Les questions de calcul suivent toutes le même chemin.</p>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Repérer la grandeur cherchée et le média concerné : le budget n’est pas le même.</li>
+
+<li>Écrire la formule en lettres avant tout nombre.</li>
+
+<li>Convertir : les milliampères en ampères, les mètres de fibre en kilomètres, les octets en bits, les nanofarads en farads.</li>
+
+<li>Calculer, puis comparer à la limite : 21 V, 10 dB de marge, 100 m, budget PoE, marge positive.</li>
+
+<li>Conclure par une phrase avec un verdict, conforme ou non, et la raison.</li>
+
+</ol>
+
+</div>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 50%" />
+
+<col style="width: 50%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th>L’unité qui coûte des points</th>
+
+<th>Ce qu’il faut faire</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>le courant d’une ligne</td>
+
+<td>10 mA par participant, puis <strong>en ampères</strong> dans ΔU = r × I × L</td>
+
+</tr>
+
+<tr>
+
+<td>la longueur d’une fibre</td>
+
+<td><strong>en kilomètres</strong>, parce que l’affaiblissement est en dB/km</td>
+
+</tr>
+
+<tr>
+
+<td>les décibels</td>
+
+<td>ils s’additionnent ; une marge est une différence de dB</td>
+
+</tr>
+
+<tr>
+
+<td>une trame</td>
+
+<td>en octets, puis × 8 pour un débit en bit/s</td>
+
+</tr>
+
+<tr>
+
+<td>une capacité</td>
+
+<td>100 nF valent 100 × 10⁻⁹ F dans Z = 1 / (2 π f C)</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<p>Une réponse rédigée tient en trois temps : la formule en lettres, l’application numérique avec les unités, puis la comparaison à la limite et le verdict en une phrase. Pour une justification, les mots du référentiel comptent : source, couplage et victime ; lien permanent et canal ; catégorie et classe ; commutateur et routeur.</p>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="SEQ1.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">Le socle, semaines 1 à 3</span></a><a class="ap" href="FICHE-CCF-E5.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">Fiche CCF E5</span></a></div></nav>
 <p class="pied">Cette page ne remplace pas les polycopiés et ne donne aucun corrigé. Les outils démarrent sur des cas voisins de ceux des activités. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=af9949d4"></script>
-<script src="../assets/site.js?v=af9949d4"></script>
-<script src="../assets/vivant.js?v=af9949d4"></script>
+

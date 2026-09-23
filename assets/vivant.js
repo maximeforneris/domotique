@@ -78,3 +78,20 @@
     }, true);
   }
 })();
+
+/* ─── la serie juste : une pulsation courte, une seule fois.
+   Le kit annonce chaque verification par l'evenement « exo » — on n'ecoute
+   que la serie ENTIERE juste. Pas de confettis : un signe, pas une fete. */
+(function () {
+  "use strict";
+  document.addEventListener("exo", function (e) {
+    var d = e.detail || {};
+    if (d.genre !== "serie" || d.etat !== "juste") return;
+    var ident = window.CSS && CSS.escape ? CSS.escape(d.id) : d.id;
+    var s = document.querySelector('.serie[data-serie="' + ident + '"]');
+    if (!s) return;
+    s.classList.remove("pulse-juste");
+    void s.offsetWidth;                     /* relancer l'animation */
+    s.classList.add("pulse-juste");
+  });
+})();

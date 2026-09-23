@@ -1,0 +1,37 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   LA FEUILLE D'IMPRESSION — liee en DERNIER, apres la charte et la coquille,
+   pour gagner contre elles sans rien leur demander. En page autonome, elle
+   est ajoutee a la suite du kit dans le <style>.
+   Ce qui s'imprime, c'est la seance : pas le plan du site, pas la barre, pas
+   les boutons. Et ce qui s'imprime s'imprime EN NOIR SUR BLANC : un bandeau
+   plein jaune coute une cartouche a vingt-quatre eleves.
+   Essayee le 22 septembre 2026 sur la seance J1 du CAP, _test-design/_perf.
+   ═══════════════════════════════════════════════════════════════════════ */
+@page{margin:15mm 14mm}
+@media print{
+  :root{--fond:#fff;--carte:#fff;--carte2:#fff}
+  html,body,.doc,.doc-page,.page{background:#fff!important;color:#000!important}
+  .page::before,.page::after,.doc::before,.doc::after{display:none!important}
+
+  /* la navigation reste a l'ecran */
+  .doc-barre,.doc-plan,.doc-som,.doc-voile,.doc-fleches,.doc-fil,.doc-jauge,
+  nav.somm,.jauge-lecture,.barre-site,.suite,.pied-site,
+  .page button,.page .btn,.verdict:empty{display:none!important}
+  .doc-corps{display:block!important}
+  .doc-page .page{max-width:none!important;margin:0!important}
+  .page{padding:0!important}
+
+  /* l'en-tete garde sa structure, pas son aplat */
+  header.tete{background:#fff!important;color:#000!important;
+    border:1.5px solid #000;padding:14px 16px!important}
+  header.tete .num{color:#bbb!important}
+  header.tete h1,header.tete h1 span{color:#000!important}
+
+  /* une reponse a ecrire a la main : le champ devient une ligne a remplir */
+  .exo input,.serie input{border:0!important;border-bottom:1px solid #999!important;
+    border-radius:0!important;background:none!important;min-width:5em}
+
+  .cle,.piege,.exo,.serie,figure,table{break-inside:avoid;page-break-inside:avoid}
+  h2,h3{break-after:avoid;page-break-after:avoid}
+  a[href^="http"]::after{content:" (" attr(href) ")";font-size:9pt;color:#555}
+}

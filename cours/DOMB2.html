@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>B2 : la référence 230 V</title>
-<link rel="stylesheet" href="../assets/kit.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/site.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/domotique.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/vivant.css?v=af9949d4">
+<link rel="stylesheet" href="../assets/kit.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/site.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/domotique.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/vivant.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/impression.css?v=56a16c5f">
+<script src="../assets/kit.js?v=56a16c5f-1e219d" defer></script>
+<script src="../assets/site.js?v=56a16c5f" defer></script>
+<script src="../assets/vivant.js?v=56a16c5f" defer></script>
 
 <div class="page" data-site="fed-domo-1a" data-page="cours/DOMB2" data-rang="1">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 1 · Le socle</span><span class="fleches"><a class="fleche" href="DOMB1.html" rel="prev" title="B1 : prise en main de l'atelier" aria-label="B1 : prise en main de l'atelier">&lsaquo;</a><a class="fleche" href="DOMB3.html" rel="next" title="B3 : relever et décrire" aria-label="B3 : relever et décrire">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMB2">Marquer comme lu</button></div>
@@ -22,231 +28,451 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMB1.html">La consignation avant d'ouvrir</a></b><span class="ou">Semaine 1 · atelier · Prise en main de l'atelier</span><span class="car">les cinq étapes sont redemandées avant toute mise sous tension, sans le tableau sous les yeux.</span></li><li><b><a href="DOMA1.html">Les trois façons de câbler</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">le va-et-vient et le télérupteur sont les deux premières ; cette séance les câble pour donner une référence à la troisième.</span></li><li><b>Le multimètre en continuité</b><span class="car">un circuit se contrôle hors tension, et il faut savoir ce que l'appareil affiche entre deux points reliés et entre deux points séparés.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#trois-schemas-trois-questions">Trois schémas, trois questions</a><a href="#avant-de-mettre-sous-tension">Avant de mettre sous tension</a><a href="#le-telerupteur-et-le-quatrieme-point">Le télérupteur, et le quatrième point</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
-<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
-<p>Le poste : une platine, une source protégée par un différentiel 30 mA et un luminaire. Vous y avez câblé deux fois la même fonction, allumer depuis deux endroits : d’abord en va-et-vient, puis au télérupteur avec trois poussoirs. Entre les deux, un contrôle en continuité et un essai des quatre combinaisons. Pour finir, un quatrième poussoir, chronomètre en main.</p>
-<p>Ce n’est pas une révision du baccalauréat professionnel. Cette installation est <strong>la référence</strong> à laquelle sera comparé tout le travail de l’année, et les deux durées chronométrées serviront de nouveau en semaine 4, puis en semaine 11.</p>
-<figure>
-<img src="img/DOMB2/fig1-trois-schemas.png" alt="Le même va-et-vient, trois représentations." />
-<figcaption aria-hidden="true">Le même va-et-vient, trois représentations.</figcaption>
-</figure>
-<h2 id="trois-schemas-trois-questions">Trois schémas, trois questions</h2>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Le schéma</th>
-<th>Ce qu’il dit</th>
-<th>Pour quoi faire</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Architectural</td>
-<td>où sont les organes dans le local</td>
-<td>implanter, percer, tirer</td>
-</tr>
-<tr>
-<td>Développé</td>
-<td>par où passe le courant, contact par contact</td>
-<td>comprendre, câbler, dépanner</td>
-</tr>
-<tr>
-<td>Unifilaire</td>
-<td>ce qui part du tableau, et combien de conducteurs</td>
-<td>chiffrer, commander</td>
-</tr>
-</tbody>
-</table></div>
-<div class="cle">
-<p>Un même circuit se dessine de <strong>trois façons</strong>, et chacune répond à une question. Sur l’architectural et l’unifilaire, un seul trait par liaison : les <strong>barres obliques</strong> disent le nombre de conducteurs.</p>
-</div>
-<div class="piege">
-<p>Trois conducteurs entre le tableau et le premier interrupteur, par réflexe « phase, neutre, terre ». Le neutre et la terre ne montent pas à l’interrupteur : ils vont du tableau au luminaire, et le schéma architectural ne les dessine pas.</p>
-</div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Ce que le développé montre, et que l&#39;architectural ne peut pas montrer</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le schéma développé nomme les <strong>bornes</strong> : la borne commune d’un va-et-vient, les deux bornes des navettes. C’est sur lui qu’on suit le chemin du courant, lampe allumée, d’un contact au suivant.</p>
-<p>Le schéma architectural représente des liaisons entre des organes posés sur un plan. Il ne dit ni quel conducteur arrive sur quelle borne, ni par où passe le courant. Ce n’est pas un défaut : chaque schéma a sa question.</p></div></details>
-</div><h2 id="avant-de-mettre-sous-tension">Avant de mettre sous tension</h2>
-<p>Une fois le câblage terminé, on ne met pas sous tension pour voir. Le contrôle se fait au multimètre, en continuité, hors tension, et il se prépare : on écrit ce que chaque mesure <strong>doit</strong> donner avant de la faire.</p>
-<div class="etapes">
-<ol type="1">
-<li>Consigner : identifier, séparer, condamner, vérifier l’appareil, vérifier l’absence de tension.</li>
-<li>Câbler d’après le schéma développé, en nommant chaque borne.</li>
-<li>Écrire le tableau de contrôle : continuité ou coupure attendue, pour chaque paire de points et chaque position des interrupteurs.</li>
-<li>Mesurer en continuité, hors tension, et comparer à ce qui était attendu.</li>
-<li>Mettre sous tension seulement si tout est conforme, puis essayer les quatre combinaisons.</li>
-</ol>
-</div>
-<div class="enveloppe-tbl"><table>
-<colgroup>
-<col style="width: 33%" />
-<col style="width: 33%" />
-<col style="width: 33%" />
-</colgroup>
-<thead>
-<tr>
-<th>Entre</th>
-<th>Interrupteurs dans la même position</th>
-<th>Interrupteurs dans des positions opposées</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Phase et retour lampe</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Retour lampe et neutre</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Phase et terre</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table></div>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Interrupteur 1</th>
-<th>Interrupteur 2</th>
-<th>Lampe attendue</th>
-<th>Lampe obtenue</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>position A</td>
-<td>position A</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>position A</td>
-<td>position B</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>position B</td>
-<td>position A</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>position B</td>
-<td>position B</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table></div>
-<div class="cle">
-<p><strong>Mettre sous tension pour voir n’est pas un essai, c’est un pari.</strong> Et quand une combinaison ne donne pas ce qui était attendu, on dit quel conducteur est en cause <strong>avant</strong> de démonter : c’est ainsi qu’on apprend à diagnostiquer.</p>
-</div>
-<h2 id="le-telerupteur-et-le-quatrieme-point">Le télérupteur, et le quatrième point</h2>
-<figure>
-<img src="img/DOMB2/fig2-telerupteur.png" alt="Le télérupteur : deux circuits dans le même appareil." />
-<figcaption aria-hidden="true">Le télérupteur : deux circuits dans le même appareil.</figcaption>
-</figure>
-<figure class="schema"><div class="dessin" data-schema="deux-chaines"></div><figcaption>La boucle de poussoirs porte l’information, le contact du télérupteur est le pré-actionneur, le luminaire l’actionneur. Sur un télérupteur ordinaire, l’information circule pourtant en 230 V.</figcaption></figure>
-<div class="cle">
-<p>Le télérupteur déporte la commutation <strong>au tableau</strong> : une impulsion sur la bobine fait basculer le contact, qui y reste. C’est pourquoi un poussoir suffit, et pourquoi un quatrième se pique n’importe où sur la boucle, en parallèle.</p>
-</div>
-<div class="piege">
-<p>« Commande » ne veut pas dire « très basse tension ». La boucle de poussoirs d’un télérupteur ordinaire est en <strong>230 V</strong>, et c’est votre mesure qui le dit. Les fils qui montent aux poussoirs se traitent comme les autres.</p>
-</div>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th></th>
-<th>Lampe allumée</th>
-<th>Lampe éteinte</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Tension aux bornes de la bobine, au repos</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Tension entre les deux fils de la boucle de poussoirs</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>Courant dans le circuit de puissance</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table></div>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th></th>
-<th>Durée</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ajouter un 4e poussoir au télérupteur</td>
-<td></td>
-</tr>
-<tr>
-<td>Ajouter un 3e point au va-et-vient, estimé</td>
-<td></td>
-</tr>
-</tbody>
-</table></div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Télérupteur ou contacteur ?</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Un contacteur reste enclenché tant que sa bobine est alimentée : relâcher la commande le fait retomber. Un télérupteur reçoit une <strong>impulsion</strong>, bascule mécaniquement et reste dans sa position sans être alimenté ; l’impulsion suivante le fait rebasculer.</p>
-<p>C’est ce qui explique qu’un poussoir suffit là où un contacteur demanderait un interrupteur maintenu. Il existe des télérupteurs à bobine 24 V, dont la boucle est alors en TBTS ; ils coûtent plus cher, précisément pour cela.</p></div></details>
-<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Ce que vaut la comparaison</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le télérupteur coûte plus cher que deux va-et-vient, et sur ce poste il consomme davantage de cuivre. Ce que le client achète n’est pas du cuivre : c’est la possibilité d’ajouter plus tard, sur la boucle, sans rouvrir un mur.</p>
-<p>Les deux durées chronométrées aujourd’hui sont la mesure de cette différence. Elles seront reprises en semaine 4, puis en semaine 11, quand le bus permettra la même chose sans tirer un fil.</p></div></details>
-</div><figure class="memo"><img src="img/DOMB2/memo-schemas.png" alt="" /></figure>
-<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
-<div class="quiz">
-<ul>
-<li>Pour savoir où percer la saignée d’un interrupteur, on lit : <strong>le schéma architectural</strong> | le schéma développé | le schéma unifilaire</li>
-<li>Le nombre de conducteurs d’une liaison se lit : <strong>dans les barres obliques</strong> | dans l’épaisseur du trait | dans la nomenclature</li>
-<li>Un câblage terminé se contrôle : <strong>en continuité, hors tension</strong> | sous tension, lampe en place | à la pince, en service</li>
-<li>Sur un télérupteur ordinaire, la boucle de poussoirs est en : <strong>230 V alternatif</strong> | 30 V continu | 24 V alternatif</li>
-<li>Un quatrième poussoir sur un télérupteur se raccorde : <strong>en parallèle sur la boucle</strong> | en série dans la boucle | sur le contact de puissance</li>
-<li>Avec un télérupteur, la puissance est commutée : <strong>au tableau</strong> | dans le local | au poussoir</li>
-</ul>
-</div>
-<h2 id="s-entrainer">S’entraîner</h2>
-<section class="exo" id="DOMB2-e1" data-exo="DOMB2-e1" data-type="calcul" data-savoir="C1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgbGJ0anZ4LjU2eGBodGp2eC94YHg3eCc="><p class="k">Exercice · C1-1</p><h4>Le cuivre de la boucle</h4><div class="enonce">
-
-<p>Une boucle de poussoirs part du tableau et dessert trois poussoirs le long d’un couloir : <strong>12 m</strong> du tableau au premier, puis <strong>6 m</strong>, puis <strong>9 m</strong> jusqu’au troisième, et <strong>7 m</strong> de plus pour un quatrième ajouté en bout.</p>
-<p>Quelle longueur de <strong>conducteur</strong> faut-il en tout, sachant que la boucle compte deux conducteurs ?</p>
-</div><div class="indice" hidden>additionner les tronçons pour obtenir la longueur de câble, puis compter les conducteurs qu’il contient.</div></section>
-<section class="exo" id="DOMB2-e2" data-exo="DOMB2-e2" data-type="calcul" data-savoir="C1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhganRpa2l2eC41NnhgaHRqdngveGB4G3gn"><p class="k">Exercice · C1-1</p><h4>Le courant du circuit de puissance</h4><div class="enonce">
-
-<p>Le télérupteur d’un poste commute un luminaire de <strong>72 W</strong> sous <strong>230 V</strong>.</p>
-<p>Quel courant traverse le contact de puissance, lampe allumée ?</p>
-</div><div class="indice" hidden>P = U × I, et le courant se donne en ampères avec trois décimales.</div></section>
-<section class="exo" id="DOMB2-e3" data-exo="DOMB2-e3" data-type="lecture" data-savoir="C1-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4LzQzPDM2OzMoP3h2eCk5MgYvamo/Yzc7ei80MzwzNjszKD94dng2P3opOTIGL2pqP2M3O3ovNDM8MzY7Myg/eHZ4NgYvaGprYy80MzwzNjszKD94dng2P3ovNDM8MzY7Myg/eAcn"><p class="k">Exercice · C1-1</p><h4>Quel schéma pour chiffrer ?</h4><div class="enonce">
-
-<p>Vous devez commander le câble d’un départ d’éclairage : combien de conducteurs, et de quelle section.</p>
-<p>Quel schéma ouvrez-vous ?</p>
-</div><div class="indice" hidden>c’est le schéma qui ne dessine qu’un trait par départ, et qui porte le nombre de conducteurs dans ses barres.</div></section>
-<section class="exo" id="DOMB2-e4" data-exo="DOMB2-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>Coupure des deux côtés</h4><div class="enonce">
-
-<p>Dans le tableau de contrôle, une seule ligne doit valoir coupure dans les deux colonnes, quelle que soit la position des interrupteurs. Dire laquelle et expliquer, en trois lignes, pourquoi une continuité à cet endroit interdit toute mise sous tension.</p>
-</div><div class="indice" hidden>penser à ce que le différentiel 30 mA du poste est là pour détecter.</div><ul class="verifier" hidden><li>J’ai nommé la paire de points concernée</li><li>J’ai dit ce que signifierait une continuité entre ces deux points</li><li>J’ai dit ce qui se passerait à la mise sous tension</li><li>J’ai précisé que cela vaut dans toutes les positions des interrupteurs</li></ul></section>
-<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
-<p>La séance B3 relève une platine sans rien démonter : nommer huit organes par leur plaque, ranger chacun dans sa famille, tracer les deux chaînes. Le télérupteur câblé aujourd’hui y figure, à côté d’un actionneur bus : à vous de dire ce que les deux ont en commun, et ce qui les distingue.</p>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+
+<p>Le poste : une platine, une source protégée par un différentiel 30 mA et un luminaire. Vous y avez câblé deux fois la même fonction, allumer depuis deux endroits : d’abord en va-et-vient, puis au télérupteur avec trois poussoirs. Entre les deux, un contrôle en continuité et un essai des quatre combinaisons. Pour finir, un quatrième poussoir, chronomètre en main.</p>
+
+<p>Ce n’est pas une révision du baccalauréat professionnel. Cette installation est <strong>la référence</strong> à laquelle sera comparé tout le travail de l’année, et les deux durées chronométrées serviront de nouveau en semaine 4, puis en semaine 11.</p>
+
+<figure>
+
+<img src="img/DOMB2/fig1-trois-schemas.png" alt="Le même va-et-vient, trois représentations." />
+
+<figcaption aria-hidden="true">Le même va-et-vient, trois représentations.</figcaption>
+
+</figure>
+
+<h2 id="trois-schemas-trois-questions">Trois schémas, trois questions</h2>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th>Le schéma</th>
+
+<th>Ce qu’il dit</th>
+
+<th>Pour quoi faire</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Architectural</td>
+
+<td>où sont les organes dans le local</td>
+
+<td>implanter, percer, tirer</td>
+
+</tr>
+
+<tr>
+
+<td>Développé</td>
+
+<td>par où passe le courant, contact par contact</td>
+
+<td>comprendre, câbler, dépanner</td>
+
+</tr>
+
+<tr>
+
+<td>Unifilaire</td>
+
+<td>ce qui part du tableau, et combien de conducteurs</td>
+
+<td>chiffrer, commander</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="cle">
+
+<p>Un même circuit se dessine de <strong>trois façons</strong>, et chacune répond à une question. Sur l’architectural et l’unifilaire, un seul trait par liaison : les <strong>barres obliques</strong> disent le nombre de conducteurs.</p>
+
+</div>
+
+<div class="piege">
+
+<p>Trois conducteurs entre le tableau et le premier interrupteur, par réflexe « phase, neutre, terre ». Le neutre et la terre ne montent pas à l’interrupteur : ils vont du tableau au luminaire, et le schéma architectural ne les dessine pas.</p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Ce que le développé montre, et que l&#39;architectural ne peut pas montrer</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le schéma développé nomme les <strong>bornes</strong> : la borne commune d’un va-et-vient, les deux bornes des navettes. C’est sur lui qu’on suit le chemin du courant, lampe allumée, d’un contact au suivant.</p>
+
+<p>Le schéma architectural représente des liaisons entre des organes posés sur un plan. Il ne dit ni quel conducteur arrive sur quelle borne, ni par où passe le courant. Ce n’est pas un défaut : chaque schéma a sa question.</p></div></details>
+
+</div><h2 id="avant-de-mettre-sous-tension">Avant de mettre sous tension</h2>
+
+<p>Une fois le câblage terminé, on ne met pas sous tension pour voir. Le contrôle se fait au multimètre, en continuité, hors tension, et il se prépare : on écrit ce que chaque mesure <strong>doit</strong> donner avant de la faire.</p>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Consigner : identifier, séparer, condamner, vérifier l’appareil, vérifier l’absence de tension.</li>
+
+<li>Câbler d’après le schéma développé, en nommant chaque borne.</li>
+
+<li>Écrire le tableau de contrôle : continuité ou coupure attendue, pour chaque paire de points et chaque position des interrupteurs.</li>
+
+<li>Mesurer en continuité, hors tension, et comparer à ce qui était attendu.</li>
+
+<li>Mettre sous tension seulement si tout est conforme, puis essayer les quatre combinaisons.</li>
+
+</ol>
+
+</div>
+
+<div class="enveloppe-tbl"><table>
+
+<colgroup>
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+<col style="width: 33%" />
+
+</colgroup>
+
+<thead>
+
+<tr>
+
+<th>Entre</th>
+
+<th>Interrupteurs dans la même position</th>
+
+<th>Interrupteurs dans des positions opposées</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Phase et retour lampe</td>
+
+<td></td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>Retour lampe et neutre</td>
+
+<td></td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>Phase et terre</td>
+
+<td></td>
+
+<td></td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Interrupteur 1</th>
+
+<th>Interrupteur 2</th>
+
+<th>Lampe attendue</th>
+
+<th>Lampe obtenue</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>position A</td>
+
+<td>position A</td>
+
+<td></td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>position A</td>
+
+<td>position B</td>
+
+<td></td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>position B</td>
+
+<td>position A</td>
+
+<td></td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>position B</td>
+
+<td>position B</td>
+
+<td></td>
+
+<td></td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="cle">
+
+<p><strong>Mettre sous tension pour voir n’est pas un essai, c’est un pari.</strong> Et quand une combinaison ne donne pas ce qui était attendu, on dit quel conducteur est en cause <strong>avant</strong> de démonter : c’est ainsi qu’on apprend à diagnostiquer.</p>
+
+</div>
+
+<h2 id="le-telerupteur-et-le-quatrieme-point">Le télérupteur, et le quatrième point</h2>
+
+<figure>
+
+<img src="img/DOMB2/fig2-telerupteur.png" alt="Le télérupteur : deux circuits dans le même appareil." />
+
+<figcaption aria-hidden="true">Le télérupteur : deux circuits dans le même appareil.</figcaption>
+
+</figure>
+
+<figure class="schema"><div class="dessin" data-schema="deux-chaines"></div><figcaption>La boucle de poussoirs porte l’information, le contact du télérupteur est le pré-actionneur, le luminaire l’actionneur. Sur un télérupteur ordinaire, l’information circule pourtant en 230 V.</figcaption></figure>
+
+<div class="cle">
+
+<p>Le télérupteur déporte la commutation <strong>au tableau</strong> : une impulsion sur la bobine fait basculer le contact, qui y reste. C’est pourquoi un poussoir suffit, et pourquoi un quatrième se pique n’importe où sur la boucle, en parallèle.</p>
+
+</div>
+
+<div class="piege">
+
+<p>« Commande » ne veut pas dire « très basse tension ». La boucle de poussoirs d’un télérupteur ordinaire est en <strong>230 V</strong>, et c’est votre mesure qui le dit. Les fils qui montent aux poussoirs se traitent comme les autres.</p>
+
+</div>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th></th>
+
+<th>Lampe allumée</th>
+
+<th>Lampe éteinte</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Tension aux bornes de la bobine, au repos</td>
+
+<td></td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>Tension entre les deux fils de la boucle de poussoirs</td>
+
+<td></td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>Courant dans le circuit de puissance</td>
+
+<td></td>
+
+<td></td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th></th>
+
+<th>Durée</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Ajouter un 4e poussoir au télérupteur</td>
+
+<td></td>
+
+</tr>
+
+<tr>
+
+<td>Ajouter un 3e point au va-et-vient, estimé</td>
+
+<td></td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Télérupteur ou contacteur ?</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Un contacteur reste enclenché tant que sa bobine est alimentée : relâcher la commande le fait retomber. Un télérupteur reçoit une <strong>impulsion</strong>, bascule mécaniquement et reste dans sa position sans être alimenté ; l’impulsion suivante le fait rebasculer.</p>
+
+<p>C’est ce qui explique qu’un poussoir suffit là où un contacteur demanderait un interrupteur maintenu. Il existe des télérupteurs à bobine 24 V, dont la boucle est alors en TBTS ; ils coûtent plus cher, précisément pour cela.</p></div></details>
+
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Ce que vaut la comparaison</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le télérupteur coûte plus cher que deux va-et-vient, et sur ce poste il consomme davantage de cuivre. Ce que le client achète n’est pas du cuivre : c’est la possibilité d’ajouter plus tard, sur la boucle, sans rouvrir un mur.</p>
+
+<p>Les deux durées chronométrées aujourd’hui sont la mesure de cette différence. Elles seront reprises en semaine 4, puis en semaine 11, quand le bus permettra la même chose sans tirer un fil.</p></div></details>
+
+</div><figure class="memo"><img src="img/DOMB2/memo-schemas.png" alt="" /></figure>
+
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+
+<div class="quiz">
+
+<ul>
+
+<li>Pour savoir où percer la saignée d’un interrupteur, on lit : <strong>le schéma architectural</strong> | le schéma développé | le schéma unifilaire</li>
+
+<li>Le nombre de conducteurs d’une liaison se lit : <strong>dans les barres obliques</strong> | dans l’épaisseur du trait | dans la nomenclature</li>
+
+<li>Un câblage terminé se contrôle : <strong>en continuité, hors tension</strong> | sous tension, lampe en place | à la pince, en service</li>
+
+<li>Sur un télérupteur ordinaire, la boucle de poussoirs est en : <strong>230 V alternatif</strong> | 30 V continu | 24 V alternatif</li>
+
+<li>Un quatrième poussoir sur un télérupteur se raccorde : <strong>en parallèle sur la boucle</strong> | en série dans la boucle | sur le contact de puissance</li>
+
+<li>Avec un télérupteur, la puissance est commutée : <strong>au tableau</strong> | dans le local | au poussoir</li>
+
+</ul>
+
+</div>
+
+<h2 id="s-entrainer">S’entraîner</h2>
+
+<section class="exo" id="DOMB2-e1" data-exo="DOMB2-e1" data-type="calcul" data-savoir="C1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgbGJ0anZ4LjU2eGBodGp2eC94YHg3eCc="><p class="k">Exercice · C1-1</p><h4>Le cuivre de la boucle</h4><div class="enonce">
+
+
+
+<p>Une boucle de poussoirs part du tableau et dessert trois poussoirs le long d’un couloir : <strong>12 m</strong> du tableau au premier, puis <strong>6 m</strong>, puis <strong>9 m</strong> jusqu’au troisième, et <strong>7 m</strong> de plus pour un quatrième ajouté en bout.</p>
+
+<p>Quelle longueur de <strong>conducteur</strong> faut-il en tout, sachant que la boucle compte deux conducteurs ?</p>
+
+</div><div class="indice" hidden>additionner les tronçons pour obtenir la longueur de câble, puis compter les conducteurs qu’il contient.</div></section>
+
+<section class="exo" id="DOMB2-e2" data-exo="DOMB2-e2" data-type="calcul" data-savoir="C1-1" data-a="IXgueGB4OTs2OS82eHZ4LHhganRpa2l2eC41NnhgaHRqdngveGB4G3gn"><p class="k">Exercice · C1-1</p><h4>Le courant du circuit de puissance</h4><div class="enonce">
+
+
+
+<p>Le télérupteur d’un poste commute un luminaire de <strong>72 W</strong> sous <strong>230 V</strong>.</p>
+
+<p>Quel courant traverse le contact de puissance, lampe allumée ?</p>
+
+</div><div class="indice" hidden>P = U × I, et le courant se donne en ampères avec trois décimales.</div></section>
+
+<section class="exo" id="DOMB2-e3" data-exo="DOMB2-e3" data-type="lecture" data-savoir="C1-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4LzQzPDM2OzMoP3h2eCk5MgYvamo/Yzc7ei80MzwzNjszKD94dng2P3opOTIGL2pqP2M3O3ovNDM8MzY7Myg/eHZ4NgYvaGprYy80MzwzNjszKD94dng2P3ovNDM8MzY7Myg/eAcn"><p class="k">Exercice · C1-1</p><h4>Quel schéma pour chiffrer ?</h4><div class="enonce">
+
+
+
+<p>Vous devez commander le câble d’un départ d’éclairage : combien de conducteurs, et de quelle section.</p>
+
+<p>Quel schéma ouvrez-vous ?</p>
+
+</div><div class="indice" hidden>c’est le schéma qui ne dessine qu’un trait par départ, et qui porte le nombre de conducteurs dans ses barres.</div></section>
+
+<section class="exo" id="DOMB2-e4" data-exo="DOMB2-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>Coupure des deux côtés</h4><div class="enonce">
+
+
+
+<p>Dans le tableau de contrôle, une seule ligne doit valoir coupure dans les deux colonnes, quelle que soit la position des interrupteurs. Dire laquelle et expliquer, en trois lignes, pourquoi une continuité à cet endroit interdit toute mise sous tension.</p>
+
+</div><div class="indice" hidden>penser à ce que le différentiel 30 mA du poste est là pour détecter.</div><ul class="verifier" hidden><li>J’ai nommé la paire de points concernée</li><li>J’ai dit ce que signifierait une continuité entre ces deux points</li><li>J’ai dit ce qui se passerait à la mise sous tension</li><li>J’ai précisé que cela vaut dans toutes les positions des interrupteurs</li></ul></section>
+
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+
+<p>La séance B3 relève une platine sans rien démonter : nommer huit organes par leur plaque, ranger chacun dans sa famille, tracer les deux chaînes. Le télérupteur câblé aujourd’hui y figure, à côté d’un actionneur bus : à vous de dire ce que les deux ont en commun, et ce qui les distingue.</p>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMB1.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">B1 : prise en main de l'atelier</span></a><a class="ap" href="DOMB3.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">B3 : relever et décrire</span></a></div><a class="vers-recap" href="SEQ1.html">Préparation au contrôle</a></nav>
 <p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=af9949d4"></script>
-<script src="../assets/site.js?v=af9949d4"></script>
-<script src="../assets/vivant.js?v=af9949d4"></script>
+

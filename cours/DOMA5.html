@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>A5 : topologie et adressage</title>
-<link rel="stylesheet" href="../assets/kit.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/site.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/domotique.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/vivant.css?v=af9949d4">
+<link rel="stylesheet" href="../assets/kit.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/site.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/domotique.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/vivant.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/impression.css?v=56a16c5f">
+<script src="../assets/kit.js?v=56a16c5f-1e219d" defer></script>
+<script src="../assets/site.js?v=56a16c5f" defer></script>
+<script src="../assets/vivant.js?v=56a16c5f" defer></script>
 
 <div class="page" data-site="fed-domo-1a" data-page="cours/DOMA5" data-rang="2">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 2 · Communiquer</span><span class="fleches"><a class="fleche" href="DOMA4.html" rel="prev" title="A4 : les médias" aria-label="A4 : les médias">&lsaquo;</a><a class="fleche" href="DOMA6.html" rel="next" title="A6 · réseau IP, adressage, PoE" aria-label="A6 · réseau IP, adressage, PoE">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA5">Marquer comme lu</button></div>
@@ -22,140 +28,269 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA4.html">La chute de tension dans une boucle</a></b><span class="ou">Semaine 4 · études · Les médias et ce qui les limite</span><span class="car">ΔU = r × I × L lorsque tout le courant traverse le câble ; cette séance part de cette relation pour justifier les 350 m.</span></li><li><b><a href="DOMA1.html">Les trois longueurs d'une ligne KNX</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">350, 700 et 1 000 m ont été posées en séance 1 ; cette séance explique la première et organise plusieurs lignes.</span></li><li><b>L'aire sous une courbe</b><span class="car">la chute totale est proportionnelle à l'aire sous la courbe du courant, et l'aire d'un triangle vaut la moitié de celle du rectangle.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#les-350-metres-se-calculent">Les 350 mètres se calculent</a><a href="#une-seconde-alimentation">Une seconde alimentation</a><a href="#ligne-zone-dorsale">Ligne, zone, dorsale</a><a href="#le-coupleur-separe-et-filtre">Le coupleur sépare et filtre</a><a href="#le-plan-d-adressage-d-un-batiment">Le plan d’adressage d’un bâtiment</a><a href="#essayer">Essayer</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
-<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
-<p>La séance 4 a calculé la chute de tension lorsque tout le courant traverse le câble. Celle-ci l’a appliquée à une ligne entière, puis a organisé plusieurs lignes en une installation complète, jusqu’au plan d’adressage d’un bâtiment.</p>
-<figure class="schema"><div class="dessin" data-schema="topologies-bus"></div><figcaption>Toute topologie est admise sur une ligne, sauf l’anneau. La première des trois longueurs, 350 m, est une chute de tension.</figcaption></figure>
-<h2 id="les-350-metres-se-calculent">Les 350 mètres se calculent</h2>
-<p>Le câble du bus alimente les participants, et chacun prélève son courant au passage. Si tous sont regroupés au bout, tout le courant traverse toute la longueur. S’ils sont répartis, le courant diminue en chemin.</p>
-<figure>
-<img src="img/DOMA5/fig2-courant-ligne.png" alt="Tous au bout, ou répartis : la chute suit l’aire sous la courbe du courant." />
-<figcaption aria-hidden="true">Tous au bout, ou répartis : la chute suit l’aire sous la courbe du courant.</figcaption>
-</figure>
-<div class="formule">
-<p><strong>ΔU = ½ × r × I × L</strong></p>
-<ul>
-<li><strong>ΔU</strong><span>: chute de tension, en volts</span></li>
-<li><strong>r</strong><span>: résistance de boucle, 0,075 Ω/m pour le câble TP1</span></li>
-<li><strong>I</strong><span>: courant fourni par l’alimentation, <strong>en ampères</strong></span></li>
-<li><strong>L</strong><span>: longueur de l’alimentation au dernier participant, en mètres</span></li>
-</ul>
-<blockquote>
-<p>Pour des participants répartis régulièrement. S’ils sont tous regroupés au bout, le facteur ½ disparaît : ΔU = r × I × L.</p>
-</blockquote>
-</div>
-<div class="cle">
-<p>Avec 64 participants répartis et 640 mA, une ligne de 350 m laisse un peu plus de 21 V au dernier participant. <strong>La limite des 350 m est une chute de tension</strong>, et elle se mesure depuis l’alimentation.</p>
-</div>
-<div class="piege">
-<p>Le calcul suppose des participants <strong>répartis</strong>. Une ligne dont les participants sont regroupés loin de l’alimentation peut respecter les 350 m et ne pas fonctionner : la règle tombe dès que l’hypothèse tombe.</p>
-</div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Retourner le calcul</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Au lieu de vérifier 350 m, il est possible de chercher la longueur qui laisse exactement 21 V au dernier participant. Le budget vaut 30 − 21 = 9 V, et la longueur se tire de la formule :</p>
-<p>L = 2 × 9 / (r × I) pour des participants répartis, L = 9 / (r × I) s’ils sont tous au bout.</p>
-<p>La KNX Association retient une valeur un peu inférieure au résultat : l’écart couvre ce que le calcul ne voit pas, les raccordements, l’échauffement du câble, une répartition moins régulière que prévu.</p></div></details>
-</div><h2 id="une-seconde-alimentation">Une seconde alimentation</h2>
-<p>Une ligne longue peut recevoir une <strong>seconde alimentation</strong>, à condition qu’elle se trouve à <strong>200 m de câble au moins</strong> de la première. Chaque participant doit alors se trouver à 350 m au plus d’une alimentation. Deux règles s’appliquent en même temps, et la plus contraignante décide.</p>
-<figure>
-<img src="img/DOMA5/fig3-couloir.png" alt="Le couloir de 500 m : trois emplacements proposés pour la seconde alimentation." />
-<figcaption aria-hidden="true">Le couloir de 500 m : trois emplacements proposés pour la seconde alimentation.</figcaption>
-</figure>
-<h2 id="ligne-zone-dorsale">Ligne, zone, dorsale</h2>
-<p>Une ligne porte 64 participants et sa propre alimentation. Jusqu’à 15 lignes se raccordent à la <strong>ligne principale</strong> d’une zone par des <strong>coupleurs de ligne</strong> ; jusqu’à 15 zones se raccordent à la <strong>dorsale</strong> par des <strong>coupleurs de zone</strong>.</p>
-<figure>
-<img src="img/DOMA5/fig4-hierarchie.png" alt="La hiérarchie d’une installation : dorsale, zones, lignes, et les adresses de chaque niveau." />
-<figcaption aria-hidden="true">La hiérarchie d’une installation : dorsale, zones, lignes, et les adresses de chaque niveau.</figcaption>
-</figure>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Champ de l’adresse</th>
-<th>Valeurs</th>
-<th>La valeur 0 désigne</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Zone</td>
-<td>0 à 15</td>
-<td>la dorsale</td>
-</tr>
-<tr>
-<td>Ligne</td>
-<td>0 à 15</td>
-<td>la ligne principale de la zone</td>
-</tr>
-<tr>
-<td>Participant</td>
-<td>0 à 255</td>
-<td>le coupleur de la ligne, ou de la zone</td>
-</tr>
-</tbody>
-</table></div>
-<div class="cle">
-<p>L’<strong>adresse physique</strong> zone.ligne.participant dit <strong>où</strong> se trouve un appareil. Le coupleur de ligne porte l’adresse Z.L.0, le coupleur de zone l’adresse Z.0.0.</p>
-</div>
-<div class="piege">
-<p>Le numéro de participant va jusqu’à 255, mais une ligne ne porte que 64 participants sans répéteur. Une adresse comme 1.16.3 est impossible : le numéro de ligne ne dépasse pas 15.</p>
-</div>
-<h2 id="le-coupleur-separe-et-filtre">Le coupleur sépare et filtre</h2>
-<p>Le coupleur <strong>sépare électriquement</strong> les lignes : chacune a sa propre alimentation, et une panne reste locale. Il <strong>filtre</strong> les télégrammes de groupe : il ne transmet de l’autre côté que ceux qui y sont attendus.</p>
-<p>Un télégramme court occupe le bus pendant 20 ms environ : une ligne en transporte au plus une cinquantaine par seconde. Sans filtrage, le trafic de toutes les lignes s’additionnerait sur chacune.</p>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">La dorsale IP</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Dans un grand bâtiment, tout le trafic entre zones et toute la supervision passent par la dorsale. À 9 600 bit/s, elle devient le goulet d’étranglement.</p>
-<p>Un coupleur IP remplace alors le coupleur de zone : la dorsale devient un réseau Ethernet à 100 Mbit/s, environ dix mille fois plus rapide, qui franchit aussi les distances entre bâtiments par la fibre optique.</p></div></details>
-</div><h2 id="le-plan-d-adressage-d-un-batiment">Le plan d’adressage d’un bâtiment</h2>
-<div class="etapes">
-<ol type="1">
-<li>Compter les participants de chaque niveau.</li>
-<li>Découper en lignes, en conservant une réserve : 51 participants au plus pour 64 autorisés.</li>
-<li>Regrouper les lignes en zones ; un bâtiment distinct forme de préférence sa propre zone.</li>
-<li>Numéroter les coupleurs et les participants, puis dimensionner l’alimentation de chaque ligne.</li>
-<li>Dessiner le synoptique.</li>
-</ol>
-</div>
-<figure>
-<img src="img/DOMA5/fig5-batiment.png" alt="Le siège d’une entreprise : deux bâtiments, un cheminement enterré de 150 m." />
-<figcaption aria-hidden="true">Le siège d’une entreprise : deux bâtiments, un cheminement enterré de 150 m.</figcaption>
-</figure>
-<figure class="memo"><img src="img/DOMA5/memo-topologie.png" alt="" /></figure>
-<h2 id="essayer">Essayer</h2>
-<div class="outil" data-outil="ligne-knx">
-
-</div>
-<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
-<div class="quiz">
-<ul>
-<li>Pour des participants répartis, la chute de tension le long d’une ligne vaut : <strong>la moitié de r × I × L</strong> | r × I × L | le double de r × I × L</li>
-<li>La limite des 350 m se mesure depuis : <strong>l’alimentation</strong> | le tableau électrique | le premier participant</li>
-<li>Une seconde alimentation se pose, par rapport à la première, à au moins : <strong>200 m de câble</strong> | 50 m de câble | 350 m de câble</li>
-<li>L’adresse 1.2.0 désigne : <strong>le coupleur de la ligne 2 de la zone 1</strong> | le participant 2 de la zone 1 | le coupleur de la zone 1</li>
-<li>Le filtrage d’un coupleur sert d’abord à : <strong>limiter le trafic sur chaque ligne</strong> | protéger l’installation contre le piratage</li>
-<li>Le nombre de lignes d’un niveau se calcule en arrondissant : <strong>à l’entier supérieur</strong> | à l’entier le plus proche</li>
-</ul>
-</div>
-<h2 id="s-entrainer">S’entraîner</h2>
-<section class="exo" id="DOMA5-e1" data-exo="DOMA5-e1" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaG50bW92eC41Nnhga3RqdngveGB4DHgn"><p class="k">Exercice · D2-1</p><h4>La ligne de l’aile ouest</h4><div class="enonce">
-
-<p>Une ligne KNX TP1 porte <strong>50 participants répartis</strong> régulièrement sur <strong>280 m</strong>, depuis son alimentation de 30 V. Chaque participant consomme 10 mA.</p>
-<p>Quelle tension reste-t-il au dernier participant ?</p>
-</div><div class="indice" hidden>calculer le courant total en ampères, appliquer la formule des participants répartis avec r = 0,075 Ω/m, puis retrancher la chute des 30 V.</div></section>
-<section class="exo" id="DOMA5-e2" data-exo="DOMA5-e2" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWpqdGp2eC41NnhgaHRqdngveGB4N3gn"><p class="k">Exercice · D2-1</p><h4>Le local du gardien</h4><div class="enonce">
-
-<p>Un local isolé regroupe <strong>40 participants</strong>, tous au bout d’une liaison en câble TP1 depuis l’alimentation.</p>
-<p>Quelle longueur de liaison, au plus, laisse encore 21 V à ces participants ?</p>
-</div><div class="indice" hidden>le budget vaut 30 − 21 V. Les participants étant regroupés, tout le courant traverse toute la longueur : la formule n’a pas de facteur ½.</div></section>
-<section class="exo" id="DOMA5-e3" data-exo="DOMA5-e3" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4OTUvKjY/Lyh6Pj96NjM9ND94dng2P3o5NS8qNj8vKHo+P3o2Mz00P3h2eC80ejk1Lyo2Py8oej4/ejYzPTQ/eHZ4OTUvKjY/Lyh6Pj96NjM9ND96aXRueHZ4OTUvKjY/Lyh6Pj96Njt6NjM9ND96aXRueHZ4OTUvKjY/Lyh6Pj96Njt6NjM9ND96bngHJw=="><p class="k">Exercice · D2-1</p><h4>Une adresse à identifier</h4><div class="enonce">
-
-<p>Sur le plan d’une installation, un appareil porte l’adresse physique <strong>3.4.0</strong>.</p>
-<p>De quel appareil s’agit-il ?</p>
-</div><div class="indice" hidden>lire l’adresse dans l’ordre zone, ligne, participant, puis se demander ce que désigne le participant 0 d’une ligne.</div></section>
-<section class="exo" id="DOMA5-e4" data-exo="DOMA5-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>Deux bâtiments, une ou deux zones ?</h4><div class="enonce">
-
-<p>Un maître d’ouvrage demande pourquoi le restaurant d’entreprise, situé à 150 m des bureaux, forme une zone distincte raccordée par la dorsale IP, au lieu d’une ligne supplémentaire tirée en câble bus. Répondre en quatre lignes.</p>
-</div><div class="indice" hidden>se demander ce que relierait un câble de cuivre tiré entre deux bâtiments, et ce qui se passerait le jour où le restaurant s’agrandit.</div><ul class="verifier" hidden><li>J’ai parlé des deux prises de terre et de l’isolation apportée par la fibre</li><li>J’ai cité la possibilité d’étendre le bâtiment sans modifier l’autre zone</li><li>J’ai expliqué qu’un défaut dans un bâtiment reste dans ce bâtiment</li><li>J’ai employé les mots zone, coupleur et dorsale à bon escient</li></ul></section>
-<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
-<p>La séance 6 prolonge la dorsale IP : le réseau informatique du bâtiment, son plan d’adressage IP et ses commutateurs. L’adresse de groupe, qui décide de ce qu’un coupleur laisse passer, sera traitée en semaine 11.</p>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+
+<p>La séance 4 a calculé la chute de tension lorsque tout le courant traverse le câble. Celle-ci l’a appliquée à une ligne entière, puis a organisé plusieurs lignes en une installation complète, jusqu’au plan d’adressage d’un bâtiment.</p>
+
+<figure class="schema"><div class="dessin" data-schema="topologies-bus"></div><figcaption>Toute topologie est admise sur une ligne, sauf l’anneau. La première des trois longueurs, 350 m, est une chute de tension.</figcaption></figure>
+
+<h2 id="les-350-metres-se-calculent">Les 350 mètres se calculent</h2>
+
+<p>Le câble du bus alimente les participants, et chacun prélève son courant au passage. Si tous sont regroupés au bout, tout le courant traverse toute la longueur. S’ils sont répartis, le courant diminue en chemin.</p>
+
+<figure>
+
+<img src="img/DOMA5/fig2-courant-ligne.png" alt="Tous au bout, ou répartis : la chute suit l’aire sous la courbe du courant." />
+
+<figcaption aria-hidden="true">Tous au bout, ou répartis : la chute suit l’aire sous la courbe du courant.</figcaption>
+
+</figure>
+
+<div class="formule">
+
+<p><strong>ΔU = ½ × r × I × L</strong></p>
+
+<ul>
+
+<li><strong>ΔU</strong><span>: chute de tension, en volts</span></li>
+
+<li><strong>r</strong><span>: résistance de boucle, 0,075 Ω/m pour le câble TP1</span></li>
+
+<li><strong>I</strong><span>: courant fourni par l’alimentation, <strong>en ampères</strong></span></li>
+
+<li><strong>L</strong><span>: longueur de l’alimentation au dernier participant, en mètres</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>Pour des participants répartis régulièrement. S’ils sont tous regroupés au bout, le facteur ½ disparaît : ΔU = r × I × L.</p>
+
+</blockquote>
+
+</div>
+
+<div class="cle">
+
+<p>Avec 64 participants répartis et 640 mA, une ligne de 350 m laisse un peu plus de 21 V au dernier participant. <strong>La limite des 350 m est une chute de tension</strong>, et elle se mesure depuis l’alimentation.</p>
+
+</div>
+
+<div class="piege">
+
+<p>Le calcul suppose des participants <strong>répartis</strong>. Une ligne dont les participants sont regroupés loin de l’alimentation peut respecter les 350 m et ne pas fonctionner : la règle tombe dès que l’hypothèse tombe.</p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Retourner le calcul</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Au lieu de vérifier 350 m, il est possible de chercher la longueur qui laisse exactement 21 V au dernier participant. Le budget vaut 30 − 21 = 9 V, et la longueur se tire de la formule :</p>
+
+<p>L = 2 × 9 / (r × I) pour des participants répartis, L = 9 / (r × I) s’ils sont tous au bout.</p>
+
+<p>La KNX Association retient une valeur un peu inférieure au résultat : l’écart couvre ce que le calcul ne voit pas, les raccordements, l’échauffement du câble, une répartition moins régulière que prévu.</p></div></details>
+
+</div><h2 id="une-seconde-alimentation">Une seconde alimentation</h2>
+
+<p>Une ligne longue peut recevoir une <strong>seconde alimentation</strong>, à condition qu’elle se trouve à <strong>200 m de câble au moins</strong> de la première. Chaque participant doit alors se trouver à 350 m au plus d’une alimentation. Deux règles s’appliquent en même temps, et la plus contraignante décide.</p>
+
+<figure>
+
+<img src="img/DOMA5/fig3-couloir.png" alt="Le couloir de 500 m : trois emplacements proposés pour la seconde alimentation." />
+
+<figcaption aria-hidden="true">Le couloir de 500 m : trois emplacements proposés pour la seconde alimentation.</figcaption>
+
+</figure>
+
+<h2 id="ligne-zone-dorsale">Ligne, zone, dorsale</h2>
+
+<p>Une ligne porte 64 participants et sa propre alimentation. Jusqu’à 15 lignes se raccordent à la <strong>ligne principale</strong> d’une zone par des <strong>coupleurs de ligne</strong> ; jusqu’à 15 zones se raccordent à la <strong>dorsale</strong> par des <strong>coupleurs de zone</strong>.</p>
+
+<figure>
+
+<img src="img/DOMA5/fig4-hierarchie.png" alt="La hiérarchie d’une installation : dorsale, zones, lignes, et les adresses de chaque niveau." />
+
+<figcaption aria-hidden="true">La hiérarchie d’une installation : dorsale, zones, lignes, et les adresses de chaque niveau.</figcaption>
+
+</figure>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Champ de l’adresse</th>
+
+<th>Valeurs</th>
+
+<th>La valeur 0 désigne</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>Zone</td>
+
+<td>0 à 15</td>
+
+<td>la dorsale</td>
+
+</tr>
+
+<tr>
+
+<td>Ligne</td>
+
+<td>0 à 15</td>
+
+<td>la ligne principale de la zone</td>
+
+</tr>
+
+<tr>
+
+<td>Participant</td>
+
+<td>0 à 255</td>
+
+<td>le coupleur de la ligne, ou de la zone</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="cle">
+
+<p>L’<strong>adresse physique</strong> zone.ligne.participant dit <strong>où</strong> se trouve un appareil. Le coupleur de ligne porte l’adresse Z.L.0, le coupleur de zone l’adresse Z.0.0.</p>
+
+</div>
+
+<div class="piege">
+
+<p>Le numéro de participant va jusqu’à 255, mais une ligne ne porte que 64 participants sans répéteur. Une adresse comme 1.16.3 est impossible : le numéro de ligne ne dépasse pas 15.</p>
+
+</div>
+
+<h2 id="le-coupleur-separe-et-filtre">Le coupleur sépare et filtre</h2>
+
+<p>Le coupleur <strong>sépare électriquement</strong> les lignes : chacune a sa propre alimentation, et une panne reste locale. Il <strong>filtre</strong> les télégrammes de groupe : il ne transmet de l’autre côté que ceux qui y sont attendus.</p>
+
+<p>Un télégramme court occupe le bus pendant 20 ms environ : une ligne en transporte au plus une cinquantaine par seconde. Sans filtrage, le trafic de toutes les lignes s’additionnerait sur chacune.</p>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">La dorsale IP</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Dans un grand bâtiment, tout le trafic entre zones et toute la supervision passent par la dorsale. À 9 600 bit/s, elle devient le goulet d’étranglement.</p>
+
+<p>Un coupleur IP remplace alors le coupleur de zone : la dorsale devient un réseau Ethernet à 100 Mbit/s, environ dix mille fois plus rapide, qui franchit aussi les distances entre bâtiments par la fibre optique.</p></div></details>
+
+</div><h2 id="le-plan-d-adressage-d-un-batiment">Le plan d’adressage d’un bâtiment</h2>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Compter les participants de chaque niveau.</li>
+
+<li>Découper en lignes, en conservant une réserve : 51 participants au plus pour 64 autorisés.</li>
+
+<li>Regrouper les lignes en zones ; un bâtiment distinct forme de préférence sa propre zone.</li>
+
+<li>Numéroter les coupleurs et les participants, puis dimensionner l’alimentation de chaque ligne.</li>
+
+<li>Dessiner le synoptique.</li>
+
+</ol>
+
+</div>
+
+<figure>
+
+<img src="img/DOMA5/fig5-batiment.png" alt="Le siège d’une entreprise : deux bâtiments, un cheminement enterré de 150 m." />
+
+<figcaption aria-hidden="true">Le siège d’une entreprise : deux bâtiments, un cheminement enterré de 150 m.</figcaption>
+
+</figure>
+
+<figure class="memo"><img src="img/DOMA5/memo-topologie.png" alt="" /></figure>
+
+<h2 id="essayer">Essayer</h2>
+
+<div class="outil" data-outil="ligne-knx">
+
+
+
+</div>
+
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+
+<div class="quiz">
+
+<ul>
+
+<li>Pour des participants répartis, la chute de tension le long d’une ligne vaut : <strong>la moitié de r × I × L</strong> | r × I × L | le double de r × I × L</li>
+
+<li>La limite des 350 m se mesure depuis : <strong>l’alimentation</strong> | le tableau électrique | le premier participant</li>
+
+<li>Une seconde alimentation se pose, par rapport à la première, à au moins : <strong>200 m de câble</strong> | 50 m de câble | 350 m de câble</li>
+
+<li>L’adresse 1.2.0 désigne : <strong>le coupleur de la ligne 2 de la zone 1</strong> | le participant 2 de la zone 1 | le coupleur de la zone 1</li>
+
+<li>Le filtrage d’un coupleur sert d’abord à : <strong>limiter le trafic sur chaque ligne</strong> | protéger l’installation contre le piratage</li>
+
+<li>Le nombre de lignes d’un niveau se calcule en arrondissant : <strong>à l’entier supérieur</strong> | à l’entier le plus proche</li>
+
+</ul>
+
+</div>
+
+<h2 id="s-entrainer">S’entraîner</h2>
+
+<section class="exo" id="DOMA5-e1" data-exo="DOMA5-e1" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaG50bW92eC41Nnhga3RqdngveGB4DHgn"><p class="k">Exercice · D2-1</p><h4>La ligne de l’aile ouest</h4><div class="enonce">
+
+
+
+<p>Une ligne KNX TP1 porte <strong>50 participants répartis</strong> régulièrement sur <strong>280 m</strong>, depuis son alimentation de 30 V. Chaque participant consomme 10 mA.</p>
+
+<p>Quelle tension reste-t-il au dernier participant ?</p>
+
+</div><div class="indice" hidden>calculer le courant total en ampères, appliquer la formule des participants répartis avec r = 0,075 Ω/m, puis retrancher la chute des 30 V.</div></section>
+
+<section class="exo" id="DOMA5-e2" data-exo="DOMA5-e2" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaWpqdGp2eC41NnhgaHRqdngveGB4N3gn"><p class="k">Exercice · D2-1</p><h4>Le local du gardien</h4><div class="enonce">
+
+
+
+<p>Un local isolé regroupe <strong>40 participants</strong>, tous au bout d’une liaison en câble TP1 depuis l’alimentation.</p>
+
+<p>Quelle longueur de liaison, au plus, laisse encore 21 V à ces participants ?</p>
+
+</div><div class="indice" hidden>le budget vaut 30 − 21 V. Les participants étant regroupés, tout le courant traverse toute la longueur : la formule n’a pas de facteur ½.</div></section>
+
+<section class="exo" id="DOMA5-e3" data-exo="DOMA5-e3" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4OTUvKjY/Lyh6Pj96NjM9ND94dng2P3o5NS8qNj8vKHo+P3o2Mz00P3h2eC80ejk1Lyo2Py8oej4/ejYzPTQ/eHZ4OTUvKjY/Lyh6Pj96NjM9ND96aXRueHZ4OTUvKjY/Lyh6Pj96Njt6NjM9ND96aXRueHZ4OTUvKjY/Lyh6Pj96Njt6NjM9ND96bngHJw=="><p class="k">Exercice · D2-1</p><h4>Une adresse à identifier</h4><div class="enonce">
+
+
+
+<p>Sur le plan d’une installation, un appareil porte l’adresse physique <strong>3.4.0</strong>.</p>
+
+<p>De quel appareil s’agit-il ?</p>
+
+</div><div class="indice" hidden>lire l’adresse dans l’ordre zone, ligne, participant, puis se demander ce que désigne le participant 0 d’une ligne.</div></section>
+
+<section class="exo" id="DOMA5-e4" data-exo="DOMA5-e4" data-type="justification" data-savoir="B8-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · B8-1</p><h4>Deux bâtiments, une ou deux zones ?</h4><div class="enonce">
+
+
+
+<p>Un maître d’ouvrage demande pourquoi le restaurant d’entreprise, situé à 150 m des bureaux, forme une zone distincte raccordée par la dorsale IP, au lieu d’une ligne supplémentaire tirée en câble bus. Répondre en quatre lignes.</p>
+
+</div><div class="indice" hidden>se demander ce que relierait un câble de cuivre tiré entre deux bâtiments, et ce qui se passerait le jour où le restaurant s’agrandit.</div><ul class="verifier" hidden><li>J’ai parlé des deux prises de terre et de l’isolation apportée par la fibre</li><li>J’ai cité la possibilité d’étendre le bâtiment sans modifier l’autre zone</li><li>J’ai expliqué qu’un défaut dans un bâtiment reste dans ce bâtiment</li><li>J’ai employé les mots zone, coupleur et dorsale à bon escient</li></ul></section>
+
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+
+<p>La séance 6 prolonge la dorsale IP : le réseau informatique du bâtiment, son plan d’adressage IP et ses commutateurs. L’adresse de groupe, qui décide de ce qu’un coupleur laisse passer, sera traitée en semaine 11.</p>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA4.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A4 : les médias</span></a><a class="ap" href="DOMA6.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">A6 · réseau IP, adressage, PoE</span></a></div><a class="vers-recap" href="SEQ2.html">Préparation au contrôle</a></nav>
 <p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=af9949d4"></script>
-<script src="../assets/site.js?v=af9949d4"></script>
-<script src="../assets/vivant.js?v=af9949d4"></script>
+

@@ -95,3 +95,11 @@ nav.portes .porte:hover .ico path,nav.portes .porte:hover .ico circle{animation:
   .frise li,.grille-f a{animation:none}
   nav.portes .porte{transition:none}
 }
+
+/* ─── la serie juste : un anneau qui s'eloigne, 0,55 s */
+@keyframes pulse-juste{
+  0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--encre) 35%,transparent)}
+  100%{box-shadow:0 0 0 14px transparent}
+}
+.serie.pulse-juste{animation:pulse-juste .55s ease-out}
+@media (prefers-reduced-motion:reduce){.serie.pulse-juste{animation:none}}

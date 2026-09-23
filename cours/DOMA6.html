@@ -1,12 +1,18 @@
+<!DOCTYPE html>
+<html lang="fr">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache">
 <meta name="robots" content="noindex, nofollow">
 <title>A6 · réseau IP, adressage, PoE</title>
-<link rel="stylesheet" href="../assets/kit.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/site.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/domotique.css?v=af9949d4">
-<link rel="stylesheet" href="../assets/vivant.css?v=af9949d4">
+<link rel="stylesheet" href="../assets/kit.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/site.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/domotique.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/vivant.css?v=56a16c5f">
+<link rel="stylesheet" href="../assets/impression.css?v=56a16c5f">
+<script src="../assets/kit.js?v=56a16c5f-1e219d" defer></script>
+<script src="../assets/site.js?v=56a16c5f" defer></script>
+<script src="../assets/vivant.js?v=56a16c5f" defer></script>
 
 <div class="page" data-site="fed-domo-1a" data-page="cours/DOMA6" data-rang="2">
 <div class="jauge-lecture" id="jauge-lecture"><i></i></div><div class="barre-site"><a class="accueil" href="../index.html">BTS FED option C · domotique</a><span class="fil">Séquence 2 · Communiquer</span><span class="fleches"><a class="fleche" href="DOMA5.html" rel="prev" title="A5 : topologie et adressage" aria-label="A5 : topologie et adressage">&lsaquo;</a><a class="fleche" href="DOMA7.html" rel="next" title="A7 · CEM, couplages, protections" aria-label="A7 · CEM, couplages, protections">&rsaquo;</a></span><button type="button" class="lu" data-lu="cours/DOMA6">Marquer comme lu</button></div>
@@ -22,132 +28,253 @@
 </header>
 <aside class="prerequis"><p class="chapeau-p">Avant de commencer</p><ul><li><b><a href="DOMA1.html">Les cinq médias et la limite de 100 m de l'Ethernet cuivre</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">un commutateur PoE alimente ses équipements par ce câble, et la limite de longueur vaut aussi pour l'alimentation.</span></li><li><b><a href="DOMA1.html">La chaîne d'information et la supervision</a></b><span class="ou">Semaine 1 · études · Du bouton à l'actionneur</span><span class="car">le réseau technique est la partie IP de la chaîne d'information, celle qui relie les passerelles et les automates à la supervision.</span></li><li><b>La puissance électrique et l'effet Joule</b><span class="car">un budget PoE est une somme de puissances, et l'écart entre le port et l'équipement vient des pertes dans le câble.</span></li></ul></aside>
 <nav class="somm"><div class="in"><a href="#objectifs-de-la-seance">Objectifs de la séance</a><a href="#deux-reseaux-un-routeur-entre-eux">Deux réseaux, un routeur entre eux</a><a href="#lire-une-adresse-ipv4">Lire une adresse IPv4</a><a href="#couches-et-protocoles">Couches et protocoles</a><a href="#choisir-un-commutateur-poe">Choisir un commutateur PoE</a><a href="#essayer">Essayer</a><a href="#verifier-que-c-est-acquis">Vérifier que c’est acquis</a><a href="#s-entrainer">S’entraîner</a><a href="#a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</a></div></nav>
-<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
-<p>L’immeuble de la séance compte trois niveaux et un parking. Ses équipements communicants se répartissent entre deux réseaux IP, qui ne servent pas les mêmes personnes.</p>
-<figure>
-<img src="img/DOMA6/fig1-batiment.png" alt="Les équipements communicants de l’immeuble, niveau par niveau." />
-<figcaption aria-hidden="true">Les équipements communicants de l’immeuble, niveau par niveau.</figcaption>
-</figure>
-<p>Trois pièces du dossier ont été établies : l’<strong>inventaire</strong> des équipements, le <strong>plan d’adressage</strong> du réseau technique et le <strong>choix du commutateur</strong>. L’atelier de la même semaine s’en sert pour mettre un réseau en service.</p>
-<h2 id="deux-reseaux-un-routeur-entre-eux">Deux réseaux, un routeur entre eux</h2>
-<div class="cle">
-<p>Le <strong>réseau technique</strong> raccorde ce qui fait fonctionner et surveiller le bâtiment : supervision, caméras, contrôle d’accès, portier, passerelles KNX/IP, automates. Le <strong>réseau bureautique</strong> raccorde le travail des occupants.</p>
-</div>
-<p>Le <strong>commutateur</strong> relie les équipements d’un même réseau, à partir de leur adresse physique (MAC). Le <strong>routeur</strong> relie des réseaux différents, à partir de l’adresse logique (IP). Tout échange entre les deux réseaux traverse le routeur-pare-feu, qui n’autorise que les flux prévus.</p>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi ne pas tout raccorder sur un seul réseau</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Trois raisons, dans l’ordre où un maître d’ouvrage les entend.</p>
-<p><strong>La sécurité.</strong> Un poste de travail compromis ne doit pas pouvoir atteindre un contrôleur de porte ou un automate de chaufferie, qui sont peu protégés et commandent des fonctions de sûreté.</p>
-<p><strong>La disponibilité.</strong> Les sauvegardes et les mises à jour du réseau bureautique ne doivent pas priver la vidéo du débit dont elle a besoin.</p>
-<p><strong>Les responsabilités.</strong> Le réseau bureautique appartient au locataire et change souvent ; le réseau technique relève de l’exploitant du bâtiment et doit rester stable pendant toute la vie des installations.</p></div></details>
-<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Un seul commutateur pour deux réseaux : les VLAN</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Dans un petit bâtiment, un seul commutateur dessert parfois les deux réseaux. Il est alors partagé en <strong>réseaux virtuels</strong>, les VLAN : chaque port est affecté à un VLAN, et deux ports de VLAN différents ne communiquent que par le routeur.</p>
-<p>Chaque VLAN porte sa propre adresse de réseau. La convention de la séance fait correspondre le numéro du VLAN et le troisième octet : VLAN 10 pour 192.168.10.0/24, VLAN 20 pour 192.168.20.0/24.</p></div></details>
-</div><h2 id="lire-une-adresse-ipv4">Lire une adresse IPv4</h2>
-<figure>
-<img src="img/DOMA6/fig3-adresse-ipv4.png" alt="Une adresse, son masque, les 256 adresses d’un réseau /24." />
-<figcaption aria-hidden="true">Une adresse, son masque, les 256 adresses d’un réseau /24.</figcaption>
-</figure>
-<div class="formule">
-<p><strong>192.168.20.65 /24</strong></p>
-<ul>
-<li><strong>192.168.20</strong><span>: partie réseau, identique pour tous les équipements du réseau</span></li>
-<li><strong>65</strong><span>: partie équipement, propre à chacun</span></li>
-<li><strong>/24</strong><span>: masque 255.255.255.0, trois octets pour le réseau</span></li>
-<li><strong>.0 et .255</strong><span>: adresse du réseau et adresse de diffusion, réservées</span></li>
-<li><strong>254</strong><span>: adresses utilisables dans un réseau /24, passerelle comprise</span></li>
-</ul>
-<blockquote>
-<p>La passerelle par défaut est l’adresse du routeur dans le réseau de l’équipement.</p>
-</blockquote>
-</div>
-<div class="piege">
-<p>Une caméra dont la <strong>passerelle</strong> est fausse envoie quand même son image à un enregistreur placé dans le même réseau. Le défaut ne se voit que le jour où elle doit joindre un autre réseau. Une configuration se vérifie donc sur ses <strong>trois réglages</strong>, et non sur la seule présence de l’image.</p>
-</div>
-<p>Tout équipement que d’autres doivent joindre reçoit une <strong>adresse fixe</strong>, inscrite au plan d’adressage : les caméras, que l’enregistreur interroge, les passerelles et l’automate, que la supervision interroge. Le <strong>DHCP</strong> attribue les adresses des postes de passage, que personne n’a besoin de trouver.</p>
-<h2 id="couches-et-protocoles">Couches et protocoles</h2>
-<figure class="schema"><div class="dessin" data-schema="couches-protocole"></div><figcaption>Le réseau IP du bâtiment transporte aussi des protocoles métier : BACnet/IP pour l’automate de chaufferie, KNX par ses passerelles. Deux systèmes se comprennent lorsque les trois couches concordent.</figcaption></figure>
-<h2 id="choisir-un-commutateur-poe">Choisir un commutateur PoE</h2>
-<figure>
-<img src="img/DOMA6/fig4-budget-poe.png" alt="Les deux vérifications de puissance d’un commutateur PoE." />
-<figcaption aria-hidden="true">Les deux vérifications de puissance d’un commutateur PoE.</figcaption>
-</figure>
-<p>Un commutateur <strong>PoE</strong> alimente les équipements par le câble réseau, dans la limite des <strong>100 m</strong> de l’Ethernet cuivre. Son choix commence par le nombre de ports, puis passe par deux vérifications de puissance.</p>
-<div class="etapes">
-<ol type="1">
-<li>Compter les ports : équipements PoE, équipements alimentés en 230 V, liaison vers le routeur.</li>
-<li>Vérifier chaque port : la puissance de la classe de l’équipement ne dépasse pas ce que le port fournit.</li>
-<li>Additionner les puissances réservées et les comparer au budget PoE total.</li>
-</ol>
-</div>
-<div class="enveloppe-tbl"><table>
-<thead>
-<tr>
-<th>Norme</th>
-<th>Puissance par port, côté commutateur</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>PoE, 802.3af</td>
-<td>15,4 W</td>
-</tr>
-<tr>
-<td>PoE+, 802.3at</td>
-<td>30 W</td>
-</tr>
-<tr>
-<td>PoE++, 802.3bt</td>
-<td>60 W ou 90 W</td>
-</tr>
-</tbody>
-</table></div>
-<div class="cle">
-<p>Un commutateur peut disposer d’assez de ports sans disposer d’assez de puissance. Un port peut être libre sans pouvoir alimenter un équipement trop puissant.</p>
-</div>
-<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi deux puissances par classe</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le câble dissipe une partie de la puissance par effet Joule. En PoE, le port délivre au moins 44 V et 350 mA, soit 15,4 W. Sur 100 m, la boucle du câble peut atteindre 20 Ω : les pertes valent 20 × 0,35², soit 2,45 W, et l’équipement ne dispose plus que de 12,95 W.</p>
-<p>Le commutateur fournit la puissance de l’équipement <strong>et</strong> celle des pertes. Il se dimensionne donc sur la puissance côté port.</p></div></details>
-</div><figure class="memo"><img src="img/DOMA6/memo-reseau-ip.png" alt="" /></figure>
-<h2 id="essayer">Essayer</h2>
-<div class="outil" data-outil="plan-ip">
-
-</div>
-<div class="outil" data-outil="budget-poe">
-
-</div>
-<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
-<div class="quiz">
-<ul>
-<li>Relier deux réseaux différents est le rôle : <strong>du routeur</strong> | du commutateur | de la passerelle KNX/IP</li>
-<li>Le commutateur aiguille les trames selon : <strong>l’adresse MAC</strong> | l’adresse IP | le numéro de VLAN</li>
-<li>192.168.20.40 et 192.168.21.40, avec un masque /24, sont : <strong>dans deux réseaux différents</strong> | dans le même réseau</li>
-<li>Une caméra que l’enregistreur doit interroger reçoit : <strong>une adresse fixe</strong> | une adresse attribuée par DHCP</li>
-<li>Un port PoE+ fournit au plus : <strong>30 W</strong> | 15,4 W | 90 W</li>
-<li>La borne Wi-Fi des visiteurs se raccorde : <strong>à un réseau invité isolé</strong> | au réseau technique | au réseau bureautique</li>
-</ul>
-</div>
-<h2 id="s-entrainer">S’entraîner</h2>
-<section class="exo" id="DOMA6-e1" data-exo="DOMA6-e1" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgYmJ0aHZ4LjU2eGBrdGp2eC94YHgNeCc="><p class="k">Exercice · D2-1</p><h4>Le budget d’un commutateur</h4><div class="enonce">
-
-<p>Un commutateur doit alimenter <strong>six caméras de classe 2</strong> (7,0 W réservés par port) et <strong>trois contrôleurs de porte de classe 3</strong> (15,4 W réservés par port).</p>
-<p>Quelle puissance totale le commutateur doit-il réserver ?</p>
-</div><div class="indice" hidden>une ligne par famille, nombre × puissance réservée par port, puis la somme. Les puissances côté équipement ne servent pas ici.</div></section>
-<section class="exo" id="DOMA6-e2" data-exo="DOMA6-e2" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGJ0anZ4LjU2eGBqdGp2eC94YHg5OzcGL2pqP2MoOyl4Jw=="><p class="k">Exercice · D2-1</p><h4>La plage des caméras</h4><div class="enonce">
-
-<p>Dans un plan d’adressage, les caméras occupent la plage <strong>.60 à .99</strong>. Douze caméras y sont déjà installées.</p>
-<p>Combien de caméras la plage peut-elle encore accueillir ?</p>
-</div><div class="indice" hidden>compter les adresses d’une plage en incluant ses deux bornes.</div></section>
-<section class="exo" id="DOMA6-e3" data-exo="DOMA6-e3" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4Oz4oPykpP3h2eDYGL2hqa2M7Pig/KSk/eHZ4Oz4oPykpP3ozKnh2eDYGL2hqa2M7Pig/KSk/ejMqeHZ4KTU0ejs+KD8pKT94Byc="><p class="k">Exercice · D2-1</p><h4>La caméra qui ne répond pas</h4><div class="enonce">
-
-<p>L’enregistreur est à l’adresse 192.168.20.11/24. Une caméra est réglée en 192.168.21.64, masque 255.255.255.0, passerelle 192.168.20.1. L’image n’arrive pas.</p>
-<p>Quel réglage est en cause ?</p>
-</div><div class="indice" hidden>comparer les trois premiers octets de la caméra et de l’enregistreur.</div></section>
-<section class="exo" id="DOMA6-e4" data-exo="DOMA6-e4" data-type="justification" data-savoir="D2-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · D2-1</p><h4>Une caméra de classe 6</h4><div class="enonce">
-
-<p>Un commutateur PoE+ au budget de 370 W n’alimente encore que 205 W. Le client demande pourquoi il ne peut pas alimenter une caméra de classe 6. Répondre en trois ou quatre lignes.</p>
-</div><div class="indice" hidden>un commutateur se vérifie à deux niveaux ; un seul des deux est en défaut ici.</div><ul class="verifier" hidden><li>J’ai conduit la vérification par port, puis celle du budget total</li><li>J’ai comparé la puissance de la classe 6 à ce qu’un port PoE+ fournit</li><li>J’ai expliqué que le budget restant ne suffit pas à lever la limite d’un port</li><li>J’ai proposé une solution</li></ul></section>
-<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
-<p>La séance suivante traite la compatibilité électromagnétique en courant faible. Elle reprend la caméra du parking de cet immeuble, dont le câble chemine sur 85 m dans un fourreau extérieur.</p>
+<h2 id="objectifs-de-la-seance">Objectifs de la séance</h2>
+
+<p>L’immeuble de la séance compte trois niveaux et un parking. Ses équipements communicants se répartissent entre deux réseaux IP, qui ne servent pas les mêmes personnes.</p>
+
+<figure>
+
+<img src="img/DOMA6/fig1-batiment.png" alt="Les équipements communicants de l’immeuble, niveau par niveau." />
+
+<figcaption aria-hidden="true">Les équipements communicants de l’immeuble, niveau par niveau.</figcaption>
+
+</figure>
+
+<p>Trois pièces du dossier ont été établies : l’<strong>inventaire</strong> des équipements, le <strong>plan d’adressage</strong> du réseau technique et le <strong>choix du commutateur</strong>. L’atelier de la même semaine s’en sert pour mettre un réseau en service.</p>
+
+<h2 id="deux-reseaux-un-routeur-entre-eux">Deux réseaux, un routeur entre eux</h2>
+
+<div class="cle">
+
+<p>Le <strong>réseau technique</strong> raccorde ce qui fait fonctionner et surveiller le bâtiment : supervision, caméras, contrôle d’accès, portier, passerelles KNX/IP, automates. Le <strong>réseau bureautique</strong> raccorde le travail des occupants.</p>
+
+</div>
+
+<p>Le <strong>commutateur</strong> relie les équipements d’un même réseau, à partir de leur adresse physique (MAC). Le <strong>routeur</strong> relie des réseaux différents, à partir de l’adresse logique (IP). Tout échange entre les deux réseaux traverse le routeur-pare-feu, qui n’autorise que les flux prévus.</p>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi ne pas tout raccorder sur un seul réseau</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Trois raisons, dans l’ordre où un maître d’ouvrage les entend.</p>
+
+<p><strong>La sécurité.</strong> Un poste de travail compromis ne doit pas pouvoir atteindre un contrôleur de porte ou un automate de chaufferie, qui sont peu protégés et commandent des fonctions de sûreté.</p>
+
+<p><strong>La disponibilité.</strong> Les sauvegardes et les mises à jour du réseau bureautique ne doivent pas priver la vidéo du débit dont elle a besoin.</p>
+
+<p><strong>Les responsabilités.</strong> Le réseau bureautique appartient au locataire et change souvent ; le réseau technique relève de l’exploitant du bâtiment et doit rester stable pendant toute la vie des installations.</p></div></details>
+
+<details class="appro"><summary><span class="niv"></span><span class="titre-appro">Un seul commutateur pour deux réseaux : les VLAN</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Dans un petit bâtiment, un seul commutateur dessert parfois les deux réseaux. Il est alors partagé en <strong>réseaux virtuels</strong>, les VLAN : chaque port est affecté à un VLAN, et deux ports de VLAN différents ne communiquent que par le routeur.</p>
+
+<p>Chaque VLAN porte sa propre adresse de réseau. La convention de la séance fait correspondre le numéro du VLAN et le troisième octet : VLAN 10 pour 192.168.10.0/24, VLAN 20 pour 192.168.20.0/24.</p></div></details>
+
+</div><h2 id="lire-une-adresse-ipv4">Lire une adresse IPv4</h2>
+
+<figure>
+
+<img src="img/DOMA6/fig3-adresse-ipv4.png" alt="Une adresse, son masque, les 256 adresses d’un réseau /24." />
+
+<figcaption aria-hidden="true">Une adresse, son masque, les 256 adresses d’un réseau /24.</figcaption>
+
+</figure>
+
+<div class="formule">
+
+<p><strong>192.168.20.65 /24</strong></p>
+
+<ul>
+
+<li><strong>192.168.20</strong><span>: partie réseau, identique pour tous les équipements du réseau</span></li>
+
+<li><strong>65</strong><span>: partie équipement, propre à chacun</span></li>
+
+<li><strong>/24</strong><span>: masque 255.255.255.0, trois octets pour le réseau</span></li>
+
+<li><strong>.0 et .255</strong><span>: adresse du réseau et adresse de diffusion, réservées</span></li>
+
+<li><strong>254</strong><span>: adresses utilisables dans un réseau /24, passerelle comprise</span></li>
+
+</ul>
+
+<blockquote>
+
+<p>La passerelle par défaut est l’adresse du routeur dans le réseau de l’équipement.</p>
+
+</blockquote>
+
+</div>
+
+<div class="piege">
+
+<p>Une caméra dont la <strong>passerelle</strong> est fausse envoie quand même son image à un enregistreur placé dans le même réseau. Le défaut ne se voit que le jour où elle doit joindre un autre réseau. Une configuration se vérifie donc sur ses <strong>trois réglages</strong>, et non sur la seule présence de l’image.</p>
+
+</div>
+
+<p>Tout équipement que d’autres doivent joindre reçoit une <strong>adresse fixe</strong>, inscrite au plan d’adressage : les caméras, que l’enregistreur interroge, les passerelles et l’automate, que la supervision interroge. Le <strong>DHCP</strong> attribue les adresses des postes de passage, que personne n’a besoin de trouver.</p>
+
+<h2 id="couches-et-protocoles">Couches et protocoles</h2>
+
+<figure class="schema"><div class="dessin" data-schema="couches-protocole"></div><figcaption>Le réseau IP du bâtiment transporte aussi des protocoles métier : BACnet/IP pour l’automate de chaufferie, KNX par ses passerelles. Deux systèmes se comprennent lorsque les trois couches concordent.</figcaption></figure>
+
+<h2 id="choisir-un-commutateur-poe">Choisir un commutateur PoE</h2>
+
+<figure>
+
+<img src="img/DOMA6/fig4-budget-poe.png" alt="Les deux vérifications de puissance d’un commutateur PoE." />
+
+<figcaption aria-hidden="true">Les deux vérifications de puissance d’un commutateur PoE.</figcaption>
+
+</figure>
+
+<p>Un commutateur <strong>PoE</strong> alimente les équipements par le câble réseau, dans la limite des <strong>100 m</strong> de l’Ethernet cuivre. Son choix commence par le nombre de ports, puis passe par deux vérifications de puissance.</p>
+
+<div class="etapes">
+
+<ol type="1">
+
+<li>Compter les ports : équipements PoE, équipements alimentés en 230 V, liaison vers le routeur.</li>
+
+<li>Vérifier chaque port : la puissance de la classe de l’équipement ne dépasse pas ce que le port fournit.</li>
+
+<li>Additionner les puissances réservées et les comparer au budget PoE total.</li>
+
+</ol>
+
+</div>
+
+<div class="enveloppe-tbl"><table>
+
+<thead>
+
+<tr>
+
+<th>Norme</th>
+
+<th>Puissance par port, côté commutateur</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td>PoE, 802.3af</td>
+
+<td>15,4 W</td>
+
+</tr>
+
+<tr>
+
+<td>PoE+, 802.3at</td>
+
+<td>30 W</td>
+
+</tr>
+
+<tr>
+
+<td>PoE++, 802.3bt</td>
+
+<td>60 W ou 90 W</td>
+
+</tr>
+
+</tbody>
+
+</table></div>
+
+<div class="cle">
+
+<p>Un commutateur peut disposer d’assez de ports sans disposer d’assez de puissance. Un port peut être libre sans pouvoir alimenter un équipement trop puissant.</p>
+
+</div>
+
+<div class="replis"><p class="chapeau">Pour aller plus loin</p><details class="appro"><summary><span class="niv"></span><span class="titre-appro">Pourquoi deux puissances par classe</span><span class="etiq">Pour aller plus loin</span><span class="chev">&rsaquo;</span></summary><div class="corps"><p>Le câble dissipe une partie de la puissance par effet Joule. En PoE, le port délivre au moins 44 V et 350 mA, soit 15,4 W. Sur 100 m, la boucle du câble peut atteindre 20 Ω : les pertes valent 20 × 0,35², soit 2,45 W, et l’équipement ne dispose plus que de 12,95 W.</p>
+
+<p>Le commutateur fournit la puissance de l’équipement <strong>et</strong> celle des pertes. Il se dimensionne donc sur la puissance côté port.</p></div></details>
+
+</div><figure class="memo"><img src="img/DOMA6/memo-reseau-ip.png" alt="" /></figure>
+
+<h2 id="essayer">Essayer</h2>
+
+<div class="outil" data-outil="plan-ip">
+
+
+
+</div>
+
+<div class="outil" data-outil="budget-poe">
+
+
+
+</div>
+
+<h2 id="verifier-que-c-est-acquis">Vérifier que c’est acquis</h2>
+
+<div class="quiz">
+
+<ul>
+
+<li>Relier deux réseaux différents est le rôle : <strong>du routeur</strong> | du commutateur | de la passerelle KNX/IP</li>
+
+<li>Le commutateur aiguille les trames selon : <strong>l’adresse MAC</strong> | l’adresse IP | le numéro de VLAN</li>
+
+<li>192.168.20.40 et 192.168.21.40, avec un masque /24, sont : <strong>dans deux réseaux différents</strong> | dans le même réseau</li>
+
+<li>Une caméra que l’enregistreur doit interroger reçoit : <strong>une adresse fixe</strong> | une adresse attribuée par DHCP</li>
+
+<li>Un port PoE+ fournit au plus : <strong>30 W</strong> | 15,4 W | 90 W</li>
+
+<li>La borne Wi-Fi des visiteurs se raccorde : <strong>à un réseau invité isolé</strong> | au réseau technique | au réseau bureautique</li>
+
+</ul>
+
+</div>
+
+<h2 id="s-entrainer">S’entraîner</h2>
+
+<section class="exo" id="DOMA6-e1" data-exo="DOMA6-e1" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgYmJ0aHZ4LjU2eGBrdGp2eC94YHgNeCc="><p class="k">Exercice · D2-1</p><h4>Le budget d’un commutateur</h4><div class="enonce">
+
+
+
+<p>Un commutateur doit alimenter <strong>six caméras de classe 2</strong> (7,0 W réservés par port) et <strong>trois contrôleurs de porte de classe 3</strong> (15,4 W réservés par port).</p>
+
+<p>Quelle puissance totale le commutateur doit-il réserver ?</p>
+
+</div><div class="indice" hidden>une ligne par famille, nombre × puissance réservée par port, puis la somme. Les puissances côté équipement ne servent pas ici.</div></section>
+
+<section class="exo" id="DOMA6-e2" data-exo="DOMA6-e2" data-type="calcul" data-savoir="D2-1" data-a="IXgueGB4OTs2OS82eHZ4LHhgaGJ0anZ4LjU2eGBqdGp2eC94YHg5OzcGL2pqP2MoOyl4Jw=="><p class="k">Exercice · D2-1</p><h4>La plage des caméras</h4><div class="enonce">
+
+
+
+<p>Dans un plan d’adressage, les caméras occupent la plage <strong>.60 à .99</strong>. Douze caméras y sont déjà installées.</p>
+
+<p>Combien de caméras la plage peut-elle encore accueillir ?</p>
+
+</div><div class="indice" hidden>compter les adresses d’une plage en incluant ses deux bornes.</div></section>
+
+<section class="exo" id="DOMA6-e3" data-exo="DOMA6-e3" data-type="lecture" data-savoir="D2-1" data-a="IXgueGB4Nj85Li8oP3h2eDt4YAF4Oz4oPykpP3h2eDYGL2hqa2M7Pig/KSk/eHZ4Oz4oPykpP3ozKnh2eDYGL2hqa2M7Pig/KSk/ejMqeHZ4KTU0ejs+KD8pKT94Byc="><p class="k">Exercice · D2-1</p><h4>La caméra qui ne répond pas</h4><div class="enonce">
+
+
+
+<p>L’enregistreur est à l’adresse 192.168.20.11/24. Une caméra est réglée en 192.168.21.64, masque 255.255.255.0, passerelle 192.168.20.1. L’image n’arrive pas.</p>
+
+<p>Quel réglage est en cause ?</p>
+
+</div><div class="indice" hidden>comparer les trois premiers octets de la caméra et de l’enregistreur.</div></section>
+
+<section class="exo" id="DOMA6-e4" data-exo="DOMA6-e4" data-type="justification" data-savoir="D2-1" data-a="IXgueGB4MC8pLjM8Mzk7LjM1NHgn"><p class="k">Exercice · D2-1</p><h4>Une caméra de classe 6</h4><div class="enonce">
+
+
+
+<p>Un commutateur PoE+ au budget de 370 W n’alimente encore que 205 W. Le client demande pourquoi il ne peut pas alimenter une caméra de classe 6. Répondre en trois ou quatre lignes.</p>
+
+</div><div class="indice" hidden>un commutateur se vérifie à deux niveaux ; un seul des deux est en défaut ici.</div><ul class="verifier" hidden><li>J’ai conduit la vérification par port, puis celle du budget total</li><li>J’ai comparé la puissance de la classe 6 à ce qu’un port PoE+ fournit</li><li>J’ai expliqué que le budget restant ne suffit pas à lever la limite d’un port</li><li>J’ai proposé une solution</li></ul></section>
+
+<h2 id="a-retenir-pour-la-prochaine-seance">À retenir pour la prochaine séance</h2>
+
+<p>La séance suivante traite la compatibilité électromagnétique en courant faible. Elle reprend la caméra du parking de cet immeuble, dont le câble chemine sur 85 m dans un fourreau extérieur.</p>
+
 <nav class="suite"><p class="chapeau-s">La suite</p><div class="pas-a-pas"><a class="av" href="DOMA5.html" rel="prev"><span class="k">&lsaquo; Précédent</span><span class="t">A5 : topologie et adressage</span></a><a class="ap" href="DOMA7.html" rel="next"><span class="k">Suivant &rsaquo;</span><span class="t">A7 · CEM, couplages, protections</span></a></div><a class="vers-recap" href="SEQ2.html">Préparation au contrôle</a></nav>
 <p class="pied">Cette page rappelle la séance. Elle ne remplace pas le polycopié et ne donne aucun corrigé. Tous les calculs se font dans votre navigateur ; rien n'est enregistré.</p><p class="pied-site"><a class="mentions" href="../mentions-legales.html">Mentions légales</a></p>
 </div>
-<script src="../assets/kit.js?v=af9949d4"></script>
-<script src="../assets/site.js?v=af9949d4"></script>
-<script src="../assets/vivant.js?v=af9949d4"></script>
+
