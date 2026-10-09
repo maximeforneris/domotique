@@ -19,8 +19,14 @@ a.retour{display:inline-block;margin-top:22px;font-family:"Helvetica Neue",Arial
   font-weight:700;font-size:14px;text-decoration:none;color:#fbfaf9;background:#2c6da6;
   border-radius:4px;padding:11px 20px}
 @media (prefers-color-scheme:dark){
-  body{background:#131315;color:#eceae6} p.k{color:#a6a49f}
-  h1 span{color:#63a6dd} a.retour{background:#63a6dd;color:#131315}}
+  :root:not([data-theme="light"]) body{background:#131315;color:#eceae6}
+  :root:not([data-theme="light"]) p.k{color:#a6a49f}
+  :root:not([data-theme="light"]) h1 span{color:#63a6dd}
+  :root:not([data-theme="light"]) a.retour{background:#63a6dd;color:#131315}}
+:root[data-theme="dark"] body{background:#131315;color:#eceae6}
+:root[data-theme="dark"] p.k{color:#a6a49f}
+:root[data-theme="dark"] h1 span{color:#63a6dd}
+:root[data-theme="dark"] a.retour{background:#63a6dd;color:#131315}
 </style>
 <main>
   <p class="k">BTS FED option C · domotique</p>

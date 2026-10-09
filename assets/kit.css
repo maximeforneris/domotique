@@ -47,6 +47,9 @@ body{
 .page>p,.page>h2,.page>h3,.page>h4,.page>ul,.page>ol,.page>blockquote{max-width:660px}
 h1,h2,h3,h4,.gro{font-family:"Bricolage Grotesque","Helvetica Neue",Arial,sans-serif}
 .mono,code{font-family:"IBM Plex Mono",ui-monospace,monospace}
+/* Pas de ligature dans le code : JetBrains Mono, police de charte, dessine <= en ≤
+   et != en ≠, et l'eleve ne sait plus ce qu'il doit taper. 8 octobre 2026. */
+code,pre,kbd,samp,.mono{font-variant-ligatures:none;font-feature-settings:"calt" 0,"liga" 0}
 p{margin:0 0 13px}
 a{color:var(--froid)}
 
@@ -154,6 +157,13 @@ h4{font-weight:600;font-size:16.5px;margin:18px 0 6px}
 .formule blockquote{margin:10px 0 0;padding:0;border:0;font-size:14.5px;color:var(--encre2)}
 .formule blockquote p{margin:0}
 
+/* ─────────────────────────────────────────────── formules MathML
+   pandoc --mathml, depuis le 6 octobre 2026. Sans police mathematique, une
+   formule herite de celle du texte : espaces de travers, « t ( v ) ». La
+   famille generique math est Cambria Math sous Windows, STIX sur iPad. */
+math{font-family:math;font-size:1.12em}
+.m-ponct{white-space:nowrap}
+
 /* ─────────────────────────────────────────────── point cle */
 .cle{margin:18px 0;padding:14px 17px;background:var(--carte2);
   border-left:3px solid var(--vert);border-radius:0 var(--r) var(--r) 0;
@@ -242,8 +252,10 @@ details[open]>summary .chev{transform:rotate(90deg)}
 table{border-collapse:collapse;width:100%;font-size:15px;margin:14px 0}
 th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--trait2);
   vertical-align:top}
-th{font-family:"Bricolage Grotesque",sans-serif;font-size:11.5px;font-weight:700;
-  letter-spacing:.06em;text-transform:uppercase;color:var(--encre2);
+/* Pas de capitales dans un en-tete de tableau : il porte des unites, et « mA » en capitales
+   se lit « MA », des megaamperes. Releve le 26 septembre 2026 sur « v (m/s) » → « V (M/S) ». */
+th{font-family:"Bricolage Grotesque",sans-serif;font-size:13px;font-weight:700;
+  letter-spacing:.01em;color:var(--encre2);
   border-bottom:1.5px solid var(--trait)}
 tbody tr:last-child td{border-bottom:0}
 .enveloppe-tbl{overflow-x:auto;max-width:760px;margin:14px 0}
@@ -257,6 +269,7 @@ tbody tr:last-child td{border-bottom:0}
 .qq{padding:11px 0;border-bottom:1px solid var(--trait2)}
 .qq:last-of-type{border-bottom:0}
 .qq p{margin:0 0 8px;font-size:16.5px}
+.qq p.pourquoi{margin:9px 0 0;font-size:15.5px;color:var(--encre2)}
 .qq .choix{display:flex;flex-wrap:wrap;gap:7px}
 .qq button{font-family:"IBM Plex Mono",monospace;font-size:14px;padding:5px 12px;
   border:1px solid var(--trait);border-radius:var(--r);background:transparent;
@@ -302,14 +315,19 @@ input:focus-visible,select:focus-visible,button:focus-visible{outline:2px solid 
 .bt:hover{background:var(--carte2);color:var(--encre)}
 .bt.p{background:var(--encre);color:var(--carte);border-color:var(--encre)}
 
-.lignec{display:grid;grid-template-columns:1fr 84px 74px 30px;gap:8px;align-items:center;
+/* minmax(0,1fr) et non 1fr : une piste 1fr ne descend pas sous la largeur naturelle
+   de la liste deroulante (230 px pour « Plaque de platre BA13 »), et la ligne
+   debordait dans la colonne voisine — la croix tombait sur le texte de droite. */
+.lignec{display:grid;grid-template-columns:minmax(0,1fr) 84px 74px 30px;gap:8px;align-items:center;
   padding:6px 0;border-bottom:1px solid var(--trait2)}
+.lignec select{min-width:0;width:100%}
+.lignec input[type=number]{min-width:0;width:100%;box-sizing:border-box}
 .lignec .rr{font-family:"IBM Plex Mono",monospace;font-size:13.5px;text-align:right;
   font-variant-numeric:tabular-nums;color:var(--encre2)}
 .lignec .xx{border:0;background:transparent;color:var(--encre2);cursor:pointer;
   font-size:17px;line-height:1;padding:2px 5px;border-radius:var(--r)}
 .lignec .xx:hover{background:var(--carte2);color:var(--chaud)}
-.entete-c{display:grid;grid-template-columns:1fr 84px 74px 30px;gap:8px;
+.entete-c{display:grid;grid-template-columns:minmax(0,1fr) 84px 74px 30px;gap:8px;
   font-family:"Bricolage Grotesque",sans-serif;font-size:11px;font-weight:700;
   letter-spacing:.06em;text-transform:uppercase;color:var(--encre2);
   padding-bottom:6px;border-bottom:1.5px solid var(--trait)}
@@ -401,7 +419,7 @@ input[type=range]::-moz-range-thumb{
   nav.somm a{padding:11px 15px;font-size:14px}
   input[type=number],select{padding:10px;font-size:15.5px}
   input[type=number]{width:96px}
-  .lignec,.entete-c{grid-template-columns:1fr 96px 88px 42px;gap:10px}
+  .lignec,.entete-c{grid-template-columns:minmax(0,1fr) 96px 88px 42px;gap:10px}
   .lignec .xx{font-size:22px;padding:7px 11px}
   .champ{padding:10px 0}
   .champ label{font-size:16px}

@@ -52,6 +52,12 @@ if(liens.length&&"IntersectionObserver" in window){
   items.forEach(function(li){
     /* « énoncé : bonne / mauvaise / mauvaise »  — le gras marque la bonne */
     var html=li.innerHTML;
+    /* Option « pourquoi » : [explication]{.pourquoi} en fin d'item. Elle est
+       retiree des reponses et montree une fois la reponse donnee : le vrai-faux
+       dit alors POURQUOI. Posee le 6 octobre 2026 pour la Tle STI2D ; un quiz
+       qui ne la declare pas ne change pas. */
+    var pq=null,mp=html.match(/\s*<span class="pourquoi">([\s\S]*?)<\/span>\s*$/);
+    if(mp){pq=mp[1];html=html.slice(0,mp.index);}
     /* separateurs : " : " avant les reponses, " | " entre elles.
        Ni l'un ni l'autre n'apparait dans un enonce ou une reponse — ce que
        « / » ne garantissait pas : il coupait dans </strong> et dans R = 1 / U. */
@@ -74,6 +80,7 @@ if(liens.length&&"IntersectionObserver" in window){
         b.classList.add(juste?"juste":"faux");
         if(!juste)[].forEach.call(ch.children,function(o,i){
           if(/<strong>/.test(reps[i]))o.classList.add("juste");});
+        if(pq)bloc.appendChild(E("p",{"class":"pourquoi"},pq));
         score.textContent=justes+" / "+faits+" — "+
           (faits<total?(total-faits)+" restantes":"terminé");
       });
@@ -102,7 +109,15 @@ function exoNote(id,etat,valeur,genre){var t=exoLu();t[id]=etat;
   try{localStorage.setItem(CLE_EXO,JSON.stringify(t));}catch(e){}
   document.dispatchEvent(new CustomEvent("exo",{detail:{id:id,etat:etat,
     valeur:valeur===undefined?null:valeur,genre:genre||"exercice"}}));}
+function chiffresHorsLigne(s){
+  /* Les chiffres en exposant et en indice redeviennent des chiffres : \u00ab Cu\u00b2\u207a \u00bb
+     se lisait \u00ab cu \u00bb, comme le metal, et \u00ab H\u2082O \u00bb ne valait pas \u00ab H2O \u00bb. */
+  return s.replace(/[\u2070\u00b9\u00b2\u00b3\u2074-\u2079\u2080-\u2089]/g,function(c){
+    var k=c.charCodeAt(0);
+    return String(k>=0x2080?k-0x2080:k===0xb9?1:k===0xb2?2:k===0xb3?3:k-0x2070);});
+}
 function aplat(s){
+  s=chiffresHorsLigne(s);
   return (s.normalize?s.normalize("NFD").replace(/[\u0300-\u036f]/g,""):s)
          .toLowerCase().replace(/[^a-z0-9]+/g," ").trim();
 }
@@ -110,16 +125,34 @@ function memeTexte(a,b){
   /* « 1,5 m », « 1,5m » et « 1.5 m » sont la meme reponse : l'eleve tape vite,
      et l'espace avant l'unite n'est pas ce qu'on evalue. */
   var x=aplat(a),y=aplat(b);
+  if(!x||!y)return symboles(a,b);
   return x===y||x.replace(/ /g,"")===y.replace(/ /g,"");
+}
+function symboles(a,b){
+  /* Une forme faite de symboles seuls, « - », « € », « β− », s'aplatit en
+     rien : elle valait alors n'importe quelle saisie sans lettre ni chiffre,
+     et « + » passait pour « moins ». Elle se compare donc symbole a symbole,
+     espaces et variantes du moins mises a part. Releve le 6 octobre 2026. */
+  var f=function(s){return s.replace(/[−–—]/g,"-").replace(/\s+/g,"");};
+  return f(a)!==""&&f(a)===f(b);
 }
 function aplatSignes(s){
   /* Comme aplat(), mais on GARDE les symboles qui portent le sens :
      + - * / ^ ( ) [ ] ; < > = et le point decimal. Sans eux, « 5x - 5 »
      et « 5x + 5 » deviennent la meme reponse, et « [0 ; 10[ » vaut
      « ]0 ; 10] ». Les variantes typographiques sont ramenees a la touche
-     du clavier : moins, fois, divise, virgule decimale. */
+     du clavier : moins, fois, divise, virgule decimale. Un exposant tape
+     en chiffre suspendu se lit comme avec ^ : \u00ab 3/x\u00b2 \u00bb vaut \u00ab 3/x^2 \u00bb.
+     Efface, il aurait fait accepter \u00ab 3/x \u00bb. L'infini se lit \u00ab inf \u00bb, la
+     forme qu'on fait taper : efface, \u00ab +\u221e \u00bb acceptait un \u00ab + \u00bb seul. */
+  var SUP={"\u2070":"0","\u00b9":"1","\u00b2":"2","\u00b3":"3","\u2074":"4",
+    "\u2075":"5","\u2076":"6","\u2077":"7","\u2078":"8","\u2079":"9","\u207b":"-","\u207a":"+"};
   return (s.normalize?s.normalize("NFD").replace(/[\u0300-\u036f]/g,""):s)
          .toLowerCase()
+         .replace(/[\u2070\u00b9\u00b2\u00b3\u2074-\u2079\u207b\u207a]+/g,function(m){
+           return "^"+m.replace(/./g,function(c){return SUP[c];});})
+         .replace(/[\u2080-\u2089]/g,function(c){return String(c.charCodeAt(0)-0x2080);})
+         .replace(/\u221e/g,"inf")
          .replace(/[\u2212\u2013\u2014]/g,"-")
          .replace(/[\u00d7\u22c5\u2217]/g,"*")
          .replace(/[\u00f7\u2215]/g,"/")
@@ -128,12 +161,23 @@ function aplatSignes(s){
 }
 function memeSignes(a,b){
   var x=aplatSignes(a),y=aplatSignes(b);
+  if(!x||!y)return symboles(a,b);
   return x===y||x.replace(/ /g,"")===y.replace(/ /g,"");
 }
 function nombre(s){
   /* « 1 376 » et « 1,38 » et « 1.38e3 » : l'eleve tape comme il veut */
   /* le moins typographique d'un clavier de tablette vaut le tiret du clavier */
   var t=s.replace(/\s/g,"").replace(",",".").replace(/[−–]/g,"-");   /* \s couvre U+00A0 et U+202F */
+  /* « 6,9 × 10⁻³⁰ », « 6,9*10^-30 », « 6,9ᴇ-30 » de la NumWorks : la notation
+     scientifique se lit entiere. parseFloat s'arretait au ×, et une valeur
+     juste etait refusee. L'exposant est exige (^ ou chiffres suspendus) :
+     « 4,7×100 » d'une fiche de calcul mental reste lu comme avant. */
+  var SUP={"⁰":"0","¹":"1","²":"2","³":"3","⁴":"4","⁵":"5",
+    "⁶":"6","⁷":"7","⁸":"8","⁹":"9","⁻":"-","⁺":"+"};
+  t=t.replace(/[ᴇ]/g,"e").replace(/[⁰¹²³⁴-⁹⁻⁺]+/g,
+    function(m){return "^"+m.replace(/./g,function(c){return SUP[c];});});
+  var sc=t.match(/^([+-]?(?:\d+\.?\d*|\.\d+))?(?:[×xX*·⋅])?10\^([+-]?\d+)(?:[^\d^.].*)?$/);
+  if(sc)return (sc[1]===undefined?1:parseFloat(sc[1]))*Math.pow(10,parseInt(sc[2],10));
   return t===""?NaN:parseFloat(t);
 }
 [].forEach.call(document.querySelectorAll(".exo"),function(ex){
@@ -198,8 +242,7 @@ function nombre(s){
         verdict.textContent="Entrez une valeur numérique.";return;}
       ok=sec.v!==null&&Math.abs(v-sec.v)<=Math.abs(sec.v)*(sec.tol/100);
     }else{
-      var r=aplat(champ.value);
-      ok=!!r&&(sec.a||[]).some(function(a){return aplat(a)===r;});
+      ok=!!champ.value.trim()&&(sec.a||[]).some(function(a){return memeTexte(a,champ.value);});
     }
     verdict.className="verdict "+(ok?"juste":"faux");
     verdict.textContent=ok?"C’est juste."
@@ -268,7 +311,10 @@ function nombre(s){
     if(d.v!==undefined){
       var v=nombre(txt);
       if(isNaN(v))return false;
-      return Math.abs(v-d.v)<=Math.abs(d.v)*(sec.tol/100)+1e-9;
+      /* La marge des arrondis de calcul est RELATIVE : une marge fixe de 1e-9
+         acceptait 0 pour 5,82e-30 attendu. Seul un zero attendu garde une marge
+         absolue. Releve le 7 octobre 2026, sur la physique de Tle STI2D. */
+      return Math.abs(v-d.v)<=Math.abs(d.v)*(sec.tol/100+1e-9)+(d.v===0?1e-9:0);
     }
     var cmp=(sec.m==="signes")?memeSignes:memeTexte;
     return !!txt.trim()&&(d.a||[]).some(function(a){return cmp(a,txt);});
@@ -502,6 +548,39 @@ function S(t,a,txt){
   return e;
 }
 function V(c){return "var(--"+c+")";}
+/* Un vecteur dans un schema porte sa fleche, comme dans le cours : on ecrit
+   VEC(svg, attrs, ["‖", ["AS"], "‖ = 2 m"]) — les morceaux en tableau sont des
+   noms de vecteur, poses dans un tspan.vec — puis FLECHES_VEC(svg) une fois le
+   svg dans la page : il mesure chaque tspan et trace une fleche au-dessus, de la
+   couleur du texte, et la retrace quand les polices sont chargees. Pose le
+   9 octobre 2026 avec les fleches des pages de la Tle CTRM. */
+function VEC(svg,a,parts){
+  var t=S("text",a);
+  parts.forEach(function(p){
+    if(typeof p==="string"){t.appendChild(document.createTextNode(p));}
+    else{var ts=S("tspan",{"class":"vec"});ts.textContent=p[0];t.appendChild(ts);}
+  });
+  svg.appendChild(t);
+  return t;
+}
+function FLECHES_VEC(svg){
+  [].forEach.call(svg.querySelectorAll(".vec-fleche"),function(e){e.parentNode.removeChild(e);});
+  [].forEach.call(svg.querySelectorAll("tspan.vec"),function(ts){
+    var b;
+    try{b=ts.getBBox();}catch(e){return;}
+    if(!b||!b.width)return;
+    var coul=ts.parentNode.getAttribute("fill")||"currentColor";
+    var y=b.y+b.height*0.14, x1=b.x+0.5, x2=b.x+b.width-0.5, h=2.6;
+    svg.appendChild(S("path",{"class":"vec-fleche",fill:"none",stroke:coul,
+      "stroke-width":"1.3","stroke-linecap":"round","stroke-linejoin":"round",
+      d:"M "+x1+" "+y+" L "+x2+" "+y+" M "+(x2-1.7*h)+" "+(y-h)+" L "+x2+" "+y+
+        " L "+(x2-1.7*h)+" "+(y+h)}));
+  });
+  if(document.fonts&&document.fonts.ready&&!svg._vecRe){
+    svg._vecRe=1;
+    document.fonts.ready.then(function(){FLECHES_VEC(svg);});
+  }
+}
 
 /* ─────────── coupe de paroi, avec le profil de temperature ─────────── */
 
@@ -4102,9 +4181,11 @@ OUTILS["carte-referentiel"]={
   el.innerHTML="";
   var t=E("div",{"class":"tete-outil"});
   t.appendChild(E("p",{"class":"k"},"Outil"));
-  t.appendChild(E("h4",{},o.titre));
+  /* data-titre et data-intro sur le bloc remplacent ceux de l'outil : le meme
+     chronometre sert une salve d'automatismes et un QCM. 8 octobre 2026. */
+  t.appendChild(E("h4",{},el.getAttribute("data-titre")||o.titre));
   if(o.chaine)t.appendChild(E("p",{"class":"chaine"},"↳ "+o.chaine));
-  t.appendChild(E("p",{},o.intro));
+  t.appendChild(E("p",{},el.getAttribute("data-intro")||o.intro));
   el.appendChild(t);
   var d=E("div",{"class":"dedans"});
   el.appendChild(d);
