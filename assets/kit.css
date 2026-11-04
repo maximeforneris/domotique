@@ -205,6 +205,13 @@ figure img{display:block;width:100%;height:auto;border-radius:var(--r);
 figcaption{margin-top:8px;font-size:14px;color:var(--encre2);
   font-family:"Bricolage Grotesque",sans-serif}
 figure.memo{max-width:420px}
+/* une simulation jouee dans la page (::: {.simulation}) : le cadre prend la hauteur que la simulation lui dit, 900 px
+   en attendant. Sa largeur se regle sur la hauteur de l'ecran, pour que la carte, en deux colonnes a partir de 540 px
+   de large, tienne dans la fenetre ; sur un telephone tenu droit, elle prend la colonne et reste verticale */
+figure.simulation{max-width:min(760px,max(540px,calc((100vh - 130px)*1.3)));margin:22px auto}
+figure.simulation iframe{display:block;width:100%;height:900px;border:0;background:transparent}
+figure.simulation figcaption{text-align:center}
+@media print{figure.simulation{display:none}}
 figure.schema{max-width:760px}
 figure.schema .dessin svg{display:block;width:100%;height:auto;
   border:1px solid var(--trait2);border-radius:var(--r);background:var(--carte)}

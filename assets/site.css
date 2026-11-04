@@ -133,6 +133,25 @@ body.en-recherche .compteur{display:none}
 .travail ul,.travail ol{padding-left:1.3em}
 .travail li{margin:0 0 6px}
 body.en-recherche .travail{display:none}
+/* Le meme travail en tete de chaque page (4 novembre 2026), pose par assets/travail-*.js
+   juste avant l'en-tete : ouvert a l'arrivee, replie d'un geste. */
+.travail-jour{margin:14px 0 2px;padding:9px 16px 3px;background:var(--carte);
+  border:1px solid var(--trait);border-left:5px solid var(--chaud);border-radius:var(--r)}
+.travail-jour>summary{cursor:pointer;list-style:none;padding:1px 0 7px;font-size:15.5px;line-height:1.35}
+.travail-jour>summary::-webkit-details-marker{display:none}
+.travail-jour>summary::after{content:"replier ▴";float:right;margin-left:10px;
+  font:500 12.5px/1.6 "IBM Plex Mono",ui-monospace,monospace;color:var(--encre2)}
+.travail-jour:not([open])>summary::after{content:"afficher ▾"}
+.travail-jour .travail-k{display:block;margin:0 0 1px;
+  font:600 11px/1.3 "IBM Plex Mono",ui-monospace,monospace;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--chaud)}
+.travail-jour .travail-corps{font-size:15px}
+.travail-jour .travail-corps p,.travail-jour .travail-corps ul,
+.travail-jour .travail-corps ol{margin:0 0 8px;max-width:none}
+.travail-jour .travail-corps ul,.travail-jour .travail-corps ol{padding-left:1.3em}
+.travail-jour .travail-corps li{margin:0 0 4px}
+body.en-recherche .travail-jour{display:none}
+@media print{.travail-jour{display:none}}
 
 /* ─────────────────────────────────────────────── catalogue des outils */
 .outils-grille{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:11px;

@@ -396,6 +396,19 @@ function bulbeH(t,r){                                              /* dichotomie
 }
 function tDeH(h,r){return (h-2.501*r)/(1.006+0.00183*r);}          /* adiabatique */
 
+/* ═══════════════════════════════════════════════════ LES SIMULATIONS DANS LA PAGE
+   « ::: {.simulation data-sim="…"} » (28 octobre 2026) — la page de simulation joue
+   dans un cadre ; elle dit sa hauteur par un message (court.js), et le cadre la
+   prend. Seul le cadre d'ou vient le message bouge ; rien d'autre n'est lu. */
+(function(){
+var cadres=document.querySelectorAll("figure.simulation iframe");
+if(!cadres.length)return;
+window.addEventListener("message",function(e){
+  var d=e.data;if(!d||d.sim!=="hauteur"||!(d.h>100)||d.h>4000)return;
+  [].forEach.call(cadres,function(f){if(f.contentWindow===e.source)f.style.height=Math.ceil(d.h)+"px";});
+});
+})();
+
 /* ═══════════════════════════════════════════════════ LA REMISE
    « ::: {.remise} » — l'eleve tape l'identifiant donne en classe et produit un
    FICHIER TEXTE de ses reponses. Tout se fabrique dans le navigateur : rien
